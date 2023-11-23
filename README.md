@@ -1,3 +1,6 @@
+# This repo is copied from https://github.com/db0/godot-card-game-framework
+This will eventually become the main repo for the Torah Card Game
+All below text is from the original repo:
 
 # Godot Card Game Framework [2.2](CHANGELOG.md)
 
