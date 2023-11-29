@@ -168,4 +168,4 @@ class TestShuffleRng:
 			rng_threshold += 1
 		prev_index = card.get_my_card_index()
 		assert_gt(2,rng_threshold,
-			"Card should not fall in he same spot too many times")
+			"Card should not fall in the same spot too many times")

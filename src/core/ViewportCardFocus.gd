@@ -49,7 +49,7 @@ func _process(_delta) -> void:
 #		_focus_viewport.size = _current_focus_source.canonical_size * _current_focus_source.focused_scale * cfc.curr_scale
 #		focus_info.rect_size.x = _current_focus_source.canonical_size.x * _current_focus_source.focused_scale * cfc.curr_scale
 	# The below makes sure to display the closeup of the card, only on the side
-	# the player's mouse is not in.
+	# where the player's mouse is not in.
 	if _current_focus_source and is_instance_valid(_current_focus_source)\
 			and _current_focus_source.get_state_exec() != "pile"\
 			and cfc.game_settings.focus_style == CFInt.FocusStyle.BOTH_INFO_PANELS_ONLY:

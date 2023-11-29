@@ -93,7 +93,7 @@ func shuffle_cards() -> void:
 # Returns a card object drawn
 func draw_card(pile : Pile = cfc.NMAP.deck) -> Card:
 	var card: Card = pile.get_top_card()
-	# A basic function to pull a card from out deck into our hand.
+	# A basic function to pull a card from the deck into our hand.
 	if card:
 		card.move_to(self)
 	return(card)

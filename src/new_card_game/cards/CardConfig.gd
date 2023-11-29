@@ -63,7 +63,7 @@ const EXPLANATIONS = {
 #}
 #```
 const REPLACEMENTS = {
-	"Type": "Figure"
+	"abc": "xyz"
 }
 # Defined bbcode which will replace the specified string in RichTextLabels
 # For example, a key of 'damage' in this dictionary, will replace all instances

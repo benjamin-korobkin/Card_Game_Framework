@@ -6,7 +6,7 @@
 [ext_resource path="res://src/new_card_game/Deck.gd" type="Script" id=4]
 [ext_resource path="res://src/new_card_game/Board.gd" type="Script" id=5]
 [ext_resource path="res://src/custom/CGFCounters.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/custom/CGFPlacementGridDemo.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/new_card_game/FigurePlacementGrid.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/custom/CGFModifiedLabelGrid.tscn" type="PackedScene" id=8]
 [ext_resource path="res://fonts/Comfortaa-Bold.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://src/custom/CGFDeckbuilder/CGFDeckBuilder.tscn" type="PackedScene" id=10]
@@ -33,6 +33,7 @@ bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 [node name="Board" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_min_size = Vector2( 1024, 600 )
 mouse_filter = 2
 theme = ExtResource( 12 )
 script = ExtResource( 5 )
@@ -152,8 +153,9 @@ margin_top = 52.0
 margin_bottom = 75.0
 
 [node name="Hand" parent="." instance=ExtResource( 3 )]
-position = Vector2( 155, 480 )
+position = Vector2( 152.879, 505.456 )
 script = ExtResource( 1 )
+card_size = Vector2( 100, 190 )
 excess_discard_pile_name = ""
 excess_cards = 0
 
@@ -171,6 +173,7 @@ __meta__ = {
 }
 
 [node name="EnableAttach" type="CheckButton" parent="."]
+visible = false
 margin_left = 194.978
 margin_top = 1.33486
 margin_right = 395.978
@@ -204,6 +207,7 @@ __meta__ = {
 }
 
 [node name="ReshuffleAllDiscard" type="Button" parent="."]
+visible = false
 margin_left = 9.89948
 margin_top = 140.334
 margin_right = 200.899
@@ -225,6 +229,7 @@ __meta__ = {
 }
 
 [node name="DeckBuilder" type="Button" parent="."]
+visible = false
 margin_left = 234.698
 margin_top = 45.0
 margin_right = 374.698
@@ -245,6 +250,7 @@ __meta__ = {
 }
 
 [node name="Debug" type="CheckButton" parent="."]
+visible = false
 margin_left = 789.192
 margin_top = 3.36737
 margin_right = 978.192
@@ -254,19 +260,6 @@ text = "Debug"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="PlacementGridDemo" parent="." instance=ExtResource( 7 )]
-margin_left = 775.0
-margin_top = 240.0
-margin_right = 1274.0
-margin_bottom = 436.0
-highlight = Color( 0.985156, 0, 1.3, 1.3 )
-
-[node name="ModifiedLabelGrid" parent="." instance=ExtResource( 8 )]
-margin_left = 1015.0
-margin_top = 30.0
-margin_right = 1264.0
-margin_bottom = 226.0
 
 [node name="SeedLabel" type="Label" parent="."]
 margin_left = 10.0
@@ -292,6 +285,18 @@ margin_bottom = -2.0
 custom_styles/panel = SubResource( 3 )
 replacements = {
 }
+
+[node name="FieldGrid" parent="." instance=ExtResource( 8 )]
+margin_left = 432.344
+margin_top = 84.4472
+margin_right = 806.344
+margin_bottom = 280.447
+
+[node name="FigurePlacementGrid" parent="." instance=ExtResource( 7 )]
+margin_left = 301.227
+margin_top = 289.207
+margin_right = 925.227
+margin_bottom = 485.207
 
 [connection signal="toggled" from="FancyMovementToggle" to="." method="_on_FancyMovementToggle_toggled"]
 [connection signal="toggled" from="EnableAttach" to="." method="_on_EnableAttach_toggled"]

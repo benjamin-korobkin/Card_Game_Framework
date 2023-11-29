@@ -1,4 +1,4 @@
-# Code for a sample deck, you're expected to provide your own ;)
+# Code for a sample deck, modify this to fit your game.
 extends Pile
 
 signal draw_card(deck)
