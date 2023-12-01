@@ -26,3 +26,6 @@ margin_right = 620.0
 
 [node name="Control" parent="." index="1"]
 margin_right = 622.0
+
+[node name="Label" parent="Control" index="0"]
+text = "Timeline"

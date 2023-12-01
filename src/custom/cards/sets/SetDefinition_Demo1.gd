@@ -8,7 +8,6 @@ const CARDS := {
 		"Type": "Purple",
 		"Tags": ["Rich","Text"],
 		"Requirements": "",
-		"Abilities": "Raise [color=yellow]5[/color] {damage}.\n[i](this card is [color=red]not[/color] scripted)[/i]",
 		"Cost": 0,
 		"Power": 0,
 	},
@@ -16,8 +15,6 @@ const CARDS := {
 		"Type": "Purple",
 		"Tags": ["Rich","Text"],
 		"Requirements": "",
-		"Abilities": "Gain 5 Research [color=green][shake rate=5 level=10]You may discard two cards[/shake][/color] to gain 3 more research.",
-
 		"Cost": 0,
 		"Power": 0,
 	},
@@ -25,8 +22,6 @@ const CARDS := {
 		"Type": "Blue",
 		"Tags": ["Tag 1","Tag 2"],
 		"Requirements": "Demo Requirements",
-		"Abilities": "While on board, this will rotate itself." \
-				+ "\n\nWhile in hand, this will spawn a test card on the board.",
 		"Cost": 0,
 		"Power": 0,
 		"_max_allowed": 1,
@@ -37,10 +32,6 @@ const CARDS := {
 		"Type": "Red",
 		"Tags": ["Tag 1","Tag 2"],
 		"Requirements": "",
-		"Abilities": "While on board, this card will discard itself " \
-				+ "and another target."\
-				+ "\n\nWhile on the hand, this card will remove itself " \
-				+ "from the game",
 		"Cost": 2,
 		"Power": 5,
 		"_max_allowed": 10,
@@ -50,7 +41,6 @@ const CARDS := {
 		"Type": "Token",
 		"Tags": [],
 		"Requirements": "",
-		"Abilities": " ",
 		"Cost": 0,
 		"Power": 1,
 		"_hide_in_deckbuilder": true,

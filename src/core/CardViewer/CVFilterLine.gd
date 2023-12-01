@@ -17,10 +17,10 @@ signal filters_changed(filters)
 # Each character key defined here, corresponds to one property and when
 # inserted as the criteria, will check the expression against that property
 export var criteria_map = {
-	'a': 'Abilities',
+	#'a': 'Abilities',
 	't': 'Type',
-	'g': 'Tags',
-	'r': 'Requirements',
+	#'g': 'Tags',
+	#'r': 'Requirements',
 	'c': 'Cost',
 	'p': 'Power',
 }

@@ -33,6 +33,8 @@ bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 [node name="Board" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.88303
+margin_right = 2.88306
 rect_min_size = Vector2( 1024, 600 )
 mouse_filter = 2
 theme = ExtResource( 12 )
@@ -153,7 +155,8 @@ margin_top = 52.0
 margin_bottom = 75.0
 
 [node name="Hand" parent="." instance=ExtResource( 3 )]
-position = Vector2( 152.879, 505.456 )
+position = Vector2( 159.826, 340.844 )
+z_index = 1
 script = ExtResource( 1 )
 card_size = Vector2( 100, 190 )
 excess_discard_pile_name = ""
@@ -286,17 +289,38 @@ custom_styles/panel = SubResource( 3 )
 replacements = {
 }
 
-[node name="FieldGrid" parent="." instance=ExtResource( 8 )]
-margin_left = 432.344
-margin_top = 84.4472
-margin_right = 806.344
-margin_bottom = 280.447
+[node name="FieldTimelineContainer" type="VBoxContainer" parent="."]
+margin_left = 337.0
+margin_top = 135.0
+margin_right = 961.0
+margin_bottom = 550.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="FigurePlacementGrid" parent="." instance=ExtResource( 7 )]
-margin_left = 301.227
-margin_top = 289.207
-margin_right = 925.227
-margin_bottom = 485.207
+[node name="HBoxContainer" type="HBoxContainer" parent="FieldTimelineContainer"]
+margin_right = 624.0
+margin_bottom = 196.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="FieldTimelineContainer/HBoxContainer"]
+margin_right = 125.0
+margin_bottom = 196.0
+rect_min_size = Vector2( 125, 195 )
+
+[node name="FieldGrid" parent="FieldTimelineContainer/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 128.0
+margin_right = 502.0
+margin_bottom = 196.0
+
+[node name="MarginContainer" type="MarginContainer" parent="FieldTimelineContainer"]
+margin_top = 199.0
+margin_right = 624.0
+margin_bottom = 199.0
+
+[node name="FigurePlacementGrid" parent="FieldTimelineContainer" instance=ExtResource( 7 )]
+margin_top = 202.0
+margin_right = 624.0
+margin_bottom = 398.0
 
 [connection signal="toggled" from="FancyMovementToggle" to="." method="_on_FancyMovementToggle_toggled"]
 [connection signal="toggled" from="EnableAttach" to="." method="_on_EnableAttach_toggled"]
