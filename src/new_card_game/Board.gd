@@ -1,4 +1,4 @@
-# Code for a sample playspace, you're expected to provide your own ;)
+# Code for the playspace
 extends Board
 
 # Called when the node enters the scene tree for the first time.
@@ -10,7 +10,7 @@ func _ready() -> void:
 	# We're assigning our positions programmatically,
 	# instead of defining them on the scene.
 	# This way any they will work with any size of viewport in a game.
-	# Discard pile goes bottom right
+	# Discard pile goes right
 	$FancyMovementToggle.pressed = cfc.game_settings.fancy_movement
 	$OvalHandToggle.pressed = cfc.game_settings.hand_use_oval_shape
 	$ScalingFocusOptions.selected = cfc.game_settings.focus_style

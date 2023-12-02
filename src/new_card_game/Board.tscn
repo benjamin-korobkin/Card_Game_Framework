@@ -6,8 +6,8 @@
 [ext_resource path="res://src/new_card_game/Deck.gd" type="Script" id=4]
 [ext_resource path="res://src/new_card_game/Board.gd" type="Script" id=5]
 [ext_resource path="res://src/custom/CGFCounters.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/new_card_game/FigurePlacementGrid.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/custom/CGFModifiedLabelGrid.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/new_card_game/SagePlacementGrid.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/new_card_game/FieldPlacementGrid.tscn" type="PackedScene" id=8]
 [ext_resource path="res://fonts/Comfortaa-Bold.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://src/custom/CGFDeckbuilder/CGFDeckBuilder.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/new_card_game/Discard.gd" type="Script" id=11]
@@ -155,7 +155,7 @@ margin_top = 52.0
 margin_bottom = 75.0
 
 [node name="Hand" parent="." instance=ExtResource( 3 )]
-position = Vector2( 159.826, 340.844 )
+position = Vector2( 143.826, 532.844 )
 z_index = 1
 script = ExtResource( 1 )
 card_size = Vector2( 100, 190 )
@@ -290,37 +290,71 @@ replacements = {
 }
 
 [node name="FieldTimelineContainer" type="VBoxContainer" parent="."]
-margin_left = 337.0
-margin_top = 135.0
-margin_right = 961.0
-margin_bottom = 550.0
+margin_left = 325.0
+margin_top = 125.0
+margin_right = 949.0
+margin_bottom = 743.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="FieldTimelineContainer"]
+[node name="AISagePlacementGrid2" parent="FieldTimelineContainer" instance=ExtResource( 7 )]
+
+[node name="MarginContainer3" type="MarginContainer" parent="FieldTimelineContainer"]
+margin_top = 153.0
 margin_right = 624.0
-margin_bottom = 196.0
+margin_bottom = 153.0
 
-[node name="MarginContainer2" type="MarginContainer" parent="FieldTimelineContainer/HBoxContainer"]
-margin_right = 125.0
-margin_bottom = 196.0
-rect_min_size = Vector2( 125, 195 )
+[node name="AIFieldHBox" type="HBoxContainer" parent="FieldTimelineContainer"]
+margin_top = 156.0
+margin_right = 624.0
+margin_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="FieldGrid" parent="FieldTimelineContainer/HBoxContainer" instance=ExtResource( 8 )]
-margin_left = 128.0
-margin_right = 502.0
-margin_bottom = 196.0
+[node name="MarginContainer" type="MarginContainer" parent="FieldTimelineContainer/AIFieldHBox"]
+margin_right = 122.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 122, 150 )
+
+[node name="AIFieldPlacementGrid" parent="FieldTimelineContainer/AIFieldHBox" instance=ExtResource( 8 )]
+margin_left = 125.0
+margin_right = 499.0
+margin_bottom = 150.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="FieldTimelineContainer"]
+margin_top = 309.0
+margin_right = 624.0
+margin_bottom = 309.0
+
+[node name="FieldHBox" type="HBoxContainer" parent="FieldTimelineContainer"]
+margin_top = 312.0
+margin_right = 624.0
+margin_bottom = 462.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="FieldTimelineContainer/FieldHBox"]
+margin_right = 122.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 122, 150 )
+
+[node name="FieldPlacementGrid" parent="FieldTimelineContainer/FieldHBox" instance=ExtResource( 8 )]
+margin_left = 125.0
+margin_right = 499.0
+margin_bottom = 150.0
 
 [node name="MarginContainer" type="MarginContainer" parent="FieldTimelineContainer"]
-margin_top = 199.0
+margin_top = 465.0
 margin_right = 624.0
-margin_bottom = 199.0
+margin_bottom = 465.0
 
-[node name="FigurePlacementGrid" parent="FieldTimelineContainer" instance=ExtResource( 7 )]
-margin_top = 202.0
-margin_right = 624.0
-margin_bottom = 398.0
+[node name="SagePlacementGrid" parent="FieldTimelineContainer" instance=ExtResource( 7 )]
+margin_top = 468.0
+margin_bottom = 618.0
 
 [connection signal="toggled" from="FancyMovementToggle" to="." method="_on_FancyMovementToggle_toggled"]
 [connection signal="toggled" from="EnableAttach" to="." method="_on_EnableAttach_toggled"]

@@ -104,7 +104,7 @@ func show_preview_card(card) -> void:
 			preview_card.position = Vector2(0,0)
 			preview_card.scale = Vector2(1,1)
 		add_child(preview_card)
-		# It's necessary we do this here because if we only we it during
+		# It's necessary we do this here because if we only do it during
 		# the process, the card will appear to teleport
 		if CFConst.VIEWPORT_FOCUS_ZOOM_TYPE == "resize":
 			preview_card.resize_recursively(preview_card._control, preview_card.preview_scale * cfc.curr_scale)

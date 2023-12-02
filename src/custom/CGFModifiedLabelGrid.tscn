@@ -4,6 +4,7 @@
 [ext_resource path="res://src/core/BoardPlacementGrid.tscn" type="PackedScene" id=2]
 
 [node name="ModifiedLabelGrid" instance=ExtResource( 2 )]
+margin_right = 374.0
 
 [node name="GridContainer" parent="." index="0"]
 margin_right = 372.0

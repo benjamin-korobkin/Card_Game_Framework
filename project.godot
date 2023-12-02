@@ -403,7 +403,7 @@ cfc="*res://src/core/CFControl.gd"
 [display]
 
 window/size/width=1280
-window/size/height=720
+window/size/height=900
 
 [gui]
 

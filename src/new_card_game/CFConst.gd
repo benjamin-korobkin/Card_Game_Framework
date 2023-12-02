@@ -42,13 +42,13 @@ const GAME_VERSION := "1.0.0"
 # This will also adjust all CardContainers to match
 # If you modify this property, you **must** adjust
 # the min_rect of the various control nodes inside the card front and back scenes.
-const CARD_SIZE := Vector2(150,240)
+const CARD_SIZE := Vector2(150,180)
 # This is the resolution the game was developed in. It is used to adjust the card sizes
 # for smaller resolutions. Any lower resoluton will adjust its card sizes for previews/thumbnails
 # based on the percentage of difference between the two resolutions in absolute pixel number.
 const DESIGN_RESOLUTION := Vector2(1280,720)
 # Switch this off to disable fancy movement of cards during draw/discard
-const FANCY_MOVEMENT := true
+const FANCY_MOVEMENT := false
 # The focus style selected for this game. See enum `FocusStyle`
 const FOCUS_STYLE = CFInt.FocusStyle.BOTH
 # Controls how the card will be magnified in the focus viewport.

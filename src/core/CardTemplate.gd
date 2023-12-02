@@ -143,7 +143,7 @@ export(PackedScene) var card_front_design : PackedScene
 export var targeting_arrow_scene = _TARGETING_SCENE
 # If true, the player will not be able to drop dragged cards back into
 # CardContainers. The player will only be allowed to drop cards to the board
-# or back into the container they picked them front
+# or back into the container they picked them from.
 # The game logic will have to provide another way to send cards to the various
 # piles
 # Be careful with this setting, as it will allow the player to drop cards
@@ -2580,7 +2580,7 @@ func _process_card_state() -> void:
 				# in case it was already scaled due to being on the table etc.
 				scale = Vector2(1,1)
 				resize_recursively(_control, focused_scale * cfc.curr_scale)
-#				set_card_size(CFConst.CARD_SIZE * CFConst.FOCUSED_SCALE, true)
+				set_card_size(CFConst.CARD_SIZE * CFConst.FOCUSED_SCALE, true)
 				card_front.scale_to(focused_scale * cfc.curr_scale)
 				card_back.scale_to(focused_scale * cfc.curr_scale)
 			# If the card has already been been viewed while down,
@@ -2601,7 +2601,7 @@ func _process_card_state() -> void:
 			if CFConst.VIEWPORT_FOCUS_ZOOM_TYPE == "scale":
 				scale = Vector2(1,1) * preview_scale * cfc.curr_scale
 			else:
-#				set_card_size(CFConst.CARD_SIZE * CFConst.PREVIEW_SCALE)
+				set_card_size(CFConst.CARD_SIZE * CFConst.PREVIEW_SCALE)
 				resize_recursively(_control, preview_scale * cfc.curr_scale)
 				card_front.scale_to(preview_scale * cfc.curr_scale)
 
@@ -2619,7 +2619,7 @@ func _process_card_state() -> void:
 			# Commenting this out because it is messing with RichTextLabel
 			# Font resizing
 			else:
-#				set_card_size(CFConst.CARD_SIZE * thumbnail_scale)
+				set_card_size(CFConst.CARD_SIZE * thumbnail_scale)
 				resize_recursively(_control, thumbnail_scale * cfc.curr_scale)
 				card_front.scale_to(thumbnail_scale * cfc.curr_scale)
 
