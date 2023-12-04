@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/new_card_game/Hand.gd" type="Script" id=1]
 [ext_resource path="res://src/core/Pile.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://src/custom/CGFDeckbuilder/CGFDeckBuilder.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/new_card_game/Discard.gd" type="Script" id=11]
 [ext_resource path="res://themes/darktheme/darktheme.theme" type="Theme" id=12]
+[ext_resource path="res://src/new_card_game/Player2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/new_card_game/Player1.tscn" type="PackedScene" id=14]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -42,6 +44,10 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Player1" parent="." instance=ExtResource( 14 )]
+
+[node name="Player2" parent="." instance=ExtResource( 13 )]
 
 [node name="Deck" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 475 )
@@ -301,26 +307,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AISagePlacementGrid2" parent="FieldTimelineContainer" instance=ExtResource( 7 )]
+[node name="SagePlacementGrid2" parent="FieldTimelineContainer" instance=ExtResource( 7 )]
 
 [node name="MarginContainer3" type="MarginContainer" parent="FieldTimelineContainer"]
 margin_top = 153.0
 margin_right = 624.0
 margin_bottom = 153.0
 
-[node name="AIFieldHBox" type="HBoxContainer" parent="FieldTimelineContainer"]
+[node name="FieldHBox2" type="HBoxContainer" parent="FieldTimelineContainer"]
 margin_top = 156.0
 margin_right = 624.0
 margin_bottom = 306.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="FieldTimelineContainer/AIFieldHBox"]
+[node name="FieldMarginContainer2" type="MarginContainer" parent="FieldTimelineContainer/FieldHBox2"]
 margin_right = 122.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 122, 150 )
 
-[node name="AIFieldPlacementGrid" parent="FieldTimelineContainer/AIFieldHBox" instance=ExtResource( 8 )]
+[node name="FieldPlacementGrid2" parent="FieldTimelineContainer/FieldHBox2" instance=ExtResource( 8 )]
 margin_left = 125.0
 margin_right = 499.0
 margin_bottom = 150.0
@@ -337,12 +343,12 @@ margin_bottom = 462.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="FieldTimelineContainer/FieldHBox"]
+[node name="FieldMarginContainer1" type="MarginContainer" parent="FieldTimelineContainer/FieldHBox"]
 margin_right = 122.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 122, 150 )
 
-[node name="FieldPlacementGrid" parent="FieldTimelineContainer/FieldHBox" instance=ExtResource( 8 )]
+[node name="FieldPlacementGrid1" parent="FieldTimelineContainer/FieldHBox" instance=ExtResource( 8 )]
 margin_left = 125.0
 margin_right = 499.0
 margin_bottom = 150.0
@@ -352,7 +358,7 @@ margin_top = 465.0
 margin_right = 624.0
 margin_bottom = 465.0
 
-[node name="SagePlacementGrid" parent="FieldTimelineContainer" instance=ExtResource( 7 )]
+[node name="SagePlacementGrid1" parent="FieldTimelineContainer" instance=ExtResource( 7 )]
 margin_top = 468.0
 margin_bottom = 618.0
 
