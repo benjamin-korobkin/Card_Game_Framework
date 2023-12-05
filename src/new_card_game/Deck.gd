@@ -1,4 +1,4 @@
-# Code for a sample deck, modify this to fit your game.
+# new_card_game/Deck.gd, copied from CGFDeck.gd
 extends Pile
 
 signal draw_card(deck)

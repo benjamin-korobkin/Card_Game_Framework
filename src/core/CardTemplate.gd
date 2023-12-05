@@ -133,7 +133,7 @@ export(int, 0, 270, 90) var card_rotation  := 0 \
 		setget set_card_rotation, get_card_rotation
 # Specifies where on the board the card may be placed
 export(BoardPlacement) var board_placement \
-		:= BoardPlacement.ANYWHERE
+		:= BoardPlacement.NONE ##ANYWHERE
 export var mandatory_grid_name : String
 # Contains the scene which has the Card Back design to use for this card type
 # It needs to be scene which uses a CardBack class script.
@@ -150,12 +150,12 @@ export var targeting_arrow_scene = _TARGETING_SCENE
 # on top of the hand or pile areas.
 export var disable_dropping_to_cardcontainers := false
 # If true, the player will not be able to drag cards out of the hand manually
-export var disable_dragging_from_hand := false
+export var disable_dragging_from_hand := true
 # If true, the player will not be able to drag cards around the board manually
-export var disable_dragging_from_board := false
+export var disable_dragging_from_board := true
 # If true, the player will not be able to drag cards out of piles
 # (Either directly from top, or from popup window
-export var disable_dragging_from_pile := false
+export var disable_dragging_from_pile := true
 # If true, and the player attempt to drag the card out of hand
 #	then the card will be check on whether it has scripts
 #	which are [targeting other cards](SP#KEY_SUBJECT_V_TARGET) and if so
@@ -1221,7 +1221,8 @@ func move_to(targetHost: Node,
 			# The end position is always the final position the card would be
 			# inside the hand
 			_target_position = recalculate_position()
-			card_rotation = 0
+			if targetHost.get_name() == "Hand2":
+				card_rotation = 180
 			_target_rotation = _recalculate_rotation()
 			set_state(CardState.MOVING_TO_CONTAINER)
 			emit_signal("card_moved_to_hand",
@@ -1238,8 +1239,10 @@ func move_to(targetHost: Node,
 				if c != self:
 					c.interruptTweening()
 					c.reorganize_self()
-			if set_is_faceup(true) == CFConst.ReturnCode.FAILED:
-				printerr("ERROR: Something went unexpectedly in set_is_faceup")
+			if targetHost.get_name() == "Hand1":
+				if set_is_faceup(true) == CFConst.ReturnCode.FAILED:
+					printerr("ERROR: Something went unexpectedly in set_is_faceup")
+		
 		elif targetHost.is_in_group("piles"):
 			# The below checks if the pile we're moving is in a popup
 			# If the card is also in a popup of the same pile
@@ -2229,7 +2232,7 @@ func _process_card_state() -> void:
 			set_control_mouse_filters(true)
 			buttons.set_active(false)
 			# warning-ignore:return_value_discarded
-			set_card_rotation(0)
+			#set_card_rotation(0)
 			# warning-ignore:return_value_discarded
 			# When we have an oval shape, we ensure the cards stay
 			# in the rotation expected of their position
