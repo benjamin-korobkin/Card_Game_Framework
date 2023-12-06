@@ -22,6 +22,12 @@ func _ready() -> void:
 		"p1_actions_remaining":{
 			"CounterTitle": "P1 Actions: ",
 			"Value": 2},
+		"p2_torah_tokens": {
+			"CounterTitle": "P2 Torah Tokens: ",
+			"Value": 0},
+		"p2_actions_remaining":{
+			"CounterTitle": "P2 Actions: ",
+			"Value": 2},
 	}
 	# warning-ignore:return_value_discarded
 	spawn_needed_counters()

@@ -433,8 +433,8 @@ func _input(event) -> void:
 			# like the targetting arrow, will trigger dragging
 			# because the click depress will not trigger on the card for some reason
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			$Control.set_default_cursor_shape(Input.CURSOR_ARROW)
-			cfc.card_drag_ongoing = null
+			#$Control.set_default_cursor_shape(Input.CURSOR_ARROW)
+			#cfc.card_drag_ongoing = null
 
 
 # A signal for whenever the player clicks on a card

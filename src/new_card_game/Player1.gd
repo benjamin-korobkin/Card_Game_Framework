@@ -7,6 +7,7 @@ func _ready() -> void:
 	opponent = get_parent().get_node("Player2")
 
 
+
 func _on_Control_gui_input(event: InputEvent) -> void:
 	if event.is_pressed() and not cfc.game_paused:
 		#and event.get_button_index() == 1:

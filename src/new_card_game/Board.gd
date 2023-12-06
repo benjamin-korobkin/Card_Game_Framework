@@ -23,7 +23,7 @@ func _ready() -> void:
 		load_test_cards(false)
 	# warning-ignore:return_value_discarded
 	$DeckBuilderPopup.connect('popup_hide', self, '_on_DeckBuilder_hide')
-
+	$TurnQueue.initialize()
 
 # This function is to avoid relating the logic in the card objects
 # to a node which might not be there in another game
