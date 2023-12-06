@@ -16,12 +16,12 @@ func _ready() -> void:
 	counters_container = $VBC
 	value_node = "Value"
 	needed_counters = {
-		"credits": {
-			"CounterTitle": "Torah Points: ",
+		"p1_torah_tokens": {
+			"CounterTitle": "P1 Torah Tokens: ",
 			"Value": 0},
-		#"research":{
-		#	 "CounterTitle": "Research: ",
-		#	"Value": 0},
+		"p1_actions_remaining":{
+			"CounterTitle": "P1 Actions: ",
+			"Value": 2},
 	}
 	# warning-ignore:return_value_discarded
 	spawn_needed_counters()

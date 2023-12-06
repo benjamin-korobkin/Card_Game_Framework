@@ -99,3 +99,7 @@ func get_available_slots() -> Array:
 # Returns the count of all available slots
 func count_available_slots() -> int:
 	return(get_available_slots().size())
+	
+
+func count_filled_slots() -> int:
+	return(get_slot_count() - count_available_slots())

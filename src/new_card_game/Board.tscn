@@ -1,8 +1,6 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://src/new_card_game/Hand1.gd" type="Script" id=1]
 [ext_resource path="res://src/core/Pile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/custom/CGFHand.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/new_card_game/Deck.gd" type="Script" id=4]
 [ext_resource path="res://src/new_card_game/Board.gd" type="Script" id=5]
 [ext_resource path="res://src/custom/CGFCounters.tscn" type="PackedScene" id=6]
@@ -16,6 +14,7 @@
 [ext_resource path="res://src/new_card_game/Player1.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/new_card_game/Hand1.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/new_card_game/Hand2.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/new_card_game/TurnQueue.gd" type="Script" id=17]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -47,9 +46,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player1" parent="." instance=ExtResource( 14 )]
+[node name="TurnQueue" type="Node2D" parent="."]
+script = ExtResource( 17 )
 
-[node name="Player2" parent="." instance=ExtResource( 13 )]
+[node name="Player1" parent="TurnQueue" instance=ExtResource( 14 )]
+
+[node name="Player2" parent="TurnQueue" instance=ExtResource( 13 )]
 
 [node name="Deck" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 475 )
@@ -170,20 +172,12 @@ placement = 2
 index_shift_priority = 1
 show_manipulation_buttons = false
 
-[node name="Hand" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 143.826, 532.844 )
-z_index = 1
-script = ExtResource( 1 )
-card_size = Vector2( 100, 190 )
-excess_discard_pile_name = ""
-excess_cards = 0
-
 [node name="Counters" parent="." instance=ExtResource( 6 )]
 margin_top = 205.0
 margin_bottom = 219.0
 
 [node name="FancyMovementToggle" type="CheckButton" parent="."]
+visible = false
 margin_right = 12.0
 margin_bottom = 20.0
 pressed = true
@@ -238,6 +232,7 @@ __meta__ = {
 }
 
 [node name="OvalHandToggle" type="CheckButton" parent="."]
+visible = false
 margin_left = 405.31
 margin_top = 1.12245
 margin_right = 594.31
@@ -249,7 +244,6 @@ __meta__ = {
 }
 
 [node name="DeckBuilder" type="Button" parent="."]
-visible = false
 margin_left = 234.698
 margin_top = 45.0
 margin_right = 374.698
@@ -318,7 +312,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SagePlacementGrid2" parent="FieldTimelineContainer" instance=ExtResource( 7 )]
+[node name="TimelineGrid2" parent="FieldTimelineContainer" instance=ExtResource( 7 )]
 
 [node name="MarginContainer3" type="MarginContainer" parent="FieldTimelineContainer"]
 margin_top = 153.0
@@ -337,7 +331,7 @@ margin_right = 122.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 122, 150 )
 
-[node name="FieldPlacementGrid2" parent="FieldTimelineContainer/FieldHBox2" instance=ExtResource( 8 )]
+[node name="FieldGrid2" parent="FieldTimelineContainer/FieldHBox2" instance=ExtResource( 8 )]
 margin_left = 125.0
 margin_right = 499.0
 margin_bottom = 150.0
@@ -347,19 +341,19 @@ margin_top = 309.0
 margin_right = 624.0
 margin_bottom = 309.0
 
-[node name="FieldHBox" type="HBoxContainer" parent="FieldTimelineContainer"]
+[node name="FieldHBox1" type="HBoxContainer" parent="FieldTimelineContainer"]
 margin_top = 312.0
 margin_right = 624.0
 margin_bottom = 462.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FieldMarginContainer1" type="MarginContainer" parent="FieldTimelineContainer/FieldHBox"]
+[node name="FieldMarginContainer1" type="MarginContainer" parent="FieldTimelineContainer/FieldHBox1"]
 margin_right = 122.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 122, 150 )
 
-[node name="FieldPlacementGrid1" parent="FieldTimelineContainer/FieldHBox" instance=ExtResource( 8 )]
+[node name="FieldGrid1" parent="FieldTimelineContainer/FieldHBox1" instance=ExtResource( 8 )]
 margin_left = 125.0
 margin_right = 499.0
 margin_bottom = 150.0
@@ -369,10 +363,11 @@ margin_top = 465.0
 margin_right = 624.0
 margin_bottom = 465.0
 
-[node name="SagePlacementGrid1" parent="FieldTimelineContainer" instance=ExtResource( 7 )]
+[node name="TimelineGrid1" parent="FieldTimelineContainer" instance=ExtResource( 7 )]
 margin_top = 468.0
 margin_bottom = 618.0
 
+[connection signal="gui_input" from="Deck/Control" to="TurnQueue/Player1" method="_on_Control_gui_input"]
 [connection signal="toggled" from="FancyMovementToggle" to="." method="_on_FancyMovementToggle_toggled"]
 [connection signal="toggled" from="EnableAttach" to="." method="_on_EnableAttach_toggled"]
 [connection signal="item_selected" from="ScalingFocusOptions" to="." method="_on_ScalingFocusOptions_item_selected"]

@@ -1,4 +1,4 @@
-# This class provides a library for constants which are used a key values
+# This class provides a library for constants which are used as key values
 # in the Card Script Definition
 #
 # It also provides a few static functions for comparing filters
@@ -23,7 +23,7 @@ extends Reference
 #
 # Determines which card, if any, this script will try to affect.
 #
-# If key does not exist, we set value to [],  thereogr assuming
+# If key does not exist, we set value to [], so assume
 # there's no card subjects needed for the task.
 #
 # If you need to adjust the amount of cards modified by the script

@@ -1,7 +1,7 @@
 # Code for the playspace
 extends Board
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	counters = $Counters
 	cfc.map_node(self)
@@ -25,7 +25,6 @@ func _ready() -> void:
 	$DeckBuilderPopup.connect('popup_hide', self, '_on_DeckBuilder_hide')
 
 
-
 # This function is to avoid relating the logic in the card objects
 # to a node which might not be there in another game
 # You can remove this function and the FancyMovementToggle button
@@ -36,9 +35,10 @@ func _on_FancyMovementToggle_toggled(_button_pressed) -> void:
 
 
 func _on_OvalHandToggle_toggled(_button_pressed: bool) -> void:
-	cfc.set_setting("hand_use_oval_shape", $OvalHandToggle.pressed)
-	for c in cfc.NMAP.hand.get_all_cards():
-		c.reorganize_self()
+	pass
+	#cfc.set_setting("hand_use_oval_shape", $OvalHandToggle.pressed)
+	#for c in cfc.NMAP.hand.get_all_cards():
+	#	c.reorganize_self()
 
 
 # Reshuffles all Card objects created back into the deck
@@ -133,7 +133,6 @@ func _on_DeckBuilder_pressed() -> void:
 
 func _on_DeckBuilder_hide() -> void:
 	cfc.game_paused = false
-
 
 func _on_BackToMain_pressed() -> void:
 	cfc.quit_game()
