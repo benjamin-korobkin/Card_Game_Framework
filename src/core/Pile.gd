@@ -65,21 +65,7 @@ func _ready():
 
 func _process(_delta) -> void:
 	pass
-	# This performs a bit of garbage collection to make sure no Control temp objects
-	# are leftover empty in the popup
-	#for obj in $ViewPopup/CardView.get_children():
-	#	if not obj.get_child_count():
-	#		obj.queue_free()
-	# We make sure to adjust our popup if cards were removed from it while it's open
-	#$ViewPopup.set_as_minsize()
-	#if _has_cards and cfc.game_settings.focus_style:
-	#	var top_card = get_top_card()
-	#	if cfc.NMAP.board.mouse_pointer in get_overlapping_areas()\
-	#			and not cfc.card_drag_ongoing:
-	#		if top_card and top_card.state == Card.CardState.IN_PILE:
-	#			top_card.state = Card.CardState.VIEWED_IN_PILE
-	#	elif top_card and top_card.state == Card.CardState.VIEWED_IN_PILE:
-	#		top_card.state = Card.CardState.IN_PILE
+
 
 
 # Populates the popup view window with all the cards in the deck

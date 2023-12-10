@@ -15,6 +15,7 @@ func _ready() -> void:
 	$OvalHandToggle.pressed = cfc.game_settings.hand_use_oval_shape
 	$ScalingFocusOptions.selected = cfc.game_settings.focus_style
 	$Debug.pressed = cfc._debug
+	cfc.game_settings.hand_use_oval_shape = false
 	# Fill up the deck for demo purposes
 	if not cfc.ut:
 		cfc.game_rng_seed = CFUtils.generate_random_seed()
@@ -137,3 +138,6 @@ func _on_DeckBuilder_hide() -> void:
 func _on_BackToMain_pressed() -> void:
 	cfc.quit_game()
 	get_tree().change_scene("res://src/custom/MainMenu.tscn")
+
+func _on_SageActionsMenu_index_pressed(index: int) -> void:
+	print(index)

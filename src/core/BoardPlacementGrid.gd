@@ -103,3 +103,4 @@ func count_available_slots() -> int:
 
 func count_filled_slots() -> int:
 	return(get_slot_count() - count_available_slots())
+
