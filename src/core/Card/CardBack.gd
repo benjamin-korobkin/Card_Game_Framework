@@ -1,7 +1,7 @@
 class_name CardBack
 extends Panel
 
-# This varialbe should hold the path to the node which is handling the way
+# This variable should hold the path to the node which is handling the way
 # the card is viewed.
 var viewed_node
 # This bool will be set to true when we want to signify that the card is viewed

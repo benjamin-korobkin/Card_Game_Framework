@@ -14,4 +14,22 @@ const CARDS := {
 		"Power": 4,
 		"Era": "Amora",
 	},
+	"Rav Saadia": {
+		"Type": "Sage",
+		"Cost": 5,
+		"Power": 3,
+		"Era": "Gaon",
+	},
+	"Rashi": {
+		"Type": "Sage",
+		"Cost": 5,
+		"Power": 2,
+		"Era": "Rishon",
+	},
+	"Maharal": {
+		"Type": "Sage",
+		"Cost": 5,
+		"Power": 1,
+		"Era": "Acharon",
+	},
 }

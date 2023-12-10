@@ -392,7 +392,7 @@ func _process(delta) -> void:
 			"VIEWPORT_FOCUS",
 			"PREVIEW",
 			"DECKBUILDER_GRID",
-			"MOVING_TO_SPAWN_DESTINATION",
+			"MOVING_TO_SPAWN_DESTINATION"
 		]
 		$Debug.visible = true
 		$Debug/id.text = "ID:  " + str(self)
@@ -2254,7 +2254,7 @@ func _process_card_state() -> void:
 			set_control_mouse_filters(true)
 			buttons.set_active(false)
 			# warning-ignore:return_value_discarded
-			set_card_rotation(0,false,false)
+			##set_card_rotation(0,false,false)
 			if not $Tween.is_active() and \
 					not _focus_completed and \
 					cfc.game_settings.focus_style != CFInt.FocusStyle.VIEWPORT:
