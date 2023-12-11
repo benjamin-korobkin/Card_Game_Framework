@@ -173,8 +173,8 @@ index_shift_priority = 1
 show_manipulation_buttons = false
 
 [node name="Counters" parent="." instance=ExtResource( 6 )]
-margin_top = 205.0
-margin_bottom = 219.0
+margin_top = 200.0
+margin_bottom = 214.0
 
 [node name="FancyMovementToggle" type="CheckButton" parent="."]
 visible = false
