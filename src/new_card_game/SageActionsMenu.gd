@@ -28,6 +28,7 @@ func _on_TimelineButton_pressed() -> void:
 		current_card.set_is_faceup(true)
 		hide()
 
+
 func get_slot(era):
 	match era:
 		"Tanna":
@@ -53,6 +54,4 @@ func set_current_card(card):
 
 func _on_ChallengeButton_pressed() -> void:
 	## Used for testing for now
-	print(current_card.get_property("Era"))
-	print(current_card.get_property("Power"))
-	print(timeline.get_slot(0))
+	print(cfc.NMAP.board.get_node("SageActionsMenu"))

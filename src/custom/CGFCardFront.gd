@@ -1,7 +1,7 @@
 extends CardFront
 
 func _ready() -> void:
-	_card_text = find_node("CardText")
+	var _card_text = find_node("CardText")
 	# Map your card text label layout here. We use this when scaling
 	# The card or filling up its text
 	card_labels["Name"] = find_node("Name")
