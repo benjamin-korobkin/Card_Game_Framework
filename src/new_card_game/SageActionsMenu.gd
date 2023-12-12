@@ -19,12 +19,40 @@ func _on_FieldButton_pressed() -> void:
 	hide()
 	
 func _on_TimelineButton_pressed() -> void:
-	current_card.move_to(board, -1, timeline.find_available_slot())
-	current_card.set_is_faceup(true)
-	hide()
+	var era = current_card.get_property("Era")
+	var slot = get_slot(era)
+	if slot.occupying_card:
+		pass
+	else:
+		current_card.move_to(board, -1, slot)
+		current_card.set_is_faceup(true)
+		hide()
+
+func get_slot(era):
+	match era:
+		"Tanna":
+			return timeline.get_slot(0)
+		"Amora":
+			return timeline.get_slot(1)
+		"Gaon":
+			return timeline.get_slot(2)
+		"Rishon":
+			return timeline.get_slot(3)
+		"Acharon":
+			return timeline.get_slot(4)
+		_:
+			print("ERROR: Unknown era value")
+			return
 
 func _on_CancelButton_pressed() -> void:
 	hide()
 	
 func set_current_card(card):
 	current_card = card
+
+
+func _on_ChallengeButton_pressed() -> void:
+	## Used for testing for now
+	print(current_card.get_property("Era"))
+	print(current_card.get_property("Power"))
+	print(timeline.get_slot(0))

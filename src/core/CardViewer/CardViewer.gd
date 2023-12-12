@@ -70,7 +70,7 @@ func _ready() -> void:
 	populate_available_cards()
 	# warning-ignore:return_value_discarded
 	_filter_line.connect("filters_changed", self, "_apply_filters")
-	prepate_filter_buttons()
+	prepare_filter_buttons()
 	cfc.game_settings['deckbuilder_gridstyle'] =\
 			cfc.game_settings.get('deckbuilder_gridstyle', true)
 	$VBC/HBC/MC/AvailableCards/Settings/GridViewStyle.pressed =\
@@ -87,7 +87,7 @@ func _ready() -> void:
 
 
 ## Prepares the filter buttons based on the unique values in cards.
-func prepate_filter_buttons() -> void:
+func prepare_filter_buttons() -> void:
 	var total_unique_values := 0
 	for button_property in filter_button_properties:
 		var unique_values := CFUtils.get_unique_values(button_property)

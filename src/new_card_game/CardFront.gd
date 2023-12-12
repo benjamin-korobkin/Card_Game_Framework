@@ -17,10 +17,6 @@ func _ready() -> void:
 	# To shrink the font when it doesn't fit in the rect.
 	card_label_min_sizes["Name"] = Vector2(CFConst.CARD_SIZE.x - 4, 20)
 	card_label_min_sizes["Type"] = Vector2(CFConst.CARD_SIZE.x - 4, 20)
-	#card_label_min_sizes["Tags"] = Vector2(CFConst.CARD_SIZE.x - 4, 17)
-	#card_label_min_sizes["Description"] = Vector2(CFConst.CARD_SIZE.x - 4, 11)
-	#card_label_min_sizes["Abilities"] = Vector2(CFConst.CARD_SIZE.x - 4, 120)
-	#card_label_min_sizes["Cost"] = Vector2(16,16)
 	card_label_min_sizes["Power"] = Vector2(CFConst.CARD_SIZE.x - 4,20)
 	set_card_rect_min_size()
 	attach_card_labels()
@@ -38,9 +34,9 @@ func attach_card_labels():
 	for label in card_labels:
 		match label:
 			"Power":
-				original_font_sizes[label] = 15
+				original_font_sizes[label] = 18
 			"Description":
-				original_font_sizes[label] = 16
+				original_font_sizes[label] = 18
 			"Era":
 				original_font_sizes[label] = 20
 			_:

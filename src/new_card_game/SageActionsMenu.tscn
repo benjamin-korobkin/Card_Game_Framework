@@ -96,4 +96,5 @@ margin_bottom = 76.0
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/FieldButton" to="." method="_on_FieldButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/TimelineButton" to="." method="_on_TimelineButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ChallengeButton" to="." method="_on_ChallengeButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
