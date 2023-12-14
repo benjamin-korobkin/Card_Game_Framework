@@ -1,11 +1,12 @@
 extends Card
 
 var actionsMenu : PopupMenu
-var parent : Node
 var type : String
 var board : Control
 var fieldButton : Button
 var timelineButton : Button
+## No easy way to get grid as parent, so using attributes instead.
+var in_field: bool = false setget set_in_field
 
 
 func _on_Card_gui_input(event) -> void:
@@ -13,7 +14,6 @@ func _on_Card_gui_input(event) -> void:
 		## TODO: Control flow that gives card type (Sage vs SA)
 		##     plus where the card is (hand, field, or timeline)
 		##     and hide/show relevant buttons
-		parent = get_parent()
 		type = get_property("Type")
 		board = cfc.NMAP.board
 		
@@ -22,13 +22,14 @@ func _on_Card_gui_input(event) -> void:
 			fieldButton = actionsMenu.get_node("VBoxContainer/HBoxContainer/FieldButton")
 			timelineButton = actionsMenu.get_node("VBoxContainer/HBoxContainer/TimelineButton")
 			actionsMenu.set_current_card(self)
-			if parent == board.get_node("Hand1"):
-				fieldButton.set_visible(true)
-				timelineButton.set_visible(true)
+			if get_parent() == board.get_node("Hand1"):
+				fieldButton.set_disabled(false)
+				timelineButton.set_disabled(false)
 				actionsMenu.popup()
-			## TODO: Set parent of card as the field when moved (currently the board)
-			elif parent == board.get_node("FieldTimelineContainer/FieldHBox1/FieldGrid1"):
-				fieldButton.set_visible(false)
-				timelineButton.set_visible(false)
+			elif in_field:
+				fieldButton.set_disabled(true)
+				timelineButton.set_disabled(true)
 				actionsMenu.popup()
-
+			
+func set_in_field(value):
+	in_field = value

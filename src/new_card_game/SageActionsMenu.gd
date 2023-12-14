@@ -16,6 +16,7 @@ func _on_FieldButton_pressed() -> void:
 	current_card.move_to(board, -1, field.find_available_slot())
 	current_card.set_is_faceup(false)
 	current_card.set_is_viewed(true)
+	current_card.set_in_field(true)
 	hide()
 	
 func _on_TimelineButton_pressed() -> void:

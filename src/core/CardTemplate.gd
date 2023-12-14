@@ -2312,8 +2312,9 @@ func _process_card_state() -> void:
 				if cfc.game_settings.hand_use_oval_shape:
 					_add_tween_rotation($Control.rect_rotation, 0, focus_tween_duration)
 				else:
+					pass
 					# warning-ignore:return_value_discarded
-					set_card_rotation(0)
+					#set_card_rotation(0)
 				$Tween.start()
 				_focus_completed = true
 				# We don't change state yet, only when the focus is removed

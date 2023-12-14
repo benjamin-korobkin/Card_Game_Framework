@@ -9,6 +9,6 @@ func _ready() -> void:
 
 
 func _on_Control_gui_input(event: InputEvent) -> void:
-	if event.is_pressed() and not cfc.game_paused:
+	if event.is_action_released("click") and not cfc.game_paused:
 		#and event.get_button_index() == 1:
 		draw_card("p1")

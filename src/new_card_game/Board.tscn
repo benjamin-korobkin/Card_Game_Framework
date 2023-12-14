@@ -109,7 +109,6 @@ margin_top = 52.0
 margin_bottom = 75.0
 
 [node name="Discard" parent="." instance=ExtResource( 2 )]
-visible = false
 position = Vector2( 1124, 475 )
 script = ExtResource( 11 )
 placement = 4
@@ -118,9 +117,8 @@ placement = 4
 custom_styles/panel = SubResource( 1 )
 
 [node name="VBoxContainer" parent="Discard/Control/CenterContainer" index="0"]
-margin_top = 63.0
 margin_right = 68.0
-margin_bottom = 95.0
+margin_bottom = 109.0
 
 [node name="Label" parent="Discard/Control/CenterContainer/VBoxContainer" index="0"]
 margin_right = 68.0
