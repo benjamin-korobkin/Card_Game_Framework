@@ -10,6 +10,7 @@ var occupying_card = null
 
 # Stores a reference to the owning BoardPlacementGrid object
 onready var owner_grid = get_parent().get_parent()
+onready var start_pos : Vector2 = get_global_position()
 
 func _ready() -> void:
 	# We set the initial size of our highlight and area, to 
@@ -18,7 +19,17 @@ func _ready() -> void:
 	$Highlight.rect_min_size = rect_min_size
 	$Area2D/CollisionShape2D.shape.extents = rect_min_size / 2
 	$Area2D/CollisionShape2D.position = rect_min_size / 2
+	
 
+func _process(delta: float) -> void:
+	if occupying_card:
+		# Check if position changed and update card position
+		var new_pos = get_global_position()
+		if new_pos != start_pos:
+			var diff = new_pos - start_pos
+			start_pos = new_pos
+			var card_pos = occupying_card.get_position()
+			(occupying_card.set_position(card_pos + diff))
 
 # Returns true if this slot is highlighted, else false
 func is_highlighted() -> bool:

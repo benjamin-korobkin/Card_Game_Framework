@@ -55,4 +55,5 @@ func set_current_card(card):
 
 func _on_ChallengeButton_pressed() -> void:
 	## Used for testing for now
-	print(cfc.NMAP.board.get_node("SageActionsMenu"))
+	print(current_card.position)
+	#print(current_card)

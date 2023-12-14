@@ -1,5 +1,6 @@
 extends Card
 
+
 var actionsMenu : PopupMenu
 var type : String
 var board : Control
@@ -13,7 +14,7 @@ func _on_Card_gui_input(event) -> void:
 	if event is InputEventMouseButton and cfc.NMAP.has("board"):
 		## TODO: Control flow that gives card type (Sage vs SA)
 		##     plus where the card is (hand, field, or timeline)
-		##     and hide/show relevant buttons
+		##     and enable relevant buttons
 		type = get_property("Type")
 		board = cfc.NMAP.board
 		
