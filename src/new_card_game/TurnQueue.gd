@@ -16,7 +16,7 @@ func initialize():
 
 func check_turn_over():
 	if not game_over:
-		if active_player.actions_remaining <= 0:
+		if active_player.actions_remaining < 1:
 			active_player.finish_turn()
 			active_player = p2 if active_player==p1 else p1
 			active_player.play_turn()

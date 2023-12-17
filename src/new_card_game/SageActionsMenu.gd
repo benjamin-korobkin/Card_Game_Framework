@@ -3,8 +3,9 @@ extends PopupMenu
 var board
 var timeline
 var field
-var player1
+var p1
 var current_card: Card
+var challenge_panel
 
 signal moved_to_field
 
@@ -14,42 +15,41 @@ func _ready() -> void:
 	board = cfc.NMAP.board
 	field = board.get_node("FieldTimelineContainer/FieldHBox1/FieldGrid1")
 	timeline = board.get_node("FieldTimelineContainer/TimelineGrid1")
-	player1 = board.get_node("TurnQueue/Player1")
+	p1 = board.get_node("TurnQueue/Player1")
+	challenge_panel = board.get_node("ChallengePanel")
+	
 
 func _on_FieldButton_pressed() -> void:
-	if player1.can_deduct_action():
-		current_card.move_to(board, -1, field.find_available_slot())
-		current_card.set_is_faceup(false)
-		current_card.set_is_viewed(true)
-		current_card.set_in_field(true)
+	if p1.can_deduct_action():
+		p1.current_card.move_to(board, -1, field.find_available_slot())
+		p1.current_card.set_is_faceup(false)
+		p1.current_card.set_is_viewed(true)
+		p1.current_card.set_in_p1_field(true)
 		hide()
 		emit_signal("moved_to_field", 1)
-		player1.check_turn_over()
+		p1.check_turn_over()
 	else:
 		print("ERROR: FIELD BUTTON PRESSED WITH NO ACTIONS REMAINING")
 	
 func _on_TimelineButton_pressed() -> void:
-	var era = current_card.get_property("Era")
+	var era = p1.current_card.get_property("Era")
 	var slot = timeline.get_slot_from_era(era)
-	if slot.occupying_card:
-		pass
-	else:
-		player1.spend_tokens()
-		current_card.move_to(board, -1, slot)
-		current_card.set_is_faceup(true)
+	if not slot.occupying_card and p1.can_deduct_action():
+		p1.spend_tokens()
+		p1.current_card.move_to(board, -1, slot)
+		p1.current_card.set_is_faceup(true)
 		hide()
-		player1.check_turn_over()
+		p1.check_turn_over()
 
 
 ## TODO: Change cancel button to big X on top left of popup menu
 func _on_CancelButton_pressed() -> void:
 	hide()
-	
-func set_current_card(card):
-	current_card = card
-
 
 func _on_ChallengeButton_pressed() -> void:
-	## Used for testing for now
-	print(current_card.position)
-	#print(current_card)
+	hide()
+	challenge_panel.popup()
+	p1.set_is_challenging(true)
+	
+	
+	

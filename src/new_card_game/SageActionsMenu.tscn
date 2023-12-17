@@ -4,8 +4,11 @@
 
 [node name="SageActionsMenu" type="PopupMenu"]
 self_modulate = Color( 1, 1, 1, 0.294118 )
-margin_right = 833.0
-margin_bottom = 90.0
+margin_right = 821.0
+margin_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 750, 0 )
 size_flags_horizontal = 3
 hide_on_state_item_selection = true
 script = ExtResource( 1 )
@@ -14,24 +17,21 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 486.0
-margin_bottom = 82.0
-rect_min_size = Vector2( 0, 75 )
-size_flags_horizontal = 3
+margin_right = 813.0
+margin_bottom = 85.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 808.0
+margin_right = 813.0
+rect_min_size = Vector2( 0, 5 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 4.0
-margin_right = 808.0
-margin_bottom = 71.0
+margin_right = 813.0
+margin_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
@@ -40,14 +40,15 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_right = 5.0
-margin_bottom = 67.0
+margin_left = 2.0
+margin_right = 7.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 5, 0 )
 
 [node name="FieldButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 9.0
-margin_right = 184.0
-margin_bottom = 67.0
+margin_left = 11.0
+margin_right = 186.0
+margin_bottom = 72.0
 grow_horizontal = 2
 rect_min_size = Vector2( 175, 67 )
 focus_mode = 1
@@ -55,52 +56,52 @@ enabled_focus_mode = 1
 text = "FIELD"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 188.0
-margin_right = 213.0
-margin_bottom = 67.0
+margin_left = 190.0
+margin_right = 215.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 25, 0 )
 
 [node name="TimelineButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 217.0
-margin_right = 392.0
-margin_bottom = 67.0
+margin_left = 219.0
+margin_right = 394.0
+margin_bottom = 72.0
 grow_horizontal = 2
 rect_min_size = Vector2( 175, 67 )
 focus_mode = 1
 text = "TIMELINE"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 396.0
-margin_right = 421.0
-margin_bottom = 67.0
+margin_left = 398.0
+margin_right = 423.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 25, 0 )
 
 [node name="ChallengeButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 425.0
-margin_right = 600.0
-margin_bottom = 67.0
+margin_left = 427.0
+margin_right = 602.0
+margin_bottom = 72.0
 grow_horizontal = 2
 rect_min_size = Vector2( 175, 67 )
 text = "CHALLENGE"
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 604.0
-margin_right = 629.0
-margin_bottom = 67.0
+margin_left = 606.0
+margin_right = 631.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 25, 0 )
 
 [node name="CancelButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 633.0
-margin_right = 808.0
-margin_bottom = 67.0
+margin_left = 635.0
+margin_right = 810.0
+margin_bottom = 72.0
 grow_horizontal = 2
 rect_min_size = Vector2( 175, 0 )
 text = "CANCEL"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 75.0
-margin_right = 808.0
-margin_bottom = 75.0
+margin_top = 80.0
+margin_right = 813.0
+margin_bottom = 80.0
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/FieldButton" to="." method="_on_FieldButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/TimelineButton" to="." method="_on_TimelineButton_pressed"]

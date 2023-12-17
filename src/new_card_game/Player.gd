@@ -34,11 +34,11 @@ func play_turn():
 	turn_over = false
 	
 func draw_card():
-	if can_deduct_action():	
+	if can_deduct_action():
 		hand.draw_card()
 		check_turn_over()
 	else:
-		print("ERROR: DRAWING CARD WITH NO ACTIONS AVAILABLE")
+		print("INFO: TRYING TO DRAW CARD WITH NO ACTIONS AVAILABLE")
 
 func add_tokens(amt):
 	torah_tokens += amt
@@ -53,6 +53,7 @@ func is_timeline_complete():
 func update_counter(field_str, field):
 	board.counters.mod_counter(player_name+field_str, field, true)
 
+## TODO: Break into 2 funcs. can_deduct_action() and deduct_action()
 func can_deduct_action() -> bool:
 	if actions_remaining > 0:
 		actions_remaining -= 1
@@ -61,7 +62,7 @@ func can_deduct_action() -> bool:
 	return false
 	
 func can_spend_tokens() -> bool:
-	return torah_tokens >= TIMELINE_COST and can_deduct_action()
+	return torah_tokens >= TIMELINE_COST
 
 func spend_tokens():
 	torah_tokens -= TIMELINE_COST

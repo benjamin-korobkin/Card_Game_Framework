@@ -54,7 +54,7 @@ func put_in_timeline(card) -> bool:
 func put_in_field(card):
 	card.move_to(board, -1, field.find_available_slot())
 	card.set_is_faceup(false)
-	card.set_in_field(true)
+	card.set_in_p2_field(true)
 	add_tokens(1)
 	actions_remaining -= 1
 	update_counter(actions_str, actions_remaining)
