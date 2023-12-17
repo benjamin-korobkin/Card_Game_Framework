@@ -30,7 +30,7 @@ func _on_FieldButton_pressed() -> void:
 	
 func _on_TimelineButton_pressed() -> void:
 	var era = current_card.get_property("Era")
-	var slot = get_slot_from_era(era)
+	var slot = timeline.get_slot_from_era(era)
 	if slot.occupying_card:
 		pass
 	else:
@@ -39,24 +39,7 @@ func _on_TimelineButton_pressed() -> void:
 		current_card.set_is_faceup(true)
 		hide()
 		player1.check_turn_over()
-	
 
-
-func get_slot_from_era(era: String):
-	match era:
-		"Tanna":
-			return timeline.get_slot(0)
-		"Amora":
-			return timeline.get_slot(1)
-		"Gaon":
-			return timeline.get_slot(2)
-		"Rishon":
-			return timeline.get_slot(3)
-		"Acharon":
-			return timeline.get_slot(4)
-		_:
-			print("ERROR: Unknown era value")
-			return
 
 ## TODO: Change cancel button to big X on top left of popup menu
 func _on_CancelButton_pressed() -> void:

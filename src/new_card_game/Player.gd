@@ -2,11 +2,11 @@ class_name Player
 extends Node2D
 
 const ACTIONS_AT_START := 2
-const TIMELINE_COST := 3
+const TIMELINE_COST := 5
 
 onready var board = get_parent().get_parent()
 
-
+ 
 #var stats: Dictionary
 var hand : Area2D
 var timeline : PanelContainer
@@ -25,11 +25,10 @@ func _ready() -> void:
 		yield(cfc, "all_nodes_mapped")
 	
 
-
 func play_turn():
 	yield(get_tree().create_timer(1.0), "timeout")
 	actions_remaining = ACTIONS_AT_START
-	torah_tokens += field.count_filled_slots()
+	add_tokens(field.count_filled_slots())
 	update_counter(actions_str, actions_remaining)
 	update_counter(tokens_str, torah_tokens)
 	turn_over = false
@@ -49,8 +48,7 @@ func finish_turn():
 	turn_over = true
 	
 func is_timeline_complete():
-	timeline_complete = timeline.count_available_slots() == 0
-	return timeline_complete
+	return timeline.count_available_slots() == 0
 	
 func update_counter(field_str, field):
 	board.counters.mod_counter(player_name+field_str, field, true)
@@ -61,9 +59,6 @@ func can_deduct_action() -> bool:
 		update_counter(actions_str, actions_remaining)
 		return true
 	return false
-
-func check_turn_over():
-	get_parent().check_turn_over()
 	
 func can_spend_tokens() -> bool:
 	return torah_tokens >= TIMELINE_COST and can_deduct_action()
@@ -71,3 +66,8 @@ func can_spend_tokens() -> bool:
 func spend_tokens():
 	torah_tokens -= TIMELINE_COST
 	update_counter(tokens_str,torah_tokens)
+	
+func check_turn_over():
+	get_parent().check_turn_over()
+
+
