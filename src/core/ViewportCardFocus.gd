@@ -203,15 +203,16 @@ func _extra_dupe_ready(dupe_focus: Card, card: Card) -> void:
 
 
 func _input(event):
+	pass
 	# We use this to allow the developer to take card screenshots
 	# for any number of purposes
-	if event.is_action_pressed("screenshot_card"):
-		var img = _focus_viewport.get_texture().get_data()
-		yield(get_tree(), "idle_frame")
-		yield(get_tree(), "idle_frame")
-		img.convert(Image.FORMAT_RGBA8)
-		img.flip_y()
-		img.save_png("user://" + _current_focus_source.canonical_name + ".png")
+	#if event.is_action_pressed("screenshot_card"):
+	#	var img = _focus_viewport.get_texture().get_data()
+	#	yield(get_tree(), "idle_frame")
+	#	yield(get_tree(), "idle_frame")
+	#	img.convert(Image.FORMAT_RGBA8)
+	#	img.flip_y()
+	#	img.save_png("user://" + _current_focus_source.canonical_name + ".png")
 
 
 # Takes care to resize the child viewport, when the main viewport is resized

@@ -27,10 +27,10 @@ func _process(delta: float) -> void:
 		var new_pos = get_global_position()
 		if new_pos != start_pos:
 			var diff = new_pos - start_pos
-			start_pos = new_pos
 			var card_pos = occupying_card.get_position()
-			(occupying_card.set_position(card_pos + diff))
-
+			occupying_card.set_position(card_pos + diff)
+			start_pos = new_pos
+			
 # Returns true if this slot is highlighted, else false
 func is_highlighted() -> bool:
 	return($Highlight.visible)

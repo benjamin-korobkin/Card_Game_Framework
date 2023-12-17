@@ -82,7 +82,7 @@ func _on_Debug_toggled(button_pressed: bool) -> void:
 
 # Loads a sample set of cards to use for testing
 func load_test_cards(gut := true) -> void:
-	var extras = 20
+	var extras = 30
 	# Hardcoded the card order because for some reason, GUT on low-powered VMs
 	# ends up with a different card order, even when the seed is the same.
 	var gut_cards := [
