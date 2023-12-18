@@ -20,16 +20,16 @@ func _on_Card_gui_input(event) -> void:
 		board = cfc.NMAP.board
 		type = get_property("Type")
 		
-		if player1.get_is_challenging() and in_p2_field:
+		if type == "Sage":
+			if player1.get_is_challenging() and in_p2_field:
 				player1.challenge(self)
-				
-		
-		elif type == "Sage":
-			player1.set_current_card(self)
-			actions_menu = board.get_node("SageActionsMenu")
-			field_button = actions_menu.get_node("VBoxContainer/HBoxContainer/FieldButton")
-			timeline_button = actions_menu.get_node("VBoxContainer/HBoxContainer/TimelineButton")
-			challenge_button = actions_menu.get_node("VBoxContainer/HBoxContainer/ChallengeButton")
+
+			else:
+				player1.set_current_card(self)
+				actions_menu = board.get_node("SageActionsMenu")
+				field_button = actions_menu.get_node("VBoxContainer/HBoxContainer/FieldButton")
+				timeline_button = actions_menu.get_node("VBoxContainer/HBoxContainer/TimelineButton")
+				challenge_button = actions_menu.get_node("VBoxContainer/HBoxContainer/ChallengeButton")
 			
 			
 			if get_parent() == board.get_node("Hand1"):

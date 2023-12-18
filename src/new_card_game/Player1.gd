@@ -29,6 +29,7 @@ func set_is_challenging(value):
 	
 ## TODO: Implement for player 2 as well (put in parent class)
 func challenge(opponent_card):
+	deduct_action()
 	current_card.set_is_faceup(true)
 	opponent_card.set_is_faceup(true)
 	opponent_card.set_card_rotation(0) ## Not working, not a priority
@@ -44,12 +45,13 @@ func challenge(opponent_card):
 		opponent.torah_tokens += awarded_tokens
 	## TODO: uncomment this line when placing this func in parent class
 	#update_counter(tokens_str,awarded_tokens)
-	yield(get_tree().create_timer(2.5), "timeout")
 	current_card.set_in_p1_field(false)
-	current_card.move_to(cfc.NMAP.discard)
 	opponent_card.set_in_p2_field(false)
-	opponent_card.move_to(cfc.NMAP.discard)
 	set_is_challenging(false)
+	check_turn_over()
+	yield(get_tree().create_timer(2.0), "timeout")
+	current_card.move_to(cfc.NMAP.discard)
+	opponent_card.move_to(cfc.NMAP.discard)
 	# testing
 	print("Player 1 card power: " + str(p1_power))
 	print("Player 2 card power: " + str(p2_power))

@@ -35,6 +35,7 @@ func play_turn():
 	
 func draw_card():
 	if can_deduct_action():
+		deduct_action()
 		hand.draw_card()
 		check_turn_over()
 	else:
@@ -53,13 +54,13 @@ func is_timeline_complete():
 func update_counter(field_str, field):
 	board.counters.mod_counter(player_name+field_str, field, true)
 
-## TODO: Break into 2 funcs. can_deduct_action() and deduct_action()
 func can_deduct_action() -> bool:
-	if actions_remaining > 0:
+	return actions_remaining > 0
+	
+func deduct_action():
+	if can_deduct_action():
 		actions_remaining -= 1
 		update_counter(actions_str, actions_remaining)
-		return true
-	return false
 	
 func can_spend_tokens() -> bool:
 	return torah_tokens >= TIMELINE_COST
