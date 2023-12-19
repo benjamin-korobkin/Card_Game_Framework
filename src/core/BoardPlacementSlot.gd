@@ -43,6 +43,5 @@ func get_grid_name() -> String:
 	return(owner_grid.name_label.text)
 	
 func _on_Viewport_size_changed():
-	# Better than using the _process func because
 	if occupying_card:
 		occupying_card.move_to(cfc.NMAP.board, -1, self)

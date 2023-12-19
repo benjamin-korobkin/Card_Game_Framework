@@ -19,6 +19,7 @@ var turn_over : bool
 var player_name : String
 var actions_str = "_actions_remaining"
 var tokens_str = "_torah_tokens"
+var current_card : Card
 
 func _ready() -> void:
 	if not cfc.are_all_nodes_mapped:
@@ -51,8 +52,8 @@ func finish_turn():
 func is_timeline_complete():
 	return timeline.count_available_slots() == 0
 	
-func update_counter(field_str, field):
-	board.counters.mod_counter(player_name+field_str, field, true)
+func update_counter(field_str, counter_field):
+	board.counters.mod_counter(player_name+field_str, counter_field, true)
 
 func can_deduct_action() -> bool:
 	return actions_remaining > 0
@@ -72,4 +73,27 @@ func spend_tokens():
 func check_turn_over():
 	get_parent().check_turn_over()
 
-
+func set_current_card(card):
+	current_card = card
+	
+## TODO
+func challenge(opponent_card):
+	deduct_action()
+	var player_card = current_card  ## to overcome a bug with current_card
+	player_card.set_is_faceup(true)
+	opponent_card.set_is_faceup(true)
+	opponent_card.set_card_rotation(0) ## Not working, not a priority
+	var p1_power = player_card.get_property("Power")
+	var p2_power = opponent_card.get_property("Power")
+	var awarded_tokens = abs(p1_power - p2_power)
+	if p1_power > p2_power:
+		add_tokens(awarded_tokens)
+	else:
+		opponent.add_tokens(awarded_tokens)
+	current_card.set_in_p1_field(false)
+	opponent_card.set_in_p2_field(false)
+	
+	yield(get_tree().create_timer(2.0), "timeout")
+	player_card.move_to(cfc.NMAP.discard)
+	opponent_card.move_to(cfc.NMAP.discard)
+	check_turn_over()
