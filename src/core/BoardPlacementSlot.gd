@@ -10,7 +10,6 @@ var occupying_card = null
 
 # Stores a reference to the owning BoardPlacementGrid object
 onready var owner_grid = get_parent().get_parent()
-onready var start_pos : Vector2 = get_global_position()
 
 func _ready() -> void:
 	# We set the initial size of our highlight and area, to 
@@ -19,17 +18,11 @@ func _ready() -> void:
 	$Highlight.rect_min_size = rect_min_size
 	$Area2D/CollisionShape2D.shape.extents = rect_min_size / 2
 	$Area2D/CollisionShape2D.position = rect_min_size / 2
+	get_viewport().connect("size_changed",self,"_on_Viewport_size_changed")
 	
 
 func _process(delta: float) -> void:
-	if occupying_card:
-		# Check if position changed and update card position
-		var new_pos = get_global_position()
-		if new_pos != start_pos:
-			var diff = new_pos - start_pos
-			var card_pos = occupying_card.get_position()
-			occupying_card.set_position(card_pos + diff)
-			start_pos = new_pos
+	pass
 			
 # Returns true if this slot is highlighted, else false
 func is_highlighted() -> bool:
@@ -48,3 +41,8 @@ func set_highlight(requested: bool,
 # This is typically used with CFConst.BoardDropPlacement.SPECIFIC_GRID
 func get_grid_name() -> String:
 	return(owner_grid.name_label.text)
+	
+func _on_Viewport_size_changed():
+	# Better than using the _process func because
+	if occupying_card:
+		occupying_card.move_to(cfc.NMAP.board, -1, self)
