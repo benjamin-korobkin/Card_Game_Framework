@@ -79,10 +79,20 @@ func set_current_card(card):
 ## TODO
 func challenge(opponent_card):
 	deduct_action()
-	var player_card = current_card  ## to overcome a bug with current_card
+	var player_card
+	if player_name=="Player1":
+		player_card = current_card ## to overcome a bug with current_card
+	else:
+		player_card = opponent_card
+		opponent_card = current_card
+	## Move both cards to field margin containers
+	var challenge_grid1 = board.get_node("FieldTimelineContainer/FieldHBox1/FieldMarginContainer1")
+	var challenge_grid2 = board.get_node("FieldTimelineContainer/FieldHBox2/FieldMarginContainer2")
+	player_card.move_to(board, -1, challenge_grid1.get_global_position())
+	opponent_card.move_to(board, -1, challenge_grid2.get_global_position())
+	opponent_card.set_card_rotation(0)
 	player_card.set_is_faceup(true)
 	opponent_card.set_is_faceup(true)
-	opponent_card.set_card_rotation(0) ## Not working, not a priority
 	var p1_power = player_card.get_property("Power")
 	var p2_power = opponent_card.get_property("Power")
 	var awarded_tokens = abs(p1_power - p2_power)
@@ -90,7 +100,7 @@ func challenge(opponent_card):
 		add_tokens(awarded_tokens)
 	else:
 		opponent.add_tokens(awarded_tokens)
-	current_card.set_in_p1_field(false)
+	player_card.set_in_p1_field(false)
 	opponent_card.set_in_p2_field(false)
 	
 	yield(get_tree().create_timer(2.0), "timeout")

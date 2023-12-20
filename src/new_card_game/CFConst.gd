@@ -71,7 +71,7 @@ const VIEWPORT_FOCUS_ZOOM_TYPE = "resize"
 #
 # If you allow the player to modify this with cfc.set_settings()
 # Then that will always take priority
-const HAND_USE_OVAL_SHAPE := true
+const HAND_USE_OVAL_SHAPE := false
 # The below scales down cards down while being dragged.
 #
 # if you don't want this behaviour, change it to Vector2(1,1)
@@ -128,7 +128,7 @@ const PATH_MOUSE_POINTER := PATH_CORE + "MousePointer.tscn"
 # The amount of distance neighboring cards are pushed during card focus
 #
 # It's based on the card width. Bigger percentage means larger push.
-const NEIGHBOUR_PUSH := 0.75
+const NEIGHBOUR_PUSH := 0.7
 # The scale of a card while on the play area
 # You can adjust this for each different card type
 const PLAY_AREA_SCALE := 0.8

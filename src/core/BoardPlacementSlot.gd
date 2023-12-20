@@ -21,8 +21,6 @@ func _ready() -> void:
 	get_viewport().connect("size_changed",self,"_on_Viewport_size_changed")
 	
 
-func _process(delta: float) -> void:
-	pass
 			
 # Returns true if this slot is highlighted, else false
 func is_highlighted() -> bool:
@@ -41,7 +39,7 @@ func set_highlight(requested: bool,
 # This is typically used with CFConst.BoardDropPlacement.SPECIFIC_GRID
 func get_grid_name() -> String:
 	return(owner_grid.name_label.text)
-	
+
 func _on_Viewport_size_changed():
 	if occupying_card:
 		occupying_card.move_to(cfc.NMAP.board, -1, self)

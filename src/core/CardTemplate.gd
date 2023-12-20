@@ -133,7 +133,7 @@ export(int, 0, 270, 90) var card_rotation  := 0 \
 		setget set_card_rotation, get_card_rotation
 # Specifies where on the board the card may be placed
 export(BoardPlacement) var board_placement \
-		:= BoardPlacement.NONE ##ANYWHERE
+		:= BoardPlacement.NONE #ANYWHERE
 export var mandatory_grid_name : String
 # Contains the scene which has the Card Back design to use for this card type
 # It needs to be scene which uses a CardBack class script.

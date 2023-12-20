@@ -56,9 +56,10 @@ margin_bottom = 152.0
 
 [node name="Label" type="Label" parent="Control"]
 modulate = Color( 1, 1, 1, 0.627451 )
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 475.0
+margin_left = -58.5
+margin_top = -21.5
+margin_right = 170.5
+margin_bottom = -1.5
 custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
