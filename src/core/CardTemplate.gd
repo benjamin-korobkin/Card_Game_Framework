@@ -1385,12 +1385,23 @@ func move_to(targetHost: Node,
 				else:
 					if typeof(board_position) == TYPE_VECTOR2:
 						_target_position = board_position
+						set_state(CardState.DROPPING_TO_BOARD)
 					else:
 						_determine_target_position_from_mouse()
-					set_state(CardState.ON_PLAY_BOARD)
+					#set_state(CardState.ON_PLAY_BOARD)
 					if _placement_slot:
 							_placement_slot.occupying_card = null
 							_placement_slot = null
+					
+					emit_signal("card_moved_to_board",
+						self,
+						"card_moved_to_board",
+						{
+							"destination": targetHost.name,
+							"source": parentHost.name,
+							"tags": tags
+						}
+					)
 				raise()
 		elif parentHost == targetHost and index != get_my_card_index():
 			parentHost.move_child(self,
