@@ -95,6 +95,13 @@ func get_available_slots() -> Array:
 			available_slots.append(slot)
 	return(available_slots)
 
+# Returns an array of all cards in the grid
+func get_occupying_cards() -> Array:
+	var occupying_cards := []
+	for slot in get_all_slots():
+		if slot.occupying_card:
+			occupying_cards.append(slot.occupying_card)
+	return occupying_cards
 
 # Returns the count of all available slots
 func count_available_slots() -> int:

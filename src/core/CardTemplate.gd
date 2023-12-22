@@ -1392,16 +1392,6 @@ func move_to(targetHost: Node,
 					if _placement_slot:
 							_placement_slot.occupying_card = null
 							_placement_slot = null
-					
-					emit_signal("card_moved_to_board",
-						self,
-						"card_moved_to_board",
-						{
-							"destination": targetHost.name,
-							"source": parentHost.name,
-							"tags": tags
-						}
-					)
 				raise()
 		elif parentHost == targetHost and index != get_my_card_index():
 			parentHost.move_child(self,

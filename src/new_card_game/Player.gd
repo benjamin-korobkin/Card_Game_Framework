@@ -76,7 +76,6 @@ func check_turn_over():
 func set_current_card(card):
 	current_card = card
 	
-## TODO
 func challenge(opponent_card):
 	deduct_action()
 	var player_card
@@ -107,3 +106,6 @@ func challenge(opponent_card):
 	player_card.move_to(cfc.NMAP.discard)
 	opponent_card.move_to(cfc.NMAP.discard)
 	check_turn_over()
+	
+func get_field():
+	return field
