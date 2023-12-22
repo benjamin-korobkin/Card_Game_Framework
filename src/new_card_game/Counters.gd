@@ -18,19 +18,55 @@ func _ready() -> void:
 	needed_counters = {
 		"Player1_torah_tokens": {
 			"CounterTitle": "P1 Torah Tokens: ",
-			"Value": "0"},
+			"Value": "0/10"},
 		"Player1_actions_remaining":{
 			"CounterTitle": "P1 Actions: ",
-			"Value": "2"},
+			"Value": "2/2"},
 		"Separator":{
 			"CounterTitle":"---------",
 			"Value":"---------"},
 		"Player2_torah_tokens": {
 			"CounterTitle": "P2 Torah Tokens: ",
-			"Value": "0"},
+			"Value": "0/10"},
 		"Player2_actions_remaining":{
 			"CounterTitle": "P2 Actions: ",
-			"Value": "0"},
+			"Value": "0/2"},
 	}
 	# warning-ignore:return_value_discarded
 	spawn_needed_counters()
+
+## Taken from mod_counter method in core/Counters.gd
+## TODO: Investigate why counters are not being updated
+func update_counter(counter_name: String,
+		value: String,
+		set_to_mod := true,
+		check := false,
+		requesting_object = null,
+		tags := ["Manual"]) -> int:
+	var retcode = CFConst.ReturnCode.CHANGED
+	if counters.get(counter_name, null) == null:
+		retcode = CFConst.ReturnCode.FAILED
+	else:
+		if set_to_mod and counters[counter_name] == value:
+			retcode = CFConst.ReturnCode.OK
+		else:
+			if not check:
+				cfc.flush_cache()
+				var prev_value = counters[counter_name]
+				_set_counter(counter_name,value)
+				emit_signal(
+						"counter_modified",
+						requesting_object,
+						"counter_modified",
+						{
+							SP.TRIGGER_COUNTER_NAME: counter_name,
+							SP.TRIGGER_PREV_COUNT: prev_value,
+							SP.TRIGGER_NEW_COUNT: counters[counter_name],
+							"tags": tags,
+						}
+				)
+	return(retcode)
+	
+func _set_counter(counter_name: String, value) -> void:
+	counters[counter_name] = value
+	_labels[counter_name].text = str(counters[counter_name])

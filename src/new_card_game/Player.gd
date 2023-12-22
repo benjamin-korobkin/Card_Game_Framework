@@ -3,6 +3,7 @@ extends Node2D
 
 const ACTIONS_AT_START := 2
 const TIMELINE_COST := 5
+const MAX_TORAH_TOKENS := 10
 
 onready var board = get_parent().get_parent()
 
@@ -43,7 +44,7 @@ func draw_card():
 		print("INFO: TRYING TO DRAW CARD WITH NO ACTIONS AVAILABLE")
 
 func add_tokens(amt):
-	torah_tokens += amt
+	torah_tokens = min(torah_tokens + amt, MAX_TORAH_TOKENS)
 	update_counter(tokens_str, torah_tokens)
 
 func finish_turn():
@@ -53,7 +54,12 @@ func is_timeline_complete():
 	return timeline.count_available_slots() == 0
 	
 func update_counter(field_str, counter_field):
-	board.counters.mod_counter(player_name+field_str, counter_field, true)
+	var value_str
+	if field_str == actions_str:
+		value_str = str(counter_field) + "/" + str(ACTIONS_AT_START)
+	elif field_str == tokens_str:
+		value_str = str(counter_field) + "/" + str(MAX_TORAH_TOKENS)
+	board.counters.update_counter(player_name+field_str, value_str, true)
 
 func can_deduct_action() -> bool:
 	return actions_remaining > 0

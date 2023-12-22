@@ -9,8 +9,7 @@ func _ready() -> void:
 	# "hand" should be one of them.
 	# We're assigning our positions programmatically,
 	# instead of defining them on the scene.
-	# This way any they will work with any size of viewport in a game.
-	# Discard pile goes right
+	# This way they will work with any size of viewport in a game.
 	$FancyMovementToggle.pressed = cfc.game_settings.fancy_movement
 	$OvalHandToggle.pressed = cfc.game_settings.hand_use_oval_shape
 	$ScalingFocusOptions.selected = cfc.game_settings.focus_style
@@ -25,15 +24,6 @@ func _ready() -> void:
 	# warning-ignore:return_value_discarded
 	$DeckBuilderPopup.connect('popup_hide', self, '_on_DeckBuilder_hide')
 	$TurnQueue.initialize()
-
-# This function is to avoid relating the logic in the card objects
-# to a node which might not be there in another game
-# You can remove this function and the FancyMovementToggle button
-# without issues
-func _on_FancyMovementToggle_toggled(_button_pressed) -> void:
-#	cfc.game_settings.fancy_movement = $FancyMovementToggle.pressed
-	cfc.set_setting('fancy_movement', $FancyMovementToggle.pressed)
-
 
 func _on_OvalHandToggle_toggled(_button_pressed: bool) -> void:
 	pass
