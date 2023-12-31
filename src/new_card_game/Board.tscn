@@ -205,6 +205,7 @@ __meta__ = {
 }
 
 [node name="ScalingFocusOptions" type="OptionButton" parent="."]
+visible = false
 margin_left = -1.33484
 margin_top = 44.0497
 margin_right = 187.665
@@ -251,6 +252,7 @@ __meta__ = {
 }
 
 [node name="DeckBuilder" type="Button" parent="."]
+visible = false
 margin_left = 234.698
 margin_top = 45.0
 margin_right = 374.698
@@ -261,9 +263,7 @@ __meta__ = {
 }
 
 [node name="BackToMain" type="Button" parent="."]
-margin_left = 393.448
 margin_top = 43.7401
-margin_right = 533.448
 margin_bottom = 83.7401
 text = "Back to Main"
 __meta__ = {

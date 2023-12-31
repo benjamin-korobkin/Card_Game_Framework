@@ -58,6 +58,7 @@ func set_quantity(value) -> void:
 	else:
 		_quantity_edit.text = ''
 	if value > 0:
+		value = 1  ## TODO: test
 		# If the DeckCardObject doesn't exist, we create it
 		# then connect it to ourselves.  This way when the user modifies the
 		# values from it, it goes through the functions here always.

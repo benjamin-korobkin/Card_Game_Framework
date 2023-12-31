@@ -21,4 +21,9 @@ margin_right = 370.0
 margin_right = 372.0
 
 [node name="Label" parent="Control" index="0"]
-text = "Field"
+margin_left = -113.0
+margin_top = 0.0
+margin_right = -1.0
+margin_bottom = 20.0
+text = "Beit Midrash"
+valign = 1

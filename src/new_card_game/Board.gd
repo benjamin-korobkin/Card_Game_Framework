@@ -1,6 +1,7 @@
 # Code for the playspace
 extends Board
 
+var floating_text = preload("res://src/new_card_game/FloatingText.tscn")
 
 func _ready() -> void:
 	counters = $Counters
@@ -20,22 +21,17 @@ func _ready() -> void:
 		cfc.game_rng_seed = CFUtils.generate_random_seed()
 		$SeedLabel.text = "Game Seed is: " + cfc.game_rng_seed
 	if not get_tree().get_root().has_node('Gut'):
-		load_test_cards(false)
+		load_cards()
 	# warning-ignore:return_value_discarded
 	$DeckBuilderPopup.connect('popup_hide', self, '_on_DeckBuilder_hide')
 	$TurnQueue.initialize()
 
 func _on_OvalHandToggle_toggled(_button_pressed: bool) -> void:
 	pass
-	#cfc.set_setting("hand_use_oval_shape", $OvalHandToggle.pressed)
-	#for c in cfc.NMAP.hand.get_all_cards():
-	#	c.reorganize_self()
-
 
 # Reshuffles all Card objects created back into the deck
 func _on_ReshuffleAllDeck_pressed() -> void:
 	reshuffle_all_in_pile(cfc.NMAP.deck)
-
 
 func _on_ReshuffleAllDiscard_pressed() -> void:
 	reshuffle_all_in_pile(cfc.NMAP.discard)
@@ -70,9 +66,21 @@ func _on_EnableAttach_toggled(button_pressed: bool) -> void:
 func _on_Debug_toggled(button_pressed: bool) -> void:
 	cfc._debug = button_pressed
 
+## Our custom function to load the cards
+func load_cards() -> void:
+	var card_array := []
+	var card_options := []
+	for ckey in cfc.card_definitions.keys():
+		card_options.append(ckey)
+	for c in card_options:
+		card_array.append(cfc.instance_card(c))
+	for card in card_array:
+		cfc.NMAP.deck.add_child(card)
+		card._determine_idle_state()
+
 # Loads a sample set of cards to use for testing
 func load_test_cards(gut := true) -> void:
-	var extras = 30
+	var extras = 29
 	# Hardcoded the card order because for some reason, GUT on low-powered VMs
 	# ends up with a different card order, even when the seed is the same.
 	var gut_cards := [

@@ -34,11 +34,11 @@ export var random_append_miss := 2
 export var second_noun_miss := 3
 # The maximum amount of each card allowed in a deck.
 # Individual cards can modify  this
-export var max_quantity: int = 3
+export var max_quantity: int = 1
 # The minimum amount cards required in a deck
-export var deck_minimum: int = 52
+export var deck_minimum: int = 10
 # The maximum amount cards required in a deck
-export var deck_maximum: int = 60
+export var deck_maximum: int = 50
 # We use this variable, so that the scene can be overriden with a custom one
 export var deck_card_object_scene = _DECK_CARD_OBJECT_SCENE
 # We use this variable, so that the scene can be overriden with a custom one

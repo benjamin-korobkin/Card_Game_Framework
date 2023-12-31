@@ -36,7 +36,7 @@ func _ready() -> void:
 	spawn_needed_counters()
 
 ## Taken from mod_counter method in core/Counters.gd
-## TODO: Investigate why counters are not being updated
+
 func update_counter(counter_name: String,
 		value: String,
 		set_to_mod := true,
