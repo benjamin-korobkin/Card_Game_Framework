@@ -89,9 +89,6 @@ margin_right = 37.0
 margin_bottom = 102.0
 mouse_filter = 2
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tween" type="Tween" parent="Control/ManipulationButtons" groups=["cgf_tween"]]
 

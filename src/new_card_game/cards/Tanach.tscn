@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/core/CardTemplate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/new_card_game/cards/Tanach.gd" type="Script" id=2]
+[ext_resource path="res://src/new_card_game/cards/TanachFront.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/custom/PlayingCardBack.tscn" type="PackedScene" id=4]
+
+[node name="Tanach" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+card_back_design = ExtResource( 4 )
+card_front_design = ExtResource( 3 )

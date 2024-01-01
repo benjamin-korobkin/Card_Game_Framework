@@ -61,6 +61,11 @@ enum AttachmentOffset{
 	BOTTOM
 	BOTTOM_RIGHT
 }
+
+enum CardType{
+	SAGE
+	TANACH
+}
 # Used to spawn CardChoices. We have to add the consts together
 # before passing to the preload, or the parser complains.
 const _CARD_CHOICES_SCENE_FILE = CFConst.PATH_CORE + "CardChoices.tscn"
