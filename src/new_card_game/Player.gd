@@ -22,6 +22,7 @@ var actions_str = "_actions_remaining"
 var tokens_str = "_torah_tokens"
 var current_card : Card
 
+
 func _ready() -> void:
 	if not cfc.are_all_nodes_mapped:
 		yield(cfc, "all_nodes_mapped")
@@ -115,3 +116,6 @@ func challenge(opponent_card):
 	
 func get_field():
 	return field
+	
+func add_bonus_actions(bonus_actions):
+	actions_remaining += bonus_actions

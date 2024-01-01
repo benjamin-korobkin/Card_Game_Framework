@@ -11,13 +11,11 @@ custom_colors/font_color = Color( 0.917647, 0.737255, 0.615686, 1 )
 custom_colors/font_outline_modulate = Color( 0.972549, 0.956863, 0.956863, 1 )
 custom_colors/font_color_shadow = Color( 0.219608, 0.0117647, 0.2, 1 )
 
-[node name="Abilities" parent="Margin/CardText" index="3"]
-margin_top = 129.0
-margin_bottom = 129.0
-
-[node name="HB" parent="Margin/CardText" index="4"]
-visible = false
-margin_top = 167.0
-
-[node name="Power" parent="Margin/CardText/HB" index="0"]
-visible = false
+[node name="Effect" type="Label" parent="Margin/CardText" index="3"]
+margin_top = 78.0
+margin_right = 146.0
+margin_bottom = 101.0
+text = "Effect"
+align = 1
+valign = 1
+autowrap = true

@@ -54,5 +54,6 @@ const CARDS := {
 	},
 	"Avraham": {
 		"Type": "Tanach",
+		"Effect": "Gain 3 actions"
 	},
 }
