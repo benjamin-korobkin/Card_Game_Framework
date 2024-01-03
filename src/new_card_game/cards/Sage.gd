@@ -13,9 +13,8 @@ var player1 : Node2D = cfc.NMAP.board.get_node("TurnQueue/Player1")
 
 ## TODO: Refactor this later, update the control flow
 func _on_Card_gui_input(event) -> void:
-	# Don't allow player to click cards if it's not our turn
-	if event is InputEventMouseButton and cfc.NMAP.has("board") \
-		and not player1.turn_over:
+	if event is InputEventMouseButton and cfc.NMAP.has("board") and not player1.turn_over:
+	
 		board = cfc.NMAP.board
 		#type = get_property("Type")
 		

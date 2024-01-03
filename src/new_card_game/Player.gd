@@ -119,3 +119,13 @@ func get_field():
 	
 func add_bonus_actions(bonus_actions):
 	actions_remaining += bonus_actions
+	update_counter(actions_str, actions_remaining)
+	
+func do_effect(effect):
+	deduct_action()
+	match effect:
+		"Gain 3 actions":
+			add_bonus_actions(3)
+		_:
+			print("ERROR: NO MATCHING EFFECT")
+		
