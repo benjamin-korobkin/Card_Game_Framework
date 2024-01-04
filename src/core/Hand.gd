@@ -25,7 +25,7 @@ var _excess_discard_pile : Pile = null
 export var excess_discard_pile_name : String
 # The maximum hand size. What happens if this is exceeded is determined
 # by `excess_cards`
-export var hand_size := 10
+export var hand_size := 7
 # Determines the behaviour of cards over the hand limit
 # * DISALLOWED: When hand is at limit, no more cards will be added to it
 # * ALLOWED: More cards than the limit can be added to the hand. The developer

@@ -223,9 +223,6 @@ margin_top = 116.762
 margin_right = 200.899
 margin_bottom = 136.762
 text = "Reshuffle all cards into deck"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ReshuffleAllDiscard" type="Button" parent="."]
 visible = false
@@ -406,6 +403,7 @@ margin_top = -33.55
 margin_right = 181.0
 margin_bottom = 33.45
 
+[connection signal="is_empty" from="Deck" to="." method="_on_Deck_is_empty"]
 [connection signal="gui_input" from="Deck/Control" to="TurnQueue/Player1" method="_on_DeckPanel_gui_input"]
 [connection signal="toggled" from="FancyMovementToggle" to="." method="_on_FancyMovementToggle_toggled"]
 [connection signal="toggled" from="EnableAttach" to="." method="_on_EnableAttach_toggled"]
