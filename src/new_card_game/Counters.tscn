@@ -7,9 +7,6 @@
 margin_right = 14.0
 margin_bottom = 14.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 counter_scene = ExtResource( 2 )
 
 [node name="VBC" type="VBoxContainer" parent="."]
