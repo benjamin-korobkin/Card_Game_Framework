@@ -120,12 +120,28 @@ func get_field():
 func add_bonus_actions(bonus_actions):
 	actions_remaining += bonus_actions
 	update_counter(actions_str, actions_remaining)
+
+
+
+func can_do_effect(effect):
+	return true
 	
 func do_effect(effect):
 	deduct_action()
 	match effect:
 		"Gain 3 actions":
 			add_bonus_actions(3)
+		"Gain a 4th slot in the BM":
+			pass ## TODO: handle case where 4th slot already exists
+		"Gain 1 token for each Sage in the BM":
+			pass ## TODO: Get amt of cards in BM and call the add tokens func
+		"Draw 3 cards":
+			for i in range(3):
+				draw_card()
+		"Your opponent loses 1 Action for 2 turns":
+			pass ## TODO: Set up a flag for this
+		"View opponent's cards in the Beit Midrash":
+			pass ## TODO: set all the cards to visible
 		_:
 			print("ERROR: NO MATCHING EFFECT")
 		
