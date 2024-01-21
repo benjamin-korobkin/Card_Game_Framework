@@ -44,7 +44,7 @@ func draw_card():
 	else:
 		print("INFO: TRYING TO DRAW CARD WITH NO ACTIONS AVAILABLE")
 
-func add_tokens(amt):
+func add_tokens(amt : int):
 	torah_tokens = min(torah_tokens + amt, MAX_TORAH_TOKENS)
 	update_counter(tokens_str, torah_tokens)
 
@@ -126,22 +126,36 @@ func add_bonus_actions(bonus_actions):
 func can_do_effect(effect):
 	return true
 	
-func do_effect(effect):
+func do_effect(name):
 	deduct_action()
-	match effect:
-		"Gain 3 actions":
+	match name:
+		"Avraham Avinu":
 			add_bonus_actions(3)
-		"Gain a 4th slot in the BM":
-			pass ## TODO: handle case where 4th slot already exists
-		"Gain 1 token for each Sage in the BM":
+		"Yitzchak Avinu":
+			pass ## TODO: Increase max Torah Tokens by 5
+		"Yaakov Avinum":
 			pass ## TODO: Get amt of cards in BM and call the add tokens func
-		"Draw 3 cards":
+		"Yosef HaTzadik":
 			for i in range(3):
 				draw_card()
-		"Your opponent loses 1 Action for 2 turns":
-			pass ## TODO: Set up a flag for this
-		"View opponent's cards in the Beit Midrash":
+		"Aharon":
+			pass ## TODO: Set up a flag for this for 1 less turn
+		"Moshe Rabbeinu":
+			pass ## TODO: Create a flag for this effect
+		"Yehoshua":
 			pass ## TODO: set all the cards to visible
+		"Shimshon":
+			add_tokens(torah_tokens * (-1))
+			opponent.add_tokens(opponent.torah_tokens * (-1))
+			## TODO: Test
+		"David HaMelech":
+			pass ## TODO: Create flag to prevent cards from being challenged
+		"Shlomo HaMelech":
+			pass ## TODO Subtract opponent tokens by (up to) 3 and add that amt to plyr
+		"Eliyahu HaNavi":
+			pass ## TODO: If only one timeline slot left, can put this there
+		"Elisha HaNavi":
+			pass ## TODO: Draw from discard pile
 		_:
-			print("ERROR: NO MATCHING EFFECT")
-		
+			print("ERROR: NO MATCHING NAME")
+	check_turn_over()

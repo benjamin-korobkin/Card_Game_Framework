@@ -3,7 +3,7 @@ extends Player
 enum ACTIONS {
 	DRAW_CARD,
 	CHALLENGE,
-	TORAH_ACTION
+	TANACH
 }
 var action_options = [ACTIONS.DRAW_CARD,ACTIONS.CHALLENGE]
 
@@ -41,18 +41,18 @@ func action():
 					put_in_field(card)
 					action_played = true
 			## TODO: If no sages in hand, play a special action
-		else:  ## TODO: (torah actions)
+		else:  ## TODO: (Tanach cards)
 			## If no cards in opponent field, draw a card for now
 			var p1_field_cards = opponent.get_field().get_occupying_cards()
 			if p1_field_cards.empty():
 				draw_card()
 			else:
 				## Challenge random opponent card
-				var p2_card = p1_field_cards[randi() % p1_field_cards.size()]
+				var card_to_chlng = p1_field_cards[randi() % p1_field_cards.size()]
 				for card in hand.get_all_cards():
 					if not action_played and card.get_property("Type") == "Sage":
 						current_card = card
-						challenge(p2_card)
+						challenge(card_to_chlng)
 						action_played = true
 				## TODO: Random action, including torah action
 				#var action = action_options[randi() % action_options.size()]
