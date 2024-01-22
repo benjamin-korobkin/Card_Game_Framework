@@ -2,8 +2,7 @@ class_name Player
 extends Node2D
 
 const ACTIONS_AT_START := 2
-const TIMELINE_COST := 5
-const MAX_TORAH_TOKENS := 10
+const TIMELINE_COST := 6
 
 onready var board = get_parent().get_parent()
 
@@ -15,6 +14,7 @@ var timeline_complete = false
 var field : PanelContainer
 var opponent : Node2D
 var actions_remaining : int
+var max_torah_tokens : int = 10
 var torah_tokens : int = 0
 var turn_over : bool
 var player_name : String
@@ -45,7 +45,7 @@ func draw_card():
 		print("INFO: TRYING TO DRAW CARD WITH NO ACTIONS AVAILABLE")
 
 func add_tokens(amt : int):
-	torah_tokens = min(torah_tokens + amt, MAX_TORAH_TOKENS)
+	torah_tokens = min(torah_tokens + amt, max_torah_tokens)
 	update_counter(tokens_str, torah_tokens)
 
 func finish_turn():
@@ -59,7 +59,7 @@ func update_counter(field_str, counter_field):
 	if field_str == actions_str:
 		value_str = str(counter_field) + "/" + str(ACTIONS_AT_START)
 	elif field_str == tokens_str:
-		value_str = str(counter_field) + "/" + str(MAX_TORAH_TOKENS)
+		value_str = str(counter_field) + "/" + str(max_torah_tokens)
 	board.counters.update_counter(player_name+field_str, value_str, true)
 
 func can_deduct_action() -> bool:
@@ -122,7 +122,6 @@ func add_bonus_actions(bonus_actions):
 	update_counter(actions_str, actions_remaining)
 
 
-
 func can_do_effect(effect):
 	return true
 	
@@ -132,12 +131,15 @@ func do_effect(name):
 		"Avraham Avinu":
 			add_bonus_actions(3)
 		"Yitzchak Avinu":
-			pass ## TODO: Increase max Torah Tokens by 5
-		"Yaakov Avinum":
-			pass ## TODO: Get amt of cards in BM and call the add tokens func
+			max_torah_tokens += 5 ## TODO: Increase max Torah Tokens by 5
+		"Yaakov Avinu":
+			var amt = get_field().count_filled_slots() \
+			+ opponent.get_field().count_filled_slots()
+			add_tokens(amt)
 		"Yosef HaTzadik":
 			for i in range(3):
-				draw_card()
+				hand.draw_card()
+				yield(get_tree().create_timer(0.5), "timeout")
 		"Aharon":
 			pass ## TODO: Set up a flag for this for 1 less turn
 		"Moshe Rabbeinu":
@@ -147,7 +149,6 @@ func do_effect(name):
 		"Shimshon":
 			add_tokens(torah_tokens * (-1))
 			opponent.add_tokens(opponent.torah_tokens * (-1))
-			## TODO: Test
 		"David HaMelech":
 			pass ## TODO: Create flag to prevent cards from being challenged
 		"Shlomo HaMelech":
@@ -155,7 +156,8 @@ func do_effect(name):
 		"Eliyahu HaNavi":
 			pass ## TODO: If only one timeline slot left, can put this there
 		"Elisha HaNavi":
-			pass ## TODO: Draw from discard pile
+			for i in range(2): ## TODO: Draw twice from discard pile
+				hand.draw_card(cfc.NMAP.discard)
 		_:
 			print("ERROR: NO MATCHING NAME")
 	check_turn_over()

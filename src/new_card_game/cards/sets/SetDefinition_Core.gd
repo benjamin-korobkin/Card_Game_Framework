@@ -180,10 +180,10 @@ const CARDS := {
 	#	"Type": "Tanach",
 	#	"Effect": "View opponent's cards in the Beit Midrash"
 	#},
-	"Shimshon": {
-		"Type": "Tanach",
-		"Effect": "Drop both player's Torah Tokens to 0"
-	},
+	#"Shimshon": {
+	#	"Type": "Tanach",
+	#	"Effect": "Drop both player's Torah Tokens to 0"
+	#},
 	#"David HaMelech": {
 	#	"Type": "Tanach",
 	#	"Effect": "Your Sages can't be challenged for 2 turns"
@@ -196,8 +196,8 @@ const CARDS := {
 	#	"Type": "Tanach",
 	#	"Effect": "If you have 1 Timeline slot left, fill it with this card"
 	#},
-	#"Elisha HaNavi ": {
-	#	"Type": "Tanach",
-	#	"Effect": "Take the top card from the discard pile"
-	#},
+	"Elisha HaNavi": {
+		"Type": "Tanach",
+		"Effect": "Draw top 2 cards from the discard pile"
+	},
 }
