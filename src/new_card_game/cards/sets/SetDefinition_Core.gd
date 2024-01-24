@@ -154,50 +154,50 @@ const CARDS := {
 	},
 	"Avraham Avinu": {
 		"Type": "Tanach",
-		"Effect": "Gain 3 actions"
+		"Effect": "Gain 2 actions"
 	},
-	#"Yitzchak Avinu": {
-	#	"Type": "Tanach",
-	#	"Effect": "Increase max Torah Tokens"
-	#},
-	#"Yaakov Avinu": {
-	#	"Type": "Tanach",
-	#	"Effect": "Gain 1 token for each Sage in the BM"
-	#},
-	#"Yosef HaTzadik": {
-	#	"Type": "Tanach",
-	#	"Effect": "Draw 3 cards"
-	#},
-	#"Aharon": {
-	#	"Type": "Tanach",
-	#	"Effect": "Your opponent loses 1 Action for 2 turns"
-	#},
-	#"Moshe Rabbeinu": {
-	#	"Type": "Tanach",
-	#	"Effect": "Your next Sage goes in the Timeline for 0 cost and no action"
-	#},
-	#"Yehoshua": {
-	#	"Type": "Tanach",
-	#	"Effect": "View opponent's cards in the Beit Midrash"
-	#},
-	#"Shimshon": {
-	#	"Type": "Tanach",
-	#	"Effect": "Drop both player's Torah Tokens to 0"
-	#},
-	#"David HaMelech": {
-	#	"Type": "Tanach",
-	#	"Effect": "Your Sages can't be challenged for 2 turns"
-	#},
-	#"Shlomo HaMelech": {
-	#	"Type": "Tanach",
-	#	"Effect": "Take 3 Torah Tokens from your opponent"
-	#},
-	#"Eliyahu HaNavi": {
-	#	"Type": "Tanach",
-	#	"Effect": "If you have 1 Timeline slot left, fill it with this card"
-	#},
-	"Elisha HaNavi": {
+#	"Yitzchak Avinu": {
+#		"Type": "Tanach",
+#		"Effect": "Increase max Torah Tokens"
+#	},
+#	"Yaakov Avinu": {
+#		"Type": "Tanach",
+#		"Effect": "Gain 1 token for each Sage in the BM"
+#	},
+#	"Yosef HaTzadik": {
+#		"Type": "Tanach",
+#		"Effect": "Draw 3 cards"
+#	},
+#	"Aharon": {
+#		"Type": "Tanach",
+#		"Effect": "Your opponent loses 1 Action for 2 turns"
+#	},
+#	"Moshe Rabbeinu": {
+#		"Type": "Tanach",
+#		"Effect": "Your next Sage goes in the Timeline for 0 cost and no action"
+#	},
+	"Yehoshua": {
 		"Type": "Tanach",
-		"Effect": "Draw top 2 cards from the discard pile"
+		"Effect": "View opponent's cards in the Beit Midrash"
 	},
+#	"Shimshon": {
+#		"Type": "Tanach",
+#		"Effect": "Drop both player's Torah Tokens to 0"
+#	},
+#	"David HaMelech": {
+#		"Type": "Tanach",
+#		"Effect": "Your Sages can't be challenged for 2 turns"
+#	},
+#	"Shlomo HaMelech": {
+#		"Type": "Tanach",
+#		"Effect": "Take up to 3 Tokens from your opponent"
+#	},
+#	"Eliyahu HaNavi": {
+#		"Type": "Tanach",
+#		"Effect": "If you have 1 Timeline slot left, fill it with this card"
+#	},
+#	"Elisha HaNavi": {
+#		"Type": "Tanach",
+#		"Effect": "Draw top 2 cards from the discard pile"
+#	},
 }

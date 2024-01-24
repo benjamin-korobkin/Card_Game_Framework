@@ -122,7 +122,7 @@ func add_bonus_actions(bonus_actions):
 	update_counter(actions_str, actions_remaining)
 
 
-func can_do_effect(effect):
+func can_do_effect(name):
 	return true
 	
 func do_effect(name):
@@ -131,13 +131,15 @@ func do_effect(name):
 		"Avraham Avinu":
 			add_bonus_actions(3)
 		"Yitzchak Avinu":
-			max_torah_tokens += 5 ## TODO: Increase max Torah Tokens by 5
+			max_torah_tokens += 5
 		"Yaakov Avinu":
 			var amt = get_field().count_filled_slots() \
 			+ opponent.get_field().count_filled_slots()
 			add_tokens(amt)
 		"Yosef HaTzadik":
-			for i in range(3):
+			var cards_in_deck_amt = cfc.NMAP.deck.get_all_cards().size()
+			print(cards_in_deck_amt)
+			for i in range(min(3,cards_in_deck_amt)):
 				hand.draw_card()
 				yield(get_tree().create_timer(0.5), "timeout")
 		"Aharon":
@@ -145,14 +147,17 @@ func do_effect(name):
 		"Moshe Rabbeinu":
 			pass ## TODO: Create a flag for this effect
 		"Yehoshua":
-			pass ## TODO: set all the cards to visible
+			for card in opponent.get_field().get_occupying_cards():
+				card.set_is_viewed(true)
 		"Shimshon":
 			add_tokens(torah_tokens * (-1))
 			opponent.add_tokens(opponent.torah_tokens * (-1))
 		"David HaMelech":
 			pass ## TODO: Create flag to prevent cards from being challenged
 		"Shlomo HaMelech":
-			pass ## TODO Subtract opponent tokens by (up to) 3 and add that amt to plyr
+			var tokens_to_take = min(3, opponent.torah_tokens)
+			opponent.add_tokens(-tokens_to_take)
+			add_tokens(tokens_to_take)
 		"Eliyahu HaNavi":
 			pass ## TODO: If only one timeline slot left, can put this there
 		"Elisha HaNavi":
