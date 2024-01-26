@@ -117,12 +117,21 @@ func challenge(opponent_card):
 func get_field():
 	return field
 	
+func get_timeline():
+	return timeline
+	
 func add_bonus_actions(bonus_actions):
 	actions_remaining += bonus_actions
 	update_counter(actions_str, actions_remaining)
 
-
 func can_do_effect(name):
+	match name:
+		"Eliyahu HaNavi":  ## TODO: Test
+			if get_timeline().get_available_slots().size() != 1 \
+			or not can_spend_tokens():
+				return false
+		_:
+			return true
 	return true
 	
 func do_effect(name):
@@ -159,7 +168,7 @@ func do_effect(name):
 			opponent.add_tokens(-tokens_to_take)
 			add_tokens(tokens_to_take)
 		"Eliyahu HaNavi":
-			pass ## TODO: If only one timeline slot left, can put this there
+			pass  # Implemented in Tanach.gd because requires ref to card itself
 		"Elisha HaNavi":
 			for i in range(2): ## TODO: Draw twice from discard pile
 				hand.draw_card(cfc.NMAP.discard)

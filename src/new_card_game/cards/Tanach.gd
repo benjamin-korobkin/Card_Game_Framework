@@ -9,7 +9,12 @@ func _on_Card_gui_input(event) -> void:
 			if p1.can_do_effect(name):
 				## TODO: SHOW OPTION TO PLAY CARD
 				p1.do_effect(name)
-				move_to(cfc.NMAP.discard)
+				if name == "Eliyahu HaNavi":
+					var timeline = cfc.NMAP.board.get_node("FieldTimelineContainer/TimelineGrid1")
+					move_to(timeline.find_available_slot())
+				else:
+					yield(get_tree().create_timer(0.7), "timeout")
+					move_to(cfc.NMAP.discard)
 			else:
 				## For now, applies to Elisha and Eliyahu
 				pass ## TODO: show text saying you can't play it
