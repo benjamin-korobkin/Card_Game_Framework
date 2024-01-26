@@ -11,3 +11,14 @@ corner_radius_bottom_left = 10
 
 [node name="Front" instance=ExtResource( 1 )]
 custom_styles/panel = SubResource( 1 )
+
+[node name="CardText" parent="Margin" index="0"]
+margin_bottom = 370.0
+
+[node name="Abilities" parent="Margin/CardText" index="4"]
+margin_top = 226.0
+margin_bottom = 226.0
+
+[node name="HB" parent="Margin/CardText" index="5"]
+margin_top = 351.0
+margin_bottom = 370.0

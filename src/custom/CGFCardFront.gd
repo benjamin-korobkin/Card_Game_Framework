@@ -12,13 +12,13 @@ func _ready() -> void:
 	card_labels["Cost"] = find_node("Cost")
 	card_labels["Power"] = find_node("Power")
 
-	# These set te max size of each label. This is used to calculate how much
+	# These set the max size of each label. This is used to calculate how much
 	# To shrink the font when it doesn't fit in the rect.
-	card_label_min_sizes["Name"] = Vector2(CFConst.CARD_SIZE.x - 4, 19)
-	card_label_min_sizes["Type"] = Vector2(CFConst.CARD_SIZE.x - 4, 13)
+	card_label_min_sizes["Name"] = Vector2(CFConst.CARD_SIZE.x - 4, 20)
+	card_label_min_sizes["Type"] = Vector2(CFConst.CARD_SIZE.x - 4, 20)
 	card_label_min_sizes["Tags"] = Vector2(CFConst.CARD_SIZE.x - 4, 17)
-	card_label_min_sizes["Description"] = Vector2(CFConst.CARD_SIZE.x - 4, 11)
-	card_label_min_sizes["Abilities"] = Vector2(CFConst.CARD_SIZE.x - 4, 120)
+	card_label_min_sizes["Description"] = Vector2(CFConst.CARD_SIZE.x - 4, 20)
+	card_label_min_sizes["Abilities"] = Vector2(CFConst.CARD_SIZE.x - 4, 20)
 	card_label_min_sizes["Cost"] = Vector2(16,16)
 	card_label_min_sizes["Power"] = Vector2(16,16)
 
@@ -33,10 +33,10 @@ func _ready() -> void:
 	for label in card_labels:
 		match label:
 			"Cost","Power":
-				original_font_sizes[label] = 15
+				original_font_sizes[label] = 20
 			"Description":
-				original_font_sizes[label] = 11
+				original_font_sizes[label] = 20
 			"Abilities":
-				original_font_sizes[label] = 25
+				original_font_sizes[label] = 20
 			_:
-				original_font_sizes[label] = 16
+				original_font_sizes[label] = 20

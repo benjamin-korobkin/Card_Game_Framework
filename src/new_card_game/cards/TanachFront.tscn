@@ -14,8 +14,8 @@ custom_colors/font_color_shadow = Color( 0.219608, 0.0117647, 0.2, 1 )
 [node name="Effect" type="Label" parent="Margin/CardText" index="3"]
 margin_top = 78.0
 margin_right = 146.0
-margin_bottom = 101.0
-text = "Effect"
+margin_bottom = 151.0
+size_flags_vertical = 1
+text = "Write effect here. Can be multiple lines."
 align = 1
-valign = 1
 autowrap = true

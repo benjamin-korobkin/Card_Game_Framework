@@ -176,10 +176,10 @@ const CARDS := {
 #		"Type": "Tanach",
 #		"Effect": "Your next Sage goes in the Timeline for 0 cost and no action"
 #	},
-	"Yehoshua": {
-		"Type": "Tanach",
-		"Effect": "View opponent's cards in the Beit Midrash"
-	},
+#	"Yehoshua": {
+#		"Type": "Tanach",
+#		"Effect": "View opponent's cards in the Beit Midrash"
+#	},
 #	"Shimshon": {
 #		"Type": "Tanach",
 #		"Effect": "Drop both player's Torah Tokens to 0"
@@ -192,10 +192,10 @@ const CARDS := {
 #		"Type": "Tanach",
 #		"Effect": "Take up to 3 Tokens from your opponent"
 #	},
-#	"Eliyahu HaNavi": {
-#		"Type": "Tanach",
-#		"Effect": "If you have 1 Timeline slot left, fill it with this card"
-#	},
+	"Eliyahu HaNavi": {
+		"Type": "Tanach",
+		"Effect": "If you have 1 Timeline slot left, fill it with this card"
+	},
 #	"Elisha HaNavi": {
 #		"Type": "Tanach",
 #		"Effect": "Draw top 2 cards from the discard pile"

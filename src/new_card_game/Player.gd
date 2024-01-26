@@ -2,7 +2,7 @@ class_name Player
 extends Node2D
 
 const ACTIONS_AT_START := 2
-const TIMELINE_COST := 6
+const TIMELINE_COST := 2
 
 onready var board = get_parent().get_parent()
 
@@ -168,7 +168,7 @@ func do_effect(name):
 			opponent.add_tokens(-tokens_to_take)
 			add_tokens(tokens_to_take)
 		"Eliyahu HaNavi":
-			pass  # Implemented in Tanach.gd because requires ref to card itself
+			spend_tokens()  # Implemented in Tanach.gd because requires ref to card itself
 		"Elisha HaNavi":
 			for i in range(2): ## TODO: Draw twice from discard pile
 				hand.draw_card(cfc.NMAP.discard)

@@ -11,10 +11,10 @@ func _on_Card_gui_input(event) -> void:
 				p1.do_effect(name)
 				if name == "Eliyahu HaNavi":
 					var timeline = cfc.NMAP.board.get_node("FieldTimelineContainer/TimelineGrid1")
-					move_to(timeline.find_available_slot())
+					move_to(cfc.NMAP.board, -1, timeline.find_available_slot())
 				else:
-					yield(get_tree().create_timer(0.7), "timeout")
+					#yield(get_tree().create_timer(0.7), "timeout")  # Avraham bug
 					move_to(cfc.NMAP.discard)
 			else:
 				## For now, applies to Elisha and Eliyahu
-				pass ## TODO: show text saying you can't play it
+				pass ## TODO: disable play option for card in TanachMenu (todo)

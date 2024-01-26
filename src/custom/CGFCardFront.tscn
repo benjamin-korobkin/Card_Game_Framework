@@ -47,7 +47,7 @@ custom_constants/margin_left = 2
 [node name="CardText" type="VBoxContainer" parent="Margin"]
 margin_left = 2.0
 margin_right = 148.0
-margin_bottom = 240.0
+margin_bottom = 370.0
 rect_min_size = Vector2( 0, 139 )
 mouse_filter = 2
 __meta__ = {
@@ -102,9 +102,9 @@ valign = 1
 autowrap = true
 
 [node name="Abilities" type="RichTextLabel" parent="Margin/CardText"]
-margin_top = 161.0
+margin_top = 226.0
 margin_right = 146.0
-margin_bottom = 161.0
+margin_bottom = 226.0
 mouse_filter = 2
 size_flags_vertical = 6
 text = "This is the card ability text.
@@ -112,9 +112,9 @@ text = "This is the card ability text.
 scroll_active = false
 
 [node name="HB" type="HBoxContainer" parent="Margin/CardText"]
-margin_top = 221.0
+margin_top = 351.0
 margin_right = 146.0
-margin_bottom = 240.0
+margin_bottom = 370.0
 rect_min_size = Vector2( 146, 13 )
 mouse_filter = 2
 custom_constants/separation = -3
