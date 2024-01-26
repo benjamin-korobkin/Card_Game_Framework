@@ -34,23 +34,25 @@ valign = 1
 uppercase = true
 
 [node name="Type" parent="Margin/CardText" index="2"]
+visible = false
 margin_top = 52.0
 margin_bottom = 75.0
 
 [node name="Description" parent="Margin/CardText" index="3"]
+visible = false
 margin_top = 78.0
 margin_bottom = 101.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Margin/CardText" index="4"]
-margin_top = 104.0
+margin_top = 52.0
 margin_right = 146.0
-margin_bottom = 154.0
+margin_bottom = 102.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="HB" type="HBoxContainer" parent="Margin/CardText" index="5"]
-margin_top = 157.0
+margin_top = 105.0
 margin_right = 146.0
-margin_bottom = 176.0
+margin_bottom = 124.0
 rect_min_size = Vector2( 146, 13 )
 mouse_filter = 2
 custom_constants/separation = -3

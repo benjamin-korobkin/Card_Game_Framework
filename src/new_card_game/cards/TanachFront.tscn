@@ -11,10 +11,13 @@ custom_colors/font_color = Color( 0.917647, 0.737255, 0.615686, 1 )
 custom_colors/font_outline_modulate = Color( 0.972549, 0.956863, 0.956863, 1 )
 custom_colors/font_color_shadow = Color( 0.219608, 0.0117647, 0.2, 1 )
 
+[node name="Description" parent="Margin/CardText" index="2"]
+visible = false
+
 [node name="Effect" type="Label" parent="Margin/CardText" index="3"]
-margin_top = 78.0
+margin_top = 52.0
 margin_right = 146.0
-margin_bottom = 151.0
+margin_bottom = 125.0
 size_flags_vertical = 1
 text = "Write effect here. Can be multiple lines."
 align = 1

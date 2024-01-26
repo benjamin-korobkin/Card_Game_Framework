@@ -34,7 +34,7 @@ func attach_card_labels():
 			"Power":
 				original_font_sizes[label] = 20
 			"Description":
-				original_font_sizes[label] = 20
+				original_font_sizes[label] = 16
 			"Era":
 				original_font_sizes[label] = 20
 			_:
