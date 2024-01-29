@@ -9,6 +9,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+anti_aliasing_size = 0.5
 
 [sub_resource type="StyleBoxFlat" id=2]
 border_color = Color( 0, 0, 0, 1 )

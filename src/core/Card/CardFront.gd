@@ -58,6 +58,11 @@ func set_label_text(node: Label, value, scale: float = 1):
 	resizing_labels.append(node)
 	##value = _check_for_replacements(node, value)
 	var label_font :Font = get_card_label_font(node)
+	if node.get_name() == "Effect":
+		var dynamic_font = DynamicFont.new()
+		dynamic_font.font_data = load("res://fonts/Roboto/Roboto-Bold.ttf")
+		node.add_font_override("font", dynamic_font)
+		label_font = dynamic_font
 #	print_debug(scaled_fonts.get(node.name, 1))
 	var cached_font_size = get_cached_font_size(node,value,scale)
 	if cached_font_size:
