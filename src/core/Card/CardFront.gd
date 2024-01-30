@@ -59,10 +59,12 @@ func set_label_text(node: Label, value, scale: float = 1):
 	##value = _check_for_replacements(node, value)
 	var label_font :Font = get_card_label_font(node)
 	if node.get_name() == "Effect":
-		var dynamic_font = DynamicFont.new()
-		dynamic_font.font_data = load("res://fonts/Roboto/Roboto-Bold.ttf")
-		node.add_font_override("font", dynamic_font)
-		label_font = dynamic_font
+		#var dynamic_font = DynamicFont.new()
+		#dynamic_font.set_outline_color(Color(0,0,0,255))
+		#dynamic_font.outline_size = 1
+		#node.add_font_override("font", dynamic_font)
+		label_font.font_data = load("res://fonts/Roboto/Roboto-Regular.ttf")
+		label_font.set_spacing(DynamicFont.SPACING_CHAR, 1)
 #	print_debug(scaled_fonts.get(node.name, 1))
 	var cached_font_size = get_cached_font_size(node,value,scale)
 	if cached_font_size:

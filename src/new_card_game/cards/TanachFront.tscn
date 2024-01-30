@@ -7,7 +7,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 1
-outline_color = Color( 0.192157, 0.188235, 0.188235, 1 )
+outline_color = Color( 0.0117647, 0.0117647, 0.0117647, 1 )
 extra_spacing_char = 1
 font_data = ExtResource( 3 )
 fallback/0 = ExtResource( 4 )
@@ -20,16 +20,23 @@ custom_colors/font_color = Color( 0.917647, 0.737255, 0.615686, 1 )
 custom_colors/font_outline_modulate = Color( 0.972549, 0.956863, 0.956863, 1 )
 custom_colors/font_color_shadow = Color( 0.219608, 0.0117647, 0.2, 1 )
 
-[node name="Description" parent="Margin/CardText" index="2"]
+[node name="Description" parent="Margin/CardText" index="1"]
 visible = false
+margin_top = 26.0
+margin_bottom = 49.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
-[node name="Effect" type="Label" parent="Margin/CardText" index="3"]
-margin_top = 52.0
+[node name="Effect" type="Label" parent="Margin/CardText" index="2"]
+margin_top = 26.0
 margin_right = 146.0
-margin_bottom = 113.0
+margin_bottom = 108.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
-text = "Write effect here. Can be multiple lines."
+text = "If you have 1 Timeline slot left, fill it with this card"
 align = 1
 autowrap = true
+
+[node name="Type" parent="Margin/CardText" index="3"]
+margin_top = 111.0
+margin_bottom = 134.0
+text = "TANACH"
