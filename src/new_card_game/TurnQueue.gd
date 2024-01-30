@@ -9,7 +9,6 @@ onready var p2 = $Player2
 onready var is_first_turn = true
 	
 func initialize():
-	#game_over = false
 	active_player = p1
 	active_player.play_turn()
 

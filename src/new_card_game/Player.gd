@@ -21,6 +21,8 @@ var player_name : String
 var actions_str = "_actions_remaining"
 var tokens_str = "_torah_tokens"
 var current_card : Card
+var aharon_effect_remaining : int = 0
+var moshe_effect_enabled : bool = false
 
 
 func _ready() -> void:
@@ -30,7 +32,9 @@ func _ready() -> void:
 
 func play_turn():
 	yield(get_tree().create_timer(1.0), "timeout")
-	actions_remaining = ACTIONS_AT_START
+	actions_remaining = ACTIONS_AT_START if aharon_effect_remaining == 0 else ACTIONS_AT_START - 1
+	aharon_effect_remaining = max(0, aharon_effect_remaining - 1)
+	
 	add_tokens(field.count_filled_slots())
 	update_counter(actions_str, actions_remaining)
 	update_counter(tokens_str, torah_tokens)
@@ -152,9 +156,9 @@ func do_effect(name):
 				hand.draw_card()
 				yield(get_tree().create_timer(0.5), "timeout")
 		"Aharon":
-			pass ## TODO: Set up a flag for this for 1 less turn
+			opponent.aharon_effect_remaining = 2
 		"Moshe Rabbeinu":
-			pass ## TODO: Create a flag for this effect
+			moshe_effect_enabled = true
 		"Yehoshua":
 			for card in opponent.get_field().get_occupying_cards():
 				card.set_is_viewed(true)
