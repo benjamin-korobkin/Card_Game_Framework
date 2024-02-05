@@ -26,52 +26,68 @@ func action():
 	if hand.get_card_count() == 0:
 		draw_card()
 		action_played = true
-	if torah_tokens >= TIMELINE_COST:
+		return
+	if can_put_in_timeline():
 		for card in hand.get_all_cards():
 			if not action_played and card.get_property("Type") == "Sage":
 				if put_in_timeline(card):
-					action_played = true
+					return
+					#action_played = true
 		if not action_played:
 			draw_card()
-			action_played = true
+			return
+			#action_played = true
+			
 	else:
+		var tanach_card
 		if field.count_available_slots() > 0:
 			for card in hand.get_all_cards():
-				if not action_played and card.get_property("Type") == "Sage":
+				if card.get_property("Type") == "Tanach":
+					if can_do_effect(card.get_name()):
+						tanach_card = card
+				elif not action_played and card.get_property("Type") == "Sage":
 					put_in_field(card)
-					action_played = true
-			## TODO: If no sages in hand, play a special action
-		else:  ## TODO: (Tanach cards)
-			## If no cards in opponent field, draw a card for now
+					return
+					#action_played = true
+			if not action_played and tanach_card:
+				tanach_card.play_card(self)
+				return
+				#action_played = true
+		else: 
+			## If no cards in opponent field, draw or play Tanach
 			var p1_field_cards = opponent.get_field().get_occupying_cards()
 			if p1_field_cards.empty():
+				## TODO
+				#var action = action_options[randi() % action_options.size()]
+				#if action == ACTIONS.DRAW_CARD:
+				#elif action == ACTIONS.CHALLENGE:
 				draw_card()
 			else:
-				## Challenge random opponent card
+				## Challenge opponent card
 				var card_to_chlng = p1_field_cards[randi() % p1_field_cards.size()]
 				for card in hand.get_all_cards():
 					if not action_played and card.get_property("Type") == "Sage":
 						current_card = card
 						challenge(card_to_chlng)
-						action_played = true
-				## TODO: Random action, including torah action
-				#var action = action_options[randi() % action_options.size()]
-				#if action == ACTIONS.DRAW_CARD:
-				#elif action == ACTIONS.CHALLENGE:
+						return
+						#action_played = true
+				
 
 func put_in_timeline(card) -> bool:
 	var era = card.get_property("Era")
 	var slot = timeline.get_slot_from_era(era)
 	if slot.occupying_card:
 		return false
+	if moshe_effect_enabled:
+		moshe_effect_enabled = false
 	else:
 		spend_tokens()
-		card.move_to(board, -1, slot)
-		card.set_is_faceup(true)
-		actions_remaining -= 1
-		update_counter(actions_str, actions_remaining)
-		check_turn_over()
-		return true
+		deduct_action()
+	card.move_to(board, -1, slot)
+	card.set_is_faceup(true)
+	update_counter(actions_str, actions_remaining)
+	check_turn_over()
+	return true
 		
 func put_in_field(card):
 	card.move_to(board, -1, field.find_available_slot())

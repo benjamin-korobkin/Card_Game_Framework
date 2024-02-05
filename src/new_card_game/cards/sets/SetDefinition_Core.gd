@@ -154,7 +154,7 @@ const CARDS := {
 	},
 	"Avraham Avinu": {
 		"Type": "Tanach",
-		"Effect": "Gain 2 actions"
+		"Effect": "Get 1 extra action this turn"
 	},
 #	"Yitzchak Avinu": {
 #		"Type": "Tanach",
@@ -174,7 +174,7 @@ const CARDS := {
 #	},
 	"Moshe Rabbeinu": {
 		"Type": "Tanach",
-		"Effect": "Your next Sage goes in the Timeline for 0 cost and 0 action"
+		"Effect": "Put a Sage in the Timeline for 0 cost & 0 action"
 	},
 #	"Yehoshua": {
 #		"Type": "Tanach",

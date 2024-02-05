@@ -130,19 +130,22 @@ func add_bonus_actions(bonus_actions):
 
 func can_do_effect(name):
 	match name:
-		"Eliyahu HaNavi":  ## TODO: Test
+		"Eliyahu HaNavi":
 			if get_timeline().get_available_slots().size() != 1 \
 			or not can_put_in_timeline():
 				return false
+		"Elisha HaNavi":  ## TODO: Test
+			if cfc.NMAP.discard.get_card_count() < 2:
+				return false
 		_:
 			return true
-	return true
+	#return true
 	
 func do_effect(name):
 	deduct_action()
 	match name:
 		"Avraham Avinu":
-			add_bonus_actions(3)
+			add_bonus_actions(2)
 		"Yitzchak Avinu":
 			max_torah_tokens += 5
 		"Yaakov Avinu":
@@ -158,6 +161,7 @@ func do_effect(name):
 		"Aharon":
 			opponent.aharon_effect_remaining = 2
 		"Moshe Rabbeinu":
+			# TODO: Implement for P2
 			moshe_effect_enabled = true
 		"Yehoshua":
 			for card in opponent.get_field().get_occupying_cards():
