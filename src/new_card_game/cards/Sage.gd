@@ -37,7 +37,7 @@ func _on_Card_gui_input(event) -> void:
 				var timeline = board.get_node("FieldTimelineContainer/TimelineGrid1")
 				var era = get_property("Era")
 				var slot = timeline.get_slot_from_era(era)
-				if slot.occupying_card or not player1.can_spend_tokens():
+				if slot.occupying_card or not player1.can_put_in_timeline():
 					timeline_button.set_disabled(true)
 				else:
 					timeline_button.set_disabled(false)

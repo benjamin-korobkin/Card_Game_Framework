@@ -2,7 +2,7 @@ class_name Player
 extends Node2D
 
 const ACTIONS_AT_START := 2
-const TIMELINE_COST := 2
+const TIMELINE_COST := 6
 
 onready var board = get_parent().get_parent()
 
@@ -74,8 +74,8 @@ func deduct_action():
 		actions_remaining -= 1
 		update_counter(actions_str, actions_remaining)
 	
-func can_spend_tokens() -> bool:
-	return torah_tokens >= TIMELINE_COST
+func can_put_in_timeline() -> bool:
+	return moshe_effect_enabled or torah_tokens >= TIMELINE_COST
 
 func spend_tokens():
 	torah_tokens -= TIMELINE_COST
@@ -132,7 +132,7 @@ func can_do_effect(name):
 	match name:
 		"Eliyahu HaNavi":  ## TODO: Test
 			if get_timeline().get_available_slots().size() != 1 \
-			or not can_spend_tokens():
+			or not can_put_in_timeline():
 				return false
 		_:
 			return true
@@ -172,9 +172,10 @@ func do_effect(name):
 			opponent.add_tokens(-tokens_to_take)
 			add_tokens(tokens_to_take)
 		"Eliyahu HaNavi":
-			spend_tokens()  # Implemented in Tanach.gd because requires ref to card itself
+			# Implemented in Tanach.gd because requires ref to card itself
+			spend_tokens()  
 		"Elisha HaNavi":
-			for i in range(2): ## TODO: Draw twice from discard pile
+			for i in range(2):
 				hand.draw_card(cfc.NMAP.discard)
 		_:
 			print("ERROR: NO MATCHING NAME")
