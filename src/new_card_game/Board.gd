@@ -37,7 +37,6 @@ func _on_ReshuffleAllDiscard_pressed() -> void:
 	reshuffle_all_in_pile(cfc.NMAP.discard)
 
 func _on_Deck_is_empty(deck) -> void:
-
 	for c in get_tree().get_nodes_in_group("cards"):
 		if c.get_parent() == cfc.NMAP.discard:
 			c.move_to(deck)
@@ -88,8 +87,9 @@ func load_cards() -> void:
 		card_options.append(ckey)
 	for c in card_options:
 		card_array.append(cfc.instance_card(c))
+	## Randomize card_array
+	card_array.shuffle()
 	for card in card_array:
-		
 		cfc.NMAP.deck.add_child(card)
 		card._determine_idle_state()
 

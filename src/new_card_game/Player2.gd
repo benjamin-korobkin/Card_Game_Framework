@@ -1,11 +1,9 @@
 extends Player
 
 enum ACTIONS {
-	DRAW_CARD,
 	CHALLENGE,
 	TANACH
 }
-var action_options = [ACTIONS.DRAW_CARD,ACTIONS.CHALLENGE]
 
 func _ready() -> void:
 	hand = board.get_node("Hand2")
@@ -22,55 +20,49 @@ func play_turn():
 		yield(get_tree().create_timer(0.9), "timeout")
 	
 func action():
-	var action_played = false
+	var current_hand = hand.get_all_cards()
 	if hand.get_card_count() == 0:
 		draw_card()
-		action_played = true
 		return
 	if can_put_in_timeline():
-		for card in hand.get_all_cards():
-			if not action_played and card.get_property("Type") == "Sage":
+		for card in current_hand:
+			if card.get_name() == "Eliyahu HaNavi" and can_do_effect(card.get_name()):
+				card.play_card(card.get_name())
+				return
+			if card.get_property("Type") == "Sage":
 				if put_in_timeline(card):
 					return
-					#action_played = true
-		if not action_played:
-			draw_card()
-			return
-			#action_played = true
-			
+		draw_card()
+		return
 	else:
 		var tanach_card
 		if field.count_available_slots() > 0:
-			for card in hand.get_all_cards():
+			for card in current_hand:
 				if card.get_property("Type") == "Tanach":
 					if can_do_effect(card.get_name()):
 						tanach_card = card
-				elif not action_played and card.get_property("Type") == "Sage":
+				elif card.get_property("Type") == "Sage":
 					put_in_field(card)
 					return
-					#action_played = true
-			if not action_played and tanach_card:
+			if tanach_card:
 				tanach_card.play_card(self)
 				return
-				#action_played = true
-		else: 
-			## If no cards in opponent field, draw or play Tanach
+		else: ## If we reach this code, it means the field (BM) is full
+			for card in current_hand:  ## Play Tanach card if we have
+				if card.get_property("Type") == "Tanach":
+					if can_do_effect(card.get_name()):
+						do_effect(card.get_name())
+						return
 			var p1_field_cards = opponent.get_field().get_occupying_cards()
-			if p1_field_cards.empty():
-				## TODO
-				#var action = action_options[randi() % action_options.size()]
-				#if action == ACTIONS.DRAW_CARD:
-				#elif action == ACTIONS.CHALLENGE:
-				draw_card()
-			else:
-				## Challenge opponent card
+			if not p1_field_cards.empty(): ## Challenge
 				var card_to_chlng = p1_field_cards[randi() % p1_field_cards.size()]
 				for card in hand.get_all_cards():
-					if not action_played and card.get_property("Type") == "Sage":
+					if card.get_property("Type") == "Sage":
 						current_card = card
 						challenge(card_to_chlng)
 						return
-						#action_played = true
+	# If no other options can be performed, draw a card
+	draw_card()
 				
 
 func put_in_timeline(card) -> bool:
@@ -94,7 +86,7 @@ func put_in_field(card):
 	card.set_is_faceup(false)
 	card.set_in_p2_field(true)
 	add_tokens(1)
-	actions_remaining -= 1
+	deduct_action()
 	update_counter(actions_str, actions_remaining)
 	check_turn_over()
 
