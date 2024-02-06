@@ -9,7 +9,6 @@ onready var main_menu := $MainMenu
 onready var deck_builder := $DeckBuilder
 onready var card_library := $CardLibrary
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for option_button in v_buttons.get_children():
 		if option_button.has_signal('pressed'):
@@ -27,9 +26,9 @@ func _ready() -> void:
 
 func on_button_pressed(_button_name : String) -> void:
 	match _button_name:
-		"SinglePlayerDemo":
+		"Start":
 			# warning-ignore:return_value_discarded
-			get_tree().change_scene(CFConst.PATH_CUSTOM + 'CGFMain.tscn')
+			get_tree().change_scene(CFConst.PATH_CUSTOM + 'Main.tscn')
 		"Multiplayer":
 			pass
 		"GUT":

@@ -405,7 +405,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Card_Game_Framework"
-run/main_scene="res://src/new_card_game/Main.tscn"
+run/main_scene="res://src/custom/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

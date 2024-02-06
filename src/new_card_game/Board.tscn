@@ -260,13 +260,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackToMain" type="Button" parent="."]
-margin_top = 43.7401
-margin_bottom = 83.7401
-text = "Back to Main"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Exit Game" type="Button" parent="."]
+margin_left = 5.0
+margin_top = 10.0
+text = "Exit Game"
+icon_align = 1
 
 [node name="Debug" type="CheckButton" parent="."]
 visible = false
@@ -414,7 +412,7 @@ margin_bottom = 33.45
 [connection signal="pressed" from="ReshuffleAllDiscard" to="." method="_on_ReshuffleAllDiscard_pressed"]
 [connection signal="toggled" from="OvalHandToggle" to="." method="_on_OvalHandToggle_toggled"]
 [connection signal="pressed" from="DeckBuilder" to="." method="_on_DeckBuilder_pressed"]
-[connection signal="pressed" from="BackToMain" to="." method="_on_BackToMain_pressed"]
+[connection signal="pressed" from="Exit Game" to="." method="_on_BackToMain_pressed"]
 [connection signal="toggled" from="Debug" to="." method="_on_Debug_toggled"]
 
 [editable path="Deck"]
