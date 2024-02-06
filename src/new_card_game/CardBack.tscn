@@ -24,9 +24,6 @@ rect_min_size = Vector2( 150, 150 )
 mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Pulse" type="Tween" parent="."]
 
@@ -49,9 +46,12 @@ margin_top = 88.0
 margin_right = 150.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 150, 16 )
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.2, 0, 1 )
-text = "Card Game Framework"
+custom_fonts/font = SubResource( 2 )
+text = "    TORAH TIMELINE"
+align = 3
+valign = 3
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -62,28 +62,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 150, 150 )
 mouse_filter = 2
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 24.0
 margin_right = 150.0
-margin_bottom = 50.0
+margin_bottom = 74.0
 rect_min_size = Vector2( 0, 50 )
 mouse_filter = 2
 custom_constants/margin_top = 50
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 54.0
+margin_top = 78.0
 margin_right = 150.0
-margin_bottom = 94.0
+margin_bottom = 118.0
 rect_min_size = Vector2( 150, 40 )
 mouse_filter = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 98.0
+margin_top = 122.0
 margin_right = 150.0
-margin_bottom = 101.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 150, 3 )
 mouse_filter = 2
 custom_constants/margin_top = 3
@@ -95,11 +97,9 @@ anchor_bottom = 1.0
 rect_min_size = Vector2( 150, 150 )
 texture = ExtResource( 4 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
 modulate = Color( 2, 1, 1, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0

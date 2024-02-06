@@ -166,7 +166,7 @@ func do_effect(name):
 		"Yosef HaTzadik":
 			var cards_in_deck_amt = cfc.NMAP.deck.get_all_cards().size()
 			print(cards_in_deck_amt)
-			for i in range(min(3,cards_in_deck_amt)):
+			for i in range(min(2,cards_in_deck_amt)):
 				hand.draw_card()
 				yield(get_tree().create_timer(0.5), "timeout")
 		"Aharon":

@@ -33,7 +33,7 @@ func action():  ## Optimize. create method(s) for getting card type
 	if can_put_in_timeline():
 		for card in current_hand:
 			if card.get_name() == "Eliyahu HaNavi" and can_do_effect(card.get_name()):
-				card.play_card(card.get_name())
+				card.play_card(self)
 				return
 			if card.get_property("Type") == "Sage":
 				if put_in_timeline(card):

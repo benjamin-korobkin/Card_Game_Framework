@@ -33,14 +33,13 @@ align = 1
 valign = 1
 uppercase = true
 
-[node name="Type" parent="Margin/CardText" index="2"]
-margin_top = 52.0
-margin_bottom = 75.0
-
-[node name="Description" parent="Margin/CardText" index="3"]
-visible = false
+[node name="Description" parent="Margin/CardText" index="2"]
 margin_top = 78.0
 margin_bottom = 101.0
+
+[node name="Type" parent="Margin/CardText" index="3"]
+margin_top = 52.0
+margin_bottom = 75.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Margin/CardText" index="4"]
 margin_top = 78.0

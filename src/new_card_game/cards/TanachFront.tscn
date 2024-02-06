@@ -21,9 +21,6 @@ custom_colors/font_outline_modulate = Color( 0.972549, 0.956863, 0.956863, 1 )
 custom_colors/font_color_shadow = Color( 0.219608, 0.0117647, 0.2, 1 )
 
 [node name="Description" parent="Margin/CardText" index="1"]
-visible = false
-margin_top = 26.0
-margin_bottom = 49.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Effect" type="Label" parent="Margin/CardText" index="2"]
@@ -32,7 +29,7 @@ margin_right = 146.0
 margin_bottom = 108.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
-text = "If you have 1 Timeline slot left, fill it with this card"
+text = "Here we write the effect of this card. Hope it's a good one!"
 align = 1
 autowrap = true
 
