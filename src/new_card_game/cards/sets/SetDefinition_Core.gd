@@ -2,6 +2,7 @@ extends Reference
 
 const SET = "Core Set"
 const CARDS := {
+	### SAGE CARDS ###
 	"Yochanan ben Zakkai": {
 		"Type": "Sage",
 		"Power": 5,
@@ -152,14 +153,15 @@ const CARDS := {
 		"Power": 1,
 		"Era": "Acharon",
 	},
+	### TANACH CARDS ###
 	"Avraham Avinu": {
 		"Type": "Tanach",
-		"Effect": "Get 1 extra action this turn"
+		"Effect": "Gain 1 action this turn"
 	},
-#	"Yitzchak Avinu": {
-#		"Type": "Tanach",
-#		"Effect": "Increase max Torah Tokens"
-#	},
+	"Yitzchak Avinu": {
+		"Type": "Tanach",
+		"Effect": "Increase max Torah Tokens"
+	},
 #	"Yaakov Avinu": {
 #		"Type": "Tanach",
 #		"Effect": "Gain 1 token for each Sage in the BM"
@@ -172,10 +174,10 @@ const CARDS := {
 #		"Type": "Tanach",
 #		"Effect": "Your opponent loses 1 Action for 2 turns"
 #	},
-	"Moshe Rabbeinu": {
-		"Type": "Tanach",
-		"Effect": "Put a Sage in the Timeline for 0 cost & 0 action"
-	},
+#	"Moshe Rabbeinu": {
+#		"Type": "Tanach",
+#		"Effect": "Put a Sage in the Timeline for 0 cost & 0 action"
+#	},
 #	"Yehoshua": {
 #		"Type": "Tanach",
 #		"Effect": "View opponent's cards in the Beit Midrash"
@@ -184,20 +186,20 @@ const CARDS := {
 #		"Type": "Tanach",
 #		"Effect": "Drop both player's Torah Tokens to 0"
 #	},
-#	"David HaMelech": {
-#		"Type": "Tanach",
-#		"Effect": "Your Sages can't be challenged for 2 turns"
-#	},
 #	"Shlomo HaMelech": {
 #		"Type": "Tanach",
 #		"Effect": "Take up to 3 Tokens from your opponent"
 #	},
-#	"Eliyahu HaNavi": {
-#		"Type": "Tanach",
-#		"Effect": "If you have 1 Timeline slot left, fill it with this card"
-#	},
 #	"Elisha HaNavi": {
 #		"Type": "Tanach",
 #		"Effect": "Draw top 2 cards from the discard pile"
+#	},
+#	"Eliyahu HaNavi": {
+#		"Type": "Tanach",
+#		"Effect": "Can fill your final timeline slot with this"
+#	},
+#	"David HaMelech": {
+#		"Type": "Tanach",
+#		"Effect": "Your Sages can't be challenged for 2 turns"
 #	},
 }

@@ -33,4 +33,4 @@ func eliyahu_hanavi_effect(player):
 	move_to(cfc.NMAP.board, -1, player.timeline.find_available_slot())
 
 func get_name():
-	return name
+	return get_card_name()

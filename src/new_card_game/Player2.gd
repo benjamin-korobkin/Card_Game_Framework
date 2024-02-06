@@ -5,6 +5,8 @@ enum ACTIONS {
 	TANACH
 }
 
+var test_mode : bool = false
+
 func _ready() -> void:
 	hand = board.get_node("Hand2")
 	timeline = board.get_node("FieldTimelineContainer/TimelineGrid2")
@@ -19,11 +21,15 @@ func play_turn():
 		action()
 		yield(get_tree().create_timer(0.9), "timeout")
 	
-func action():
-	var current_hand = hand.get_all_cards()
+func action():  ## Optimize. create method(s) for getting card type
 	if hand.get_card_count() == 0:
 		draw_card()
 		return
+	var current_hand = hand.get_all_cards()
+	## TEST ##
+	if test_mode:
+		for card in current_hand:
+			pass
 	if can_put_in_timeline():
 		for card in current_hand:
 			if card.get_name() == "Eliyahu HaNavi" and can_do_effect(card.get_name()):

@@ -169,6 +169,7 @@ margin_top = 52.0
 margin_bottom = 75.0
 
 [node name="Hand1" parent="." instance=ExtResource( 15 )]
+z_index = 100
 
 [node name="Hand2" parent="." instance=ExtResource( 16 )]
 placement = 2
@@ -218,6 +219,7 @@ __meta__ = {
 }
 
 [node name="ReshuffleAllDeck" type="Button" parent="."]
+visible = false
 margin_left = 9.89948
 margin_top = 116.762
 margin_right = 200.899

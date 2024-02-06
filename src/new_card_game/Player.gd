@@ -137,9 +137,19 @@ func can_do_effect(name):
 		"Elisha HaNavi":  ## TODO: Test
 			if cfc.NMAP.discard.get_card_count() < 2:
 				return false
+		"Yaakov Avinu":  ## Must be at least 1 card in the BM
+			if get_field().count_filled_slots() == 0 and \
+			opponent.get_field().count_filled_slots() == 0:
+				return false
+		"Yehoshua": ## Must be at least 1 card in opponent BM
+			if opponent.get_field().count_filled_slots() == 0:
+				return false
+		"Shimshon": ## Won't work if you both have 0 tokens
+			if opponent.torah_tokens == 0 and torah_tokens == 0:
+				return false
 		_:
 			return true
-	#return true
+	return true
 	
 func do_effect(name):
 	deduct_action()
@@ -148,6 +158,7 @@ func do_effect(name):
 			add_bonus_actions(2)
 		"Yitzchak Avinu":
 			max_torah_tokens += 5
+			update_counter(tokens_str, torah_tokens)
 		"Yaakov Avinu":
 			var amt = get_field().count_filled_slots() \
 			+ opponent.get_field().count_filled_slots()
@@ -161,7 +172,6 @@ func do_effect(name):
 		"Aharon":
 			opponent.aharon_effect_remaining = 2
 		"Moshe Rabbeinu":
-			# TODO: Implement for P2
 			moshe_effect_enabled = true
 		"Yehoshua":
 			for card in opponent.get_field().get_occupying_cards():
@@ -177,7 +187,7 @@ func do_effect(name):
 			add_tokens(tokens_to_take)
 		"Eliyahu HaNavi":
 			# Implemented in Tanach.gd because requires ref to card itself
-			spend_tokens()  
+			spend_tokens()
 		"Elisha HaNavi":
 			for i in range(2):
 				hand.draw_card(cfc.NMAP.discard)
