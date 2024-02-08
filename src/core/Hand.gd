@@ -34,7 +34,7 @@ export var hand_size := 7
 #	automatically discarded
 # * "DISCARD_OLDEST": When cards exceed the limit, the oldest card in the
 #	hand will be automatically discarded
-export(ExcessCardsBehaviour) var excess_cards
+export(ExcessCardsBehaviour) var excess_cards = ExcessCardsBehaviour.DISALLOW
 
 onready var _counter_cards = $Counters/Cards
 
@@ -222,5 +222,9 @@ func _adjust_collision_area() -> void:
 	highlight.rect_size = $Control.rect_size
 
 # Overridable function for counting cards
+# TODO: Not using this. Can remove later
 func _get_modified_card_count() -> int:
 	return(get_card_count())
+
+func is_full() -> bool:
+	return _get_modified_card_count() >= hand_size

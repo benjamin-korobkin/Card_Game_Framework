@@ -10,15 +10,17 @@ var challenge_button : Button
 var in_p1_field: bool = false setget set_in_p1_field
 var in_p2_field: bool = false setget set_in_p2_field
 var player1 : Node2D = cfc.NMAP.board.get_node("TurnQueue/Player1")
-
 ## TODO: Refactor this later, update the control flow
 func _on_Card_gui_input(event) -> void:
 	if event is InputEventMouseButton and cfc.NMAP.has("board") and not player1.turn_over:
-	
 		board = cfc.NMAP.board
+		var hand1 = board.get_node("Hand1")
 		if player1.get_is_challenging() and in_p2_field:
 			player1.challenge(self)
 			player1.set_is_challenging(false)
+		elif player1.get_is_discarding() and get_parent() == hand1:
+			move_to(cfc.NMAP.discard)
+			player1.set_is_discarding(false)
 		else:
 			actions_menu = board.get_node("SageActionsMenu")
 			field_button = actions_menu.get_node("VBoxContainer/HBoxContainer/FieldButton")
@@ -26,7 +28,7 @@ func _on_Card_gui_input(event) -> void:
 			challenge_button = actions_menu.get_node("VBoxContainer/HBoxContainer/ChallengeButton")
 			player1.set_current_card(self)
 
-			if get_parent() == board.get_node("Hand1"):
+			if get_parent() == hand1:
 				# enable/disable field button
 				var field = board.get_node("FieldTimelineContainer/FieldHBox1/FieldGrid1")
 				if field.count_available_slots() > 0:

@@ -203,7 +203,7 @@ func test_excess_cards_allowed():
 	assert_ne(cards[3], cards[4])
 
 func test_excess_cards_discard_drawn():
-	hand.excess_cards = Hand.ExcessCardsBehaviour.DISCARD_DRAWN
+	hand.excess_cards = Hand.ExcessCardsBehaviour.DISALLOW
 	hand.hand_size = 3
 	var cards = draw_test_cards(5, false)
 	assert_eq(hand.get_card_count(), 3)

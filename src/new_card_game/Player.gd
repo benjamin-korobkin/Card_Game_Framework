@@ -135,7 +135,7 @@ func can_do_effect(name):
 			or not can_put_in_timeline():
 				return false
 		"Elisha HaNavi":  ## TODO: Test
-			if cfc.NMAP.discard.get_card_count() < 2:
+			if cfc.NMAP.discard.get_card_count() < 2 or hand.get_card_count() > hand.hand_size - 2:
 				return false
 		"Yaakov Avinu":  ## Must be at least 1 card in the BM
 			if get_field().count_filled_slots() == 0 and \

@@ -8,11 +8,11 @@ func _ready() -> void:
 		yield(cfc, "all_nodes_mapped")
 	board = cfc.NMAP.board
 	p1 = board.get_node("TurnQueue/Player1")
-	p1.set_is_challenging(true)
+	p1.set_is_discarding(true)
 	
 func _process(delta: float) -> void:
-	if p1.get_is_challenging() and not visible:
-		p1.set_is_challenging(false)
+	if p1.get_is_discarding() and not visible:
+		p1.set_is_discarding(false)
 
 func _on_CancelButton_pressed() -> void:
 	hide()

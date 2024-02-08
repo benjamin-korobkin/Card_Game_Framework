@@ -148,6 +148,8 @@ func _on_DeckBuilder_pressed() -> void:
 func _on_DeckBuilder_hide() -> void:
 	cfc.game_paused = false
 
+## TODO: Update name and allow player to resume game
+# after pressing
 func _on_BackToMain_pressed() -> void:
 	cfc.quit_game()
 	get_tree().change_scene("res://src/custom/MainMenu.tscn")
