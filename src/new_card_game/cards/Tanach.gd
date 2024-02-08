@@ -1,17 +1,19 @@
 extends Card
-#class_name Tanach
 
-var p1 : Node2D = cfc.NMAP.board.get_node("TurnQueue/Player1")
 
+#var p1 : Node2D = cfc.NMAP.board.get_node("TurnQueue/Player1")
 
 func _on_Card_gui_input(event) -> void:
 	if event is InputEventMouseButton and cfc.NMAP.has("board") \
-		and not p1.turn_over:
-			if p1.can_do_effect(name):
+		and not player1.turn_over:
+			if player1.get_is_discarding() and get_parent() == hand1:
+				move_to(cfc.NMAP.discard)
+				player1.set_is_discarding(false)
+			elif player1.can_do_effect(name):
 				## TODO: SHOW OPTION TO PLAY CARD
-				p1.do_effect(name)
+				player1.do_effect(name)
 				if name == "Eliyahu HaNavi":
-					eliyahu_hanavi_effect(p1)
+					eliyahu_hanavi_effect(player1)
 				else:
 					#yield(get_tree().create_timer(0.7), "timeout")  # Avraham bug
 					move_to(cfc.NMAP.discard)

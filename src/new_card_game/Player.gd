@@ -42,11 +42,15 @@ func play_turn():
 	
 func draw_card():
 	if can_deduct_action():
+		if hand.is_full() and player_name=="Player2":
+			var rand_card = randi() % hand.hand_size
+			hand.get_card(rand_card).move_to(cfc.NMAP.discard)
+			yield(get_tree().create_timer(1.0), "timeout")
 		deduct_action()
 		hand.draw_card()
 		check_turn_over()
 	else:
-		print("INFO: TRYING TO DRAW CARD WITH NO ACTIONS AVAILABLE")
+		print("INFO: " + player_name + " TRYING TO DRAW CARD WITH NO ACTIONS AVAILABLE")
 
 func add_tokens(amt : int):
 	torah_tokens = min(torah_tokens + amt, max_torah_tokens)
@@ -165,8 +169,7 @@ func do_effect(name):
 			add_tokens(amt)
 		"Yosef HaTzadik":
 			var cards_in_deck_amt = cfc.NMAP.deck.get_all_cards().size()
-			print(cards_in_deck_amt)
-			for i in range(min(2,cards_in_deck_amt)):
+			for i in range(min(3,cards_in_deck_amt)):
 				hand.draw_card()
 				yield(get_tree().create_timer(0.5), "timeout")
 		"Aharon":

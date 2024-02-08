@@ -168,7 +168,7 @@ const CARDS := {
 	},
 	"Yosef HaTzadik": {
 		"Type": "Tanach",
-		"Effect": "Draw 2 cards"
+		"Effect": "Draw (up to) 3 cards"
 	},
 	"Aharon": {
 		"Type": "Tanach",
