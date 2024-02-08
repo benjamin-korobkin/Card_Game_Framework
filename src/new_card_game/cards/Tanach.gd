@@ -15,7 +15,7 @@ func _on_Card_gui_input(event) -> void:
 				if name == "Eliyahu HaNavi":
 					eliyahu_hanavi_effect(player1)
 				else:
-					#yield(get_tree().create_timer(0.7), "timeout")  # Avraham bug
+					#yield(get_tree().create_timer(0.7), "timeout")  # Avraham? bug
 					move_to(cfc.NMAP.discard)
 			else:
 				pass ## TODO: disable play option for card in TanachMenu
@@ -26,12 +26,14 @@ func play_card(player):
 	if name == "Eliyahu HaNavi":
 		eliyahu_hanavi_effect(player)
 	else:
-		#yield(get_tree().create_timer(0.7), "timeout")  # Avraham bug
+		#yield(get_tree().create_timer(0.7), "timeout")  # Avraham? bug
 		move_to(cfc.NMAP.discard)
+		player.check_turn_over()
 
 func eliyahu_hanavi_effect(player):
 	move_to(cfc.NMAP.board, -1, player.timeline.find_available_slot())
 	set_is_faceup(true)
+	player.check_turn_over()
 	
 func get_name():
 	return get_card_name()

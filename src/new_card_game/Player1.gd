@@ -13,11 +13,10 @@ func _ready() -> void:
 	opponent = get_parent().get_node("Player2")
 	player_name = get_name()
 	sage_actions_menu.connect("moved_to_field", self, "add_tokens")
-	
+
 
 func _on_DeckPanel_gui_input(event: InputEvent) -> void:
 	if event.is_action_released("click") and not cfc.game_paused:
-		## TODO: If hand full, prompt player to discard card
 		if hand.is_full():
 			discard_panel.popup()
 			set_is_discarding(true)

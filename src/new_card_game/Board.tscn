@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/new_card_game/SageActionsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/core/Pile.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://src/core/CardViewer/DeckBuilder/DBDeckCardObject.tscn" type="PackedScene" id=20]
 [ext_resource path="res://src/core/CardViewer/DeckBuilder/DBDeckSummaries.tscn" type="PackedScene" id=21]
 [ext_resource path="res://src/new_card_game/DiscardPanel.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/new_card_game/GameOverPanel.tscn" type="PackedScene" id=23]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -408,6 +409,17 @@ margin_bottom = 33.45
 
 [node name="DiscardPanel" parent="." instance=ExtResource( 22 )]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="GameOverPanel" parent="CanvasLayer" instance=ExtResource( 23 )]
+visible = false
+margin_left = 421.607
+margin_top = 343.654
+margin_right = 871.607
+margin_bottom = 493.654
+
+[connection signal="game_won" from="TurnQueue" to="CanvasLayer/GameOverPanel" method="_on_game_won"]
 [connection signal="is_empty" from="Deck" to="." method="_on_Deck_is_empty"]
 [connection signal="gui_input" from="Deck/Control" to="TurnQueue/Player1" method="_on_DeckPanel_gui_input"]
 [connection signal="toggled" from="FancyMovementToggle" to="." method="_on_FancyMovementToggle_toggled"]

@@ -46,7 +46,6 @@ func _on_TimelineButton_pressed() -> void:
 		hide()
 		p1.check_turn_over()
 
-
 ## TODO: Change cancel button to big X on top left of popup menu
 func _on_CancelButton_pressed() -> void:
 	hide()

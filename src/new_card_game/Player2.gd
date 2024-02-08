@@ -26,10 +26,6 @@ func action():  ## Optimize. create method(s) for getting card type
 		draw_card()
 		return
 	var current_hand = hand.get_all_cards()
-	## TEST ##
-	if test_mode:
-		for card in current_hand:
-			pass
 	if can_put_in_timeline():
 		for card in current_hand:
 			if card.get_name() == "Eliyahu HaNavi" and can_do_effect(card.get_name()):
@@ -53,7 +49,7 @@ func action():  ## Optimize. create method(s) for getting card type
 			if tanach_card:
 				tanach_card.play_card(self)
 				return
-		else: ## If we reach this code, it means the field (BM) is full
+		else: ## If we reach this code, it means the BM is full
 			for card in current_hand:  ## Play Tanach card if we have
 				if card.get_property("Type") == "Tanach":
 					if can_do_effect(card.get_name()):

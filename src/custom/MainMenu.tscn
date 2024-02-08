@@ -44,10 +44,8 @@ property_width_exceptions = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 180.0
-margin_top = 4.0
-margin_right = 1105.0
-margin_bottom = 716.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 
 [node name="MainMenu" type="MarginContainer" parent="."]
@@ -55,21 +53,21 @@ anchor_left = 0.141
 anchor_top = -0.025
 anchor_right = 0.862
 anchor_bottom = 1.0
-margin_left = -0.480011
-margin_top = 22.0
-margin_right = 1.63989
+margin_left = -30.48
+margin_top = 22.15
+margin_right = 58.64
 margin_bottom = -4.0
 grow_horizontal = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="VBox" type="VBoxContainer" parent="MainMenu"]
-margin_right = 924.0
+margin_right = 1012.0
 margin_bottom = 841.0
 grow_horizontal = 2
 
 [node name="Title" type="Label" parent="MainMenu/VBox"]
-margin_right = 924.0
+margin_right = 1012.0
 margin_bottom = 115.0
 custom_fonts/font = SubResource( 2 )
 text = "Torah Timeline"
@@ -83,38 +81,38 @@ size_flags_vertical = 0
 
 [node name="HowTo" type="Label" parent="MainMenu/VBox"]
 margin_top = 121.0
-margin_right = 924.0
+margin_right = 1012.0
 margin_bottom = 594.0
-text = "This is a prototype of my upcoming Torah card game.
+text = "A prototype of my upcoming card game.
 
 GOAL: Fill your TIMELINE grid with 5 SAGE cards before your opponent.
 Each card costs 6 TORAH TOKENS to put in the TIMELINE
 
-To earn Torah Tokens, put Sages in the BEIT MIDRASH (BM).
+To earn Torah Tokens, put Sages in your BEIT MIDRASH (BM).
 You will earn 1 token for each Sage in the Beit Midrash per turn.
 
 CHALLENGE your opponent's cards in the BM to remove them. 
-The Sage from the earlier era gains tokens.
-(Both cards are discarded.)
+- The Sage from the earlier era gains tokens.
+- In a Challenge, both cards are discarded.
 
 Use TANACH cards to give you an advantage.
 
 You get 2 actions per turn.
 
-More details can be found on the game's page.
+More details on the game's page.
 
 Feedback is appreciated. Thanks and have fun!"
 
 [node name="Center" type="CenterContainer" parent="MainMenu/VBox"]
 margin_top = 597.0
-margin_right = 924.0
+margin_right = 1012.0
 margin_bottom = 841.0
 size_flags_vertical = 3
 
 [node name="VButtons" type="VBoxContainer" parent="MainMenu/VBox/Center"]
-margin_left = 362.0
+margin_left = 406.0
 margin_top = 67.0
-margin_right = 562.0
+margin_right = 606.0
 margin_bottom = 177.0
 grow_horizontal = 2
 grow_vertical = 2
