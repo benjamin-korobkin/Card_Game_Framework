@@ -2,7 +2,7 @@ class_name Player
 extends Node2D
 
 const ACTIONS_AT_START := 2
-const TIMELINE_COST := 1
+const TIMELINE_COST := 6
 
 onready var board = get_parent().get_parent()
 
