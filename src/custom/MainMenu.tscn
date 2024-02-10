@@ -45,9 +45,7 @@ property_width_exceptions = {
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
-anchor_bottom = 0.988
-margin_right = -3.0
-margin_bottom = 1.724
+anchor_bottom = 1.0
 color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 
 [node name="MainMenu" type="MarginContainer" parent="."]
