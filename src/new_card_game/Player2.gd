@@ -37,7 +37,7 @@ func action():  ## Optimize. create method(s) for getting card type
 		draw_card()
 		return
 	else:
-		var tanach_card
+		var tanach_card = null
 		if field.count_available_slots() > 0:
 			for card in current_hand:
 				if card.get_property("Type") == "Tanach":
@@ -53,7 +53,7 @@ func action():  ## Optimize. create method(s) for getting card type
 			for card in current_hand:  ## Play Tanach card if we have
 				if card.get_property("Type") == "Tanach":
 					if can_do_effect(card.get_name()):
-						do_effect(card.get_name())
+						card.play_card(self)
 						return
 			var p1_field_cards = opponent.get_field().get_occupying_cards()
 			if not p1_field_cards.empty(): ## Challenge

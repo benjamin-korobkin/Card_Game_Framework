@@ -11,11 +11,14 @@ func _ready() -> void:
 	# We're assigning our positions programmatically,
 	# instead of defining them on the scene.
 	# This way they will work with any size of viewport in a game.
+	cfc.game_settings.fancy_movement = false
+	cfc.game_settings.hand_use_oval_shape = false
+	cfc.game_settings.focus_style = CFInt.FocusStyle.VIEWPORT
 	$FancyMovementToggle.pressed = cfc.game_settings.fancy_movement
 	$OvalHandToggle.pressed = cfc.game_settings.hand_use_oval_shape
 	$ScalingFocusOptions.selected = cfc.game_settings.focus_style
 	$Debug.pressed = cfc._debug
-	cfc.game_settings.hand_use_oval_shape = false
+	
 	# Fill up the deck for demo purposes
 	if not cfc.ut:
 		cfc.game_rng_seed = CFUtils.generate_random_seed()

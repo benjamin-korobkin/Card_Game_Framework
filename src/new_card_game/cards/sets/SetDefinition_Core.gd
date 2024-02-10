@@ -156,7 +156,7 @@ const CARDS := {
 	### TANACH CARDS ###
 	"Avraham Avinu": {
 		"Type": "Tanach",
-		"Effect": "Gain 1 action this turn"
+		"Effect": "Gain 2 actions"
 	},
 	"Yitzchak Avinu": {
 		"Type": "Tanach",

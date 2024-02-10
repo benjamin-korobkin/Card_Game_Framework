@@ -151,6 +151,9 @@ func can_do_effect(name):
 		"Shimshon": ## Won't work if you both have 0 tokens
 			if opponent.torah_tokens == 0 and torah_tokens == 0:
 				return false
+		"Shlomo HaMelech":
+			if opponent.torah_tokens == 0:
+				return false
 		_:
 			return true
 	return true
@@ -159,7 +162,7 @@ func do_effect(name):
 	deduct_action()
 	match name:
 		"Avraham Avinu":
-			add_bonus_actions(2)
+			add_bonus_actions(3)
 		"Yitzchak Avinu":
 			max_torah_tokens += 5
 			update_counter(tokens_str, torah_tokens)

@@ -9,12 +9,14 @@ var challenge_button : Button
 # No easy way to get grid as parent, so using attributes instead.
 var in_p1_field: bool = false setget set_in_p1_field
 var in_p2_field: bool = false setget set_in_p2_field
-#var player1 : Node2D = cfc.NMAP.board.get_node("TurnQueue/Player1")
+
 ## TODO: Refactor this later, update the control flow
 func _on_Card_gui_input(event) -> void:
+	board = cfc.NMAP.board
+	var player1 = board.get_node("TurnQueue/Player1")
 	if event is InputEventMouseButton and cfc.NMAP.has("board") and not player1.turn_over:
-		board = cfc.NMAP.board
 		var hand1 = board.get_node("Hand1")
+
 		if player1.get_is_challenging() and in_p2_field:
 			player1.challenge(self)
 			player1.set_is_challenging(false)

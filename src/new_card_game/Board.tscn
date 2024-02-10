@@ -45,8 +45,7 @@ bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3.0
-margin_right = 9.0
-margin_bottom = 11.0
+margin_right = 3.0
 rect_min_size = Vector2( 1024, 600 )
 mouse_filter = 2
 theme = ExtResource( 12 )
@@ -191,7 +190,9 @@ script = ExtResource( 19 )
 visible = false
 margin_right = 12.0
 margin_bottom = 20.0
-pressed = true
+disabled = true
+toggle_mode = false
+shortcut_in_tooltip = false
 text = "Fancy Movement"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -214,7 +215,8 @@ margin_left = -1.33484
 margin_top = 44.0497
 margin_right = 187.665
 margin_bottom = 84.0497
-pressed = true
+disabled = true
+toggle_mode = false
 text = "Scaling + Viewport Focus"
 items = [ "Scaling Focus", null, false, 0, null, "Viewport Focus", null, false, 1, null, "Scaling + Viewport Focus", null, false, 2, null, "Scaling + Info Panels", null, false, 3, null ]
 selected = 2
@@ -247,7 +249,6 @@ margin_left = 405.31
 margin_top = 1.12245
 margin_right = 594.31
 margin_bottom = 41.1225
-pressed = true
 text = "Oval Hand Shape"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -283,6 +284,7 @@ __meta__ = {
 }
 
 [node name="SeedLabel" type="Label" parent="."]
+visible = false
 margin_left = 10.0
 margin_top = 175.0
 margin_right = 265.0

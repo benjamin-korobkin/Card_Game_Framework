@@ -307,9 +307,9 @@ onready var tokens: TokenDrawer = $Control/Tokens
 # The node which manipulates the highlight borders.
 onready var highlight = $Control/Highlight
 # Reference for player1
-onready var player1 : Node2D = cfc.NMAP.board.get_node("TurnQueue/Player1")
+#onready var player1 : Node2D = cfc.NMAP.board.get_node("TurnQueue/Player1")
 # Reference for hand1
-onready var hand1 : Area2D = cfc.NMAP.board.get_node("Hand1")
+#onready var hand1 : Area2D = cfc.NMAP.board.get_node("Hand1")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

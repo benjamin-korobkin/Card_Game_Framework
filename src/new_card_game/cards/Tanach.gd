@@ -4,9 +4,11 @@ extends Card
 #var p1 : Node2D = cfc.NMAP.board.get_node("TurnQueue/Player1")
 
 func _on_Card_gui_input(event) -> void:
+	var board = cfc.NMAP.board
+	var player1 = board.get_node("TurnQueue/Player1")
 	if event is InputEventMouseButton and cfc.NMAP.has("board") \
 		and not player1.turn_over:
-			if player1.get_is_discarding() and get_parent() == hand1:
+			if player1.get_is_discarding() and get_parent() == board.get_node("hand1"):
 				move_to(cfc.NMAP.discard)
 				player1.set_is_discarding(false)
 			elif player1.can_do_effect(name):
