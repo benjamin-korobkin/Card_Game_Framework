@@ -8,15 +8,15 @@ var is_discarding : bool = false setget set_is_discarding,get_is_discarding
 
 func _ready() -> void:
 	hand = board.get_node("Hand1")
-	timeline = board.get_node("FieldTimelineContainer/TimelineGrid1")
+	timeline = board.get_node("FieldTimelineContainer/TimelineGrid")
 	field = board.get_node("FieldTimelineContainer/FieldHBox1/FieldGrid1")
 	opponent = get_parent().get_node("Player2")
 	player_name = get_name()
-	sage_actions_menu.connect("moved_to_field", self, "add_tokens")
+	#sage_actions_menu.connect("moved_to_field", self, "add_tokens")
 
-
+#event.is_action_released("click")
 func _on_DeckPanel_gui_input(event: InputEvent) -> void:
-	if event.is_action_released("click") and not cfc.game_paused:
+	if event.is_pressed() and not cfc.game_paused:
 		if hand.is_full():
 			discard_panel.popup()
 			set_is_discarding(true)

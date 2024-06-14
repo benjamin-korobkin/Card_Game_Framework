@@ -24,7 +24,12 @@ func initialize():
 
 func check_turn_over():
 	if active_player.is_timeline_complete():
-		emit_signal("game_won", active_player.get_name())
+		var winner
+		if p1.cards_in_timeline > p2.cards_in_timeline:
+			winner = p1
+		else:
+			winner = p2
+		emit_signal("game_won", winner.get_name())
 		game_over = true
 		active_player.finish_turn() ## Prevent game from continuing
 	elif active_player.actions_remaining < 1 and not game_over:

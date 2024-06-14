@@ -199,16 +199,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/core/GameStats.gd"
 }, {
-"base": "Reference",
-"class": "GutHookScript",
-"language": "GDScript",
-"path": "res://addons/gut/hook_script.gd"
-}, {
-"base": "Node",
-"class": "GutTest",
-"language": "GDScript",
-"path": "res://addons/gut/test.gd"
-}, {
 "base": "CardContainer",
 "class": "Hand",
 "language": "GDScript",
@@ -319,11 +309,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/new_card_game/TurnQueue.gd"
 }, {
-"base": "Node",
-"class": "UTCommon",
-"language": "GDScript",
-"path": "res://tests/UTcommon.gd"
-}, {
 "base": "Node2D",
 "class": "ViewportCardFocus",
 "language": "GDScript",
@@ -373,8 +358,6 @@ _global_script_class_icons={
 "DeckNameRandomizer": "",
 "DetailPanels": "",
 "GameStats": "",
-"GutHookScript": "",
-"GutTest": "",
 "Hand": "",
 "Highlight": "",
 "IntegerLineEdit": "",
@@ -397,14 +380,13 @@ _global_script_class_icons={
 "Token": "",
 "TokenDrawer": "",
 "TurnQueue": "",
-"UTCommon": "",
 "ViewportCardFocus": "",
 "perMessage": ""
 }
 
 [application]
 
-config/name="Card_Game_Framework"
+config/name="Torah-Timeline_mobile"
 run/main_scene="res://src/custom/MainMenu.tscn"
 config/icon="res://icon.png"
 
@@ -416,6 +398,11 @@ cfc="*res://src/core/CFControl.gd"
 
 window/size/width=1280
 window/size/height=720
+window/stretch/aspect="keep"
+
+[global]
+
+android=true
 
 [gui]
 

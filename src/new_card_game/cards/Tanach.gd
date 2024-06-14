@@ -26,6 +26,7 @@ func _on_Card_gui_input(event) -> void:
 func play_card(player):
 	player.do_effect(name)
 	if name == "Eliyahu HaNavi":
+		player.cards_in_timeline += 1
 		eliyahu_hanavi_effect(player)
 	else:
 		#yield(get_tree().create_timer(0.7), "timeout")  # Avraham? bug

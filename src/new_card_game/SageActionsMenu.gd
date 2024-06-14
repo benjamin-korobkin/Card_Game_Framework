@@ -14,7 +14,7 @@ func _ready() -> void:
 		yield(cfc, "all_nodes_mapped")
 	board = cfc.NMAP.board
 	field = board.get_node("FieldTimelineContainer/FieldHBox1/FieldGrid1")
-	timeline = board.get_node("FieldTimelineContainer/TimelineGrid1")
+	timeline = board.get_node("FieldTimelineContainer/TimelineGrid")
 	p1 = board.get_node("TurnQueue/Player1")
 	challenge_panel = board.get_node("ChallengePanel")
 	
@@ -43,6 +43,7 @@ func _on_TimelineButton_pressed() -> void:
 			p1.spend_tokens()
 		p1.current_card.move_to(board, -1, slot)
 		p1.current_card.set_is_faceup(true)
+		p1.cards_in_timeline += 1
 		hide()
 		p1.check_turn_over()
 

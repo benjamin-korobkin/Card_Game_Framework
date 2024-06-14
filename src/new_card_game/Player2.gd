@@ -9,7 +9,7 @@ var test_mode : bool = false
 
 func _ready() -> void:
 	hand = board.get_node("Hand2")
-	timeline = board.get_node("FieldTimelineContainer/TimelineGrid2")
+	timeline = board.get_node("FieldTimelineContainer/TimelineGrid")
 	field = board.get_node("FieldTimelineContainer/FieldHBox2/FieldGrid2")
 	opponent = get_parent().get_node("Player1")
 	player_name = get_name()
@@ -79,6 +79,7 @@ func put_in_timeline(card) -> bool:
 		deduct_action()
 	card.move_to(board, -1, slot)
 	card.set_is_faceup(true)
+	cards_in_timeline += 1
 	update_counter(actions_str, actions_remaining)
 	check_turn_over()
 	return true
@@ -87,7 +88,7 @@ func put_in_field(card):
 	card.move_to(board, -1, field.find_available_slot())
 	card.set_is_faceup(false)
 	card.set_in_p2_field(true)
-	add_tokens(1)
+	#add_tokens(1) # No longer gain tokens when put in BM
 	deduct_action()
 	update_counter(actions_str, actions_remaining)
 	check_turn_over()

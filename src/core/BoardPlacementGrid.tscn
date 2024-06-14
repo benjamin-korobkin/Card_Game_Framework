@@ -21,17 +21,12 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[node name="BoardPlacementGrid" type="PanelContainer" groups=[
-"placement_grid",
-]]
+[node name="BoardPlacementGrid" type="PanelContainer" groups=["placement_grid"]]
 self_modulate = Color( 1, 1, 1, 0.121569 )
 margin_right = 124.0
 margin_bottom = 154.0
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_left = 2.0

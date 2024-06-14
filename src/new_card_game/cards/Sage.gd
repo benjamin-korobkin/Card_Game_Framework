@@ -38,7 +38,7 @@ func _on_Card_gui_input(event) -> void:
 				else:
 					field_button.set_disabled(true)
 				# enable/disable timeline button
-				var timeline = board.get_node("FieldTimelineContainer/TimelineGrid1")
+				var timeline = board.get_node("FieldTimelineContainer/TimelineGrid")
 				var era = get_property("Era")
 				var slot = timeline.get_slot_from_era(era)
 				if slot.occupying_card or not player1.can_put_in_timeline():

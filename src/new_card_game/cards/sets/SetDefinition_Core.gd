@@ -196,7 +196,7 @@ const CARDS := {
 	},
 	"Eliyahu HaNavi": {
 		"Type": "Tanach",
-		"Effect": "Can fill your final timeline slot with this"
+		"Effect": "Can fill the final timeline slot with this"
 	},
 }
 

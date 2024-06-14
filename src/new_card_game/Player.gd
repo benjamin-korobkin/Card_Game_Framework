@@ -2,12 +2,13 @@ class_name Player
 extends Node2D
 
 const ACTIONS_AT_START := 2
-const TIMELINE_COST := 6
+const TIMELINE_COST := 5
 
 onready var board = get_parent().get_parent()
 
  
 #var stats: Dictionary
+var current_card : Card
 var hand : Area2D
 var timeline : PanelContainer
 var timeline_complete = false
@@ -20,9 +21,9 @@ var turn_over : bool
 var player_name : String
 var actions_str = "_actions_remaining"
 var tokens_str = "_torah_tokens"
-var current_card : Card
 var aharon_effect_remaining : int = 0
 var moshe_effect_enabled : bool = false
+var cards_in_timeline : int = 0
 
 
 func _ready() -> void:

@@ -1,0 +1,464 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://src/new_card_game/SageActionsMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/core/Pile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/new_card_game/TimelineGrid.gd" type="Script" id=3]
+[ext_resource path="res://src/new_card_game/Deck.gd" type="Script" id=4]
+[ext_resource path="res://src/new_card_game/Board.gd" type="Script" id=5]
+[ext_resource path="res://src/new_card_game/Counters.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/new_card_game/SagePlacementGrid.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/new_card_game/FieldPlacementGrid.tscn" type="PackedScene" id=8]
+[ext_resource path="res://fonts/Comfortaa-Bold.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://src/custom/CGFDeckbuilder/CGFDeckBuilder.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/new_card_game/Discard.gd" type="Script" id=11]
+[ext_resource path="res://themes/darktheme/darktheme.theme" type="Theme" id=12]
+[ext_resource path="res://src/new_card_game/Player2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/new_card_game/Player1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/new_card_game/Hand1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/new_card_game/Hand2.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/new_card_game/TurnQueue.gd" type="Script" id=17]
+[ext_resource path="res://src/new_card_game/ChallengePanel.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/new_card_game/Counters.gd" type="Script" id=19]
+[ext_resource path="res://src/core/CardViewer/DeckBuilder/DBDeckCardObject.tscn" type="PackedScene" id=20]
+[ext_resource path="res://src/core/CardViewer/DeckBuilder/DBDeckSummaries.tscn" type="PackedScene" id=21]
+[ext_resource path="res://src/new_card_game/DiscardPanel.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/new_card_game/GameOverPanel.tscn" type="PackedScene" id=23]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 9 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[node name="Board" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1280, 720 )
+rect_scale = Vector2( 0.999618, 1.00264 )
+mouse_filter = 2
+theme = ExtResource( 12 )
+script = ExtResource( 5 )
+
+[node name="FieldTimelineContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -312.0
+margin_top = -309.0
+margin_right = 312.0
+margin_bottom = 309.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="FieldTimelineContainer"]
+margin_top = 76.0
+margin_right = 624.0
+margin_bottom = 76.0
+
+[node name="FieldHBox2" type="HBoxContainer" parent="FieldTimelineContainer"]
+margin_top = 79.0
+margin_right = 624.0
+margin_bottom = 229.0
+grow_vertical = 2
+
+[node name="FieldMarginContainer2" type="MarginContainer" parent="FieldTimelineContainer/FieldHBox2"]
+margin_right = 122.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 122, 150 )
+
+[node name="FieldGrid2" parent="FieldTimelineContainer/FieldHBox2" groups=["field"] instance=ExtResource( 8 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 125.0
+margin_top = 0.0
+margin_right = 499.0
+margin_bottom = 150.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="FieldTimelineContainer"]
+margin_top = 232.0
+margin_right = 624.0
+margin_bottom = 232.0
+
+[node name="TimelineGrid" parent="FieldTimelineContainer" groups=["timeline"] instance=ExtResource( 7 )]
+margin_top = 235.0
+margin_bottom = 385.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FieldHBox1" type="HBoxContainer" parent="FieldTimelineContainer"]
+margin_top = 388.0
+margin_right = 624.0
+margin_bottom = 538.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FieldMarginContainer1" type="MarginContainer" parent="FieldTimelineContainer/FieldHBox1"]
+margin_right = 122.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 122, 150 )
+
+[node name="FieldGrid1" parent="FieldTimelineContainer/FieldHBox1" groups=["field"] instance=ExtResource( 8 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 125.0
+margin_top = 0.0
+margin_right = 499.0
+margin_bottom = 150.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="FieldTimelineContainer"]
+margin_top = 541.0
+margin_right = 624.0
+margin_bottom = 541.0
+
+[node name="TurnQueue" type="Node2D" parent="."]
+script = ExtResource( 17 )
+
+[node name="Player1" parent="TurnQueue" instance=ExtResource( 14 )]
+
+[node name="Player2" parent="TurnQueue" instance=ExtResource( 13 )]
+
+[node name="Deck" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 475 )
+script = ExtResource( 4 )
+placement = 5
+
+[node name="VBoxContainer" parent="Deck/Control/CenterContainer" index="0"]
+margin_right = 68.0
+margin_bottom = 109.0
+
+[node name="Label" parent="Deck/Control/CenterContainer/VBoxContainer" index="0"]
+margin_right = 68.0
+
+[node name="PanelContainer" parent="Deck/Control/CenterContainer/VBoxContainer" index="1"]
+margin_top = 32.0
+margin_right = 68.0
+margin_bottom = 61.0
+
+[node name="CenterContainer" parent="Deck/Control/CenterContainer/VBoxContainer/PanelContainer" index="0"]
+margin_right = 68.0
+
+[node name="CardCount" parent="Deck/Control/CenterContainer/VBoxContainer/PanelContainer/CenterContainer" index="0"]
+margin_right = 45.0
+
+[node name="View" parent="Deck/Control/ManipulationButtons" index="0"]
+margin_right = 26.0
+margin_bottom = 27.0
+
+[node name="ViewSorted" parent="Deck/Control/ManipulationButtons" index="1"]
+margin_top = 30.0
+margin_right = 26.0
+margin_bottom = 57.0
+
+[node name="Shuffle" parent="Deck/Control/ManipulationButtons" index="2"]
+margin_top = 60.0
+margin_right = 26.0
+margin_bottom = 87.0
+
+[node name="CardView" parent="Deck/ViewPopup" index="0"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 6.0
+margin_bottom = 6.0
+
+[node name="Position" parent="Deck/Debug" index="0"]
+margin_bottom = 23.0
+
+[node name="AreaPos" parent="Deck/Debug" index="1"]
+margin_top = 26.0
+margin_bottom = 49.0
+
+[node name="Size" parent="Deck/Debug" index="2"]
+margin_top = 52.0
+margin_bottom = 75.0
+
+[node name="Discard" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1124, 475 )
+script = ExtResource( 11 )
+placement = 4
+
+[node name="Control" parent="Discard" index="0"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" parent="Discard/Control/CenterContainer" index="0"]
+margin_right = 68.0
+margin_bottom = 109.0
+
+[node name="Label" parent="Discard/Control/CenterContainer/VBoxContainer" index="0"]
+margin_right = 68.0
+
+[node name="PanelContainer" parent="Discard/Control/CenterContainer/VBoxContainer" index="1"]
+margin_top = 32.0
+margin_right = 68.0
+margin_bottom = 61.0
+
+[node name="CenterContainer" parent="Discard/Control/CenterContainer/VBoxContainer/PanelContainer" index="0"]
+margin_right = 68.0
+
+[node name="CardCount" parent="Discard/Control/CenterContainer/VBoxContainer/PanelContainer/CenterContainer" index="0"]
+margin_right = 45.0
+
+[node name="View" parent="Discard/Control/ManipulationButtons" index="0"]
+margin_right = 26.0
+margin_bottom = 27.0
+
+[node name="ViewSorted" parent="Discard/Control/ManipulationButtons" index="1"]
+margin_top = 30.0
+margin_right = 26.0
+margin_bottom = 57.0
+
+[node name="Shuffle" parent="Discard/Control/ManipulationButtons" index="2"]
+margin_top = 60.0
+margin_right = 26.0
+margin_bottom = 87.0
+
+[node name="CardView" parent="Discard/ViewPopup" index="0"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 6.0
+margin_bottom = 6.0
+
+[node name="Debug" parent="Discard" index="4"]
+visible = false
+
+[node name="Position" parent="Discard/Debug" index="0"]
+margin_bottom = 23.0
+
+[node name="AreaPos" parent="Discard/Debug" index="1"]
+margin_top = 26.0
+margin_bottom = 49.0
+
+[node name="Size" parent="Discard/Debug" index="2"]
+margin_top = 52.0
+margin_bottom = 75.0
+
+[node name="Hand1" parent="." instance=ExtResource( 15 )]
+z_index = 100
+excess_cards = 0
+
+[node name="Hand2" parent="." instance=ExtResource( 16 )]
+placement = 2
+index_shift_priority = 1
+show_manipulation_buttons = false
+excess_cards = 0
+
+[node name="Counters" parent="." instance=ExtResource( 6 )]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 36.0
+margin_bottom = 36.0
+script = ExtResource( 19 )
+
+[node name="FancyMovementToggle" type="CheckButton" parent="."]
+visible = false
+margin_right = 12.0
+margin_bottom = 20.0
+disabled = true
+toggle_mode = false
+shortcut_in_tooltip = false
+text = "Fancy Movement"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnableAttach" type="CheckButton" parent="."]
+visible = false
+margin_left = 194.978
+margin_top = 1.33486
+margin_right = 395.978
+margin_bottom = 41.3349
+text = "Enable Attachment"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScalingFocusOptions" type="OptionButton" parent="."]
+visible = false
+margin_left = -1.33484
+margin_top = 44.0497
+margin_right = 187.665
+margin_bottom = 84.0497
+disabled = true
+toggle_mode = false
+text = "Scaling + Viewport Focus"
+items = [ "Scaling Focus", null, false, 0, null, "Viewport Focus", null, false, 1, null, "Scaling + Viewport Focus", null, false, 2, null, "Scaling + Info Panels", null, false, 3, null ]
+selected = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReshuffleAllDeck" type="Button" parent="."]
+visible = false
+margin_left = 9.89948
+margin_top = 116.762
+margin_right = 200.899
+margin_bottom = 136.762
+text = "Reshuffle all cards into deck"
+
+[node name="ReshuffleAllDiscard" type="Button" parent="."]
+visible = false
+margin_left = 9.89948
+margin_top = 140.334
+margin_right = 200.899
+margin_bottom = 160.334
+text = "Reshuffle all cards into discard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OvalHandToggle" type="CheckButton" parent="."]
+visible = false
+margin_left = 405.31
+margin_top = 1.12245
+margin_right = 594.31
+margin_bottom = 41.1225
+text = "Oval Hand Shape"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeckBuilder" type="Button" parent="."]
+visible = false
+margin_left = 234.698
+margin_top = 45.0
+margin_right = 374.698
+margin_bottom = 85.0
+text = "DeckBuilder"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit Game" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -160.0
+margin_top = 25.0
+margin_right = -10.0
+margin_bottom = 90.0
+text = "Exit Game"
+icon_align = 1
+
+[node name="Debug" type="CheckButton" parent="."]
+visible = false
+margin_left = 789.192
+margin_top = 3.36737
+margin_right = 978.192
+margin_bottom = 43.3674
+pressed = true
+text = "Debug"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SeedLabel" type="Label" parent="."]
+visible = false
+margin_left = 10.0
+margin_top = 175.0
+margin_right = 265.0
+margin_bottom = 200.0
+custom_fonts/font = SubResource( 2 )
+text = "Game Seed is: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeckBuilderPopup" type="PopupPanel" parent="."]
+margin_right = 1000.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 800, 0 )
+
+[node name="DeckBuilder" parent="DeckBuilderPopup" instance=ExtResource( 10 )]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_styles/panel = SubResource( 3 )
+replacements = {
+}
+random_adverb_miss = 10
+random_adjective_miss = 1.1
+random_append_miss = 2
+second_noun_miss = 3
+max_quantity = 1
+deck_minimum = 10
+deck_maximum = 50
+deck_card_object_scene = ExtResource( 20 )
+deck_summary_scene = ExtResource( 21 )
+
+[node name="SageActionsMenu" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -407.5
+margin_top = -45.0
+margin_right = 407.5
+margin_bottom = 45.0
+focus_mode = 1
+
+[node name="ChallengePanel" parent="." instance=ExtResource( 18 )]
+anchor_top = 0.55
+anchor_bottom = 0.55
+margin_top = -33.55
+margin_right = 181.0
+margin_bottom = 33.45
+
+[node name="DiscardPanel" parent="." instance=ExtResource( 22 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="GameOverPanel" parent="CanvasLayer" instance=ExtResource( 23 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -225.0
+margin_top = -75.0
+margin_right = 225.0
+margin_bottom = 75.0
+
+[connection signal="game_won" from="TurnQueue" to="CanvasLayer/GameOverPanel" method="_on_game_won"]
+[connection signal="is_empty" from="Deck" to="." method="_on_Deck_is_empty"]
+[connection signal="gui_input" from="Deck/Control" to="TurnQueue/Player1" method="_on_DeckPanel_gui_input"]
+[connection signal="toggled" from="FancyMovementToggle" to="." method="_on_FancyMovementToggle_toggled"]
+[connection signal="toggled" from="EnableAttach" to="." method="_on_EnableAttach_toggled"]
+[connection signal="item_selected" from="ScalingFocusOptions" to="." method="_on_ScalingFocusOptions_item_selected"]
+[connection signal="pressed" from="ReshuffleAllDeck" to="." method="_on_ReshuffleAllDeck_pressed"]
+[connection signal="pressed" from="ReshuffleAllDiscard" to="." method="_on_ReshuffleAllDiscard_pressed"]
+[connection signal="toggled" from="OvalHandToggle" to="." method="_on_OvalHandToggle_toggled"]
+[connection signal="pressed" from="DeckBuilder" to="." method="_on_DeckBuilder_pressed"]
+[connection signal="pressed" from="Exit Game" to="." method="_on_BackToMain_pressed"]
+[connection signal="toggled" from="Debug" to="." method="_on_Debug_toggled"]
+
+[editable path="Deck"]
+[editable path="Discard"]
