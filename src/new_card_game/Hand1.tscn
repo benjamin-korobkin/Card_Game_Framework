@@ -13,12 +13,7 @@ placement = 7
 excess_discard_pile_name = "discard"
 excess_cards = 2
 
-[node name="Shuffle" parent="Control/ManipulationButtons" index="0"]
-visible = false
-
-[node name="DiscardRandom" type="Button" parent="Control/ManipulationButtons" index="2" groups=[
-"manipulation_button",
-]]
+[node name="DiscardRandom" type="Button" parent="Control/ManipulationButtons" index="2" groups=["manipulation_button"]]
 visible = false
 margin_right = 24.0
 margin_bottom = 26.0

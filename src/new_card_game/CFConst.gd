@@ -37,12 +37,12 @@ enum ShuffleStyle {
 # This is used to know when to refresh the font size cache, but you can use it
 # for other purposes as well.
 # If you never adjust this, the font cache might start growing too large.
-const GAME_VERSION := "1.0.0"
+const GAME_VERSION := "1.0.1"
 # The card size you want your  cards to have.
 # This will also adjust all CardContainers to match
 # If you modify this property, you **must** adjust
 # the min_rect of the various control nodes inside the card front and back scenes.
-const CARD_SIZE := Vector2(150,180)
+const CARD_SIZE := Vector2(150,170)
 # This is the resolution the game was developed in. It is used to adjust the card sizes
 # for smaller resolutions. Any lower resoluton will adjust its card sizes for previews/thumbnails
 # based on the percentage of difference between the two resolutions in absolute pixel number.
@@ -146,7 +146,7 @@ const FOCUSED_SCALE := 1.5
 # More than 0 and the card will appear hidden under the display area.
 #
 # Less than 0 and it will float higher than the bottom of the viewport
-const BOTTOM_MARGIN_MULTIPLIER := 0.5
+const BOTTOM_MARGIN_MULTIPLIER := 0.33 # 0.5
 # Here you can adjust the amount of offset towards a side of their host card
 # that attachments are placed.
 #
@@ -154,24 +154,24 @@ const BOTTOM_MARGIN_MULTIPLIER := 0.5
 #
 # You define which placement offset an attachment uses by setting the
 # "attachment_offset" exported variable on the card scene
-const ATTACHMENT_OFFSET := [
-	# TOP_LEFT
-	Vector2(-0.2,-0.2),
-	# TOP
-	Vector2(0,-0.2),
-	# TOP_RIGHT
-	Vector2(0.2,-0.2),
-	# RIGHT
-	Vector2(0.2,0),
-	# LEFT
-	Vector2(-0.2,0),
-	# BOTTOM_LEFT
-	Vector2(-0.2,0.2),
-	# BOTTOM
-	Vector2(0,0.2),
-	# BOTTOM_RIGHT
-	Vector2(0.2,0.2),
-]
+#const ATTACHMENT_OFFSET := [
+#	# TOP_LEFT
+#	Vector2(-0.2,-0.2),
+#	# TOP
+#	Vector2(0,-0.2),
+#	# TOP_RIGHT
+#	Vector2(0.2,-0.2),
+#	# RIGHT
+#	Vector2(0.2,0),
+#	# LEFT
+#	Vector2(-0.2,0),
+#	# BOTTOM_LEFT
+#	Vector2(-0.2,0.2),
+#	# BOTTOM
+#	Vector2(0,0.2),
+#	# BOTTOM_RIGHT
+#	Vector2(0.2,0.2),
+#]
 # The colour to use when hovering over a card.
 #
 # Reduce the multiplier to reduce glow effect or stop it altogether

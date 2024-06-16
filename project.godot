@@ -386,7 +386,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Torah-Timeline_mobile"
+config/name="Torah-Timeline"
 run/main_scene="res://src/custom/MainMenu.tscn"
 config/icon="res://icon.png"
 

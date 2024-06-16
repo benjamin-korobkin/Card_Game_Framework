@@ -15,7 +15,7 @@ var timeline_complete = false
 var field : PanelContainer
 var opponent : Node2D
 var actions_remaining : int
-var max_torah_tokens : int = 10
+var max_torah_tokens : int = 5
 var torah_tokens : int = 0
 var turn_over : bool
 var player_name : String
@@ -23,6 +23,7 @@ var actions_str = "_actions_remaining"
 var tokens_str = "_torah_tokens"
 var aharon_effect_remaining : int = 0
 var moshe_effect_enabled : bool = false
+var yehoshua_effect_enabled : bool = false
 var cards_in_timeline : int = 0
 
 
@@ -129,6 +130,10 @@ func get_field():
 func get_timeline():
 	return timeline
 	
+func reveal_opponent_bm_cards():
+	for card in opponent.get_field().get_occupying_cards():
+		card.set_is_viewed(true)
+	
 func add_bonus_actions(bonus_actions):
 	actions_remaining += bonus_actions
 	update_counter(actions_str, actions_remaining)
@@ -139,7 +144,7 @@ func can_do_effect(name):
 			if get_timeline().get_available_slots().size() != 1 \
 			or not can_put_in_timeline():
 				return false
-		"Elisha HaNavi":  ## TODO: Test
+		"Elisha HaNavi":  ## TODO: End game after this is played
 			if cfc.NMAP.discard.get_card_count() < 2 or hand.get_card_count() > hand.hand_size - 2:
 				return false
 		"Yaakov Avinu":  ## Must be at least 1 card in the BM
@@ -177,12 +182,12 @@ func do_effect(name):
 				hand.draw_card()
 				yield(get_tree().create_timer(0.5), "timeout")
 		"Aharon":
-			opponent.aharon_effect_remaining = 2
+			opponent.aharon_effect_remaining = 3
 		"Moshe Rabbeinu":
 			moshe_effect_enabled = true
 		"Yehoshua":
-			for card in opponent.get_field().get_occupying_cards():
-				card.set_is_viewed(true)
+			yehoshua_effect_enabled = true
+			reveal_opponent_bm_cards()
 		"Shimshon":
 			add_tokens(torah_tokens * (-1))
 			opponent.add_tokens(opponent.torah_tokens * (-1))

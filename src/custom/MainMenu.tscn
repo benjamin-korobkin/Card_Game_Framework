@@ -131,34 +131,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Multiplayer" type="Button" parent="MainMenu/VBox/Center/VButtons"]
-visible = false
-margin_top = 37.0
-margin_right = 192.0
-margin_bottom = 64.0
-text = "Multiplayer Demo"
-
-[node name="Deckbuilder" type="Button" parent="MainMenu/VBox/Center/VButtons"]
-visible = false
-margin_top = 74.0
-margin_right = 192.0
-margin_bottom = 101.0
-text = "Deck Builder"
-
-[node name="CardLibrary" type="Button" parent="MainMenu/VBox/Center/VButtons"]
-visible = false
-margin_top = 37.0
-margin_right = 192.0
-margin_bottom = 64.0
-text = "Card Library"
-
-[node name="GUT" type="Button" parent="MainMenu/VBox/Center/VButtons"]
-visible = false
-margin_top = 37.0
-margin_right = 192.0
-margin_bottom = 64.0
-text = "Tests"
-
 [node name="Exit" type="Button" parent="MainMenu/VBox/Center/VButtons"]
 margin_top = 92.0
 margin_right = 222.0
