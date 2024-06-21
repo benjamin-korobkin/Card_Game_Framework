@@ -5,7 +5,6 @@ extends Control
 
 # If a card is placed on this spot, this variable will hold a reference
 # to the Card object
-# and no other card can be placed in this slot
 var occupying_card = null
 
 # Stores a reference to the owning BoardPlacementGrid object

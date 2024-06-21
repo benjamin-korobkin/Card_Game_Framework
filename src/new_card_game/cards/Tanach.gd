@@ -24,9 +24,9 @@ func _on_Card_gui_input(event) -> void:
 
 ## Used for p2 for now. Can update later for p1 as well.
 func play_card(player):
+	# TODO: Show card for 2.5 seconds, then discard.
 	player.do_effect(name)
 	if name == "Eliyahu HaNavi":
-		player.cards_in_timeline += 1
 		eliyahu_hanavi_effect(player)
 	else:
 		#yield(get_tree().create_timer(0.7), "timeout")  # Avraham? bug
@@ -34,8 +34,10 @@ func play_card(player):
 		player.check_turn_over()
 
 func eliyahu_hanavi_effect(player):
+	player.cards_in_timeline += 1
 	move_to(cfc.NMAP.board, -1, player.timeline.find_available_slot())
 	set_is_faceup(true)
+	player.finish_turn()
 	player.check_turn_over()
 	
 func get_name():

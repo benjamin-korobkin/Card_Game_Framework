@@ -18,7 +18,7 @@ func _ready() -> void:
 	needed_counters = {
 		"Player1_torah_tokens": {
 			"CounterTitle": "P1 Torah Tokens: ",
-			"Value": "0/10"},
+			"Value": "0/5"},
 		"Player1_actions_remaining":{
 			"CounterTitle": "P1 Actions: ",
 			"Value": "2/2"},
@@ -27,7 +27,7 @@ func _ready() -> void:
 			"Value":"---------"},
 		"Player2_torah_tokens": {
 			"CounterTitle": "P2 Torah Tokens: ",
-			"Value": "0/10"},
+			"Value": "0/5"},
 		"Player2_actions_remaining":{
 			"CounterTitle": "P2 Actions: ",
 			"Value": "0/2"},

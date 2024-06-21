@@ -14,9 +14,10 @@ margin_right = 187.0
 margin_bottom = 77.0
 grow_horizontal = 2
 
+[node name="GridContainer" parent="." index="0"]
+margin_right = 372.0
+
 [node name="BoardPlacementSlot" parent="GridContainer" index="0"]
-margin_right = 120.0
-margin_bottom = 120.0
 rect_min_size = Vector2( 120, 0 )
 
 [node name="BoardPlacementSlot2" parent="GridContainer" index="1" instance=ExtResource( 2 )]

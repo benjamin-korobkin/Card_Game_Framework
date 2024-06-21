@@ -14,6 +14,7 @@ var in_p2_field: bool = false setget set_in_p2_field
 func _on_Card_gui_input(event) -> void:
 	board = cfc.NMAP.board
 	var player1 = board.get_node("TurnQueue/Player1")
+
 	if event is InputEventMouseButton and cfc.NMAP.has("board") and not player1.turn_over:
 		var hand1 = board.get_node("Hand1")
 
@@ -24,32 +25,29 @@ func _on_Card_gui_input(event) -> void:
 			move_to(cfc.NMAP.discard)
 			player1.set_is_discarding(false)
 		else:
+			var field = board.get_node("FieldTimelineContainer/FieldHBox1/FieldGrid1")
 			actions_menu = board.get_node("SageActionsMenu")
 			field_button = actions_menu.get_node("VBoxContainer/HBoxContainer/FieldButton")
 			timeline_button = actions_menu.get_node("VBoxContainer/HBoxContainer/TimelineButton")
 			challenge_button = actions_menu.get_node("VBoxContainer/HBoxContainer/ChallengeButton")
 			player1.set_current_card(self)
 
+			if player1.can_put_in_timeline() and can_go_in_timeline(player1):
+				timeline_button.set_disabled(false)
+			else:
+				timeline_button.set_disabled(true)
+			
 			if get_parent() == hand1:
 				# enable/disable field button
-				var field = board.get_node("FieldTimelineContainer/FieldHBox1/FieldGrid1")
 				if field.count_available_slots() > 0:
 					field_button.set_disabled(false)
 				else:
 					field_button.set_disabled(true)
-				# enable/disable timeline button
-				var timeline = board.get_node("FieldTimelineContainer/TimelineGrid")
-				var era = get_property("Era")
-				var slot = timeline.get_slot_from_era(era)
-				if slot.occupying_card or not player1.can_put_in_timeline():
-					timeline_button.set_disabled(true)
-				else:
-					timeline_button.set_disabled(false)
+				# timeline_button.set_disabled(true) ## We'll see. Maybe
 				actions_menu.popup()
-			# When in field, only options should be challenge or cancel
+			# When in field, options can be timeline, challenge, or cancel
 			if in_p1_field:
 				field_button.set_disabled(true)
-				timeline_button.set_disabled(true)
 				actions_menu.popup()
 			var p2_field = board.get_node("FieldTimelineContainer/FieldHBox2/FieldGrid2")
 			if p2_field.count_filled_slots() == 0:
@@ -62,3 +60,19 @@ func set_in_p1_field(value):
 
 func set_in_p2_field(value):
 	in_p2_field = value
+	
+func can_go_in_timeline(player) -> bool:
+	var era = get_property("Era")
+	var slot = player.get_timeline().get_slot_from_era(era)
+	if slot.occupying_card:
+		# TODO: TEST - Set the card_owner field for p1 and p2
+		if get_parent() == player.hand or \
+			slot.occupying_card.get_card_owner() == get_card_owner():
+			return false
+		elif player.get_field().count_available_slots() == 0:
+			return true
+		else:  # Don't have a beit din
+			return false
+	if get_parent() == player.hand:
+		return true
+	return false  # open slot, but card in BM

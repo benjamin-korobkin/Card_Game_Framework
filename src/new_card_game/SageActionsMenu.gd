@@ -4,6 +4,7 @@ var board
 var timeline
 var field
 var p1
+var p2
 var current_card: Card
 var challenge_panel
 
@@ -16,6 +17,7 @@ func _ready() -> void:
 	field = board.get_node("FieldTimelineContainer/FieldHBox1/FieldGrid1")
 	timeline = board.get_node("FieldTimelineContainer/TimelineGrid")
 	p1 = board.get_node("TurnQueue/Player1")
+	p2 = board.get_node("TurnQueue/Player2")
 	challenge_panel = board.get_node("ChallengePanel")
 	
 
@@ -35,12 +37,17 @@ func _on_FieldButton_pressed() -> void:
 func _on_TimelineButton_pressed() -> void:
 	var era = p1.current_card.get_property("Era")
 	var slot = timeline.get_slot_from_era(era)
-	if not slot.occupying_card and p1.can_deduct_action():
+	if p1.can_deduct_action():  # Do we need this condition?
 		if p1.moshe_effect_enabled:
 			p1.moshe_effect_enabled = false
 		else:
 			p1.deduct_action()
 			p1.spend_tokens()
+		if slot.occupying_card:
+			slot.occupying_card.move_to(cfc.NMAP.discard)
+			p2.cards_in_timeline -= 1
+			# TODO: TEST
+			yield(owner.get_tree().create_timer(0.75), "timeout")
 		p1.current_card.move_to(board, -1, slot)
 		p1.current_card.set_is_faceup(true)
 		p1.cards_in_timeline += 1

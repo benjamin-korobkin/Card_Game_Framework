@@ -66,6 +66,7 @@ enum CardType{
 	SAGE
 	TANACH
 }
+
 # Used to spawn CardChoices. We have to add the consts together
 # before passing to the preload, or the parser complains.
 const _CARD_CHOICES_SCENE_FILE = CFConst.PATH_CORE + "CardChoices.tscn"
@@ -203,6 +204,9 @@ export var preview_scale := CFConst.PREVIEW_SCALE
 # The size of the card when seen larger in the viewport focus window
 export var focused_scale := CFConst.FOCUSED_SCALE
 
+
+# Show which player placed the card. Use p1, p2 or "". (Used for timeline)
+var card_owner := "" setget set_card_owner, get_card_owner
 # This is **the** authorative name for this node
 #
 # If not set, will be set to the value of the Name label in the front.
@@ -306,10 +310,7 @@ onready var buttons = $Control/ManipulationButtons
 onready var tokens: TokenDrawer = $Control/Tokens
 # The node which manipulates the highlight borders.
 onready var highlight = $Control/Highlight
-# Reference for player1
-#onready var player1 : Node2D = cfc.NMAP.board.get_node("TurnQueue/Player1")
-# Reference for hand1
-#onready var hand1 : Area2D = cfc.NMAP.board.get_node("Hand1")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -1000,6 +1001,11 @@ func set_card_name(value : String, set_label := true) -> void:
 func get_card_name() -> String:
 	return canonical_name
 
+func set_card_owner(player):
+	card_owner = player
+
+func get_card_owner() -> String:
+	return card_owner
 
 # Overwrites the built-in set name, so that it also sets canonical_name
 #
@@ -1221,6 +1227,7 @@ func move_to(targetHost: Node,
 		# Ensure card stays where it was before it changed parents
 		global_position = previous_pos
 		if targetHost.is_in_group("hands"):
+			## TODO: Test setting the card_owner property
 #			_tween_interpolate_visibility(1,0.3)
 			# We need to adjust the start position based on the global position
 			# coordinates as they would be inside the hand control node
@@ -1230,6 +1237,7 @@ func move_to(targetHost: Node,
 			# inside the hand
 			_target_position = recalculate_position()
 			if targetHost.get_name() == "Hand2":
+				set_card_owner("p2")
 				card_rotation = 180
 			_target_rotation = _recalculate_rotation()
 			set_state(CardState.MOVING_TO_CONTAINER)
@@ -1248,10 +1256,12 @@ func move_to(targetHost: Node,
 					c.interruptTweening()
 					c.reorganize_self()
 			if targetHost.get_name() == "Hand1":
+				set_card_owner("p1")
 				if set_is_faceup(true) == CFConst.ReturnCode.FAILED:
 					printerr("ERROR: Something went unexpectedly in set_is_faceup")
 		
 		elif targetHost.is_in_group("piles"):
+			set_card_owner("")  # TODO: Test
 			# The below checks if the pile we're moving is in a popup
 			# If the card is also in a popup of the same pile
 			# we assume we're moving back
