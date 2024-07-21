@@ -23,6 +23,7 @@ func _on_Card_gui_input(event) -> void:
 			player1.set_is_challenging(false)
 		elif player1.get_is_discarding() and get_parent() == hand1:
 			move_to(cfc.NMAP.discard)
+			yield(self._tween, "tween_all_completed")
 			player1.set_is_discarding(false)
 		else:
 			var field = board.get_node("FieldTimelineContainer/FieldHBox1/FieldGrid1")
@@ -63,9 +64,10 @@ func set_in_p2_field(value):
 	
 func can_go_in_timeline(player) -> bool:
 	var era = get_property("Era")
+	# TODO: Update - move the get_timeline() method to board. Only 1 now.
 	var slot = player.get_timeline().get_slot_from_era(era)
 	if slot.occupying_card:
-		# TODO: TEST - Set the card_owner field for p1 and p2
+		# Check if card is from hand or if belongs to current player
 		if get_parent() == player.hand or \
 			slot.occupying_card.get_card_owner() == get_card_owner():
 			return false
@@ -73,6 +75,6 @@ func can_go_in_timeline(player) -> bool:
 			return true
 		else:  # Don't have a beit din
 			return false
-	if get_parent() == player.hand:
+	if get_parent() == player.hand:  # make sure card is coming from hand
 		return true
 	return false  # open slot, but card in BM

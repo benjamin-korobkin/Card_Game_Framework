@@ -1,11 +1,11 @@
 extends Player
 
-enum ACTIONS {
-	CHALLENGE,
-	TANACH
-}
+#enum ACTIONS {
+#	CHALLENGE,
+#	TANACH
+#}
 
-var test_mode : bool = false
+export var test_mode : bool = false
 
 func _ready() -> void:
 	hand = board.get_node("Hand2")
@@ -16,17 +16,26 @@ func _ready() -> void:
 	
 func play_turn():
 	.play_turn()
-	yield(get_tree().create_timer(1.2), "timeout")
+	yield(get_tree().create_timer(1.0), "timeout")
 	while not turn_over:
-		action()
-		yield(get_tree().create_timer(0.9), "timeout")
-	
+		if opponent.actions_remaining <= 0:
+			action()
+		## TODO: test
+		yield(get_tree().create_timer(1.5), "timeout")
+		
 func action():  ## Optimize. create method(s) for getting card type
 	if hand.get_card_count() == 0:
 		draw_card()
 		return
 	var current_hand = hand.get_all_cards()
+	
 	if can_put_in_timeline():
+		# TODO: Testing basic feature
+		for card in field.get_occupying_cards():
+			if card.can_go_in_timeline(self):
+				put_in_timeline(card)
+				return
+
 		for card in current_hand:
 			if card.get_name() == "Eliyahu HaNavi" and can_do_effect(card.get_name()):
 				card.play_card(self)
@@ -70,23 +79,29 @@ func action():  ## Optimize. create method(s) for getting card type
 func put_in_timeline(card) -> bool:
 	var era = card.get_property("Era")
 	var slot = timeline.get_slot_from_era(era)
-	if slot.occupying_card:
-		return false
 	if moshe_effect_enabled:
 		moshe_effect_enabled = false
 	else:
 		spend_tokens()
 		deduct_action()
+	if slot.occupying_card:
+		slot.occupying_card.move_to(cfc.NMAP.discard)
+		yield(slot.occupying_card._tween, "tween_all_completed")
+		opponent.cards_in_timeline -= 1
+		# TODO: TEST
+		#yield(owner.get_tree().create_timer(0.75), "timeout")
 	card.move_to(board, -1, slot)
 	card.set_is_faceup(true)
+	yield(card._tween, "tween_all_completed")
 	cards_in_timeline += 1
 	update_counter(actions_str, actions_remaining)
 	check_turn_over()
 	return true
-		
+
 func put_in_field(card):
 	card.move_to(board, -1, field.find_available_slot())
-	card.set_is_faceup(false)
+	card.set_is_faceup(true)  # TODO - test true
+	yield(card._tween, "tween_all_completed")
 	card.set_in_p2_field(true)
 	#add_tokens(1) # No longer gain tokens when put in BM
 	deduct_action()

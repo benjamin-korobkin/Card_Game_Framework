@@ -10,6 +10,7 @@ func _on_Card_gui_input(event) -> void:
 		and not player1.turn_over:
 			if player1.get_is_discarding() and get_parent() == board.get_node("hand1"):
 				move_to(cfc.NMAP.discard)
+				yield(self._tween, "tween_all_completed")
 				player1.set_is_discarding(false)
 			elif player1.can_do_effect(name):
 				## TODO: SHOW OPTION TO PLAY CARD
@@ -19,6 +20,7 @@ func _on_Card_gui_input(event) -> void:
 				else:
 					#yield(get_tree().create_timer(0.7), "timeout")  # Avraham? bug
 					move_to(cfc.NMAP.discard)
+					yield(self._tween, "tween_all_completed")
 			else:
 				pass ## TODO: disable play option for card in TanachMenu
 
@@ -31,12 +33,14 @@ func play_card(player):
 	else:
 		#yield(get_tree().create_timer(0.7), "timeout")  # Avraham? bug
 		move_to(cfc.NMAP.discard)
-		player.check_turn_over()
+		yield(self._tween, "tween_all_completed")
+	player.check_turn_over()
 
 func eliyahu_hanavi_effect(player):
 	player.cards_in_timeline += 1
 	move_to(cfc.NMAP.board, -1, player.timeline.find_available_slot())
 	set_is_faceup(true)
+	yield(self._tween, "tween_all_completed")
 	player.finish_turn()
 	player.check_turn_over()
 	

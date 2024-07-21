@@ -33,7 +33,7 @@ func _ready() -> void:
 	
 
 func play_turn():
-	yield(get_tree().create_timer(1.0), "timeout")
+	#yield(get_tree().create_timer(0.7), "timeout")
 	actions_remaining = ACTIONS_AT_START if aharon_effect_remaining == 0 else ACTIONS_AT_START - 1
 	aharon_effect_remaining = max(0, aharon_effect_remaining - 1)
 	
@@ -42,13 +42,17 @@ func play_turn():
 	update_counter(tokens_str, torah_tokens)
 	turn_over = false
 	
+func finish_turn():
+	turn_over = true
+	
 func draw_card():
 	if can_deduct_action():
 		if hand.is_full() and player_name=="Player2":
 			# TODO: Show that P2 is discarding
 			var rand_card = randi() % hand.hand_size
 			hand.get_card(rand_card).move_to(cfc.NMAP.discard)
-			yield(get_tree().create_timer(1.0), "timeout")
+			yield(hand.get_card(rand_card)._tween, "tween_all_completed")
+			#yield(get_tree().create_timer(1.0), "timeout")
 		deduct_action()
 		hand.draw_card()
 		check_turn_over()
@@ -58,9 +62,6 @@ func draw_card():
 func add_tokens(amt : int):
 	torah_tokens = min(torah_tokens + amt, max_torah_tokens)
 	update_counter(tokens_str, torah_tokens)
-
-func finish_turn():
-	turn_over = true
 	
 func is_timeline_complete():
 	return timeline.count_available_slots() == 0
@@ -106,10 +107,14 @@ func challenge(opponent_card):
 	var challenge_grid1 = board.get_node("FieldTimelineContainer/FieldHBox1/FieldMarginContainer1")
 	var challenge_grid2 = board.get_node("FieldTimelineContainer/FieldHBox2/FieldMarginContainer2")
 	player_card.move_to(board, -1, challenge_grid1.get_global_position())
+	#yield(player_card._tween, "tween_all_completed")
 	opponent_card.move_to(board, -1, challenge_grid2.get_global_position())
 	opponent_card.set_card_rotation(0)
+	#yield(opponent_card._tween, "tween_all_completed")
 	player_card.set_is_faceup(true)
+	#yield(player_card._tween, "tween_all_completed")
 	opponent_card.set_is_faceup(true)
+	#yield(opponent_card._tween, "tween_all_completed")
 	var p1_power = player_card.get_property("Power")
 	var p2_power = opponent_card.get_property("Power")
 	var awarded_tokens = abs(p1_power - p2_power)
@@ -120,9 +125,12 @@ func challenge(opponent_card):
 	player_card.set_in_p1_field(false)
 	opponent_card.set_in_p2_field(false)
 	
-	yield(get_tree().create_timer(2.0), "timeout")
+	yield(get_tree().create_timer(1.0), "timeout")
 	player_card.move_to(cfc.NMAP.discard)
+	#yield(player_card._tween, "tween_all_completed")
 	opponent_card.move_to(cfc.NMAP.discard)
+	#yield(opponent_card._tween, "tween_all_completed")
+	#yield(owner.get_tree().create_timer(1.0), "timeout")
 	check_turn_over()
 	
 func get_field():
@@ -145,7 +153,7 @@ func can_do_effect(name):
 			if get_timeline().get_available_slots().size() != 1 \
 			or not can_put_in_timeline():
 				return false
-		"Elisha HaNavi":  ## TODO: End game after this is played
+		"Elisha HaNavi":  ## TODO: Update to allow taking only one card
 			if cfc.NMAP.discard.get_card_count() < 2 or hand.get_card_count() > hand.hand_size - 2:
 				return false
 		"Yaakov Avinu":  ## Must be at least 1 card in the BM
@@ -155,7 +163,7 @@ func can_do_effect(name):
 		"Yehoshua": ## Must be at least 1 card in opponent BM
 			if opponent.get_field().count_filled_slots() == 0:
 				return false
-		"Shimshon": ## Won't work if you both have 0 tokens
+		"Shimshon":
 			if opponent.torah_tokens == 0 and torah_tokens == 0:
 				return false
 		"Shlomo HaMelech":
@@ -167,6 +175,7 @@ func can_do_effect(name):
 	
 func do_effect(name):
 	deduct_action()
+	check_turn_over()
 	match name:
 		"Avraham Avinu":
 			add_bonus_actions(3)
@@ -180,10 +189,11 @@ func do_effect(name):
 		"Yosef HaTzadik":
 			var cards_in_deck_amt = cfc.NMAP.deck.get_all_cards().size()
 			for i in range(min(3,cards_in_deck_amt)):
-				hand.draw_card()
-				yield(get_tree().create_timer(0.5), "timeout")
+				var drawn_card = hand.draw_card()
+				#yield(drawn_card._tween, "tween_all_completed")
+				yield(get_tree().create_timer(0.4), "timeout")
 		"Aharon":
-			opponent.aharon_effect_remaining = 3
+			opponent.aharon_effect_remaining = 2
 		"Moshe Rabbeinu":
 			moshe_effect_enabled = true
 		"Yehoshua":
@@ -203,7 +213,11 @@ func do_effect(name):
 			spend_tokens()
 		"Elisha HaNavi":
 			for i in range(2):
-				hand.draw_card(cfc.NMAP.discard)
+				var drawn_card = hand.draw_card(cfc.NMAP.discard)
+				yield(get_tree().create_timer(0.5), "timeout")
 		_:
 			print("ERROR: NO MATCHING NAME")
-	check_turn_over()
+	
+	
+func get_actions_remaining():
+	return actions_remaining

@@ -37,7 +37,7 @@ func _on_FieldButton_pressed() -> void:
 func _on_TimelineButton_pressed() -> void:
 	var era = p1.current_card.get_property("Era")
 	var slot = timeline.get_slot_from_era(era)
-	if p1.can_deduct_action():  # Do we need this condition?
+	if p1.can_deduct_action():  # TODO: Do we need this condition?
 		if p1.moshe_effect_enabled:
 			p1.moshe_effect_enabled = false
 		else:

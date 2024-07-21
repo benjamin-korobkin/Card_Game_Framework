@@ -172,7 +172,7 @@ const CARDS := {
 	},
 	"Aharon": {
 		"Type": "Tanach",
-		"Effect": "Your opponent loses 1 Action for 3 turns"
+		"Effect": "Your opponent loses 1 Action for 2 turns"
 	},
 	"Moshe Rabbeinu": {
 		"Type": "Tanach",

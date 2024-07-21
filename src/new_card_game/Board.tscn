@@ -63,21 +63,15 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TimelineGrid2" parent="FieldTimelineContainer" groups=["timeline"] instance=ExtResource( 7 )]
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="MarginContainer3" type="MarginContainer" parent="FieldTimelineContainer"]
-margin_top = 153.0
+margin_top = 76.0
 margin_right = 624.0
-margin_bottom = 153.0
+margin_bottom = 76.0
 
 [node name="FieldHBox2" type="HBoxContainer" parent="FieldTimelineContainer"]
-margin_top = 156.0
+margin_top = 79.0
 margin_right = 624.0
-margin_bottom = 306.0
+margin_bottom = 229.0
 grow_vertical = 2
 
 [node name="FieldMarginContainer2" type="MarginContainer" parent="FieldTimelineContainer/FieldHBox2"]
@@ -99,14 +93,22 @@ __meta__ = {
 }
 
 [node name="MarginContainer2" type="MarginContainer" parent="FieldTimelineContainer"]
-margin_top = 309.0
+margin_top = 232.0
 margin_right = 624.0
-margin_bottom = 309.0
+margin_bottom = 232.0
+
+[node name="TimelineGrid" parent="FieldTimelineContainer" groups=["timeline"] instance=ExtResource( 7 )]
+margin_top = 235.0
+margin_bottom = 385.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FieldHBox1" type="HBoxContainer" parent="FieldTimelineContainer"]
-margin_top = 312.0
+margin_top = 388.0
 margin_right = 624.0
-margin_bottom = 462.0
+margin_bottom = 538.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -129,17 +131,9 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="FieldTimelineContainer"]
-margin_top = 465.0
+margin_top = 541.0
 margin_right = 624.0
-margin_bottom = 465.0
-
-[node name="TimelineGrid1" parent="FieldTimelineContainer" groups=["timeline"] instance=ExtResource( 7 )]
-margin_top = 468.0
-margin_bottom = 618.0
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 541.0
 
 [node name="TurnQueue" type="Node2D" parent="."]
 script = ExtResource( 17 )
@@ -152,6 +146,7 @@ script = ExtResource( 17 )
 position = Vector2( 0, 475 )
 script = ExtResource( 4 )
 placement = 5
+pile_name = "Deck"
 
 [node name="VBoxContainer" parent="Deck/Control/CenterContainer" index="0"]
 margin_right = 68.0
@@ -206,6 +201,8 @@ margin_bottom = 75.0
 position = Vector2( 1124, 475 )
 script = ExtResource( 11 )
 placement = 4
+pile_name = "Olam Haba"
+faceup_cards = true
 
 [node name="Control" parent="Discard" index="0"]
 anchor_left = 1.0
@@ -215,22 +212,27 @@ anchor_bottom = 0.5
 custom_styles/panel = SubResource( 1 )
 
 [node name="VBoxContainer" parent="Discard/Control/CenterContainer" index="0"]
-margin_right = 68.0
-margin_bottom = 109.0
+margin_top = 33.0
+margin_right = 139.0
+margin_bottom = 125.0
 
 [node name="Label" parent="Discard/Control/CenterContainer/VBoxContainer" index="0"]
-margin_right = 68.0
+margin_right = 139.0
+margin_bottom = 60.0
+text = "Olam Haba
+"
 
 [node name="PanelContainer" parent="Discard/Control/CenterContainer/VBoxContainer" index="1"]
-margin_top = 32.0
-margin_right = 68.0
-margin_bottom = 61.0
+margin_top = 63.0
+margin_right = 139.0
+margin_bottom = 92.0
 
 [node name="CenterContainer" parent="Discard/Control/CenterContainer/VBoxContainer/PanelContainer" index="0"]
-margin_right = 68.0
+margin_right = 139.0
 
 [node name="CardCount" parent="Discard/Control/CenterContainer/VBoxContainer/PanelContainer/CenterContainer" index="0"]
-margin_right = 45.0
+margin_left = 58.0
+margin_right = 80.0
 
 [node name="View" parent="Discard/Control/ManipulationButtons" index="0"]
 margin_right = 26.0
@@ -271,7 +273,6 @@ z_index = 100
 excess_cards = 0
 
 [node name="Hand2" parent="." instance=ExtResource( 16 )]
-placement = 2
 index_shift_priority = 1
 show_manipulation_buttons = false
 excess_cards = 0
@@ -444,6 +445,7 @@ layer = 128
 
 [node name="GameOverPanel" parent="CanvasLayer" instance=ExtResource( 23 )]
 visible = false
+self_modulate = Color( 1, 1, 1, 0.588235 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
