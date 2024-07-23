@@ -190,13 +190,13 @@ const CARDS := {
 		"Type": "Tanach",
 		"Effect": "Take up to 3 Tokens from your opponent"
 	},
-	"Elisha HaNavi": {
-		"Type": "Tanach",
-		"Effect": "Draw top 2 cards from the discard pile"
-	},
 	"Eliyahu HaNavi": {
 		"Type": "Tanach",
 		"Effect": "Can fill the final timeline slot with this"
+	},
+	"Elisha HaNavi": {
+		"Type": "Tanach",
+		"Effect": "Draw top 2 cards from the discard pile"
 	},
 }
 

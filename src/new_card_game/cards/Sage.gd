@@ -71,10 +71,9 @@ func can_go_in_timeline(player) -> bool:
 		if get_parent() == player.hand or \
 			slot.occupying_card.get_card_owner() == get_card_owner():
 			return false
-		elif player.get_field().count_available_slots() == 0:
+		if player.get_field().count_available_slots() == 0:
 			return true
-		else:  # Don't have a beit din
-			return false
+		return false # Don't have a beit din
 	if get_parent() == player.hand:  # make sure card is coming from hand
 		return true
-	return false  # open slot, but card in BM
+	return false  # open slot, but card from BM, not hand

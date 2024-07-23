@@ -213,10 +213,10 @@ func do_effect(name):
 			spend_tokens()
 		"Elisha HaNavi":
 			for i in range(2):
-				var drawn_card = hand.draw_card(cfc.NMAP.discard)
+				hand.draw_card(cfc.NMAP.discard)
 				yield(get_tree().create_timer(0.5), "timeout")
 		_:
-			print("ERROR: NO MATCHING NAME")
+			printerr("NO MATCHING NAME FOR TANACH CARD")
 	
 	
 func get_actions_remaining():

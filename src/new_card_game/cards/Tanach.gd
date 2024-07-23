@@ -6,7 +6,7 @@ extends Card
 func _on_Card_gui_input(event) -> void:
 	var board = cfc.NMAP.board
 	var player1 = board.get_node("TurnQueue/Player1")
-	if event is InputEventMouseButton and cfc.NMAP.has("board") \
+	if event.is_pressed() and cfc.NMAP.has("board") \
 		and not player1.turn_over:
 			if player1.get_is_discarding() and get_parent() == board.get_node("hand1"):
 				move_to(cfc.NMAP.discard)
@@ -18,7 +18,7 @@ func _on_Card_gui_input(event) -> void:
 				if name == "Eliyahu HaNavi":
 					eliyahu_hanavi_effect(player1)
 				else:
-					#yield(get_tree().create_timer(0.7), "timeout")  # Avraham? bug
+					yield(get_tree().create_timer(1.5), "timeout")
 					move_to(cfc.NMAP.discard)
 					yield(self._tween, "tween_all_completed")
 			else:
@@ -27,13 +27,14 @@ func _on_Card_gui_input(event) -> void:
 ## Used for p2 for now. Can update later for p1 as well.
 func play_card(player):
 	# TODO: Show card for 2.5 seconds, then discard.
-	player.do_effect(name)
+	set_is_faceup(true)
 	if name == "Eliyahu HaNavi":
 		eliyahu_hanavi_effect(player)
 	else:
-		#yield(get_tree().create_timer(0.7), "timeout")  # Avraham? bug
+		player.do_effect(name) # discard card after affect done
+		yield(get_tree().create_timer(1.5), "timeout")
 		move_to(cfc.NMAP.discard)
-		yield(self._tween, "tween_all_completed")
+		#yield(self._tween, "tween_all_completed")
 	player.check_turn_over()
 
 func eliyahu_hanavi_effect(player):
