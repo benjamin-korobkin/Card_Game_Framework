@@ -7,8 +7,8 @@ var field_button : Button
 var timeline_button : Button
 var challenge_button : Button
 # No easy way to get grid as parent, so using attributes instead.
-var in_p1_field: bool = false setget set_in_p1_field
-var in_p2_field: bool = false setget set_in_p2_field
+var in_p1_field: bool = false setget set_in_p1_field,get_in_p1_field
+var in_p2_field: bool = false setget set_in_p2_field,get_in_p1_field
 
 ## TODO: Refactor this later, update the control flow
 func _on_Card_gui_input(event) -> void:
@@ -18,7 +18,7 @@ func _on_Card_gui_input(event) -> void:
 	if event is InputEventMouseButton and cfc.NMAP.has("board") and not player1.turn_over:
 		var hand1 = board.get_node("Hand1")
 
-		if player1.get_is_challenging() and in_p2_field:
+		if player1.get_is_challenging() and get_in_p2_field():
 			player1.challenge(self)
 			player1.set_is_challenging(false)
 		elif player1.get_is_discarding() and get_parent() == hand1:
@@ -58,9 +58,16 @@ func _on_Card_gui_input(event) -> void:
 			
 func set_in_p1_field(value):
 	in_p1_field = value
+	
+func get_in_p1_field():
+	return in_p1_field
 
 func set_in_p2_field(value):
 	in_p2_field = value
+
+func get_in_p2_field():
+	return in_p2_field
+
 	
 func can_go_in_timeline(player) -> bool:
 	var era = get_property("Era")

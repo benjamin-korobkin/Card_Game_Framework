@@ -1,11 +1,12 @@
 class_name Player
 extends Node2D
 
+signal action_completed
+
 const ACTIONS_AT_START := 2
 const TIMELINE_COST := 5
 
 onready var board = get_parent().get_parent()
-
  
 #var stats: Dictionary
 var current_card : Card
@@ -52,10 +53,10 @@ func draw_card():
 			var rand_card = randi() % hand.hand_size
 			hand.get_card(rand_card).move_to(cfc.NMAP.discard)
 			yield(hand.get_card(rand_card)._tween, "tween_all_completed")
-			#yield(get_tree().create_timer(1.0), "timeout")
 		deduct_action()
 		hand.draw_card()
 		check_turn_over()
+		emit_signal("action_completed")
 	else:
 		print("INFO: " + player_name + " TRYING TO DRAW CARD WITH NO ACTIONS AVAILABLE")
 
@@ -106,15 +107,14 @@ func challenge(opponent_card):
 	## Move both cards to field margin containers
 	var challenge_grid1 = board.get_node("FieldTimelineContainer/FieldHBox1/FieldMarginContainer1")
 	var challenge_grid2 = board.get_node("FieldTimelineContainer/FieldHBox2/FieldMarginContainer2")
+	
 	player_card.move_to(board, -1, challenge_grid1.get_global_position())
-	#yield(player_card._tween, "tween_all_completed")
 	opponent_card.move_to(board, -1, challenge_grid2.get_global_position())
 	opponent_card.set_card_rotation(0)
-	#yield(opponent_card._tween, "tween_all_completed")
+
 	player_card.set_is_faceup(true)
-	#yield(player_card._tween, "tween_all_completed")
 	opponent_card.set_is_faceup(true)
-	#yield(opponent_card._tween, "tween_all_completed")
+
 	var p1_power = player_card.get_property("Power")
 	var p2_power = opponent_card.get_property("Power")
 	var awarded_tokens = abs(p1_power - p2_power)
@@ -122,16 +122,17 @@ func challenge(opponent_card):
 		add_tokens(awarded_tokens)
 	else:
 		opponent.add_tokens(awarded_tokens)
+	
+	yield(get_tree().create_timer(1.25), "timeout")
+	player_card.move_to(cfc.NMAP.discard)
+	opponent_card.move_to(cfc.NMAP.discard)
+	yield(player_card._tween, "tween_all_completed")
+	yield(opponent_card._tween, "tween_all_completed")
 	player_card.set_in_p1_field(false)
 	opponent_card.set_in_p2_field(false)
-	
-	yield(get_tree().create_timer(1.0), "timeout")
-	player_card.move_to(cfc.NMAP.discard)
-	#yield(player_card._tween, "tween_all_completed")
-	opponent_card.move_to(cfc.NMAP.discard)
-	#yield(opponent_card._tween, "tween_all_completed")
-	#yield(owner.get_tree().create_timer(1.0), "timeout")
 	check_turn_over()
+	if player_name == "Player2":
+		emit_signal("action_completed")
 	
 func get_field():
 	return field
@@ -174,8 +175,6 @@ func can_do_effect(name):
 	return true
 	
 func do_effect(name):
-	deduct_action()
-	check_turn_over()
 	match name:
 		"Avraham Avinu":
 			add_bonus_actions(3)
@@ -217,7 +216,8 @@ func do_effect(name):
 				yield(get_tree().create_timer(0.5), "timeout")
 		_:
 			printerr("NO MATCHING NAME FOR TANACH CARD")
-	
+	deduct_action()
+	check_turn_over()
 	
 func get_actions_remaining():
 	return actions_remaining

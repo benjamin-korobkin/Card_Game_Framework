@@ -37,3 +37,6 @@ func get_is_discarding():
 
 func set_is_discarding(value):
 	is_discarding = value
+	
+func _on_Player1_action_completed() -> void:
+	pass # To avoid null function call

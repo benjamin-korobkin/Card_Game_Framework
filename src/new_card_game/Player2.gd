@@ -5,6 +5,8 @@ extends Player
 #	TANACH
 #}
 
+var ready_for_next_action : bool = true
+
 export var test_mode : bool = false
 
 func _ready() -> void:
@@ -13,17 +15,21 @@ func _ready() -> void:
 	field = board.get_node("FieldTimelineContainer/FieldHBox2/FieldGrid2")
 	opponent = get_parent().get_node("Player1")
 	player_name = get_name()
+
+func action_complete():
+	ready_for_next_action = true
 	
 func play_turn():
 	.play_turn()
 	yield(get_tree().create_timer(1.0), "timeout")
 	while not turn_over:
-		if opponent.actions_remaining <= 0:
+		if opponent.actions_remaining <= 0 and ready_for_next_action:
 			action()
-		## TODO: test
+
 		yield(get_tree().create_timer(1.5), "timeout")
 		
 func action():  ## Optimize. create method(s) for getting card type
+	ready_for_next_action = false
 	if hand.get_card_count() == 0:
 		draw_card()
 		return
@@ -41,7 +47,8 @@ func action():  ## Optimize. create method(s) for getting card type
 				card.play_card(self)
 				return
 			if card.get_property("Type") == "Sage":
-				if put_in_timeline(card):
+				if card.can_go_in_timeline(self): 
+					put_in_timeline(card)
 					return
 		draw_card()
 		return
@@ -76,9 +83,11 @@ func action():  ## Optimize. create method(s) for getting card type
 	draw_card()
 				
 
-func put_in_timeline(card) -> bool:
+func put_in_timeline(card):
 	var era = card.get_property("Era")
 	var slot = timeline.get_slot_from_era(era)
+	## TODO: Return false if opponent's own card
+	
 	if moshe_effect_enabled:
 		moshe_effect_enabled = false
 	else:
@@ -96,15 +105,21 @@ func put_in_timeline(card) -> bool:
 	cards_in_timeline += 1
 	update_counter(actions_str, actions_remaining)
 	check_turn_over()
-	return true
+	action_completed()
+	
 
 func put_in_field(card):
 	card.move_to(board, -1, field.find_available_slot())
 	card.set_is_faceup(true)  # TODO - test true
 	yield(card._tween, "tween_all_completed")
 	card.set_in_p2_field(true)
-	#add_tokens(1) # No longer gain tokens when put in BM
 	deduct_action()
 	update_counter(actions_str, actions_remaining)
 	check_turn_over()
+	action_completed()
 
+func _on_Player2_action_completed() -> void:
+	action_completed()
+	
+func action_completed():
+	ready_for_next_action = true

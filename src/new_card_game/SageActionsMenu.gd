@@ -49,6 +49,8 @@ func _on_TimelineButton_pressed() -> void:
 			# TODO: TEST
 			yield(owner.get_tree().create_timer(0.75), "timeout")
 		p1.current_card.move_to(board, -1, slot)
+		# for when moving from BM to TT
+		p1.current_card.set_in_p1_field(false)
 		p1.current_card.set_is_faceup(true)
 		p1.cards_in_timeline += 1
 		hide()

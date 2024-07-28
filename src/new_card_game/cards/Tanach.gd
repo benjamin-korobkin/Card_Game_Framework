@@ -18,7 +18,7 @@ func _on_Card_gui_input(event) -> void:
 				if name == "Eliyahu HaNavi":
 					eliyahu_hanavi_effect(player1)
 				else:
-					yield(get_tree().create_timer(1.5), "timeout")
+					#yield(get_tree().create_timer(1.5), "timeout")
 					move_to(cfc.NMAP.discard)
 					yield(self._tween, "tween_all_completed")
 			else:
@@ -36,6 +36,7 @@ func play_card(player):
 		move_to(cfc.NMAP.discard)
 		#yield(self._tween, "tween_all_completed")
 	player.check_turn_over()
+	player.emit_signal("action_completed")
 
 func eliyahu_hanavi_effect(player):
 	player.cards_in_timeline += 1
