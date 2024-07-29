@@ -18,7 +18,8 @@ func _on_Card_gui_input(event) -> void:
 				if name == "Eliyahu HaNavi":
 					eliyahu_hanavi_effect(player1)
 				else:
-					#yield(get_tree().create_timer(1.5), "timeout")
+					move_to(cfc.NMAP.temppile)
+					yield(get_tree().create_timer(1.5), "timeout")
 					move_to(cfc.NMAP.discard)
 					yield(self._tween, "tween_all_completed")
 			else:
@@ -26,11 +27,11 @@ func _on_Card_gui_input(event) -> void:
 
 ## Used for p2 for now. Can update later for p1 as well.
 func play_card(player):
-	# TODO: Show card for 2.5 seconds, then discard.
 	set_is_faceup(true)
 	if name == "Eliyahu HaNavi":
 		eliyahu_hanavi_effect(player)
 	else:
+		move_to(cfc.NMAP.temppile)
 		player.do_effect(name) # discard card after affect done
 		yield(get_tree().create_timer(1.5), "timeout")
 		move_to(cfc.NMAP.discard)

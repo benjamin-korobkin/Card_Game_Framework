@@ -67,7 +67,6 @@ func _process(_delta) -> void:
 	pass
 
 
-
 # Populates the popup view window with all the cards in the deck
 # then displays it
 func _on_View_Button_pressed() -> void:

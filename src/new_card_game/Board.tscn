@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/new_card_game/SageActionsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/core/Pile.tscn" type="PackedScene" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://src/core/CardViewer/DeckBuilder/DBDeckSummaries.tscn" type="PackedScene" id=21]
 [ext_resource path="res://src/new_card_game/DiscardPanel.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/new_card_game/GameOverPanel.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/new_card_game/TempPile.gd" type="Script" id=24]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -146,6 +147,7 @@ script = ExtResource( 17 )
 position = Vector2( 0, 475 )
 script = ExtResource( 4 )
 placement = 5
+show_manipulation_buttons = false
 pile_name = "Deck"
 
 [node name="VBoxContainer" parent="Deck/Control/CenterContainer" index="0"]
@@ -201,6 +203,7 @@ margin_bottom = 75.0
 position = Vector2( 1124, 475 )
 script = ExtResource( 11 )
 placement = 4
+show_manipulation_buttons = false
 pile_name = "Olam Haba"
 faceup_cards = true
 
@@ -268,8 +271,90 @@ margin_bottom = 49.0
 margin_top = 52.0
 margin_bottom = 75.0
 
+[node name="TempPile" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1124, 475 )
+z_index = 10
+script = ExtResource( 24 )
+placement = 4
+overlap_shift_direction = 2
+show_manipulation_buttons = false
+pile_name = "TempPile"
+faceup_cards = true
+
+[node name="Control" parent="TempPile" index="0"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" parent="TempPile/Control/CenterContainer" index="0"]
+margin_top = 79.0
+margin_right = 0.0
+margin_bottom = 79.0
+
+[node name="Label" parent="TempPile/Control/CenterContainer/VBoxContainer" index="0"]
+visible = false
+margin_right = 139.0
+margin_bottom = 60.0
+text = "Olam Haba
+"
+
+[node name="PanelContainer" parent="TempPile/Control/CenterContainer/VBoxContainer" index="1"]
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="CenterContainer" parent="TempPile/Control/CenterContainer/VBoxContainer/PanelContainer" index="0"]
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="CardCount" parent="TempPile/Control/CenterContainer/VBoxContainer/PanelContainer/CenterContainer" index="0"]
+visible = false
+margin_left = -11.0
+margin_top = -15.0
+margin_right = 11.0
+margin_bottom = 14.0
+
+[node name="View" parent="TempPile/Control/ManipulationButtons" index="0"]
+margin_right = 26.0
+margin_bottom = 27.0
+
+[node name="ViewSorted" parent="TempPile/Control/ManipulationButtons" index="1"]
+margin_top = 30.0
+margin_right = 26.0
+margin_bottom = 57.0
+
+[node name="Shuffle" parent="TempPile/Control/ManipulationButtons" index="2"]
+margin_top = 60.0
+margin_right = 26.0
+margin_bottom = 87.0
+
+[node name="CardView" parent="TempPile/ViewPopup" index="0"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 6.0
+margin_bottom = 6.0
+
+[node name="Debug" parent="TempPile" index="4"]
+visible = false
+
+[node name="Position" parent="TempPile/Debug" index="0"]
+margin_bottom = 23.0
+
+[node name="AreaPos" parent="TempPile/Debug" index="1"]
+margin_top = 26.0
+margin_bottom = 49.0
+
+[node name="Size" parent="TempPile/Debug" index="2"]
+margin_top = 52.0
+margin_bottom = 75.0
+
 [node name="Hand1" parent="." instance=ExtResource( 15 )]
 z_index = 100
+show_manipulation_buttons = false
 excess_cards = 0
 
 [node name="Hand2" parent="." instance=ExtResource( 16 )]
@@ -472,3 +557,4 @@ margin_bottom = 75.0
 
 [editable path="Deck"]
 [editable path="Discard"]
+[editable path="TempPile"]
