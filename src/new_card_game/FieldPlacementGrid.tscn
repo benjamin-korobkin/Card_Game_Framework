@@ -13,20 +13,21 @@ margin_top = -77.0
 margin_right = 187.0
 margin_bottom = 77.0
 grow_horizontal = 2
+grow_vertical = 0
 
 [node name="GridContainer" parent="." index="0"]
 margin_right = 372.0
-
-[node name="BoardPlacementSlot" parent="GridContainer" index="0"]
-rect_min_size = Vector2( 120, 0 )
+rect_min_size = Vector2( 0, 150 )
 
 [node name="BoardPlacementSlot2" parent="GridContainer" index="1" instance=ExtResource( 2 )]
 margin_left = 125.0
 margin_right = 245.0
+rect_min_size = Vector2( 120, 150 )
 
 [node name="BoardPlacementSlot3" parent="GridContainer" index="2" instance=ExtResource( 2 )]
 margin_left = 250.0
 margin_right = 370.0
+rect_min_size = Vector2( 120, 150 )
 
 [node name="Control" parent="." index="1"]
 margin_right = 372.0

@@ -25,8 +25,9 @@ func play_turn():
 	while not turn_over:
 		if opponent.actions_remaining <= 0 and ready_for_next_action:
 			action()
-
-		yield(get_tree().create_timer(1.5), "timeout")
+		yield(get_tree().create_timer(2.0), "timeout")
+	for card in hand.get_all_cards():
+		card.set_is_faceup(false)
 		
 func action():  ## Optimize. create method(s) for getting card type
 	ready_for_next_action = false
@@ -41,17 +42,23 @@ func action():  ## Optimize. create method(s) for getting card type
 			if card.can_go_in_timeline(self):
 				put_in_timeline(card)
 				return
-
-		for card in current_hand:
-			if card.get_name() == "Eliyahu HaNavi" and can_do_effect(card.get_name()):
-				card.play_card(self)
-				return
-			if card.get_property("Type") == "Sage":
-				if card.can_go_in_timeline(self): 
-					put_in_timeline(card)
+		# Don't put in a card if it means you'll likely lose
+		if opponent.cards_in_timeline <= 2: 
+			for card in current_hand:
+				if card.get_name() == "Eliyahu HaNavi" and can_do_effect(card.get_name()):
+					card.play_card(self)
 					return
-		draw_card()
-		return
+				if card.get_property("Type") == "Sage":
+					if card.can_go_in_timeline(self): 
+						put_in_timeline(card)
+						return
+			draw_card()
+			return
+		else:  # Challenge using card in BM, this will aid in getting a relevant card in BM later
+			# TODO: Grab P1 cards in timeline and calculate which card to put in BM
+			if _challenge(field):
+				return
+			
 	else:
 		var tanach_card = null
 		if field.count_available_slots() > 0:
@@ -64,6 +71,9 @@ func action():  ## Optimize. create method(s) for getting card type
 					return
 			if tanach_card:
 				tanach_card.play_card(self)
+				if tanach_card.get_property("Name") == "Elisha HaNavi":
+					for card in hand.get_all_cards():
+						card.set_is_faceup(false)
 				return
 		else: ## If we reach this code, it means the BM is full
 			for card in current_hand:  ## Play Tanach card if we have
@@ -71,18 +81,22 @@ func action():  ## Optimize. create method(s) for getting card type
 					if can_do_effect(card.get_name()):
 						card.play_card(self)
 						return
-			var p1_field_cards = opponent.get_field().get_occupying_cards()
-			if not p1_field_cards.empty(): ## Challenge
-				var card_to_chlng = p1_field_cards[randi() % p1_field_cards.size()]
-				for card in hand.get_all_cards():
-					if card.get_property("Type") == "Sage":
-						current_card = card
-						challenge(card_to_chlng)
-						return
+			if _challenge(hand):
+				return
 	# If no other options can be performed, draw a card
 	draw_card()
 				
-
+func _challenge(card_source : Node):
+	var p1_field_cards = opponent.get_field().get_occupying_cards()
+	if not p1_field_cards.empty(): ## Challenge
+		var card_to_chlng = p1_field_cards[randi() % p1_field_cards.size()]
+		for card in card_source.get_all_cards():
+			if card.get_property("Type") == "Sage":
+				current_card = card
+				challenge(card_to_chlng)
+				return true
+	return false
+	
 func put_in_timeline(card):
 	var era = card.get_property("Era")
 	var slot = timeline.get_slot_from_era(era)
@@ -102,6 +116,7 @@ func put_in_timeline(card):
 	card.move_to(board, -1, slot)
 	card.set_is_faceup(true)
 	yield(card._tween, "tween_all_completed")
+	card.global_position.y += 7  # TEST
 	cards_in_timeline += 1
 	update_counter(actions_str, actions_remaining)
 	check_turn_over()
@@ -110,8 +125,9 @@ func put_in_timeline(card):
 
 func put_in_field(card):
 	card.move_to(board, -1, field.find_available_slot())
-	card.set_is_faceup(true)  # TODO - test true
+	card.set_is_faceup(false)
 	yield(card._tween, "tween_all_completed")
+	card.global_position.y += 10  # TEST
 	card.set_in_p2_field(true)
 	deduct_action()
 	update_counter(actions_str, actions_remaining)

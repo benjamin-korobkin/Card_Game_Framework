@@ -91,7 +91,7 @@ func load_cards() -> void:
 	for c in card_options:
 		card_array.append(cfc.instance_card(c))
 	## Randomize card_array
-#	card_array.shuffle()  # TODO: Uncomment
+	card_array.shuffle()  # TODO: Uncomment
 	for card in card_array:
 		cfc.NMAP.deck.add_child(card)
 		card._determine_idle_state()

@@ -27,10 +27,9 @@ position = Vector2( 75, 120 )
 shape = SubResource( 1 )
 
 [node name="Control" type="Control" parent="."]
-rect_min_size = Vector2( 150, 240 )
+rect_min_size = Vector2( 150, 170 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
+"_edit_group_": true
 }
 
 [node name="Highlight" parent="Control" instance=ExtResource( 6 )]

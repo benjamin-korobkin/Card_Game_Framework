@@ -13,9 +13,6 @@ bbcode_enabled = true
 fit_content_height = true
 scroll_active = false
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PreviewPopup" parent="." instance=ExtResource( 1 )]
 

@@ -166,10 +166,6 @@ const CARDS := {
 		"Type": "Tanach",
 		"Effect": "Gain 1 token for each Sage in the BM"
 	},
-	"Yosef HaTzadik": {
-		"Type": "Tanach",
-		"Effect": "Draw (up to) 3 cards"
-	},
 	"Aharon": {
 		"Type": "Tanach",
 		"Effect": "Your opponent loses 1 Action for 2 turns"
@@ -196,7 +192,11 @@ const CARDS := {
 	},
 	"Elisha HaNavi": {
 		"Type": "Tanach",
-		"Effect": "Draw top 2 cards from the discard pile"
+		"Effect": "Draw top card from the discard pile"
+	},
+	"Yosef HaTzadik": {
+		"Type": "Tanach",
+		"Effect": "Draw 3 cards"
 	},
 }
 

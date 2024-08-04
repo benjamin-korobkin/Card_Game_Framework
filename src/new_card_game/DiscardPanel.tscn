@@ -29,7 +29,7 @@ margin_right = 171.0
 margin_bottom = -16.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Your hand is full. Choose a card to discard."
+text = "You have too many cards. Choose a card to discard."
 align = 1
 valign = 1
 

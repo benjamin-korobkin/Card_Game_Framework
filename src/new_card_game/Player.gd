@@ -53,10 +53,12 @@ func draw_card():
 			var rand_card = randi() % hand.hand_size
 			hand.get_card(rand_card).move_to(cfc.NMAP.discard)
 			yield(hand.get_card(rand_card)._tween, "tween_all_completed")
-		deduct_action()
-		hand.draw_card()
-		check_turn_over()
-		emit_signal("action_completed")
+			draw_card()
+		else:
+			deduct_action()
+			hand.draw_card()
+			check_turn_over()
+			emit_signal("action_completed")
 	else:
 		print("INFO: " + player_name + " TRYING TO DRAW CARD WITH NO ACTIONS AVAILABLE")
 
@@ -154,8 +156,8 @@ func can_do_effect(name):
 			if get_timeline().get_available_slots().size() != 1 \
 			or not can_put_in_timeline():
 				return false
-		"Elisha HaNavi":  ## TODO: Update to allow taking only one card
-			if cfc.NMAP.discard.get_card_count() < 2 or hand.get_card_count() > hand.hand_size - 2:
+		"Elisha HaNavi": 
+			if cfc.NMAP.discard.get_card_count() < 1:
 				return false
 		"Yaakov Avinu":  ## Must be at least 1 card in the BM
 			if get_field().count_filled_slots() == 0 and \
@@ -170,6 +172,10 @@ func can_do_effect(name):
 		"Shlomo HaMelech":
 			if opponent.torah_tokens == 0:
 				return false
+		## TODO
+		#"Yosef HaTzadik":
+			#if hand.get_card_count() > cards_to_draw and player_name=="Player1":
+		#		pass # TODO: Show discard popup
 		_:
 			return true
 	return true
@@ -187,9 +193,9 @@ func do_effect(name):
 			add_tokens(amt)
 		"Yosef HaTzadik":
 			var cards_in_deck_amt = cfc.NMAP.deck.get_all_cards().size()
-			for i in range(min(3,cards_in_deck_amt)):
+			var cards_to_draw = min(3,cards_in_deck_amt)
+			for i in range(cards_to_draw):
 				var drawn_card = hand.draw_card()
-				#yield(drawn_card._tween, "tween_all_completed")
 				yield(get_tree().create_timer(0.4), "timeout")
 		"Aharon":
 			opponent.aharon_effect_remaining = 2
@@ -211,9 +217,9 @@ func do_effect(name):
 			# Implemented in Tanach.gd because requires ref to card itself
 			spend_tokens()
 		"Elisha HaNavi":
-			for i in range(2):
-				hand.draw_card(cfc.NMAP.discard)
-				yield(get_tree().create_timer(0.5), "timeout")
+			yield(get_tree().create_timer(0.5), "timeout")
+			hand.draw_card(cfc.NMAP.discard)
+
 		_:
 			printerr("NO MATCHING NAME FOR TANACH CARD")
 	deduct_action()

@@ -6,9 +6,10 @@ extends Card
 func _on_Card_gui_input(event) -> void:
 	var board = cfc.NMAP.board
 	var player1 = board.get_node("TurnQueue/Player1")
+	
 	if event.is_pressed() and cfc.NMAP.has("board") \
-		and not player1.turn_over:
-			if player1.get_is_discarding() and get_parent() == board.get_node("hand1"):
+		and not player1.turn_over and get_parent() == board.get_node("Hand1") :
+			if player1.get_is_discarding():
 				move_to(cfc.NMAP.discard)
 				yield(self._tween, "tween_all_completed")
 				player1.set_is_discarding(false)
@@ -35,7 +36,7 @@ func play_card(player):
 		player.do_effect(name) # discard card after affect done
 		yield(get_tree().create_timer(1.5), "timeout")
 		move_to(cfc.NMAP.discard)
-		#yield(self._tween, "tween_all_completed")
+		yield(self._tween, "tween_all_completed")
 	player.check_turn_over()
 	player.emit_signal("action_completed")
 
