@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://themes/darktheme/darktheme.theme" type="Theme" id=1]
 [ext_resource path="res://themes/darktheme/fonts/Bangers/Bangers-Regular.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://src/custom/CGFDeckbuilder/CGFCardLibrary.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/core/CardViewer/DeckBuilder/DBDeckCardObject.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/core/CardViewer/DeckBuilder/DBDeckSummaries.tscn" type="PackedScene" id=7]
+[ext_resource path="res://fonts/comfortaa/Comfortaa-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://src/custom/DetailsFont.tres" type="DynamicFont" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
@@ -14,6 +16,11 @@ bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 [sub_resource type="DynamicFont" id=2]
 size = 107
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+use_filter = true
+font_data = ExtResource( 8 )
 
 [node name="Menu" type="Panel"]
 anchor_right = 1.0
@@ -84,13 +91,16 @@ size_flags_vertical = 0
 [node name="HowTo" type="Label" parent="MainMenu/VBox"]
 margin_top = 121.0
 margin_right = 1048.0
-margin_bottom = 519.0
+margin_bottom = 533.0
+custom_fonts/font = SubResource( 3 )
 text = "
 GOAL:  Have the most cards in the TIMELINE grid once it's full.
 Each card costs 5 TORAH TOKENS to put in the TIMELINE
 
 To earn Torah Tokens, put Sages in your BEIT MIDRASH (BM).
 You will earn 1 token for each Sage in the Beit Midrash at the start of your turns.
+If your Beit Midrash is full, and you have 5 tokens, 
+you can replace a card in the Timeline with a card from your Beit Midrash.
 
 CHALLENGE your opponent's cards in the BM to remove them. 
 - The Sage from the earlier era gains tokens.
@@ -103,16 +113,16 @@ You get 2 actions per turn.
 More details on the game's page."
 
 [node name="Center" type="CenterContainer" parent="MainMenu/VBox"]
-margin_top = 522.0
+margin_top = 536.0
 margin_right = 1048.0
 margin_bottom = 776.0
 size_flags_vertical = 3
 
 [node name="VButtons" type="VBoxContainer" parent="MainMenu/VBox/Center"]
 margin_left = 399.0
-margin_top = 22.0
+margin_top = 15.0
 margin_right = 649.0
-margin_bottom = 232.0
+margin_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 222, 175 )
@@ -124,6 +134,7 @@ margin_right = 250.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 250, 100 )
 size_flags_vertical = 3
+custom_fonts/font = ExtResource( 9 )
 text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -135,6 +146,7 @@ margin_right = 250.0
 margin_bottom = 210.0
 rect_min_size = Vector2( 250, 100 )
 size_flags_vertical = 3
+custom_fonts/font = ExtResource( 9 )
 text = "Exit"
 
 [node name="MenuTween" type="Tween" parent="."]

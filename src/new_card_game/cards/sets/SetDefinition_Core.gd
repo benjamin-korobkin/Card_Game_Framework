@@ -3,156 +3,217 @@ extends Reference
 const SET = "Core Set"
 const CARDS := {
 	### SAGE CARDS ###
-	"Yochanan ben Zakkai": {
+	"Yehoshua ben Prachya": {
 		"Type": "Sage",
 		"Power": 5,
 		"Era": "Tanna",
+		"Teaching": "Appoint for you a teacher, acquire a friend, and judge favorably"
 	},
-	"Rav Yehudah": {
+	"Nittai HaArbaily": {
+		"Type": "Sage",
+		"Power": 5,
+		"Era": "Tanna",
+		"Teaching": "Distance yourself from evildoers. Don't befriend the wicked"
+	},
+	"Yehuda ben Tabbai": {
+		"Type": "Sage",
+		"Power": 5,
+		"Era": "Tanna",
+		"Teaching": "When judging, view all as guilty. View them as innocent after"
+	},
+	"Shimon ben Shetach": {
+		"Type": "Sage",
+		"Power": 5,
+		"Era": "Tanna",
+		"Teaching": "Be smart interrogating witnesses, so they don't learn how to lie"
+	},
+	"Hillel": {
+		"Type": "Sage",
+		"Power": 5,
+		"Era": "Tanna",
+		"Teaching": "Be disciples of Aharon, loving and pursuing peace"
+	},
+	"Shammai": {
+		"Type": "Sage",
+		"Power": 5,
+		"Era": "Tanna",
+		"Teaching": "Set times for Torah, Say little and do much, and greet all with a smile"
+	},
+	"Rabban Shimon ben Gamliel": {
+		"Type": "Sage",
+		"Power": 5,
+		"Era": "Tanna",
+		"Teaching": "The world stands on 3 things: Justice, Truth, and Peace"
+	},
+	"R Nacḥman bar Yitzchak": {
 		"Type": "Sage",
 		"Power": 4,
 		"Era": "Amora",
+		"Teaching": "Prayer is only heard if it's with an upright body"
+	},
+	"R Abbahu": {
+		"Type": "Sage",
+		"Power": 4,
+		"Era": "Amora",
+		"Teaching": "Greater is one who answers 'Amen' than one who says the bracha"
+	},
+	"R Yehudah bar Yechezkel": {
+		"Type": "Sage",
+		"Power": 4,
+		"Era": "Amora",
+		"Teaching": "Bless G-d for the bad just as you bless Him for the good"
+	},
+	"R Alexandri": {
+		"Type": "Sage",
+		"Power": 4,
+		"Era": "Amora",
+		"Teaching": "One who prays must direct his eyes downward and heart upward"
+	},
+	"R Ashi": {
+		"Type": "Sage",
+		"Power": 4,
+		"Era": "Amora",
+		"Teaching": "Be more wary of wrongdoing against a person than against G-d"
+	},
+	"Reish Lakish": {
+		"Type": "Sage",
+		"Power": 4,
+		"Era": "Amora",
+		"Teaching": "Great is teshuva, for it transforms intended sins into merits"
+	},
+	"R Yochanan bar Nappacha": {
+		"Type": "Sage",
+		"Power": 4,
+		"Era": "Amora",
+		"Teaching": "One who rejoices while suffering brings salvation to the world"
 	},
 	"Rav Saadia": {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
-	},
-	"Rashi": {
-		"Type": "Sage",
-		"Power": 2,
-		"Era": "Rishon",
-	},
-	"Maharal": {
-		"Type": "Sage",
-		"Power": 1,
-		"Era": "Acharon",
-	},
-	"Rebbi Eliezer": {
-		"Type": "Sage",
-		"Power": 5,
-		"Era": "Tanna",
-	},
-	"Rav": {
-		"Type": "Sage",
-		"Power": 4,
-		"Era": "Amora",
+		"Teaching": "Our nation is a nation only because of the Torah"
 	},
 	"Rav Hai": {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
+		"Teaching": "The true test of knowledge is action"
 	},
-	"Rambam": {
-		"Type": "Sage",
-		"Power": 2,
-		"Era": "Rishon",
-	},
-	"Vilna Gaon": {
-		"Type": "Sage",
-		"Power": 1,
-		"Era": "Acharon",
-	},
-		"Rebbi Akiva": {
-		"Type": "Sage",
-		"Power": 5,
-		"Era": "Tanna",
-	},
-	"Shmuel": {
-		"Type": "Sage",
-		"Power": 4,
-		"Era": "Amora",
-	},
-	"Rav Mari b Rav Dimi": {
+	"Rav Sherira": {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
+		"Teaching": "The Torah is broad and deep. No one can claim mastery over it"
 	},
-	"Ramban": {
-		"Type": "Sage",
-		"Power": 2,
-		"Era": "Rishon",
-	},
-	"Sforno": {
-		"Type": "Sage",
-		"Power": 1,
-		"Era": "Acharon",
-	},
-	"Rebbi Yishmael": {
-		"Type": "Sage",
-		"Power": 5,
-		"Era": "Tanna",
-	},
-	"Rav Huna": {
-		"Type": "Sage",
-		"Power": 4,
-		"Era": "Amora",
-	},
-	"Rav Ra'ava": {
+	"Rav Natronai": {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
+		"Teaching": "It is forbidden to rely on miracles"
 	},
-	"R Yehuda HaLevi": {
-		"Type": "Sage",
-		"Power": 2,
-		"Era": "Rishon",
-	},
-	"Rema": {
-		"Type": "Sage",
-		"Power": 1,
-		"Era": "Acharon",
-	},
-	"Rebbi Meir": {
-		"Type": "Sage",
-		"Power": 5,
-		"Era": "Tanna",
-	},
-	"Rava": {
-		"Type": "Sage",
-		"Power": 4,
-		"Era": "Amora",
-	},
-	"Rav Bustenai": {
+	"Rav Amram": {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
+		"Teaching": "The essence of prayer is the heart's intent"
 	},
-	"Ibn Ezra": {
-		"Type": "Sage",
-		"Power": 2,
-		"Era": "Rishon",
-	},
-	"Arizal": {
-		"Type": "Sage",
-		"Power": 1,
-		"Era": "Acharon",
-	},
-	"Rebbi Yehuda": {
-		"Type": "Sage",
-		"Power": 5,
-		"Era": "Tanna",
-	},
-	"Abaye": {
-		"Type": "Sage",
-		"Power": 4,
-		"Era": "Amora",
-	},
-	"Chezkiah": {
+	"Rav Yehudai": {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
+		"Teaching": "One's true wealth is his mitzvot for they join him after death"
+	},
+	"Rav Shimon Kayyara": {
+		"Type": "Sage",
+		"Power": 3,
+		"Era": "Gaon",
+		"Teaching": "One who learns, but doesn't teach, diminishes the Torah"
+	},
+	"Rambam (Maimonides)": {
+		"Type": "Sage",
+		"Power": 2,
+		"Era": "Rishon",
+		"Teaching": "The ultimate purpose of knowledge is to know God."
+	},
+	"Rashi": {
+		"Type": "Sage",
+		"Power": 2,
+		"Era": "Rishon",
+		"Teaching": "The Torah speaks in the language of man."
+	},
+	"Ramban (Nachmonides)": {
+		"Type": "Sage",
+		"Power": 2,
+		"Era": "Rishon",
+		"Teaching": "The soul of a person is a reflection of the Divine"
 	},
 	"Rabbeinu Tam": {
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
+		"Teaching": "To question is the essence of understanding"
 	},
-	"Baal Shem Tov": {
+	"R Isaac Alfasi (Rif)": {
+		"Type": "Sage",
+		"Power": 2,
+		"Era": "Rishon",
+		"Teaching": "The study of Torah is a path to wisdom and peace"
+	},
+	"R Abraham b David (Ravad)": {
+		"Type": "Sage",
+		"Power": 2,
+		"Era": "Rishon",
+		"Teaching": "True scholarship is found in humility"
+	},
+	"Rabbi Yehuda HaLevi": {
+		"Type": "Sage",
+		"Power": 2,
+		"Era": "Rishon",
+		"Teaching": "The soul's longing for G-d is like a bird yearning to fly"
+	},
+	"Rabbi Yaakov Emden": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
+		"Teaching": "One should never be afraid to speak the truth"
 	},
+	"R Yaakov Kamenetsky": {
+		"Type": "Sage",
+		"Power": 1,
+		"Era": "Acharon",
+		"Teaching": "The strength of a person lies in the ability to choose"
+	},
+	"Rabbi Eliyahu Dessler": {
+		"Type": "Sage",
+		"Power": 1,
+		"Era": "Acharon",
+		"Teaching": "True wealth is measured by one's contributions to the world"
+	},
+	"Vilna Gaon": {
+		"Type": "Sage",
+		"Power": 1,
+		"Era": "Acharon",
+		"Teaching": "Overcoming negative traits is harder than mastering the Talmud"
+	},
+	"R Nachman of Breslov": {
+		"Type": "Sage",
+		"Power": 1,
+		"Era": "Acharon",
+		"Teaching": "If you believe you can destroy, believe you can also create"
+	},
+	"Chafetz Chaim": {
+		"Type": "Sage",
+		"Power": 1,
+		"Era": "Acharon",
+		"Teaching": "One moment of lashon hara can destroy years of work"
+	},
+	"Chazon Ish": {
+		"Type": "Sage",
+		"Power": 1,
+		"Era": "Acharon",
+		"Teaching": "Emunah (faith) is not weakness. It's courage to face reality"
+	},
+	
 	### TANACH CARDS ###
 	"Avraham Avinu": {
 		"Type": "Tanach",
@@ -160,7 +221,7 @@ const CARDS := {
 	},
 	"Yitzchak Avinu": {
 		"Type": "Tanach",
-		"Effect": "Increase max Torah Tokens"
+		"Effect": "Increase max Torah Tokens by 5"
 	},
 	"Yaakov Avinu": {
 		"Type": "Tanach",
@@ -188,11 +249,11 @@ const CARDS := {
 	},
 	"Eliyahu HaNavi": {
 		"Type": "Tanach",
-		"Effect": "Can fill the final timeline slot with this"
+		"Effect": "Can fill the final timeline slot with this card"
 	},
 	"Elisha HaNavi": {
 		"Type": "Tanach",
-		"Effect": "Draw top card from the discard pile"
+		"Effect": "Draw the top card from the discard pile"
 	},
 	"Yosef HaTzadik": {
 		"Type": "Tanach",

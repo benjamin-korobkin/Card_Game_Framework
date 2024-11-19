@@ -8,7 +8,6 @@ func _ready() -> void:
 	card_labels["Type"] = find_node("Type")
 	card_labels["Tags"] = find_node("Tags")
 	card_labels["Description"] = find_node("Description")
-	card_labels["Abilities"] = find_node("Abilities")
 	card_labels["Cost"] = find_node("Cost")
 	card_labels["Power"] = find_node("Power")
 
@@ -18,7 +17,6 @@ func _ready() -> void:
 	card_label_min_sizes["Type"] = Vector2(CFConst.CARD_SIZE.x - 4, 20)
 	card_label_min_sizes["Tags"] = Vector2(CFConst.CARD_SIZE.x - 4, 17)
 	card_label_min_sizes["Description"] = Vector2(CFConst.CARD_SIZE.x - 4, 20)
-	card_label_min_sizes["Abilities"] = Vector2(CFConst.CARD_SIZE.x - 4, 20)
 	card_label_min_sizes["Cost"] = Vector2(16,16)
 	card_label_min_sizes["Power"] = Vector2(16,16)
 
@@ -36,7 +34,7 @@ func _ready() -> void:
 				original_font_sizes[label] = 20
 			"Description":
 				original_font_sizes[label] = 20
-			"Abilities":
-				original_font_sizes[label] = 20
+			"Teaching":
+				original_font_sizes[label] = 28
 			_:
 				original_font_sizes[label] = 20

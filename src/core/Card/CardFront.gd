@@ -58,7 +58,7 @@ func set_label_text(node: Label, value, scale: float = 1):
 	resizing_labels.append(node)
 	##value = _check_for_replacements(node, value)
 	var label_font :Font = get_card_label_font(node)
-	if node.get_name() == "Effect":
+	if node.get_name() == "Effect" or node.get_name() == "Teaching":
 		#var dynamic_font = DynamicFont.new()
 		#dynamic_font.set_outline_color(Color(0,0,0,255))
 		#dynamic_font.outline_size = 1
