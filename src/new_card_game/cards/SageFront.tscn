@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/new_card_game/CardFront.tscn" type="PackedScene" id=1]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://src/custom/DetailsFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/comfortaa/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.654902, 0.654902, 0.654902, 1 )
@@ -10,6 +10,15 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 1
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 15
@@ -30,7 +39,7 @@ grow_horizontal = 2
 rect_min_size = Vector2( 150, 170 )
 
 [node name="CardText" parent="Margin" index="0"]
-margin_bottom = 170.0
+margin_bottom = 179.0
 
 [node name="Era" type="Label" parent="Margin/CardText" index="1"]
 margin_top = 26.0
@@ -41,37 +50,38 @@ text = "Era"
 align = 1
 valign = 1
 
-[node name="Type" parent="Margin/CardText" index="2"]
+[node name="Description" parent="Margin/CardText" index="2"]
+margin_top = 78.0
+margin_bottom = 101.0
+
+[node name="Type" parent="Margin/CardText" index="3"]
 visible = false
 margin_top = 52.0
 margin_bottom = 75.0
 uppercase = false
 
-[node name="Description" parent="Margin/CardText" index="3"]
-margin_top = 78.0
-margin_bottom = 101.0
-
 [node name="Teaching" type="Label" parent="Margin/CardText" index="4"]
 margin_top = 52.0
 margin_right = 146.0
-margin_bottom = 145.0
+margin_bottom = 154.0
 grow_horizontal = 2
+grow_vertical = 2
 rect_min_size = Vector2( 0, 70 )
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 3 )
-text = "The Rabbi's teaching goes here"
+custom_fonts/font = SubResource( 3 )
+text = "The Rabbi's teaching "
 align = 1
 autowrap = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Margin/CardText" index="5"]
-margin_top = 148.0
+margin_top = 157.0
 margin_right = 146.0
-margin_bottom = 148.0
+margin_bottom = 157.0
 
 [node name="HB" type="HBoxContainer" parent="Margin/CardText" index="6"]
-margin_top = 151.0
+margin_top = 160.0
 margin_right = 146.0
-margin_bottom = 170.0
+margin_bottom = 179.0
 mouse_filter = 2
 size_flags_vertical = 4
 custom_constants/separation = -3

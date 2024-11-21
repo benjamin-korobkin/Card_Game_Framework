@@ -25,7 +25,7 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 5,
 		"Era": "Tanna",
-		"Teaching": "Be smart interrogating witnesses, so they don't learn how to lie"
+		"Teaching": "Be wise in questioning witnesses, so they don't learn how to lie"
 	},
 	"Hillel": {
 		"Type": "Sage",
@@ -37,7 +37,7 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 5,
 		"Era": "Tanna",
-		"Teaching": "Set times for Torah, Say little and do much, and greet all with a smile"
+		"Teaching": "Set time for Torah. Say little, do much. Greet with a smile"
 	},
 	"Rabban Shimon ben Gamliel": {
 		"Type": "Sage",
@@ -55,7 +55,7 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 4,
 		"Era": "Amora",
-		"Teaching": "Greater is one who answers 'Amen' than one who says the bracha"
+		"Teaching": "Greater is one who says Amen than one who says the bracha"
 	},
 	"R Yehudah bar Yechezkel": {
 		"Type": "Sage",
@@ -159,19 +159,19 @@ const CARDS := {
 		"Era": "Rishon",
 		"Teaching": "The study of Torah is a path to wisdom and peace"
 	},
-	"R Abraham b David (Ravad)": {
+	"R Avraham b David (Ravad)": {
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
 		"Teaching": "True scholarship is found in humility"
 	},
-	"Rabbi Yehuda HaLevi": {
+	"R Yehuda HaLevi": {
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
 		"Teaching": "The soul's longing for G-d is like a bird yearning to fly"
 	},
-	"Rabbi Yaakov Emden": {
+	"R Yaakov Emden": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
@@ -183,7 +183,7 @@ const CARDS := {
 		"Era": "Acharon",
 		"Teaching": "The strength of a person lies in the ability to choose"
 	},
-	"Rabbi Eliyahu Dessler": {
+	"R Eliyahu Dessler": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
@@ -193,7 +193,7 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
-		"Teaching": "Overcoming negative traits is harder than mastering the Talmud"
+		"Teaching": "Overcoming negative traits is harder than mastering  Talmud"
 	},
 	"R Nachman of Breslov": {
 		"Type": "Sage",
@@ -233,7 +233,7 @@ const CARDS := {
 	},
 	"Moshe Rabbeinu": {
 		"Type": "Tanach",
-		"Effect": "Put a Sage in the Timeline for 0 cost & 0 action"
+		"Effect": "Put a Sage in the Timeline for no tokens or action"
 	},
 	"Yehoshua": {
 		"Type": "Tanach",

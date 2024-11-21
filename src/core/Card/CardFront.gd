@@ -396,7 +396,7 @@ func _adjust_font_size(
 			* (line_height + line_spacing) \
 			- line_spacing
 	# If the y-size of the wordwrapped text would be bigger than the current
-	# available y-size foir this label, we reduce the text, until we
+	# available y-size for this label, we reduce the text, until
 	# it's small enough to stay within the boundaries
 	while label_rect_y > label_size.y:
 		adjustment -= 1
@@ -407,7 +407,7 @@ func _adjust_font_size(
 				/ line_height \
 				* (line_height + line_spacing) \
 				- line_spacing
-		if adjustment_font.size < 5:
+		if adjustment_font.size < 13:
 			break
 	return(adjustment)
 
