@@ -1,13 +1,10 @@
 extends Player
 
-#enum ACTIONS {
-#	CHALLENGE,
-#	TANACH
-#}
-
 var ready_for_next_action : bool = true
 
 export var test_mode : bool = false
+
+signal replaced_p1_card(card)
 
 func _ready() -> void:
 	hand = board.get_node("Hand2")
@@ -37,10 +34,13 @@ func action():  ## Optimize. create method(s) for getting card type
 	var current_hand = hand.get_all_cards()
 	
 	if can_put_in_timeline():
-		# TODO: Testing basic feature
+		# Start by replacing cards if possible (later we will first check
+		# if we will win by putting a new card in timeline)
+		# TODO: Test TorahChallengePanel
 		for card in field.get_occupying_cards():
 			if card.can_go_in_timeline(self):
 				put_in_timeline(card)
+				emit_signal("replaced_p1_card", card)
 				return
 		# Don't put in a card if it means you'll likely lose
 		if opponent.cards_in_timeline <= 2: 

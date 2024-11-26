@@ -39,13 +39,13 @@ const CARDS := {
 		"Era": "Tanna",
 		"Teaching": "Set time for Torah. Say little, do much. Greet with a smile"
 	},
-	"Rabban Shimon ben Gamliel": {
+	"Shimon ben Gamliel": {
 		"Type": "Sage",
 		"Power": 5,
 		"Era": "Tanna",
 		"Teaching": "The world stands on 3 things: Justice, Truth, and Peace"
 	},
-	"R Nacḥman bar Yitzchak": {
+	"Nacḥhman bar Yitzchak": {
 		"Type": "Sage",
 		"Power": 4,
 		"Era": "Amora",
@@ -57,7 +57,7 @@ const CARDS := {
 		"Era": "Amora",
 		"Teaching": "Greater is one who says Amen than one who says the bracha"
 	},
-	"R Yehudah bar Yechezkel": {
+	"Yehudah bar Yechezkel": {
 		"Type": "Sage",
 		"Power": 4,
 		"Era": "Amora",
@@ -81,7 +81,7 @@ const CARDS := {
 		"Era": "Amora",
 		"Teaching": "Great is teshuva, for it transforms intended sins into merits"
 	},
-	"R Yochanan bar Nappacha": {
+	"Yochanan bar Nappacha": {
 		"Type": "Sage",
 		"Power": 4,
 		"Era": "Amora",
@@ -117,13 +117,13 @@ const CARDS := {
 		"Era": "Gaon",
 		"Teaching": "The essence of prayer is the heart's intent"
 	},
-	"Rav Yehudai": {
+	"R Yehudai": {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
 		"Teaching": "One's true wealth is his mitzvot for they join him after death"
 	},
-	"Rav Shimon Kayyara": {
+	"R Shimon Kayyara": {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
@@ -153,37 +153,37 @@ const CARDS := {
 		"Era": "Rishon",
 		"Teaching": "To question is the essence of understanding"
 	},
-	"R Isaac Alfasi (Rif)": {
+	"Isaac Alfasi (Rif)": {
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
 		"Teaching": "The study of Torah is a path to wisdom and peace"
 	},
-	"R Avraham b David (Ravad)": {
+	"Avraham b David (Ravad)": {
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
 		"Teaching": "True scholarship is found in humility"
 	},
-	"R Yehuda HaLevi": {
+	"Yehuda HaLevi": {
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
 		"Teaching": "The soul's longing for G-d is like a bird yearning to fly"
 	},
-	"R Yaakov Emden": {
+	"Yaakov Emden": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
 		"Teaching": "One should never be afraid to speak the truth"
 	},
-	"R Yaakov Kamenetsky": {
+	"Yaakov Kamenetsky": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
 		"Teaching": "The strength of a person lies in the ability to choose"
 	},
-	"R Eliyahu Dessler": {
+	"Eliyahu Dessler": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
@@ -195,7 +195,7 @@ const CARDS := {
 		"Era": "Acharon",
 		"Teaching": "Overcoming negative traits is harder than mastering  Talmud"
 	},
-	"R Nachman of Breslov": {
+	"Nachman of Breslov": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
