@@ -142,6 +142,9 @@ func get_field():
 func get_timeline():
 	return timeline
 	
+func get_hand():
+	return hand
+	
 func reveal_opponent_bm_cards():
 	for card in opponent.get_field().get_occupying_cards():
 		card.set_is_viewed(true)

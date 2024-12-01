@@ -95,7 +95,13 @@ func _challenge(card_source : Node):
 	var p1_field_cards = opponent.get_field().get_occupying_cards()
 	if not p1_field_cards.empty(): ## Challenge
 		var card_to_chlng = p1_field_cards[randi() % p1_field_cards.size()]
-		for card in card_source.get_all_cards():
+		## TODO: BUG when p2 challenges from its field ??
+		var cards
+		if card_source is Hand:
+			cards = card_source.get_all_cards()
+		else: # BoardPlacementGrid
+			cards = card_source.get_occupying_cards()
+		for card in cards:  
 			if card.get_property("Type") == "Sage":
 				current_card = card
 				challenge(card_to_chlng)

@@ -133,7 +133,7 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
-		"Teaching": "The ultimate purpose of knowledge is to know God."
+		"Teaching": "The ultimate purpose of knowledge is to know G-d."
 	},
 	"Rashi": {
 		"Type": "Sage",
