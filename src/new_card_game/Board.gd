@@ -3,6 +3,8 @@ extends Board
 
 var floating_text = preload("res://src/new_card_game/FloatingText.tscn")
 
+onready var torah_challenge_panel = get_node("CanvasLayer/TorahChallengePanel")
+
 func _ready() -> void:
 	counters = $Counters
 	cfc.map_node(self)

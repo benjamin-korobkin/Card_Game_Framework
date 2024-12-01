@@ -554,7 +554,7 @@ margin_bottom = 75.0
 [connection signal="game_won" from="TurnQueue" to="CanvasLayer/GameOverPanel" method="_on_game_won"]
 [connection signal="action_completed" from="TurnQueue/Player1" to="." method="_on_Player1_action_completed"]
 [connection signal="action_completed" from="TurnQueue/Player2" to="TurnQueue/Player2" method="_on_Player2_action_completed"]
-[connection signal="replaced_p1_card" from="TurnQueue/Player2" to="CanvasLayer/TorahChallengePanel" method="_on_p2_replaced_p1_card"]
+[connection signal="replacing_p1_card" from="TurnQueue/Player2" to="CanvasLayer/TorahChallengePanel" method="_on_Player2_replacing_p1_card"]
 [connection signal="is_empty" from="Deck" to="." method="_on_Deck_is_empty"]
 [connection signal="gui_input" from="Deck/Control" to="TurnQueue/Player1" method="_on_DeckPanel_gui_input"]
 [connection signal="toggled" from="FancyMovementToggle" to="." method="_on_FancyMovementToggle_toggled"]

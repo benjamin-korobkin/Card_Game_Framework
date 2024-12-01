@@ -4,7 +4,7 @@ var ready_for_next_action : bool = true
 
 export var test_mode : bool = false
 
-signal replaced_p1_card(card)
+signal replacing_p1_card(card)
 
 func _ready() -> void:
 	hand = board.get_node("Hand2")
@@ -39,8 +39,13 @@ func action():  ## Optimize. create method(s) for getting card type
 		# TODO: Test TorahChallengePanel
 		for card in field.get_occupying_cards():
 			if card.can_go_in_timeline(self):
+				board.torah_challenge_panel.set_visible(true)
+				emit_signal("replacing_p1_card", card)
+				while board.torah_challenge_panel.is_visible():
+					yield(get_tree(), "idle_frame")
+				## TODO: Find a way to yield/wait for player1 
+				## to finish with torah challenge panel
 				put_in_timeline(card)
-				emit_signal("replaced_p1_card", card)
 				return
 		# Don't put in a card if it means you'll likely lose
 		if opponent.cards_in_timeline <= 2: 
@@ -111,12 +116,10 @@ func put_in_timeline(card):
 		slot.occupying_card.move_to(cfc.NMAP.discard)
 		yield(slot.occupying_card._tween, "tween_all_completed")
 		opponent.cards_in_timeline -= 1
-		# TODO: TEST
-		#yield(owner.get_tree().create_timer(0.75), "timeout")
 	card.move_to(board, -1, slot)
 	card.set_is_faceup(true)
 	yield(card._tween, "tween_all_completed")
-	card.global_position.y += 7  # TEST
+	card.global_position.y += 7  # Temp solution
 	cards_in_timeline += 1
 	update_counter(actions_str, actions_remaining)
 	check_turn_over()
@@ -125,9 +128,9 @@ func put_in_timeline(card):
 
 func put_in_field(card):
 	card.move_to(board, -1, field.find_available_slot())
-	card.set_is_faceup(false)
+	card.set_is_faceup(true) # TEST
 	yield(card._tween, "tween_all_completed")
-	card.global_position.y += 10  # TEST
+	card.global_position.y += 10  # Temp solution
 	card.set_in_p2_field(true)
 	deduct_action()
 	update_counter(actions_str, actions_remaining)
