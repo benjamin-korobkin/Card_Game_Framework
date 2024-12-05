@@ -134,7 +134,7 @@ func put_in_timeline(card):
 
 func put_in_field(card):
 	card.move_to(board, -1, field.find_available_slot())
-	card.set_is_faceup(true) # TEST
+	card.set_is_faceup(false)
 	yield(card._tween, "tween_all_completed")
 	card.global_position.y += 10  # Temp solution
 	card.set_in_p2_field(true)
