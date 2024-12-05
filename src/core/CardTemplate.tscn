@@ -7,7 +7,7 @@
 [ext_resource path="res://src/core/Highlight.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 75, 89.2 )
+extents = Vector2( 77, 86.6 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.584314, 0.6, 0.647059, 1 )
@@ -23,18 +23,26 @@ script = ExtResource( 2 )
 card_back_design = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 75, 120 )
+position = Vector2( 78, 86.4 )
 shape = SubResource( 1 )
 
 [node name="Control" type="Control" parent="."]
+margin_left = 2.0
+margin_top = 1.0
+margin_right = 152.0
+margin_bottom = 171.0
 rect_min_size = Vector2( 150, 170 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Highlight" parent="Control" instance=ExtResource( 6 )]
-margin_right = 3.0
-margin_bottom = 3.00002
+visible = true
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 6.0
+margin_bottom = 6.00002
+rect_min_size = Vector2( 156, 176 )
 
 [node name="Back" type="MarginContainer" parent="Control"]
 visible = false
@@ -51,9 +59,11 @@ __meta__ = {
 }
 
 [node name="Tokens" type="Node2D" parent="Control"]
+visible = false
 script = ExtResource( 5 )
 
 [node name="Drawer" type="PanelContainer" parent="Control/Tokens"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 115.0
 margin_top = 20.0
@@ -61,9 +71,6 @@ margin_right = 165.0
 margin_bottom = 70.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Tokens/Drawer"]
 margin_right = 50.0
@@ -83,6 +90,7 @@ shape = SubResource( 3 )
 [node name="Tween" type="Tween" parent="Control/Tokens" groups=["cgf_tween"]]
 
 [node name="ManipulationButtons" type="VBoxContainer" parent="Control"]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 8.0
 margin_top = 16.0

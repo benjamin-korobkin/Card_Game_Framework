@@ -3,6 +3,8 @@ extends Board
 
 var floating_text = preload("res://src/new_card_game/FloatingText.tscn")
 
+onready var torah_challenge_panel = get_node("CanvasLayer/TorahChallengePanel")
+
 func _ready() -> void:
 	counters = $Counters
 	cfc.map_node(self)
@@ -91,7 +93,7 @@ func load_cards() -> void:
 	for c in card_options:
 		card_array.append(cfc.instance_card(c))
 	## Randomize card_array
-	card_array.shuffle()  # TODO: Uncomment
+	card_array.shuffle()
 	for card in card_array:
 		cfc.NMAP.deck.add_child(card)
 		card._determine_idle_state()

@@ -42,8 +42,8 @@ func play_card(player):
 
 func eliyahu_hanavi_effect(player):
 	player.cards_in_timeline += 1
+	set_is_faceup(true) # Test putting this first
 	move_to(cfc.NMAP.board, -1, player.timeline.find_available_slot())
-	set_is_faceup(true)
 	yield(self._tween, "tween_all_completed")
 	player.finish_turn()
 	player.check_turn_over()

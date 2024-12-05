@@ -142,6 +142,9 @@ func get_field():
 func get_timeline():
 	return timeline
 	
+func get_hand():
+	return hand
+	
 func reveal_opponent_bm_cards():
 	for card in opponent.get_field().get_occupying_cards():
 		card.set_is_viewed(true)
@@ -210,7 +213,7 @@ func do_effect(name):
 		"David HaMelech":
 			pass ## TODO: Create flag to prevent cards from being challenged
 		"Shlomo HaMelech":
-			var tokens_to_take = min(3, opponent.torah_tokens)
+			var tokens_to_take = min(2, opponent.torah_tokens)
 			opponent.add_tokens(-tokens_to_take)
 			add_tokens(tokens_to_take)
 		"Eliyahu HaNavi":

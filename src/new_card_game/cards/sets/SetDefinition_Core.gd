@@ -37,39 +37,39 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 5,
 		"Era": "Tanna",
-		"Teaching": "Set time for Torah. Say little, do much. Greet with a smile"
+		"Teaching": "Say little and do much, and greet all with a smile"
 	},
-	"Rabban Shimon ben Gamliel": {
+	"Shimon ben Gamliel": {
 		"Type": "Sage",
 		"Power": 5,
 		"Era": "Tanna",
 		"Teaching": "The world stands on 3 things: Justice, Truth, and Peace"
 	},
-	"R Nacḥman bar Yitzchak": {
+	"Rav Nacḥhman bar Yitzchak": {
 		"Type": "Sage",
 		"Power": 4,
 		"Era": "Amora",
 		"Teaching": "Prayer is only heard if it's with an upright body"
 	},
-	"R Abbahu": {
+	"Rabbi Abbahu": {
 		"Type": "Sage",
 		"Power": 4,
 		"Era": "Amora",
 		"Teaching": "Greater is one who says Amen than one who says the bracha"
 	},
-	"R Yehudah bar Yechezkel": {
+	"Rav Yehudah bar Yechezkel": {
 		"Type": "Sage",
 		"Power": 4,
 		"Era": "Amora",
 		"Teaching": "Bless G-d for the bad just as you bless Him for the good"
 	},
-	"R Alexandri": {
+	"Rabbi Alexandri": {
 		"Type": "Sage",
 		"Power": 4,
 		"Era": "Amora",
 		"Teaching": "One who prays must direct his eyes downward and heart upward"
 	},
-	"R Ashi": {
+	"Rav Ashi": {
 		"Type": "Sage",
 		"Power": 4,
 		"Era": "Amora",
@@ -81,7 +81,7 @@ const CARDS := {
 		"Era": "Amora",
 		"Teaching": "Great is teshuva, for it transforms intended sins into merits"
 	},
-	"R Yochanan bar Nappacha": {
+	"Rabbi Yochanan bar Nappacha": {
 		"Type": "Sage",
 		"Power": 4,
 		"Era": "Amora",
@@ -133,7 +133,7 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
-		"Teaching": "The ultimate purpose of knowledge is to know God."
+		"Teaching": "The ultimate purpose of knowledge is to know G-d."
 	},
 	"Rashi": {
 		"Type": "Sage",
@@ -153,37 +153,37 @@ const CARDS := {
 		"Era": "Rishon",
 		"Teaching": "To question is the essence of understanding"
 	},
-	"R Isaac Alfasi (Rif)": {
+	"Isaac Alfasi (Rif)": {
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
 		"Teaching": "The study of Torah is a path to wisdom and peace"
 	},
-	"R Avraham b David (Ravad)": {
+	"Rabbi Avraham ben David (Ravad)": {
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
 		"Teaching": "True scholarship is found in humility"
 	},
-	"R Yehuda HaLevi": {
+	"Rabbi Yehuda HaLevi": {
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
 		"Teaching": "The soul's longing for G-d is like a bird yearning to fly"
 	},
-	"R Yaakov Emden": {
+	"Rabbi Yaakov Emden": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
 		"Teaching": "One should never be afraid to speak the truth"
 	},
-	"R Yaakov Kamenetsky": {
+	"Rabbi Yaakov Kamenetsky": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
 		"Teaching": "The strength of a person lies in the ability to choose"
 	},
-	"R Eliyahu Dessler": {
+	"Rabbi Eliyahu Dessler": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
@@ -195,7 +195,7 @@ const CARDS := {
 		"Era": "Acharon",
 		"Teaching": "Overcoming negative traits is harder than mastering  Talmud"
 	},
-	"R Nachman of Breslov": {
+	"Rav Nachman of Breslov": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
@@ -245,7 +245,7 @@ const CARDS := {
 	},
 	"Shlomo HaMelech": {
 		"Type": "Tanach",
-		"Effect": "Take up to 3 Tokens from your opponent"
+		"Effect": "Take up to 2 tokens from your opponent"
 	},
 	"Eliyahu HaNavi": {
 		"Type": "Tanach",

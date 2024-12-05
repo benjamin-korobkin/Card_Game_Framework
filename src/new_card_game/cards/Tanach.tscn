@@ -8,6 +8,17 @@
 script = ExtResource( 2 )
 card_front_design = ExtResource( 3 )
 
+[node name="Control" parent="." index="1"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 150.0
+margin_bottom = 177.0
+
+[node name="Highlight" parent="Control" index="0"]
+visible = false
+margin_bottom = 1.0
+rect_min_size = Vector2( 156, 178 )
+
 [node name="state" parent="Debug" index="1"]
 margin_top = 18.0
 margin_bottom = 32.0
