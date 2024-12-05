@@ -18,8 +18,6 @@ func _ready() -> void:
 	#card_library.rect_position.x = -get_viewport().size.x
 #	settings_menu.back_button.connect("pressed", self, "_on_Setings_Back_pressed")
 #	settings_menu.recover_prebuilts.connect("pressed", self, "_on_PreBuilts_pressed")
-#	deck_builder.back_button.connect("pressed", self, "_on_DeckBuilder_Back_pressed")
-#	card_library.back_button.connect("pressed", self, "_on_CardLibrary_Back_pressed")
 	# warning-ignore:return_value_discarded
 	get_viewport().connect("size_changed", self, '_on_Menu_resized')
 
@@ -29,15 +27,9 @@ func on_button_pressed(_button_name : String) -> void:
 		"Start":
 			# warning-ignore:return_value_discarded
 			get_tree().change_scene(CFConst.PATH_CUSTOM + 'Main.tscn')
-#		"Multiplayer":
-#			pass
 #		"GUT":
 #			# warning-ignore:return_value_discarded
 #			get_tree().change_scene("res://tests/tests.tscn")
-#		"Deckbuilder":
-#			switch_to_tab(deck_builder)
-#		"CardLibrary":
-#			switch_to_tab(card_library)
 		"Exit":
 			get_tree().quit()
 

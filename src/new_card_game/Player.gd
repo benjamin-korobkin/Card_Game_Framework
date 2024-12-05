@@ -213,7 +213,7 @@ func do_effect(name):
 		"David HaMelech":
 			pass ## TODO: Create flag to prevent cards from being challenged
 		"Shlomo HaMelech":
-			var tokens_to_take = min(3, opponent.torah_tokens)
+			var tokens_to_take = min(2, opponent.torah_tokens)
 			opponent.add_tokens(-tokens_to_take)
 			add_tokens(tokens_to_take)
 		"Eliyahu HaNavi":
