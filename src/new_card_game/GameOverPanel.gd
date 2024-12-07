@@ -14,4 +14,5 @@ func _on_MenuButton_pressed() -> void:
 
 # Won't work due to use of autoload (cfc)
 func _on_PlayAgainButton_pressed() -> void:
+	cfc.quit_game() ## Test
 	get_parent().get_tree().reload_current_scene()
