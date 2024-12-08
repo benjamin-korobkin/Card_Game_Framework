@@ -1,46 +1,59 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://src/new_card_game/NextButton.gd" type="Script" id=1]
+[ext_resource path="res://src/new_card_game/TutorialPanel.gd" type="Script" id=1]
 
 [node name="TutorialPanel" type="Panel"]
-margin_left = -3.0
-margin_right = 397.0
-margin_bottom = 250.0
-grow_horizontal = 2
-rect_min_size = Vector2( 400, 250 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 400.0
-margin_bottom = 15.0
-rect_min_size = Vector2( 0, 15 )
-
-[node name="TutorialLabel" type="Label" parent="VBoxContainer"]
-margin_top = 19.0
-margin_right = 400.0
-margin_bottom = 207.0
-size_flags_horizontal = 3
-size_flags_vertical = 7
-text = "This is tutorial text"
-align = 1
-valign = 1
-
-[node name="NextButton" type="Button" parent="VBoxContainer"]
-margin_left = 175.0
-margin_top = 211.0
-margin_right = 225.0
-margin_bottom = 231.0
-rect_min_size = Vector2( 50, 0 )
-size_flags_horizontal = 4
-size_flags_vertical = 5
-text = "NEXT"
+margin_right = -780.0
+margin_bottom = -470.0
+rect_min_size = Vector2( 500, 250 )
 script = ExtResource( 1 )
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 235.0
-margin_right = 400.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 0, 15 )
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -297.0
+margin_top = -154.0
+margin_right = 294.0
+margin_bottom = 286.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 124.0
+margin_top = 107.0
+margin_right = 467.0
+margin_bottom = 333.0
+rect_min_size = Vector2( 0, 200 )
+size_flags_horizontal = 3
+custom_constants/separation = 50
+
+[node name="TutorialLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 343.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+text = "This is tutorial text. There are many things you can do
+to make sure that you feel comfortable with the text."
+valign = 1
+
+[node name="NextButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_left = 146.0
+margin_top = 81.0
+margin_right = 196.0
+margin_bottom = 101.0
+grow_horizontal = 2
+rect_min_size = Vector2( 50, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "NEXT"
+icon_align = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 151.0
+margin_right = 343.0
+margin_bottom = 226.0
+rect_min_size = Vector2( 0, 75 )
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
