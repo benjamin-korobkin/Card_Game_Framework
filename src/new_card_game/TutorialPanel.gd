@@ -2,14 +2,14 @@ extends Control
 
 onready var tutorial_label = $CenterContainer/VBoxContainer/TutorialLabel
 onready var tutorial_next_button = $CenterContainer/VBoxContainer/NextButton
-	
+onready var node_to_reveal = null
 
 var tutorial_steps = [
 	{"text": """
 		This grid <show grid> in the center is the Torah Timeline. 
 		It contains 5 slots, one for each of the following 5 eras: 
 			Tanna, Amora, Gaon, Rishon, and Acharon.
-		""", "state": "WAITING_FOR_NEXT"},
+		""", "state": "WAITING_FOR_NEXT", "reveal_node":$FieldTimelineContainer/TimelineGrid},
 	{"text": """
 		You start the game with 3 cards. You get 2 actions per turn. Actions include:
 		1. Drawing a card
@@ -76,6 +76,7 @@ func _advance_tutorial():
 	if current_step < tutorial_steps.size():
 		tutorial_state = tutorial_steps[current_step]["state"]
 		tutorial_label.text = tutorial_steps[current_step]["text"]
+		
 	else:
 		cfc.quit_game()
 		get_parent().get_tree().change_scene("res://src/custom/MainMenu.tscn")

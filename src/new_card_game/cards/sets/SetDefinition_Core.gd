@@ -103,7 +103,7 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
-		"Teaching": "The Torah is broad and deep. No one can claim mastery over it"
+		"Teaching": "The Torah is broad and deep. None can claim mastery over it"
 	},
 	"Rav Natronai": {
 		"Type": "Sage",
@@ -121,7 +121,7 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
-		"Teaching": "One's true wealth is his mitzvot for they join him after death"
+		"Teaching": "One's true wealth is his mitzvot. They join him after death"
 	},
 	"Rav Shimon Kayyara": {
 		"Type": "Sage",
@@ -133,13 +133,13 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
-		"Teaching": "The ultimate purpose of knowledge is to know G-d."
+		"Teaching": "The ultimate purpose of knowledge is to know G-d"
 	},
 	"Rashi": {
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
-		"Teaching": "The Torah speaks in the language of man."
+		"Teaching": "The Torah begins with creation to show G-d's world authority"
 	},
 	"Ramban (Nachmonides)": {
 		"Type": "Sage",
