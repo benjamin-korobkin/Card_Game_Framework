@@ -1,7 +1,7 @@
 extends Node2D
 class_name TurnQueue
 
-const CARDS_DRAWN_AT_START : int = 3
+#const CARDS_DRAWN_AT_START : int = 3
 
 signal game_won(player)
 
@@ -13,11 +13,11 @@ onready var is_first_turn = true
 
 
 func initialize():
-	for i in range(CARDS_DRAWN_AT_START):
-		yield(get_tree().create_timer(0.5), "timeout")
-		p1.hand.draw_card()
-		yield(get_tree().create_timer(0.5), "timeout")
-		p2.hand.draw_card()
+#	for i in range(CARDS_DRAWN_AT_START):
+#		yield(get_tree().create_timer(0.5), "timeout")
+#		p1.hand.draw_card()
+#		yield(get_tree().create_timer(0.5), "timeout")
+#		p2.hand.draw_card()
 	set_active_player(p1)
 	active_player.play_turn()
 

@@ -4,7 +4,7 @@ onready var tutorial_label = $CenterContainer/VBoxContainer/TutorialLabel
 onready var tutorial_next_button = $CenterContainer/VBoxContainer/NextButton
 onready var node_to_reveal = null
 
-var tutorial_steps = [
+onready var tutorial_steps = [
 	{"text": """
 		This grid <show grid> in the center is the Torah Timeline. 
 		It contains 5 slots, one for each of the following 5 eras: 

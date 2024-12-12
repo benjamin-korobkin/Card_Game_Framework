@@ -180,8 +180,9 @@ func _on_all_nodes_mapped() -> void:
 		game_settings['focus_style'] = CFInt.FocusStyle.SCALED
 		# To prevent accidental switching this option when there's no other
 		# viewports active
-		if NMAP.board and NMAP.board.has_node("ScalingFocusOptions"): # Needed for UT
-			NMAP.board.get_node("ScalingFocusOptions").disabled = true
+		#TODO commenting this out for now. Breaks tutorial node
+#		if NMAP.board and NMAP.board.has_node("ScalingFocusOptions"): # Needed for UT
+#			NMAP.board.get_node("ScalingFocusOptions").disabled = true
 
 
 # The below code allows us to quickly refer to nodes meant to host cards
@@ -198,6 +199,8 @@ func map_node(node) -> void:
 	# I guess the queue_free is not as fast before the next test
 	if 'board' in node_name:
 		node_name = 'board'
+	if 'tutorial' in node_name:
+		node_name = 'tutorial'
 	NMAP[node_name] = node
 	var add_main = 0
 	# Since we allow the game to run directly from the board scene,

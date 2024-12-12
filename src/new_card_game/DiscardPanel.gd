@@ -1,3 +1,4 @@
+class_name DiscardPanel
 extends Popup
 
 onready var board

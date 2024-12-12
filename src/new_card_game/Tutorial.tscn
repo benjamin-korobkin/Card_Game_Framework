@@ -1,10 +1,31 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/new_card_game/TimelineGrid.gd" type="Script" id=1]
 [ext_resource path="res://src/new_card_game/TutorialPanel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/new_card_game/SagePlacementGrid.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/new_card_game/FieldPlacementGrid.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/new_card_game/Tutorial.gd" type="Script" id=5]
+[ext_resource path="res://src/core/Pile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/new_card_game/Deck.gd" type="Script" id=7]
+[ext_resource path="res://src/new_card_game/Counters.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/new_card_game/Counters.gd" type="Script" id=9]
+[ext_resource path="res://src/new_card_game/Player1.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/new_card_game/Player2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/new_card_game/TurnQueue.gd" type="Script" id=12]
+[ext_resource path="res://src/new_card_game/DiscardPanel.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/new_card_game/Hand1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/new_card_game/SageActionsMenu.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/new_card_game/Hand2.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/new_card_game/Discard.gd" type="Script" id=17]
+[ext_resource path="res://src/new_card_game/TempPile.gd" type="Script" id=18]
+[ext_resource path="res://src/new_card_game/ChallengePanel.tscn" type="PackedScene" id=19]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
 [node name="Tutorial" type="Control"]
 anchor_right = 1.0
@@ -40,9 +61,9 @@ alignment = 1
 
 [node name="FieldHBox2" type="HBoxContainer" parent="FieldTimelineContainer"]
 visible = false
-margin_top = 80.0
+margin_top = 1.0
 margin_right = 624.0
-margin_bottom = 234.0
+margin_bottom = 155.0
 grow_vertical = 2
 
 [node name="FieldMarginContainer2" type="MarginContainer" parent="FieldTimelineContainer/FieldHBox2"]
@@ -110,6 +131,225 @@ margin_top = 240.0
 margin_right = 624.0
 margin_bottom = 240.0
 
+[node name="Deck" parent="." instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 0, 475 )
+script = ExtResource( 7 )
+placement = 5
+show_manipulation_buttons = false
+pile_name = "Deck"
+
+[node name="VBoxContainer" parent="Deck/Control/CenterContainer" index="0"]
+margin_top = 62.0
+margin_bottom = 95.0
+
+[node name="View" parent="Deck/Control/ManipulationButtons" index="0"]
+margin_right = 26.0
+margin_bottom = 27.0
+
+[node name="ViewSorted" parent="Deck/Control/ManipulationButtons" index="1"]
+margin_top = 30.0
+margin_right = 26.0
+margin_bottom = 57.0
+
+[node name="Shuffle" parent="Deck/Control/ManipulationButtons" index="2"]
+margin_top = 60.0
+margin_right = 26.0
+margin_bottom = 87.0
+
+[node name="Counters" parent="." instance=ExtResource( 8 )]
+visible = false
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 36.0
+margin_bottom = 36.0
+script = ExtResource( 9 )
+
+[node name="TurnQueue" type="Node2D" parent="."]
+script = ExtResource( 12 )
+
+[node name="Player1" parent="TurnQueue" instance=ExtResource( 10 )]
+
+[node name="Player2" parent="TurnQueue" instance=ExtResource( 11 )]
+
+[node name="Discard" parent="." instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 1124, 475 )
+script = ExtResource( 17 )
+placement = 4
+show_manipulation_buttons = false
+pile_name = "Olam Haba"
+
+[node name="Control" parent="Discard" index="0"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" parent="Discard/Control/CenterContainer" index="0"]
+margin_top = 46.0
+margin_right = 133.0
+margin_bottom = 111.0
+
+[node name="Label" parent="Discard/Control/CenterContainer/VBoxContainer" index="0"]
+margin_right = 133.0
+margin_bottom = 61.0
+text = "Olam Haba
+"
+
+[node name="PanelContainer" parent="Discard/Control/CenterContainer/VBoxContainer" index="1"]
+margin_top = 65.0
+margin_right = 133.0
+margin_bottom = 94.0
+
+[node name="CenterContainer" parent="Discard/Control/CenterContainer/VBoxContainer/PanelContainer" index="0"]
+margin_right = 133.0
+
+[node name="CardCount" parent="Discard/Control/CenterContainer/VBoxContainer/PanelContainer/CenterContainer" index="0"]
+margin_left = 58.0
+margin_right = 74.0
+
+[node name="View" parent="Discard/Control/ManipulationButtons" index="0"]
+margin_right = 26.0
+margin_bottom = 27.0
+
+[node name="ViewSorted" parent="Discard/Control/ManipulationButtons" index="1"]
+margin_top = 30.0
+margin_right = 26.0
+margin_bottom = 57.0
+
+[node name="Shuffle" parent="Discard/Control/ManipulationButtons" index="2"]
+margin_top = 60.0
+margin_right = 26.0
+margin_bottom = 87.0
+
+[node name="Debug" parent="Discard" index="4"]
+visible = false
+
+[node name="Position" parent="Discard/Debug" index="0"]
+margin_bottom = 23.0
+
+[node name="AreaPos" parent="Discard/Debug" index="1"]
+margin_top = 26.0
+margin_bottom = 49.0
+
+[node name="Size" parent="Discard/Debug" index="2"]
+margin_top = 52.0
+margin_bottom = 75.0
+
+[node name="TempPile" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1124, 475 )
+z_index = 10
+script = ExtResource( 18 )
+placement = 4
+overlap_shift_direction = 2
+show_manipulation_buttons = false
+pile_name = "TempPile"
+faceup_cards = true
+
+[node name="Control" parent="TempPile" index="0"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" parent="TempPile/Control/CenterContainer" index="0"]
+margin_top = 79.0
+margin_right = 0.0
+margin_bottom = 79.0
+
+[node name="Label" parent="TempPile/Control/CenterContainer/VBoxContainer" index="0"]
+visible = false
+margin_right = 139.0
+margin_bottom = 60.0
+text = "Olam Haba
+"
+
+[node name="PanelContainer" parent="TempPile/Control/CenterContainer/VBoxContainer" index="1"]
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="CenterContainer" parent="TempPile/Control/CenterContainer/VBoxContainer/PanelContainer" index="0"]
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="CardCount" parent="TempPile/Control/CenterContainer/VBoxContainer/PanelContainer/CenterContainer" index="0"]
+visible = false
+margin_left = -8.0
+margin_top = -15.0
+margin_right = 8.0
+margin_bottom = 14.0
+
+[node name="View" parent="TempPile/Control/ManipulationButtons" index="0"]
+margin_right = 26.0
+margin_bottom = 27.0
+
+[node name="ViewSorted" parent="TempPile/Control/ManipulationButtons" index="1"]
+margin_top = 30.0
+margin_right = 26.0
+margin_bottom = 57.0
+
+[node name="Shuffle" parent="TempPile/Control/ManipulationButtons" index="2"]
+margin_top = 60.0
+margin_right = 26.0
+margin_bottom = 87.0
+
+[node name="Debug" parent="TempPile" index="4"]
+visible = false
+
+[node name="Position" parent="TempPile/Debug" index="0"]
+margin_bottom = 23.0
+
+[node name="AreaPos" parent="TempPile/Debug" index="1"]
+margin_top = 26.0
+margin_bottom = 49.0
+
+[node name="Size" parent="TempPile/Debug" index="2"]
+margin_top = 52.0
+margin_bottom = 75.0
+
+[node name="Hand1" parent="." instance=ExtResource( 14 )]
+z_index = 100
+show_manipulation_buttons = false
+excess_cards = 0
+
+[node name="Hand2" parent="." instance=ExtResource( 16 )]
+index_shift_priority = 1
+show_manipulation_buttons = false
+excess_cards = 0
+
+[node name="SageActionsMenu" parent="." instance=ExtResource( 15 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -407.5
+margin_top = -45.0
+margin_right = 407.5
+margin_bottom = 45.0
+focus_mode = 1
+script = null
+
+[node name="ChallengePanel" parent="." instance=ExtResource( 19 )]
+anchor_top = 0.55
+anchor_bottom = 0.55
+margin_top = -33.55
+margin_right = 181.0
+margin_bottom = 33.45
+script = null
+
+[node name="DiscardPanel" parent="." instance=ExtResource( 13 )]
+script = null
+
 [connection signal="pressed" from="CanvasLayer/TutorialPanel/CenterContainer/VBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="action_completed" from="TurnQueue/Player2" to="TurnQueue/Player2" method="_on_Player2_action_completed"]
 
 [editable path="CanvasLayer/TutorialPanel"]
+[editable path="Deck"]
+[editable path="Discard"]
+[editable path="TempPile"]
