@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/new_card_game/TimelineGrid.gd" type="Script" id=1]
 [ext_resource path="res://src/new_card_game/TutorialPanel.tscn" type="PackedScene" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://src/new_card_game/Player1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/new_card_game/Player2.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/new_card_game/TutorialTurnQueue.gd" type="Script" id=12]
-[ext_resource path="res://src/new_card_game/DiscardPanel.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/new_card_game/Hand1.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/new_card_game/SageActionsMenu.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/new_card_game/Hand2.tscn" type="PackedScene" id=16]
@@ -20,6 +19,10 @@
 [ext_resource path="res://src/new_card_game/TempPile.gd" type="Script" id=18]
 [ext_resource path="res://src/new_card_game/ChallengePanel.tscn" type="PackedScene" id=19]
 [ext_resource path="res://themes/darktheme/darktheme.theme" type="Theme" id=20]
+[ext_resource path="res://src/new_card_game/TutorialChallengePanel.gd" type="Script" id=21]
+[ext_resource path="res://src/new_card_game/TutorialSageActionsMenu.gd" type="Script" id=22]
+[ext_resource path="res://src/new_card_game/TutorialPlayer2.gd" type="Script" id=23]
+[ext_resource path="res://src/new_card_game/TutorialPlayer1.gd" type="Script" id=24]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -34,21 +37,6 @@ anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -267, 138 )
 theme = ExtResource( 20 )
 script = ExtResource( 5 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TutorialPanel" parent="CanvasLayer" instance=ExtResource( 2 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -212.5
-margin_top = -125.0
-margin_right = 212.5
-margin_bottom = 125.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = null
 
 [node name="FieldTimelineContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -184,8 +172,11 @@ script = ExtResource( 9 )
 script = ExtResource( 12 )
 
 [node name="Player1" parent="TurnQueue" instance=ExtResource( 10 )]
+script = ExtResource( 24 )
 
 [node name="Player2" parent="TurnQueue" instance=ExtResource( 11 )]
+script = ExtResource( 23 )
+test_mode = false
 
 [node name="Discard" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -359,7 +350,7 @@ margin_top = -45.0
 margin_right = 407.5
 margin_bottom = 45.0
 focus_mode = 1
-script = null
+script = ExtResource( 22 )
 
 [node name="ChallengePanel" parent="." instance=ExtResource( 19 )]
 anchor_top = 0.55
@@ -367,15 +358,47 @@ anchor_bottom = 0.55
 margin_top = -33.55
 margin_right = 181.0
 margin_bottom = 33.45
+script = ExtResource( 21 )
+
+[node name="ScalingFocusOptions" type="OptionButton" parent="."]
+visible = false
+margin_left = 19.0
+margin_top = 141.0
+margin_right = 238.0
+margin_bottom = 181.0
+disabled = true
+toggle_mode = false
+text = "Scaling + Viewport Focus"
+items = [ "Scaling Focus", null, false, 0, null, "Viewport Focus", null, false, 1, null, "Scaling + Viewport Focus", null, false, 2, null, "Scaling + Info Panels", null, false, 3, null ]
+selected = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="TutorialPanel" parent="CanvasLayer" instance=ExtResource( 2 )]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -212.5
+margin_top = -125.0
+margin_right = 212.5
+margin_bottom = 125.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = null
 
-[node name="DiscardPanel" parent="." instance=ExtResource( 13 )]
-script = null
-
-[connection signal="pressed" from="CanvasLayer/TutorialPanel/CenterContainer/VBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="gui_input" from="Deck/Control" to="TurnQueue/Player1" method="_on_DeckPanel_gui_input"]
 [connection signal="action_completed" from="TurnQueue/Player2" to="TurnQueue/Player2" method="_on_Player2_action_completed"]
+[connection signal="item_selected" from="ScalingFocusOptions" to="." method="_on_ScalingFocusOptions_item_selected"]
+[connection signal="pressed" from="CanvasLayer/TutorialPanel/CenterContainer/VBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 
-[editable path="CanvasLayer/TutorialPanel"]
 [editable path="Deck"]
 [editable path="Discard"]
 [editable path="TempPile"]
+[editable path="SageActionsMenu"]
+[editable path="CanvasLayer/TutorialPanel"]

@@ -72,7 +72,7 @@ func is_timeline_complete():
 func update_counter(field_str, counter_field):
 	var value_str
 	if field_str == actions_str:
-		value_str = str(counter_field) + "/" + str(ACTIONS_AT_START)
+		value_str = str(counter_field) #+ "/" + str(ACTIONS_AT_START)
 	elif field_str == tokens_str:
 		value_str = str(counter_field) + "/" + str(max_torah_tokens)
 	board.counters.update_counter(player_name+field_str, value_str, true)

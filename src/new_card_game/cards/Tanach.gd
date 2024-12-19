@@ -1,8 +1,6 @@
 extends Card
 
 
-#var p1 : Node2D = cfc.NMAP.board.get_node("TurnQueue/Player1")
-
 func _on_Card_gui_input(event) -> void:
 	var board = cfc.NMAP.board
 	var player1 = board.get_node("TurnQueue/Player1")
@@ -23,6 +21,9 @@ func _on_Card_gui_input(event) -> void:
 					yield(get_tree().create_timer(1.5), "timeout")
 					move_to(cfc.NMAP.discard)
 					yield(self._tween, "tween_all_completed")
+				## TUTORIAL CODE
+				if board.get_name() == "Tutorial":
+					board.advance_tutorial()
 			else:
 				pass ## TODO: disable play option for card in TanachMenu
 

@@ -4,13 +4,15 @@ onready var tutorial_panel = $CanvasLayer/TutorialPanel
 onready var tutorial_label = tutorial_panel.get_node("CenterContainer/VBoxContainer/TutorialLabel")
 onready var tutorial_next_button = tutorial_panel.get_node("CenterContainer/VBoxContainer/NextButton")
 
+var current_step = -1
+var tutorial_state = "WAITING_FOR_NEXT" setget set_tutorial_state, get_tutorial_state
 var node_to_reveal = null
 var tut_panel_pos = "center"
 
 
 onready var tutorial_steps = [
 	{"text": """
-		This grid <show grid> in the center is the Torah Timeline. 
+		This grid in the center is the Torah Timeline. 
 		It contains 5 slots, one for each of the following 5 eras: 
 			Tanna, Amora, Gaon, Rishon, and Acharon. 
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": $FieldTimelineContainer/TimelineGrid,
@@ -22,12 +24,13 @@ onready var tutorial_steps = [
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """
 		You get 2 actions per turn. Actions include:
-		1. Drawing a card
-		2. Putting a card in the Beit Midrash
-		3. Placing a card in the Timeline
+		- Drawing a card
+		- Putting a card in the Beit Midrash
+		- Placing a card in the Timeline
+		- and more...
 		You can see your remaining actions and tokens
-		on the left panel.
-		(You can also view opponent tokens.)
+		on the top of the panel on the left.
+		Your opponent's actions/tokens are on the bottom.
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": $Counters, "preset":""},
 	{"text": """The deck on the left is shared between you and 
 		your opponent. Click it to draw a card. 
@@ -39,65 +42,103 @@ onready var tutorial_steps = [
 		At the start of each of your turns, 
 		you earn 1 token for each Sage here (up to 3 tokens). 
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": $FieldTimelineContainer/FieldHBox1, 
-		"preset":"top_right"},
+		"preset":""},
 	{"text": """Your opponent has a Beit Midrash as well
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": $FieldTimelineContainer/FieldHBox2, 
-		"preset":""},
+		"preset":"top_right"},
 	{"text": """Now, click your Sage card and click Beit Midrash. 
 		""", "state": "WAITING_FOR_BM", "reveal_node": null, "preset":""},
-	{"text": """You've used 2 actions, so now it's your opponent's turn. 
-		<Opponent plays a turn> 
+	{"text": """You've used 2 actions. Now it's the opponent's turn...
 		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
 	{"text": """Your turn again. Notice you received 1 Torah Token. 
 		This is because you have 1 Sage in your Beit Midrash.
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
-	{"text": """For this tutorial, we'll allow you to place a card 
-		in the Timeline for free. 
-		Select a Sage in your hand and click TIMELINE.
-		Once done, click NEXT
+	{"text": """
+		Go ahead and draw a card again
+		""", "state": "WAITING_FOR_DRAW", "reveal_node": null, "preset":""},
+	{"text": """ 
+		Mazal tov! You got a Tanach card.
+		These can give you an advantage. Click it
+		to use it. 
+		""", "state": "WAITING_FOR_TANACH", "reveal_node": $Discard, "preset":""},
+	{"text": """
+		Now it's your opponent's turn again...
+		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
+	{"text": """
+		Opponent turn over. Notice your tokens increased.
+		Put one of your new Sages into the Beit Midrash
+		""", "state": "WAITING_FOR_BM", "reveal_node": null, "preset":""},
+	{"text": """
+		Put another Sage into the Beit Midrash
+		""", "state": "WAITING_FOR_BM", "reveal_node": null, "preset":""},
+	{"text": """
+		Opponent's turn again...
+		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
+	{"text": """
+		You now have 5 tokens! It's enough to put a 
+		Sage in the Timeline.
+		Click the Sage in your hand and select Timeline.
 		""", "state": "WAITING_FOR_TIMELINE", "reveal_node": null, "preset":""},
-	{"text": """Let's speed things up a bit… 
-		I'll remove your action limit for now. 
-		Go ahead and draw 2 more cards
-		and put them in the Beit Midrash. 
-		When you're done you can press NEXT
-		""", "state": "WAITING_FOR_BD", "reveal_node": null, "preset":""},
-	{"text": """	Your Beit Midrash is now full, 
-		giving it the status of a BEIT DIN. 
-		With a Beit Din, you can REPLACE a Sage in the Timeline, 
-		if you fulfill both of these criteria:
-		1. You have 5 tokens to spend
+	{"text": """
+		Baruch Hashem! Remember you need the majority 
+		of Sages in the Timeline when it's full.
+		Next, we'll talk about replacing opponent cards in the 
+		Timeline. First, draw another card.
+		""", "state": "WAITING_FOR_DRAW", "reveal_node": null, "preset":""},
+	{"text": """
+		It's your opponent's turn again...
+		They're about to put a card into the Timeline.
+		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
+	{"text": """
+		Go ahead and use your Tanach card. You'll need it.
+		""", "state": "WAITING_FOR_TANACH", "reveal_node": null, "preset":""},
+	{"text": """	When your Beit Midrash contains 3 Sages, 
+		it gains the status of a BEIT DIN. 
+		With a Beit Din, you can replace a Sage in the Timeline, 
+		if you fulfill both of the following conditions...
+		1. You have 5 tokens to spend (or used the 
+		  Moshe Rabbeinu card, lucky you).
 		2. A Sage in your Beit Din matches the era 
-		of the Sage you are replacing
+		  of the Sage you are replacing
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
-	{"text": """Select the Tanna in your Beit Din and click Timeline 
-		to replace the opponent's Tanna in the Timeline.
-		""", "state": "WAITING_FOR_REPLACE", "reveal_node": $Discard, "preset":""},
+	{"text": """	
+		1. You have (at least) 5 tokens to spend. Or you've 
+		   used the Moshe Rabbeinu card (lucky you).
+		2. You must use a Sage in your Beit Din that matches
+		   the era of the Sage you are replacing
+		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
+	{"text": """Click the Tanna (Shammai) in your Beit Din 
+		and select Timeline to put your opponent's card into
+		Olam Haba and replace it.
+		""", "state": "WAITING_FOR_TIMELINE", "reveal_node": null, "preset":""},
 	{"text": """Well done! Keep in mind your opponent can also 
 		replace your cards. This is where the Challenge action 
 		comes in handy. 
-		Draw a Sage card, click it and select Challenge, 
-		and select a card in your opponent's Beit Midrash.
-		""", "state": "WAITING_FOR_CHALLENGE", "reveal_node": null, "preset":""},
-	{"text": """In a challenge, both cards end up 
-		in the Olam haba (discard) pile. 
-		However, the card with the higher era/number gains tokens. 
-		The bigger the difference in era, the more tokens you earn. 
-		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
-	{"text": """One last thing before we go: Tanach cards! 
-		These are cards that can give you an advantage. 
-		Use them wisely! Draw a card to see an example
+		Draw another Sage card.
 		""", "state": "WAITING_FOR_DRAW", "reveal_node": null, "preset":""},
+	{"text": """
+		We'll allow our opponent to take their turn...
+		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
+	{"text": """
+		Click the card you drew and select Challenge. 
+		Then select a card in your opponent's Beit Din.
+		""", "state": "WAITING_FOR_CHALLENGE", "reveal_node": null, "preset":""},
+	{"text": """After a challenge, both cards end up 
+		in Olam haba. However, the Sage with the higher era/number
+		gains tokens. The greater the difference in era, 
+		the more tokens you earn. 
+		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """You now have everything you need to start playing! 
 		Come back here whenever you need a refresher. 
 		Press the button to return to the main menu.
-		""", "state": "WAITING_FOR_END", "reveal_node": null, "preset":"center"},
+		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":"center"},
 	]
-var current_step = -1
-var tutorial_state = "INTRO"
+
 
 func _ready() -> void:
 	cfc.map_node(self)
+	cfc.game_settings.focus_style = CFInt.FocusStyle.VIEWPORT
+	$ScalingFocusOptions.selected = cfc.game_settings.focus_style
 	load_cards()
 	tutorial_label.text = """Welcome to the Torah Timeline tutorial! 
 		In this game, your goal is to place SAGE cards into the 
@@ -105,11 +146,14 @@ func _ready() -> void:
 		is full. Click NEXT to continue.
 		"""
 	_adjust_tutorial_panel("center")
+	
+	counters = $Counters
+	$TurnQueue.initialize()
 
-func _advance_tutorial():
+func advance_tutorial():
 	current_step += 1
 	if current_step < tutorial_steps.size():
-		tutorial_state = tutorial_steps[current_step]["state"]
+		set_tutorial_state(tutorial_steps[current_step]["state"])
 		tutorial_label.text = tutorial_steps[current_step]["text"]
 		node_to_reveal = tutorial_steps[current_step]["reveal_node"]
 		tut_panel_pos = tutorial_steps[current_step]["preset"]
@@ -121,7 +165,7 @@ func _advance_tutorial():
 
 
 func _on_NextButton_pressed() -> void:
-	_advance_tutorial()
+	advance_tutorial()
 	
 func reveal_node(node: Node) -> void:
 	if node:
@@ -156,3 +200,18 @@ func _adjust_tutorial_panel(anchor : String) -> void:
 		_:
 			pass
 	
+	tutorial_next_button.set_visible(true)	
+	if get_tutorial_state() != "WAITING_FOR_NEXT":
+		tutorial_next_button.set_visible(false)
+		 
+	
+	
+func set_tutorial_state(state : String):
+	tutorial_state = state
+	
+func get_tutorial_state() -> String:
+	return tutorial_state
+
+
+func _on_ScalingFocusOptions_item_selected(index: int) -> void:
+	cfc.set_setting('focus_style', index)

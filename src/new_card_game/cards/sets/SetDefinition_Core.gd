@@ -1,14 +1,51 @@
 extends Reference
 
+## Cards at the bottom of the script are ordered as such 
+## for the sake of the tutorial
+## Full organized list of cards can be found in README (eventually, חחח)
+
 const SET = "Core Set"
 const CARDS := {
-	### SAGE CARDS ###
-	"Yehoshua ben Prachya": {
-		"Type": "Sage",
-		"Power": 5,
-		"Era": "Tanna",
-		"Teaching": "Appoint for you a teacher, acquire a friend, and judge favorably"
+	
+	### TANACH CARDS BEGIN ###
+	"Avraham Avinu": {
+		"Type": "Tanach",
+		"Effect": "Gain 2 actions"
 	},
+	"Yitzchak Avinu": {
+		"Type": "Tanach",
+		"Effect": "Increase max Torah Tokens by 5"
+	},
+	"Yaakov Avinu": {
+		"Type": "Tanach",
+		"Effect": "Gain 1 token for each Sage in the BM"
+	},
+	"Aharon": {
+		"Type": "Tanach",
+		"Effect": "Your opponent loses 1 Action for 2 turns"
+	},
+	"Yehoshua": {
+		"Type": "Tanach",
+		"Effect": "View opponent's cards in the Beit Midrash"
+	},
+	"Shimshon": {
+		"Type": "Tanach",
+		"Effect": "Drop both player's Torah Tokens to 0"
+	},
+	"Shlomo HaMelech": {
+		"Type": "Tanach",
+		"Effect": "Take up to 2 tokens from your opponent"
+	},
+	"Eliyahu HaNavi": {
+		"Type": "Tanach",
+		"Effect": "Can fill the final timeline slot with this card"
+	},
+	"Elisha HaNavi": {
+		"Type": "Tanach",
+		"Effect": "Draw the top card from the discard pile"
+	},
+	
+	### SAGE CARDS BEGIN ###
 	"Nittai HaArbaily": {
 		"Type": "Sage",
 		"Power": 5,
@@ -26,18 +63,6 @@ const CARDS := {
 		"Power": 5,
 		"Era": "Tanna",
 		"Teaching": "Be wise in questioning witnesses, so they don't learn how to lie"
-	},
-	"Hillel": {
-		"Type": "Sage",
-		"Power": 5,
-		"Era": "Tanna",
-		"Teaching": "Be disciples of Aharon, loving and pursuing peace"
-	},
-	"Shammai": {
-		"Type": "Sage",
-		"Power": 5,
-		"Era": "Tanna",
-		"Teaching": "Say little and do much, and greet all with a smile"
 	},
 	"Shimon ben Gamliel": {
 		"Type": "Sage",
@@ -87,12 +112,7 @@ const CARDS := {
 		"Era": "Amora",
 		"Teaching": "One who rejoices while suffering brings salvation to the world"
 	},
-	"Rav Saadia": {
-		"Type": "Sage",
-		"Power": 3,
-		"Era": "Gaon",
-		"Teaching": "Our nation is a nation only because of the Torah"
-	},
+	
 	"Rav Hai": {
 		"Type": "Sage",
 		"Power": 3,
@@ -129,17 +149,11 @@ const CARDS := {
 		"Era": "Gaon",
 		"Teaching": "One who learns, but doesn't teach, diminishes the Torah"
 	},
-	"Rambam (Maimonides)": {
+	"Rav Saadia": { # P2 4th move
 		"Type": "Sage",
-		"Power": 2,
-		"Era": "Rishon",
-		"Teaching": "The ultimate purpose of knowledge is to know G-d"
-	},
-	"Rashi": {
-		"Type": "Sage",
-		"Power": 2,
-		"Era": "Rishon",
-		"Teaching": "The Torah begins with creation to show G-d's world authority"
+		"Power": 3,
+		"Era": "Gaon",
+		"Teaching": "Our nation is a nation only because of the Torah"
 	},
 	"Ramban (Nachmonides)": {
 		"Type": "Sage",
@@ -165,12 +179,7 @@ const CARDS := {
 		"Era": "Rishon",
 		"Teaching": "True scholarship is found in humility"
 	},
-	"Rabbi Yehuda HaLevi": {
-		"Type": "Sage",
-		"Power": 2,
-		"Era": "Rishon",
-		"Teaching": "The soul's longing for G-d is like a bird yearning to fly"
-	},
+	
 	"Rabbi Yaakov Emden": {
 		"Type": "Sage",
 		"Power": 1,
@@ -195,17 +204,37 @@ const CARDS := {
 		"Era": "Acharon",
 		"Teaching": "Overcoming negative traits is harder than mastering  Talmud"
 	},
-	"Rav Nachman of Breslov": {
-		"Type": "Sage",
-		"Power": 1,
-		"Era": "Acharon",
-		"Teaching": "If you believe you can destroy, believe you can also create"
-	},
+	
 	"Chafetz Chaim": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
 		"Teaching": "One moment of lashon hara can destroy years of work"
+	},
+	
+	
+	### TUTORIAL CARDS - Also included in main game ###
+	"Hillel": {  ## P2 4th move - put in Timeline
+		"Type": "Sage",
+		"Power": 5,
+		"Era": "Tanna",
+		"Teaching": "Be disciples of Aharon, loving and pursuing peace"
+	},
+	"Moshe Rabbeinu": { # P1 4th move
+		"Type": "Tanach",
+		"Effect": "Put a Sage in the Timeline for no tokens or action"
+	},
+	"Rashi": { # P2 3rd move
+		"Type": "Sage",
+		"Power": 2,
+		"Era": "Rishon",
+		"Teaching": "The Torah begins with creation to show G-d's world authority"
+	},
+	"Yehoshua ben Prachya": { # P2 2nd move
+		"Type": "Sage",
+		"Power": 5,
+		"Era": "Tanna",
+		"Teaching": "Appoint for you a teacher, acquire a friend, and judge favorably"
 	},
 	"Chazon Ish": {
 		"Type": "Sage",
@@ -213,51 +242,33 @@ const CARDS := {
 		"Era": "Acharon",
 		"Teaching": "Emunah (faith) is not weakness. It's courage to face reality"
 	},
-	
-	### TANACH CARDS ###
-	"Avraham Avinu": {
-		"Type": "Tanach",
-		"Effect": "Gain 2 actions"
+	"Rabbi Yehuda HaLevi": {
+		"Type": "Sage",
+		"Power": 2,
+		"Era": "Rishon",
+		"Teaching": "The soul's longing for G-d is like a bird yearning to fly"
 	},
-	"Yitzchak Avinu": {
-		"Type": "Tanach",
-		"Effect": "Increase max Torah Tokens by 5"
-	},
-	"Yaakov Avinu": {
-		"Type": "Tanach",
-		"Effect": "Gain 1 token for each Sage in the BM"
-	},
-	"Aharon": {
-		"Type": "Tanach",
-		"Effect": "Your opponent loses 1 Action for 2 turns"
-	},
-	"Moshe Rabbeinu": {
-		"Type": "Tanach",
-		"Effect": "Put a Sage in the Timeline for no tokens or action"
-	},
-	"Yehoshua": {
-		"Type": "Tanach",
-		"Effect": "View opponent's cards in the Beit Midrash"
-	},
-	"Shimshon": {
-		"Type": "Tanach",
-		"Effect": "Drop both player's Torah Tokens to 0"
-	},
-	"Shlomo HaMelech": {
-		"Type": "Tanach",
-		"Effect": "Take up to 2 tokens from your opponent"
-	},
-	"Eliyahu HaNavi": {
-		"Type": "Tanach",
-		"Effect": "Can fill the final timeline slot with this card"
-	},
-	"Elisha HaNavi": {
-		"Type": "Tanach",
-		"Effect": "Draw the top card from the discard pile"
+	"Rav Nachman of Breslov": {
+		"Type": "Sage",
+		"Power": 1,
+		"Era": "Acharon",
+		"Teaching": "If you believe you can destroy, believe you can also create"
 	},
 	"Yosef HaTzadik": {
 		"Type": "Tanach",
 		"Effect": "Draw 3 cards"
+	},
+	"Rambam (Maimonides)": { # P2 first move
+		"Type": "Sage",
+		"Power": 2,
+		"Era": "Rishon",
+		"Teaching": "The ultimate purpose of knowledge is to know G-d"
+	},
+	"Shammai": { # P1 first move
+		"Type": "Sage",
+		"Power": 5,
+		"Era": "Tanna",
+		"Teaching": "Say little and do much, and greet all with a smile"
 	},
 }
 

@@ -186,7 +186,7 @@ func _on_all_nodes_mapped() -> void:
 
 
 # The below code allows us to quickly refer to nodes meant to host cards
-# (i.e. parents) using an human-readable name.
+# (i.e. parents) using a human-readable name.
 #
 # Since the fully mapped NMAP variable is critical for the good functioning
 # of the framework, all CardContainers will wait in their ready() process
@@ -197,10 +197,10 @@ func map_node(node) -> void:
 	var node_name: String = node.name.to_lower()
 	# I don't know why but suring UT sometimes I get duplicate board nodes.
 	# I guess the queue_free is not as fast before the next test
-	if 'board' in node_name:
+		# Adding this so tutorial gets treated same as board
+	if 'board' in node_name or 'tutorial' in node_name:
 		node_name = 'board'
-	if 'tutorial' in node_name:
-		node_name = 'tutorial'
+
 	NMAP[node_name] = node
 	var add_main = 0
 	# Since we allow the game to run directly from the board scene,
