@@ -34,8 +34,7 @@ __meta__ = {
 }
 
 [node name="PlayAgainButton" type="Button" parent="HBoxContainer"]
-visible = false
-margin_right = 135.0
+margin_right = 205.0
 margin_bottom = 39.0
 grow_horizontal = 2
 size_flags_horizontal = 3
@@ -48,6 +47,7 @@ margin_bottom = 39.0
 size_flags_horizontal = 3
 
 [node name="MenuButton" type="Button" parent="HBoxContainer"]
+margin_left = 209.0
 margin_right = 415.0
 margin_bottom = 39.0
 grow_horizontal = 2

@@ -6,13 +6,18 @@ func _on_Card_gui_input(event) -> void:
 	var player1 = board.get_node("TurnQueue/Player1")
 	
 	if event.is_pressed() and cfc.NMAP.has("board") \
-		and not player1.turn_over and get_parent() == board.get_node("Hand1") :
+		and not player1.turn_over and get_parent() == board.get_node("Hand1"):
 			if player1.get_is_discarding():
 				move_to(cfc.NMAP.discard)
 				yield(self._tween, "tween_all_completed")
 				player1.set_is_discarding(false)
 			elif player1.can_do_effect(name):
 				## TODO: SHOW OPTION TO PLAY CARD
+				
+				# Compensate for Tutorial
+				if board.has_method("get_tutorial_state") and \
+				board.get_tutorial_state() != "WAITING_FOR_TANACH":
+					return
 				player1.do_effect(name)
 				if name == "Eliyahu HaNavi":
 					eliyahu_hanavi_effect(player1)

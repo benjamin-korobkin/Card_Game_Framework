@@ -5,7 +5,7 @@ class_name ViewportCardFocus
 extends Node2D
 
 export(PackedScene) var board_scene : PackedScene
-export(PackedScene) var tutorial_scene : PackedScene
+#export(PackedScene) var tutorial_scene : PackedScene
 export(PackedScene) var info_panel_scene : PackedScene
 # This array holds all the previously focused cards.
 var _previously_focused_cards := {}
@@ -24,9 +24,9 @@ func _ready():
 	world_environemt.environment.glow_enabled = cfc.game_settings.get('glow_enabled', true)
 	# We use the below while to wait until all the nodes we need have been mapped
 	# "hand" should be one of them.
-	var tutorial = tutorial_scene.instance()
+	#var tutorial = tutorial_scene.instance()
 	var board = board_scene.instance()
-	$ViewportContainer/Viewport.add_child(tutorial)
+	#$ViewportContainer/Viewport.add_child(tutorial)
 	$ViewportContainer/Viewport.add_child(board)
 	
 	if not cfc.are_all_nodes_mapped:

@@ -20,7 +20,8 @@ func play_turn():
 	.play_turn()
 	yield(get_tree().create_timer(1.0), "timeout")
 	while not turn_over:
-		if opponent.actions_remaining <= 0 and ready_for_next_action:
+		if opponent.actions_remaining <= 0 and ready_for_next_action and \
+			board.get_tutorial_state() == "WAITING_FOR_AI":
 			action()
 		yield(get_tree().create_timer(1.9), "timeout")
 	for card in hand.get_all_cards():  # Bug fix (Elisha HaNavi)

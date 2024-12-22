@@ -28,9 +28,12 @@ onready var tutorial_steps = [
 		- Putting a card in the Beit Midrash
 		- Placing a card in the Timeline
 		- and more...
-		You can see your remaining actions and tokens
-		on the top of the panel on the left.
-		Your opponent's actions/tokens are on the bottom.
+		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
+	{"text": """
+		The panel on the left shows remaining actions and tokens 
+		for you and your opponent.
+		Your actions & tokens are on the top.
+		Your opponent's are on the bottom.
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": $Counters, "preset":""},
 	{"text": """The deck on the left is shared between you and 
 		your opponent. Click it to draw a card. 
@@ -48,6 +51,10 @@ onready var tutorial_steps = [
 		"preset":"top_right"},
 	{"text": """Now, click your Sage card and click Beit Midrash. 
 		""", "state": "WAITING_FOR_BM", "reveal_node": null, "preset":""},
+	{"text": """Note: In this tutorial, your cards are shown faceup in the
+		Beit Midrash for simple viewing. In the main game, they
+		will be facedown (though you'll be able to view them).
+		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """You've used 2 actions. Now it's the opponent's turn...
 		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
 	{"text": """Your turn again. Notice you received 1 Torah Token. 
@@ -66,10 +73,10 @@ onready var tutorial_steps = [
 		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
 	{"text": """
 		Opponent turn over. Notice your tokens increased.
-		Put one of your new Sages into the Beit Midrash
+		Put one of your new Sages into the Beit Midrash.
 		""", "state": "WAITING_FOR_BM", "reveal_node": null, "preset":""},
 	{"text": """
-		Put another Sage into the Beit Midrash
+		Put another Sage into the Beit Midrash.
 		""", "state": "WAITING_FOR_BM", "reveal_node": null, "preset":""},
 	{"text": """
 		Opponent's turn again...
@@ -80,8 +87,8 @@ onready var tutorial_steps = [
 		Click the Sage in your hand and select Timeline.
 		""", "state": "WAITING_FOR_TIMELINE", "reveal_node": null, "preset":""},
 	{"text": """
-		Baruch Hashem! Remember you need the majority 
-		of Sages in the Timeline when it's full.
+		Baruch Hashem! If you have the majority of Sages
+		in the Timeline when it's full, you win the game.
 		Next, we'll talk about replacing opponent cards in the 
 		Timeline. First, draw another card.
 		""", "state": "WAITING_FOR_DRAW", "reveal_node": null, "preset":""},
@@ -89,6 +96,9 @@ onready var tutorial_steps = [
 		It's your opponent's turn again...
 		They're about to put a card into the Timeline.
 		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
+	{"text": """Notice when your opponent puts cards in the Timeline,
+		they are shown as upside-down.
+		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """
 		Go ahead and use your Tanach card. You'll need it.
 		""", "state": "WAITING_FOR_TANACH", "reveal_node": null, "preset":""},
@@ -96,16 +106,12 @@ onready var tutorial_steps = [
 		it gains the status of a BEIT DIN. 
 		With a Beit Din, you can replace a Sage in the Timeline, 
 		if you fulfill both of the following conditions...
-		1. You have 5 tokens to spend (or used the 
-		  Moshe Rabbeinu card, lucky you).
-		2. A Sage in your Beit Din matches the era 
-		  of the Sage you are replacing
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """	
-		1. You have (at least) 5 tokens to spend. Or you've 
+		1. You have (at least) 5 tokens to spend. Or, you've 
 		   used the Moshe Rabbeinu card (lucky you).
 		2. You must use a Sage in your Beit Din that matches
-		   the era of the Sage you are replacing
+		   the era of the Sage you are replacing.
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """Click the Tanna (Shammai) in your Beit Din 
 		and select Timeline to put your opponent's card into
@@ -114,7 +120,7 @@ onready var tutorial_steps = [
 	{"text": """Well done! Keep in mind your opponent can also 
 		replace your cards. This is where the Challenge action 
 		comes in handy. 
-		Draw another Sage card.
+		Draw another card.
 		""", "state": "WAITING_FOR_DRAW", "reveal_node": null, "preset":""},
 	{"text": """
 		We'll allow our opponent to take their turn...
@@ -123,13 +129,15 @@ onready var tutorial_steps = [
 		Click the card you drew and select Challenge. 
 		Then select a card in your opponent's Beit Din.
 		""", "state": "WAITING_FOR_CHALLENGE", "reveal_node": null, "preset":""},
-	{"text": """After a challenge, both cards end up 
-		in Olam haba. However, the Sage with the higher era/number
+	{"text": """As you just saw, both cards were revealed and then
+		sent to Olam haba. The Sage with the higher number (era)
 		gains tokens. The greater the difference in era, 
-		the more tokens you earn. 
+		the more tokens earned. More details on this can be found
+		in the description on the game's page. 
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
-	{"text": """You now have everything you need to start playing! 
-		Come back here whenever you need a refresher. 
+	{"text": """You now have everything you need 
+		to start playing! Come back here whenever you need 
+		a refresher. 
 		Press the button to return to the main menu.
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":"center"},
 	]
@@ -137,8 +145,8 @@ onready var tutorial_steps = [
 
 func _ready() -> void:
 	cfc.map_node(self)
-	cfc.game_settings.focus_style = CFInt.FocusStyle.VIEWPORT
-	$ScalingFocusOptions.selected = cfc.game_settings.focus_style
+#	cfc.game_settings.focus_style = CFInt.FocusStyle.SCALED
+#	$ScalingFocusOptions.selected = cfc.game_settings.focus_style
 	load_cards()
 	tutorial_label.text = """Welcome to the Torah Timeline tutorial! 
 		In this game, your goal is to place SAGE cards into the 

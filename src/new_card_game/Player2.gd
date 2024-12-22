@@ -36,7 +36,6 @@ func action():  ## Optimize. create method(s) for getting card type
 	if can_put_in_timeline():
 		# Start by replacing cards if possible (later we will first check
 		# if we will win by putting a new card in timeline)
-		# TODO: Test TorahChallengePanel
 		for card in field.get_occupying_cards():
 			if card.can_go_in_timeline(self):
 				board.torah_challenge_panel.set_visible(true)
@@ -68,12 +67,12 @@ func action():  ## Optimize. create method(s) for getting card type
 		var tanach_card = null
 		if field.count_available_slots() > 0:
 			for card in current_hand:
-				if card.get_property("Type") == "Tanach":
-					if can_do_effect(card.get_name()):
-						tanach_card = card
-				elif card.get_property("Type") == "Sage":
+				if card.get_property("Type") == "Sage":
 					put_in_field(card)
 					return
+				elif card.get_property("Type") == "Tanach":
+					if can_do_effect(card.get_name()):
+						tanach_card = card
 			if tanach_card:
 				tanach_card.play_card(self)
 				if tanach_card.get_property("Name") == "Elisha HaNavi":

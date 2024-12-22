@@ -26,7 +26,7 @@ func _on_FieldButton_pressed() -> void:
 	if p1.can_deduct_action():
 		p1.deduct_action()
 		p1.current_card.move_to(board, -1, field.find_available_slot())
-		p1.current_card.set_is_faceup(false)
+		p1.current_card.set_is_faceup(true)
 		p1.current_card.set_is_viewed(true)
 		p1.current_card.set_in_p1_field(true)
 		hide()
