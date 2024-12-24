@@ -203,6 +203,7 @@ func _adjust_tutorial_panel(anchor : String) -> void:
 		"top_right":
 			tutorial_panel.set_anchors_and_margins_preset(Control.PRESET_TOP_RIGHT, 
 			Control.PRESET_MODE_KEEP_SIZE)
+			
 		"center":
 			tutorial_panel.set_anchors_and_margins_preset(Control.PRESET_CENTER, Control.PRESET_MODE_KEEP_SIZE)
 		_:
