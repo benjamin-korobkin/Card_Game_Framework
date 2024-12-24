@@ -23,9 +23,17 @@ use_filter = true
 font_data = ExtResource( 8 )
 
 [node name="Menu" type="Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -360.0
+margin_right = 640.0
+margin_bottom = 360.0
 rect_min_size = Vector2( 1280, 720 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource( 1 )
 script = ExtResource( 3 )
 
@@ -56,55 +64,50 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 
-[node name="MainMenu" type="MarginContainer" parent="."]
-anchor_left = 0.141
-anchor_top = -0.026
-anchor_right = 0.801
-anchor_bottom = 1.0
-margin_left = -73.48
-margin_top = 23.72
-margin_right = 129.72
-margin_bottom = 61.0
+[node name="MainMenu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -360.0
+margin_right = 630.0
+margin_bottom = 361.0
 grow_horizontal = 2
-rect_scale = Vector2( 1.00415, 0.916426 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="VBox" type="VBoxContainer" parent="MainMenu"]
-margin_right = 1048.0
-margin_bottom = 776.0
-grow_horizontal = 2
+margin_left = 135.0
+margin_right = 1135.0
+margin_bottom = 721.0
+rect_min_size = Vector2( 1000, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
 
 [node name="Title" type="Label" parent="MainMenu/VBox"]
-margin_right = 1048.0
+margin_right = 1000.0
 margin_bottom = 115.0
 custom_fonts/font = SubResource( 2 )
 text = "Torah Timeline"
 align = 1
 
-[node name="Margin" type="MarginContainer" parent="MainMenu/VBox"]
-margin_top = 118.0
-margin_bottom = 118.0
-size_flags_horizontal = 2
-size_flags_vertical = 0
-
 [node name="HowTo" type="Label" parent="MainMenu/VBox"]
-margin_top = 121.0
-margin_right = 1048.0
-margin_bottom = 533.0
+margin_top = 118.0
+margin_right = 1000.0
+margin_bottom = 461.0
+size_flags_horizontal = 3
 custom_fonts/font = SubResource( 3 )
 text = "
 GOAL:  Have the most cards in the TIMELINE grid once it's full.
-Each card costs 5 TORAH TOKENS to put in the TIMELINE
+It costs 5 TORAH TOKENS to put in the TIMELINE
 
 To earn Torah Tokens, put Sages in your BEIT MIDRASH (BM).
-You will earn 1 token for each Sage in the Beit Midrash at the start of your turns.
-If your Beit Midrash is full, and you have 5 tokens, 
+If your Beit Midrash is full, 
 you can replace a card in the Timeline with a card from your Beit Midrash.
 
 CHALLENGE your opponent's cards in the BM to remove them. 
-- The Sage from the earlier era gains tokens.
-- In a Challenge, both cards are discarded.
 
 Use TANACH cards to give you an advantage.
 
@@ -112,40 +115,63 @@ You get 2 actions per turn.
 
 More details on the game's page."
 
-[node name="Center" type="CenterContainer" parent="MainMenu/VBox"]
-margin_top = 536.0
-margin_right = 1048.0
-margin_bottom = 776.0
-size_flags_vertical = 3
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/VBox"]
+margin_top = 464.0
+margin_right = 1000.0
+margin_bottom = 514.0
+rect_min_size = Vector2( 0, 50 )
 
-[node name="VButtons" type="VBoxContainer" parent="MainMenu/VBox/Center"]
-margin_left = 399.0
-margin_top = 15.0
-margin_right = 649.0
-margin_bottom = 225.0
+[node name="Center" type="CenterContainer" parent="MainMenu/VBox"]
+margin_top = 517.0
+margin_right = 1000.0
+margin_bottom = 717.0
+grow_horizontal = 2
+rect_min_size = Vector2( 0, 200 )
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="HButtons" type="HBoxContainer" parent="MainMenu/VBox/Center"]
+margin_left = 100.0
+margin_top = 50.0
+margin_right = 900.0
+margin_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_min_size = Vector2( 222, 175 )
-custom_constants/separation = 10
-alignment = 1
+rect_min_size = Vector2( 800, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_constants/separation = 30
 
-[node name="Start" type="Button" parent="MainMenu/VBox/Center/VButtons"]
-margin_right = 250.0
+[node name="Tutorial" type="Button" parent="MainMenu/VBox/Center/HButtons"]
+margin_right = 385.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 250, 100 )
-size_flags_vertical = 3
+rect_min_size = Vector2( 100, 50 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "Tutorial"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="MainMenu/VBox/Center/HButtons"]
+margin_left = 415.0
+margin_right = 800.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
 text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Exit" type="Button" parent="MainMenu/VBox/Center/VButtons"]
-margin_top = 110.0
-margin_right = 250.0
-margin_bottom = 210.0
-rect_min_size = Vector2( 250, 100 )
-size_flags_vertical = 3
+[node name="Exit" type="Button" parent="MainMenu/VBox/Center/HButtons"]
+visible = false
+margin_left = 553.0
+margin_right = 800.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 150, 50 )
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
 text = "Exit"
 

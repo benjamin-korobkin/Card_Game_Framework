@@ -3,14 +3,14 @@ extends Panel
 # The time it takes to switch from one menu tab to another
 const menu_switch_time = 0.2
 
-onready var v_buttons := $MainMenu/VBox/Center/VButtons
+onready var h_buttons := $MainMenu/VBox/Center/HButtons
 onready var main_menu := $MainMenu
 #onready var settings_menu := $SettingsMenu
 #onready var deck_builder := $DeckBuilder
 #onready var card_library := $CardLibrary
 
 func _ready() -> void:
-	for option_button in v_buttons.get_children():
+	for option_button in h_buttons.get_children():
 		if option_button.has_signal('pressed'):
 			option_button.connect('pressed', self, 'on_button_pressed', [option_button.name])
 #	settings_menu.rect_position.x = get_viewport().size.x
@@ -24,6 +24,8 @@ func _ready() -> void:
 
 func on_button_pressed(_button_name : String) -> void:
 	match _button_name:
+		"Tutorial":
+			get_tree().change_scene(CFConst.PATH_CUSTOM + 'Tutorial.tscn')
 		"Start":
 			# warning-ignore:return_value_discarded
 			get_tree().change_scene(CFConst.PATH_CUSTOM + 'Main.tscn')

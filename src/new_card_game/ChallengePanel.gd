@@ -1,3 +1,4 @@
+class_name ChallengePanel
 extends Popup
 
 onready var board

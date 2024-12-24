@@ -50,7 +50,7 @@ func draw_card():
 	if can_deduct_action():
 		if hand.is_full() and player_name=="Player2":
 			# TODO: Show that P2 is discarding
-			var rand_card = randi() % hand.hand_size
+			var rand_card = randi() % hand.hand_size - 1  # Bug fix?
 			hand.get_card(rand_card).move_to(cfc.NMAP.discard)
 			yield(hand.get_card(rand_card)._tween, "tween_all_completed")
 			draw_card()
@@ -72,7 +72,7 @@ func is_timeline_complete():
 func update_counter(field_str, counter_field):
 	var value_str
 	if field_str == actions_str:
-		value_str = str(counter_field) + "/" + str(ACTIONS_AT_START)
+		value_str = str(counter_field) #+ "/" + str(ACTIONS_AT_START)
 	elif field_str == tokens_str:
 		value_str = str(counter_field) + "/" + str(max_torah_tokens)
 	board.counters.update_counter(player_name+field_str, value_str, true)

@@ -36,8 +36,8 @@ valign = 1
 [node name="CancelButton" type="Button" parent="."]
 margin_left = 3.0
 margin_top = 56.0
-margin_right = 349.0
-margin_bottom = 132.0
+margin_right = 348.0
+margin_bottom = 96.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 shortcut_in_tooltip = false

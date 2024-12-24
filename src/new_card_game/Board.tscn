@@ -568,3 +568,4 @@ margin_bottom = 75.0
 [editable path="Deck"]
 [editable path="Discard"]
 [editable path="TempPile"]
+[editable path="SageActionsMenu"]

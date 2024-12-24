@@ -144,6 +144,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/core/CardViewer/CardViewer.gd"
 }, {
+"base": "Popup",
+"class": "ChallengePanel",
+"language": "GDScript",
+"path": "res://src/new_card_game/ChallengePanel.gd"
+}, {
 "base": "Control",
 "class": "Counters",
 "language": "GDScript",
@@ -193,6 +198,11 @@ _global_script_classes=[ {
 "class": "DetailPanels",
 "language": "GDScript",
 "path": "res://src/core/DetailPanels.gd"
+}, {
+"base": "Popup",
+"class": "DiscardPanel",
+"language": "GDScript",
+"path": "res://src/new_card_game/DiscardPanel.gd"
 }, {
 "base": "Reference",
 "class": "GameStats",
@@ -248,6 +258,11 @@ _global_script_classes=[ {
 "class": "SP",
 "language": "GDScript",
 "path": "res://src/new_card_game/SP.gd"
+}, {
+"base": "PopupMenu",
+"class": "SageActionsMenu",
+"language": "GDScript",
+"path": "res://src/new_card_game/SageActionsMenu.gd"
 }, {
 "base": "ScriptObject",
 "class": "ScriptAlter",
@@ -309,6 +324,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/new_card_game/TurnQueue.gd"
 }, {
+"base": "PopupMenu",
+"class": "TutorialSageActionsMenu",
+"language": "GDScript",
+"path": "res://src/new_card_game/TutorialSageActionsMenu.gd"
+}, {
 "base": "Node2D",
 "class": "ViewportCardFocus",
 "language": "GDScript",
@@ -347,6 +367,7 @@ _global_script_class_icons={
 "CardLabel": "",
 "CardLibrary": "",
 "CardViewer": "",
+"ChallengePanel": "",
 "Counters": "",
 "CustomScripts": "",
 "DBDeckCardObject": "",
@@ -357,6 +378,7 @@ _global_script_class_icons={
 "DeckLoader": "",
 "DeckNameRandomizer": "",
 "DetailPanels": "",
+"DiscardPanel": "",
 "GameStats": "",
 "Hand": "",
 "Highlight": "",
@@ -368,6 +390,7 @@ _global_script_class_icons={
 "Player": "",
 "QuantityNumberButton": "",
 "SP": "",
+"SageActionsMenu": "",
 "ScriptAlter": "",
 "ScriptObject": "",
 "ScriptPer": "",
@@ -380,6 +403,7 @@ _global_script_class_icons={
 "Token": "",
 "TokenDrawer": "",
 "TurnQueue": "",
+"TutorialSageActionsMenu": "",
 "ViewportCardFocus": "",
 "perMessage": ""
 }
@@ -394,11 +418,15 @@ config/icon="res://icon.png"
 
 cfc="*res://src/core/CFControl.gd"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=1280
 window/size/height=720
-window/stretch/aspect="keep"
+window/size/resizable=false
 
 [global]
 

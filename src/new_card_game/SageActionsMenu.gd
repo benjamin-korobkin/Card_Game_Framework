@@ -1,3 +1,4 @@
+class_name SageActionsMenu
 extends PopupMenu
 
 var board
