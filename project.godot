@@ -426,7 +426,7 @@ settings/fps/force_fps=60
 
 window/size/width=1280
 window/size/height=720
-window/stretch/aspect="keep"
+window/size/resizable=false
 
 [global]
 

@@ -6,7 +6,7 @@ extends Reference
 
 const SET = "Core Set"
 const CARDS := {
-	
+
 	### TANACH CARDS BEGIN ###
 	"Avraham Avinu": {
 		"Type": "Tanach",
@@ -28,10 +28,10 @@ const CARDS := {
 		"Type": "Tanach",
 		"Effect": "View opponent's cards in the Beit Midrash"
 	},
-	"Shimshon": {
-		"Type": "Tanach",
-		"Effect": "Drop both player's Torah Tokens to 0"
-	},
+#	"Shimshon": {
+#		"Type": "Tanach",
+#		"Effect": "Drop both player's Torah Tokens to 0"
+#	},
 	"Shlomo HaMelech": {
 		"Type": "Tanach",
 		"Effect": "Take up to 2 tokens from your opponent"
@@ -44,7 +44,7 @@ const CARDS := {
 		"Type": "Tanach",
 		"Effect": "Draw the top card from the discard pile"
 	},
-	
+
 	### SAGE CARDS BEGIN ###
 	"Nittai HaArbaily": {
 		"Type": "Sage",
@@ -58,12 +58,12 @@ const CARDS := {
 		"Era": "Tanna",
 		"Teaching": "When judging, view all as guilty. View them as innocent after"
 	},
-	"Shimon ben Shetach": {
-		"Type": "Sage",
-		"Power": 5,
-		"Era": "Tanna",
-		"Teaching": "Be wise in questioning witnesses, so they don't learn how to lie"
-	},
+#	"Shimon ben Shetach": {
+#		"Type": "Sage",
+#		"Power": 5,
+#		"Era": "Tanna",
+#		"Teaching": "Be wise in questioning witnesses, so they don't learn how to lie"
+#	},
 	"Shimon ben Gamliel": {
 		"Type": "Sage",
 		"Power": 5,
@@ -106,19 +106,19 @@ const CARDS := {
 		"Era": "Amora",
 		"Teaching": "Great is teshuva, for it transforms intended sins into merits"
 	},
-	"Rabbi Yochanan bar Nappacha": {
-		"Type": "Sage",
-		"Power": 4,
-		"Era": "Amora",
-		"Teaching": "One who rejoices while suffering brings salvation to the world"
-	},
-	
-	"Rav Hai": {
-		"Type": "Sage",
-		"Power": 3,
-		"Era": "Gaon",
-		"Teaching": "The true test of knowledge is action"
-	},
+#	"Rabbi Yochanan bar Nappacha": {
+#		"Type": "Sage",
+#		"Power": 4,
+#		"Era": "Amora",
+#		"Teaching": "One who rejoices while suffering brings salvation to the world"
+#	},
+
+#	"Rav Hai": {
+#		"Type": "Sage",
+#		"Power": 3,
+#		"Era": "Gaon",
+#		"Teaching": "The true test of knowledge is action"
+#	},
 	"Rav Sherira": {
 		"Type": "Sage",
 		"Power": 3,
@@ -173,13 +173,12 @@ const CARDS := {
 		"Era": "Rishon",
 		"Teaching": "The study of Torah is a path to wisdom and peace"
 	},
-	"Rabbi Avraham ben David (Ravad)": {
-		"Type": "Sage",
-		"Power": 2,
-		"Era": "Rishon",
-		"Teaching": "True scholarship is found in humility"
-	},
-	
+#	"Rabbi Avraham ben David (Ravad)": {
+#		"Type": "Sage",
+#		"Power": 2,
+#		"Era": "Rishon",
+#		"Teaching": "True scholarship is found in humility"
+#	},
 	"Rabbi Yaakov Emden": {
 		"Type": "Sage",
 		"Power": 1,
@@ -192,12 +191,12 @@ const CARDS := {
 		"Era": "Acharon",
 		"Teaching": "The strength of a person lies in the ability to choose"
 	},
-	"Rabbi Eliyahu Dessler": {
-		"Type": "Sage",
-		"Power": 1,
-		"Era": "Acharon",
-		"Teaching": "True wealth is measured by one's contributions to the world"
-	},
+#	"Rabbi Eliyahu Dessler": {
+#		"Type": "Sage",
+#		"Power": 1,
+#		"Era": "Acharon",
+#		"Teaching": "True wealth is measured by one's contributions to the world"
+#	},
 	"Vilna Gaon": {
 		"Type": "Sage",
 		"Power": 1,

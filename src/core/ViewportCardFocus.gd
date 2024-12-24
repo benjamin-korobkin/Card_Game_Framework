@@ -6,7 +6,7 @@ extends Node2D
 
 export(PackedScene) var board_scene : PackedScene
 
-export(PackedScene) var info_panel_scene : PackedScene
+#export(PackedScene) var info_panel_scene : PackedScene
 # This array holds all the previously focused cards.
 var _previously_focused_cards := {}
 # This var hold the currently focused card duplicate.
@@ -28,6 +28,9 @@ func _ready():
 	var board = board_scene.instance()
 	$ViewportContainer/Viewport.add_child(board)
 	
+	$VBC.rect_position.x = get_viewport().size.x - $VBC.rect_size.x
+	$VBC.rect_position.y = 0
+	
 	if not cfc.are_all_nodes_mapped:
 		yield(cfc, "all_nodes_mapped")
 	# warning-ignore:return_value_discarded
@@ -35,34 +38,34 @@ func _ready():
 	_on_Viewport_size_changed()
 	for container in get_tree().get_nodes_in_group("card_containers"):
 		container.re_place()
-	focus_info.info_panel_scene = info_panel_scene
-	focus_info.setup()
+#	focus_info.info_panel_scene = info_panel_scene
+#	focus_info.setup()
 	
 
 func _process(_delta) -> void:
 	# The below makes sure to display the closeup of the card, only on the side
 	# where the player's mouse is not in.
-	if _current_focus_source and is_instance_valid(_current_focus_source)\
-			and _current_focus_source.get_state_exec() != "pile"\
-			and cfc.game_settings.focus_style == CFInt.FocusStyle.BOTH_INFO_PANELS_ONLY:
-		if get_global_mouse_position().y + focus_info.rect_size.y/2 > get_viewport().size.y:
-			$VBC.rect_position.y = get_viewport().size.y - focus_info.rect_size.y
-		else:
-			$VBC.rect_position.y = get_global_mouse_position().y - focus_info.rect_size.y / 2
-		if get_global_mouse_position().x + focus_info.rect_size.x + 60 > get_viewport().size.x:
-			$VBC.rect_position.x = get_viewport().size.x - focus_info.rect_size.x
-			$VBC.rect_position.y = get_global_mouse_position().y - 500
-		else:
-			$VBC.rect_position.x = get_global_mouse_position().x + 60
+#	if _current_focus_source and is_instance_valid(_current_focus_source)\
+#			and _current_focus_source.get_state_exec() != "pile"\
+#			and cfc.game_settings.focus_style == CFInt.FocusStyle.BOTH_INFO_PANELS_ONLY:
+#		if get_global_mouse_position().y + focus_info.rect_size.y/2 > get_viewport().size.y:
+#			$VBC.rect_position.y = get_viewport().size.y - focus_info.rect_size.y
+#		else:
+#			$VBC.rect_position.y = get_global_mouse_position().y - focus_info.rect_size.y / 2
+#		if get_global_mouse_position().x + focus_info.rect_size.x + 60 > get_viewport().size.x:
+#			$VBC.rect_position.x = get_viewport().size.x - focus_info.rect_size.x
+#			$VBC.rect_position.y = get_global_mouse_position().y - 500
+#		else:
+#			$VBC.rect_position.x = get_global_mouse_position().x + 60
 
-	elif _current_focus_source and is_instance_valid(_current_focus_source)\
-			and get_global_mouse_position().x > get_viewport().size.x - _current_focus_source.canonical_size.x*2.5\
-			and get_global_mouse_position().y < _current_focus_source.canonical_size.y*2:
-		$VBC.rect_position.x = 0
-		$VBC.rect_position.y = 0
-	elif _current_focus_source:
-		$VBC.rect_position.x = get_viewport().size.x - $VBC.rect_size.x
-		$VBC.rect_position.y = 0
+#	elif _current_focus_source and is_instance_valid(_current_focus_source)\
+#			and get_global_mouse_position().x > get_viewport().size.x - _current_focus_source.canonical_size.x*2.5\
+#			and get_global_mouse_position().y < _current_focus_source.canonical_size.y*2:
+#		$VBC.rect_position.x = 0
+#		$VBC.rect_position.y = 0
+#	elif _current_focus_source:
+#		$VBC.rect_position.x = get_viewport().size.x - $VBC.rect_size.x
+#		$VBC.rect_position.y = 0
 	# The below performs some garbage collection on previously focused cards.
 	for c in _previously_focused_cards:
 		if not is_instance_valid(_previously_focused_cards[c]):
