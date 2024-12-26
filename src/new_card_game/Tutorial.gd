@@ -234,6 +234,11 @@ func set_tutorial_state(state : String):
 func get_tutorial_state() -> String:
 	return tutorial_state
 
-
+## I'll probably remove this later
 func _on_ScalingFocusOptions_item_selected(index: int) -> void:
 	cfc.set_setting('focus_style', index)
+
+
+func _on_Exit_Game_pressed() -> void:
+	cfc.quit_game()
+	get_tree().change_scene("res://src/custom/MainMenu.tscn")

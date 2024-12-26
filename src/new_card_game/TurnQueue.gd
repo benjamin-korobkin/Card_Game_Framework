@@ -23,8 +23,8 @@ func initialize():
 
 
 func check_turn_over():
-	print("P1 cards in timeline: " + str(p1.cards_in_timeline))
-	print("P2 cards in timeline: " + str(p2.cards_in_timeline))
+#	print("P1 cards in timeline: " + str(p1.cards_in_timeline))
+#	print("P2 cards in timeline: " + str(p2.cards_in_timeline))
 	if active_player.is_timeline_complete():
 		var winner
 		if p1.cards_in_timeline > p2.cards_in_timeline:

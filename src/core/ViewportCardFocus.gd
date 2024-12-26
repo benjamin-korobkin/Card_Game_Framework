@@ -68,6 +68,7 @@ func _process(_delta) -> void:
 #	elif _current_focus_source:
 #	$VBC.rect_position.x = get_viewport().size.x - $VBC.rect_size.x
 #	$VBC.rect_position.y = 0
+
 	# The below performs some garbage collection on previously focused cards.
 	for c in _previously_focused_cards:
 		if not is_instance_valid(_previously_focused_cards[c]):
@@ -145,20 +146,22 @@ func focus_card(card: Card, show_preview := true) -> void:
 		# We make the viewport camera focus on it
 		$VBC/Focus/Viewport/Camera2D.position = dupe_focus.global_position
 		# We always make sure to clean tweening conflicts
-		$VBC/Focus/Tween.remove_all()
+#		$VBC/Focus/Tween.remove_all()
 		# We do a nice alpha-modulate tween
-		$VBC/Focus/Tween.interpolate_property($VBC/Focus,'modulate',
-				$VBC/Focus.modulate, Color(1,1,1,1), 0.25,
-				Tween.TRANS_SINE, Tween.EASE_IN)
-		if focus_info.visible_details > 0:
-			$VBC/Focus/Tween.interpolate_property(focus_info,'modulate',
-					focus_info.modulate, Color(1,1,1,1), 0.25,
-					Tween.TRANS_SINE, Tween.EASE_IN)
-		else:
-			$VBC/Focus/Tween.interpolate_property(focus_info,'modulate',
-					focus_info.modulate, Color(1,1,1,0), 0.25,
-					Tween.TRANS_SINE, Tween.EASE_IN)
-		$VBC/Focus/Tween.start()
+#		$VBC/Focus/Tween.interpolate_property($VBC/Focus,'modulate',
+#				$VBC/Focus.modulate, Color(1,1,1,1), 0.25,
+#				Tween.TRANS_SINE, Tween.EASE_IN)
+		$VBC/Focus.modulate = Color(1,1,1,1)
+#		if focus_info.visible_details > 0:
+#			$VBC/Focus/Tween.interpolate_property(focus_info,'modulate',
+#					focus_info.modulate, Color(1,1,1,1), 0.25,
+#					Tween.TRANS_SINE, Tween.EASE_IN)
+#		else:
+#			$VBC/Focus/Tween.interpolate_property(focus_info,'modulate',
+#					focus_info.modulate, Color(1,1,1,0), 0.25,
+#					Tween.TRANS_SINE, Tween.EASE_IN)
+		focus_info.modulate = Color(1,1,1,0)
+#		$VBC/Focus/Tween.start()
 		card_focus.visible = show_preview
 		# Now that the display panels can expand horizontally
 		# we need to set their parent container size to 0 here
@@ -173,16 +176,18 @@ func focus_card(card: Card, show_preview := true) -> void:
 func unfocus(card: Card) -> void:
 	if _current_focus_source == card:
 		_current_focus_source = null
-		$VBC/Focus/Tween.remove_all()
-		$VBC/Focus/Tween.interpolate_property($VBC/Focus,'modulate',
-				$VBC/Focus.modulate, Color(1,1,1,0), 0.25,
-				Tween.TRANS_SINE, Tween.EASE_IN)
+#		$VBC/Focus/Tween.remove_all()
+#		$VBC/Focus/Tween.interpolate_property($VBC/Focus,'modulate',
+#				$VBC/Focus.modulate, Color(1,1,1,0), 0.25,
+#				Tween.TRANS_SINE, Tween.EASE_IN)
+#		if focus_info.modulate != Color(1,1,1,0):
+#			$VBC/Focus/Tween.interpolate_property(focus_info,'modulate',
+#					focus_info.modulate, Color(1,1,1,0), 0.25,
+#					Tween.TRANS_SINE, Tween.EASE_IN)
+#		$VBC/Focus/Tween.start()
+		$VBC/Focus.modulate = Color(1,1,1,0)
 		if focus_info.modulate != Color(1,1,1,0):
-			$VBC/Focus/Tween.interpolate_property(focus_info,'modulate',
-					focus_info.modulate, Color(1,1,1,0), 0.25,
-					Tween.TRANS_SINE, Tween.EASE_IN)
-		$VBC/Focus/Tween.start()
-
+			focus_info.modulate = Color(1,1,1,0)
 
 # Tells the currently focused card to stop focusing.
 func unfocus_all() -> void:

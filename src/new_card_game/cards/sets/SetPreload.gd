@@ -6,7 +6,7 @@ extends Node
 # The preloaded card sets. Each entry in this list must be a preload() for a set definition gdscript
 # This constant is optional. If this is left empty
 # The game will load the sets by scanning the directories in runtime
-const CARD_SETS := []
+const CARD_SETS := [preload("res://src/new_card_game/cards/sets/SetDefinition_Core.gd")]
 # The preloaded card scripts. Each entry in this list must be a preload() for a set scripts gdscript
 # This constant is optional. If this is left empty
 # The game will load the scripts by scanning the directories in runtime

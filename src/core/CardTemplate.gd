@@ -372,44 +372,44 @@ func _init_card_name() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta) -> void:
-	if $Tween.is_active() and not cfc.ut: # Debug code for catch potential Tween deadlocks
-		_tween_stuck_time += delta
-		if _tween_stuck_time > 5 and int(fmod(_tween_stuck_time,3)) == 2 :
-			print_debug("Tween Stuck for ",_tween_stuck_time,
-					"seconds. Reports leftover runtime: ",$Tween.get_runtime ( ))
-			$Tween.remove_all()
-			_tween_stuck_time = 0
-	else:
-		_tween_stuck_time = 0
+#	if $Tween.is_active() and not cfc.ut: # Debug code for catch potential Tween deadlocks
+#		_tween_stuck_time += delta
+#		if _tween_stuck_time > 5 and int(fmod(_tween_stuck_time,3)) == 2 :
+#			print_debug("Tween Stuck for ",_tween_stuck_time,
+#					"seconds. Reports leftover runtime: ",$Tween.get_runtime ( ))
+#			$Tween.remove_all()
+#			_tween_stuck_time = 0
+#	else:
+#		_tween_stuck_time = 0
 	_process_card_state()
 	# Having to do all these checks due to godotengine/godot#16854
-	if cfc._debug and not get_parent().is_in_group("piles"):
-		var stateslist = [
-			"IN_HAND",
-			"FOCUSED_IN_HAND",
-			"MOVING_TO_CONTAINER",
-			"REORGANIZING",
-			"PUSHED_ASIDE",
-			"DRAGGED",
-			"DROPPING_TO_BOARD",
-			"ON_PLAY_BOARD",
-			"FOCUSED_ON_BOARD",
-			"IN_PILE",
-			"VIEWED_IN_PILE",
-			"IN_POPUP",
-			"FOCUSED_IN_POPUP",
-			"VIEWPORT_FOCUS",
-			"PREVIEW",
-			"DECKBUILDER_GRID",
-			"MOVING_TO_SPAWN_DESTINATION"
-		]
-		$Debug.visible = true
-		$Debug/id.text = "ID:  " + str(self)
-		$Debug/state.text = "STATE: " + stateslist[state]
-		$Debug/index.text = "INDEX: " + str(get_index())
-		$Debug/parent.text = "PARENT: " + str(get_parent().name)
-	else:
-		$Debug.visible = false
+#	if cfc._debug and not get_parent().is_in_group("piles"):
+#		var stateslist = [
+#			"IN_HAND",
+#			"FOCUSED_IN_HAND",
+#			"MOVING_TO_CONTAINER",
+#			"REORGANIZING",
+#			"PUSHED_ASIDE",
+#			"DRAGGED",
+#			"DROPPING_TO_BOARD",
+#			"ON_PLAY_BOARD",
+#			"FOCUSED_ON_BOARD",
+#			"IN_PILE",
+#			"VIEWED_IN_PILE",
+#			"IN_POPUP",
+#			"FOCUSED_IN_POPUP",
+#			"VIEWPORT_FOCUS",
+#			"PREVIEW",
+#			"DECKBUILDER_GRID",
+#			"MOVING_TO_SPAWN_DESTINATION"
+#		]
+#		$Debug.visible = true
+#		$Debug/id.text = "ID:  " + str(self)
+#		$Debug/state.text = "STATE: " + stateslist[state]
+#		$Debug/index.text = "INDEX: " + str(get_index())
+#		$Debug/parent.text = "PARENT: " + str(get_parent().name)
+#	else:
+#		$Debug.visible = false
 
 
 # Triggers the focus-in effect on the card
@@ -1001,7 +1001,7 @@ func set_card_name(value : String, set_label := true) -> void:
 func get_card_name() -> String:
 	return canonical_name
 
-func set_card_owner(player):
+func set_card_owner(player) -> void:
 	card_owner = player
 
 func get_card_owner() -> String:
@@ -1018,8 +1018,8 @@ func set_name(value : String) -> void:
 
 # Sets the card state and sends a signal.
 func set_state(value: int) -> void:
-	if state == CardState.DRAGGED:
-		pass
+#	if state == CardState.DRAGGED:
+#		pass
 	var prev_state = state
 	state = value
 	emit_signal("state_changed", self, prev_state, state)
@@ -2330,8 +2330,7 @@ func _process_card_state() -> void:
 
 				if cfc.game_settings.hand_use_oval_shape:
 					_add_tween_rotation($Control.rect_rotation, 0, focus_tween_duration)
-				else:
-					pass
+#				else:
 					# warning-ignore:return_value_discarded
 					#set_card_rotation(0)
 				$Tween.start()
@@ -2455,28 +2454,28 @@ func _process_card_state() -> void:
 				# We don't change state yet,
 				# only when the focus is removed from the neighbour
 
-		CardState.DRAGGED:
-			# Used when the card is dragged around the game with the mouse
-			set_focus(true)
-			set_control_mouse_filters(true)
-			buttons.set_active(false)
-			if (not $Tween.is_active() and
-				not scale.is_equal_approx(CFConst.CARD_SCALE_WHILE_DRAGGING) and
-				get_parent() != cfc.NMAP.board):
-				_add_tween_scale(scale, CFConst.CARD_SCALE_WHILE_DRAGGING,
-					dragged_tween_duration, Tween.TRANS_SINE, Tween.EASE_IN)
-				$Tween.start()
-			# We need to capture the mouse cursos in the window while dragging
-			# because if the player drags the cursor outside the window and unclicks
-			# The control will not receive the mouse input
-			# and this will stay dragging forever
-			$Control.set_default_cursor_shape(Input.CURSOR_CROSS)
-			# We set the card to be centered on the mouse cursor to allow
-			# the player to properly understand where it will go once dropped.
-			global_position = _determine_board_position_from_mouse() - Vector2(5,5)
-			_organize_attachments()
-			# We want to keep the token drawer closed during movement
-			tokens.is_drawer_open = false
+#		CardState.DRAGGED:
+#			# Used when the card is dragged around the game with the mouse
+#			set_focus(true)
+#			set_control_mouse_filters(true)
+#			buttons.set_active(false)
+#			if (not $Tween.is_active() and
+#				not scale.is_equal_approx(CFConst.CARD_SCALE_WHILE_DRAGGING) and
+#				get_parent() != cfc.NMAP.board):
+#				_add_tween_scale(scale, CFConst.CARD_SCALE_WHILE_DRAGGING,
+#					dragged_tween_duration, Tween.TRANS_SINE, Tween.EASE_IN)
+#				$Tween.start()
+#			# We need to capture the mouse cursos in the window while dragging
+#			# because if the player drags the cursor outside the window and unclicks
+#			# The control will not receive the mouse input
+#			# and this will stay dragging forever
+#			$Control.set_default_cursor_shape(Input.CURSOR_CROSS)
+#			# We set the card to be centered on the mouse cursor to allow
+#			# the player to properly understand where it will go once dropped.
+#			global_position = _determine_board_position_from_mouse() - Vector2(5,5)
+#			_organize_attachments()
+#			# We want to keep the token drawer closed during movement
+#			tokens.is_drawer_open = false
 
 		CardState.ON_PLAY_BOARD:
 			# Used when the card is idle on the board

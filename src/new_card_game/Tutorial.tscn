@@ -34,7 +34,7 @@ corner_radius_bottom_left = 25
 [node name="Tutorial" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( -267, 138 )
+rect_pivot_offset = Vector2( 1039, 189 )
 theme = ExtResource( 20 )
 script = ExtResource( 5 )
 
@@ -390,10 +390,23 @@ margin_bottom = 125.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Exit Game" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -180.0
+margin_top = -90.0
+margin_right = -30.0
+margin_bottom = -25.0
+text = "EXIT"
+icon_align = 1
+
 [connection signal="gui_input" from="Deck/Control" to="TurnQueue/Player1" method="_on_DeckPanel_gui_input"]
 [connection signal="action_completed" from="TurnQueue/Player2" to="TurnQueue/Player2" method="_on_Player2_action_completed"]
 [connection signal="item_selected" from="ScalingFocusOptions" to="." method="_on_ScalingFocusOptions_item_selected"]
 [connection signal="pressed" from="CanvasLayer/TutorialPanel/CenterContainer/VBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="Exit Game" to="." method="_on_Exit_Game_pressed"]
 
 [editable path="Deck"]
 [editable path="Discard"]
