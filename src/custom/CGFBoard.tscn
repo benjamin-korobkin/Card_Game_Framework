@@ -37,9 +37,6 @@ anchor_bottom = 1.0
 mouse_filter = 2
 theme = ExtResource( 12 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Deck" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 475 )

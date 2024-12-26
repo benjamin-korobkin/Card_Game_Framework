@@ -70,9 +70,9 @@ enum CardType{
 # Used to spawn CardChoices. We have to add the consts together
 # before passing to the preload, or the parser complains.
 const _CARD_CHOICES_SCENE_FILE = CFConst.PATH_CORE + "CardChoices.tscn"
-const _CARD_CHOICES_SCENE = preload(_CARD_CHOICES_SCENE_FILE)
+#const _CARD_CHOICES_SCENE = preload(_CARD_CHOICES_SCENE_FILE)
 const _TARGETING_SCENE_FILE = CFConst.PATH_CORE + "Card/TargetingArrow.tscn"
-const _TARGETING_SCENE = preload(_TARGETING_SCENE_FILE)
+#const _TARGETING_SCENE = preload(_TARGETING_SCENE_FILE)
 
 
 # Emitted whenever the card is rotated
@@ -146,7 +146,7 @@ export var mandatory_grid_name : String
 export(PackedScene) var card_back_design : PackedScene
 export(PackedScene) var card_front_design : PackedScene
 # We use this variable, so that the scene can be overriden with a custom one
-export var targeting_arrow_scene = _TARGETING_SCENE
+#export var targeting_arrow_scene = _TARGETING_SCENE
 # If true, the player will not be able to drop dragged cards back into
 # CardContainers. The player will only be allowed to drop cards to the board
 # or back into the container they picked them from.
@@ -314,8 +314,8 @@ onready var highlight = $Control/Highlight
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	targeting_arrow = targeting_arrow_scene.instance()
-	add_child(targeting_arrow)
+#	targeting_arrow = targeting_arrow_scene.instance()
+#	add_child(targeting_arrow)
 	set_card_size(card_size)
 	_init_card_layout()
 	# The below call ensures out canonical_name variable is set.
@@ -433,8 +433,8 @@ func _on_Card_mouse_entered() -> void:
 
 func _input(event) -> void:
 	if event is InputEventMouseButton and not event.is_pressed():
-		if targeting_arrow.is_targeting:
-			targeting_arrow.complete_targeting()
+#		if targeting_arrow.is_targeting:
+#			targeting_arrow.complete_targeting()
 		if  event.get_button_index() == 1:
 			# On depressed left mouse click anywhere on the board
 			# We stop all attempts at dragging this card
@@ -469,7 +469,7 @@ func _on_Card_gui_input(event) -> void:
 					and get_state_exec() == "hand")
 					or get_state_exec() == "board"):
 				cfc.card_drag_ongoing = null
-				execute_scripts()
+#				execute_scripts()
 			# If it's a long click it might be because
 			# they want to drag the card
 			else:
@@ -491,7 +491,7 @@ func _on_Card_gui_input(event) -> void:
 								and  _has_targeting_cost_hand_script()\
 								and check_play_costs() != CFConst.CostsState.IMPOSSIBLE:
 							cfc.card_drag_ongoing = null
-							var _sceng = execute_scripts()
+#							var _sceng = execute_scripts()
 						elif state == CardState.FOCUSED_IN_HAND\
 								and (disable_dragging_from_hand
 								or check_play_costs() == CFConst.CostsState.IMPOSSIBLE):
@@ -1423,112 +1423,112 @@ func move_to(targetHost: Node,
 #
 # Returns a [ScriptingEngine] object but that it not statically typed
 # As it causes the parser think there's a cyclic dependency.
-func execute_scripts(
-		trigger_card: Card = self,
-		trigger: String = "manual",
-		trigger_details: Dictionary = {},
-		only_cost_check := false):
-	if cfc.game_paused:
-		return
-	# Just in case the card is displayed outside the main game
-	# and somehow its script is triggered.
-	if not cfc.NMAP.has('board'):
-		return
-	common_pre_execution_scripts(trigger, trigger_details)
-	var card_scripts = retrieve_scripts(trigger)
-	# I use this spot to add a breakpoint when testing script behaviour
-	# especially on filters
-	if _debugger_hook:
-		pass
-	# We check the trigger against the filter defined
-	# If it does not match, then we don't pass any scripts for this trigger.
-	if not SP.filter_trigger(
-			card_scripts,
-			trigger_card,
-			self,
-			trigger_details):
-		card_scripts.clear()
-	var state_scripts = []
-	# We select which scripts to run from the card, based on it state
-	var state_exec := get_state_exec()
-	var any_state_scripts = card_scripts.get('all', [])
-	state_scripts = card_scripts.get(state_exec, any_state_scripts)
-	# Here we check for confirmation of optional trigger effects
-	# There should be an SP.KEY_IS_OPTIONAL definition per state
-	# E.g. if board scripts are optional, but hand scripts are not
-	# Then you'd include an "is_optional_board" key at the same level as "board"
-	var confirm_return = CFUtils.confirm(
-		card_scripts,
-		canonical_name,
-		trigger,
-		state_exec)
-	if confirm_return is GDScriptFunctionState: # Still working.
-		confirm_return = yield(confirm_return, "completed")
-		# If the player chooses not to play an optional cost
-		# We consider the whole cost dry run unsuccesful
-		if not confirm_return:
-			state_scripts = []
-	# If the state_scripts return a dictionary entry
-	# it means it's a multiple choice between two scripts
-	if typeof(state_scripts) == TYPE_DICTIONARY:
-		var choices_menu = _CARD_CHOICES_SCENE.instance()
-		choices_menu.prep(canonical_name,state_scripts)
-		# We have to wait until the player has finished selecting an option
-		yield(choices_menu,"id_pressed")
-		# If the player just closed the pop-up without choosing
-		# an option, we don't execute anything
-		if choices_menu.id_selected:
-			state_scripts = state_scripts[choices_menu.selected_key]
-		else: state_scripts = []
-		# Garbage cleanup
-		choices_menu.queue_free()
-	# To avoid unnecessary operations
-	# we evoke the ScriptingEngine only if we have something to execute
-	# We do not statically type it as this causes a circular reference
-	var sceng = null
-	if len(state_scripts):
-		is_executing_scripts = true
-		# This evocation of the ScriptingEngine, checks the card for
-		# cost-defined tasks, and performs a dry-run on them
-		# to ascertain whether they can all be paid,
-		# before executing the card script.
-		sceng = cfc.scripting_engine.new(
-				state_scripts,
-				self,
-				trigger_card,
-				trigger_details)
-		common_pre_run(sceng)
-		# In case the script involves targetting, we need to wait on further
-		# execution until targetting has completed
-		sceng.execute(CFInt.RunType.COST_CHECK)
-		if not sceng.all_tasks_completed:
-			yield(sceng,"tasks_completed")
-		# If the dry-run of the ScriptingEngine returns that all
-		# costs can be paid, then we proceed with the actual run
-		if sceng.can_all_costs_be_paid and not only_cost_check:
-			#print("DEBUG:" + str(state_scripts))
-			# The ScriptingEngine is where we execute the scripts
-			# We cannot use its class reference,
-			# as it causes a cyclic reference error when parsing
-			sceng.execute()
-			if not sceng.all_tasks_completed:
-				yield(sceng,"tasks_completed")
-			# warning-ignore:void_assignment
-			var func_return = common_post_execution_scripts(trigger)
-			# We make sure this function does to return until all
-			# custom post execution scripts have also finished
-			if func_return is GDScriptFunctionState: # Still working.
-				func_return = yield(func_return, "completed")
-		# This will only trigger when costs could not be paid, and will
-		# execute the "is_else" tasks
-		elif not sceng.can_all_costs_be_paid and not only_cost_check:
-			#print("DEBUG:" + str(state_scripts))
-			sceng.execute(CFInt.RunType.ELSE)
-			if not sceng.all_tasks_completed:
-				yield(sceng,"tasks_completed")
-		is_executing_scripts = false
-		emit_signal("scripts_executed", self, sceng, trigger)
-	return(sceng)
+#func execute_scripts(
+#		trigger_card: Card = self,
+#		trigger: String = "manual",
+#		trigger_details: Dictionary = {},
+#		only_cost_check := false):
+#	if cfc.game_paused:
+#		return
+#	# Just in case the card is displayed outside the main game
+#	# and somehow its script is triggered.
+#	if not cfc.NMAP.has('board'):
+#		return
+#	common_pre_execution_scripts(trigger, trigger_details)
+#	var card_scripts = retrieve_scripts(trigger)
+#	# I use this spot to add a breakpoint when testing script behaviour
+#	# especially on filters
+#	if _debugger_hook:
+#		pass
+#	# We check the trigger against the filter defined
+#	# If it does not match, then we don't pass any scripts for this trigger.
+#	if not SP.filter_trigger(
+#			card_scripts,
+#			trigger_card,
+#			self,
+#			trigger_details):
+#		card_scripts.clear()
+#	var state_scripts = []
+#	# We select which scripts to run from the card, based on it state
+#	var state_exec := get_state_exec()
+#	var any_state_scripts = card_scripts.get('all', [])
+#	state_scripts = card_scripts.get(state_exec, any_state_scripts)
+#	# Here we check for confirmation of optional trigger effects
+#	# There should be an SP.KEY_IS_OPTIONAL definition per state
+#	# E.g. if board scripts are optional, but hand scripts are not
+#	# Then you'd include an "is_optional_board" key at the same level as "board"
+#	var confirm_return = CFUtils.confirm(
+#		card_scripts,
+#		canonical_name,
+#		trigger,
+#		state_exec)
+#	if confirm_return is GDScriptFunctionState: # Still working.
+#		confirm_return = yield(confirm_return, "completed")
+#		# If the player chooses not to play an optional cost
+#		# We consider the whole cost dry run unsuccesful
+#		if not confirm_return:
+#			state_scripts = []
+#	# If the state_scripts return a dictionary entry
+#	# it means it's a multiple choice between two scripts
+##	if typeof(state_scripts) == TYPE_DICTIONARY:
+##		var choices_menu = _CARD_CHOICES_SCENE.instance()
+##		choices_menu.prep(canonical_name,state_scripts)
+#		# We have to wait until the player has finished selecting an option
+##		yield(choices_menu,"id_pressed")
+#		# If the player just closed the pop-up without choosing
+#		# an option, we don't execute anything
+##		if choices_menu.id_selected:
+##			state_scripts = state_scripts[choices_menu.selected_key]
+##		else: state_scripts = []
+#		# Garbage cleanup
+##		choices_menu.queue_free()
+#	# To avoid unnecessary operations
+#	# we evoke the ScriptingEngine only if we have something to execute
+#	# We do not statically type it as this causes a circular reference
+#	var sceng = null
+#	if len(state_scripts):
+#		is_executing_scripts = true
+#		# This evocation of the ScriptingEngine, checks the card for
+#		# cost-defined tasks, and performs a dry-run on them
+#		# to ascertain whether they can all be paid,
+#		# before executing the card script.
+#		sceng = cfc.scripting_engine.new(
+#				state_scripts,
+#				self,
+#				trigger_card,
+#				trigger_details)
+#		common_pre_run(sceng)
+#		# In case the script involves targetting, we need to wait on further
+#		# execution until targetting has completed
+#		sceng.execute(CFInt.RunType.COST_CHECK)
+#		if not sceng.all_tasks_completed:
+#			yield(sceng,"tasks_completed")
+#		# If the dry-run of the ScriptingEngine returns that all
+#		# costs can be paid, then we proceed with the actual run
+#		if sceng.can_all_costs_be_paid and not only_cost_check:
+#			#print("DEBUG:" + str(state_scripts))
+#			# The ScriptingEngine is where we execute the scripts
+#			# We cannot use its class reference,
+#			# as it causes a cyclic reference error when parsing
+#			sceng.execute()
+#			if not sceng.all_tasks_completed:
+#				yield(sceng,"tasks_completed")
+#			# warning-ignore:void_assignment
+#			var func_return = common_post_execution_scripts(trigger)
+#			# We make sure this function does to return until all
+#			# custom post execution scripts have also finished
+#			if func_return is GDScriptFunctionState: # Still working.
+#				func_return = yield(func_return, "completed")
+#		# This will only trigger when costs could not be paid, and will
+#		# execute the "is_else" tasks
+#		elif not sceng.can_all_costs_be_paid and not only_cost_check:
+#			#print("DEBUG:" + str(state_scripts))
+#			sceng.execute(CFInt.RunType.ELSE)
+#			if not sceng.all_tasks_completed:
+#				yield(sceng,"tasks_completed")
+#		is_executing_scripts = false
+#		emit_signal("scripts_executed", self, sceng, trigger)
+#	return(sceng)
 
 
 # Retrieves the card scripts either from those defined on the card
@@ -2593,7 +2593,7 @@ func _process_card_state() -> void:
 			# warning-ignore:return_value_discarded
 			set_card_rotation(0)
 			$Control.rect_rotation = 0
-			targeting_arrow.complete_targeting()
+#			targeting_arrow.complete_targeting()
 			$Control/Tokens.visible = false
 			# We scale the card dupe to allow the player a better viewing experience
 			if CFConst.VIEWPORT_FOCUS_ZOOM_TYPE == "scale":

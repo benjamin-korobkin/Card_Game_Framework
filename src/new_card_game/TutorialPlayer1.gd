@@ -1,7 +1,7 @@
 extends Player
 
 onready var sage_actions_menu = board.get_node("SageActionsMenu")
-onready var discard_panel = board.get_node("DiscardPanel")
+#onready var discard_panel = board.get_node("DiscardPanel")
 
 var is_challenging : bool = false setget set_is_challenging,get_is_challenging
 var is_discarding : bool = false setget set_is_discarding,get_is_discarding
@@ -36,9 +36,9 @@ func _on_DeckPanel_gui_input(event: InputEvent) -> void:
 	if board.get_tutorial_state() != "WAITING_FOR_DRAW":
 		return
 	if event.is_pressed() and not cfc.game_paused:
-		if hand.is_full():
-			discard_panel.popup()
-			set_is_discarding(true)
-		else:
-			draw_card()
-			board.advance_tutorial()
+#		if hand.is_full():
+#			discard_panel.popup()
+#			set_is_discarding(true)
+#		else:
+		draw_card()
+		board.advance_tutorial()

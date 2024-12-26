@@ -7,7 +7,7 @@ extends Reference
 # The path to the optional confirm scene. This has to be defined explicitly
 # here, in order to use it in its preload, otherwise the parser gives an error
 const _OPTIONAL_CONFIRM_SCENE_FILE = CFConst.PATH_CORE + "OptionalConfirmation.tscn"
-const _OPTIONAL_CONFIRM_SCENE = preload(_OPTIONAL_CONFIRM_SCENE_FILE)
+#const _OPTIONAL_CONFIRM_SCENE = preload(_OPTIONAL_CONFIRM_SCENE_FILE)
 
 
 # Randomize array through our own seed
@@ -121,25 +121,25 @@ static func list_imported_in_directory(path: String) -> Array:
 
 # Creates a ConfirmationDialog for the player to approve the
 # Use of an optional script or task.
-static func confirm(
-		script: Dictionary,
-		card_name: String,
-		task_name: String,
-		type := "task") -> bool:
-	var is_accepted := true
-	# We do not use SP.KEY_IS_OPTIONAL here to avoid causing cyclical
-	# references when calling CFUtils from SP
-	if script.get("is_optional_" + type):
-		var confirm = _OPTIONAL_CONFIRM_SCENE.instance()
-		confirm.prep(card_name,task_name)
-		# We have to wait until the player has finished selecting an option
-		yield(confirm,"selected")
-		# If the player selected "No", we don't execute anything
-		if not confirm.is_accepted:
-			is_accepted = false
-		# Garbage cleanup
-		confirm.queue_free()
-	return(is_accepted)
+#static func confirm(
+#		script: Dictionary,
+#		card_name: String,
+#		task_name: String,
+#		type := "task") -> bool:
+#	var is_accepted := true
+#	# We do not use SP.KEY_IS_OPTIONAL here to avoid causing cyclical
+#	# references when calling CFUtils from SP
+#	if script.get("is_optional_" + type):
+#		var confirm = _OPTIONAL_CONFIRM_SCENE.instance()
+#		confirm.prep(card_name,task_name)
+#		# We have to wait until the player has finished selecting an option
+#		yield(confirm,"selected")
+#		# If the player selected "No", we don't execute anything
+#		if not confirm.is_accepted:
+#			is_accepted = false
+#		# Garbage cleanup
+#		confirm.queue_free()
+#	return(is_accepted)
 
 
 # Used with sort_custom to find the highest child index among multiple cards

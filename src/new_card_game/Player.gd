@@ -230,3 +230,4 @@ func do_effect(name):
 	
 func get_actions_remaining():
 	return actions_remaining
+

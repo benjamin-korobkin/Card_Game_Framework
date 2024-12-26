@@ -9,8 +9,8 @@
 class_name ScriptingEngine
 extends Reference
 
-const _ASK_INTEGER_SCENE_FILE = CFConst.PATH_CORE + "AskInteger.tscn"
-const _ASK_INTEGER_SCENE = preload(_ASK_INTEGER_SCENE_FILE)
+#const _ASK_INTEGER_SCENE_FILE = CFConst.PATH_CORE + "AskInteger.tscn"
+#const _ASK_INTEGER_SCENE = preload(_ASK_INTEGER_SCENE_FILE)
 
 # Emitted when all tasks have been run succesfully
 signal tasks_completed
@@ -740,17 +740,17 @@ func modify_properties(script: ScriptTask) -> int:
 # * Requires the following keys:
 #	* [KEY_ASK_INTEGER_MIN](ScriptProperties#KEY_ASK_INTEGER_MIN)
 #	* [KEY_ASK_INTEGER_MAX](ScriptProperties#KEY_ASK_INTEGER_MAX)
-func ask_integer(script: ScriptTask) -> void:
-	var integer_dialog = _ASK_INTEGER_SCENE.instance()
-	# AskInteger tasks have to always provide a min and max value
-	var minimum = script.get_property(SP.KEY_ASK_INTEGER_MIN)
-	var maximum = script.get_property(SP.KEY_ASK_INTEGER_MAX)
-	integer_dialog.prep(script.owner.canonical_name, minimum, maximum)
-	# We have to wait until the player has finished selecting an option
-	yield(integer_dialog,"popup_hide")
-	stored_integer = integer_dialog.number
-	# Garbage cleanup
-	integer_dialog.queue_free()
+#func ask_integer(script: ScriptTask) -> void:
+#	var integer_dialog = _ASK_INTEGER_SCENE.instance()
+#	# AskInteger tasks have to always provide a min and max value
+#	var minimum = script.get_property(SP.KEY_ASK_INTEGER_MIN)
+#	var maximum = script.get_property(SP.KEY_ASK_INTEGER_MAX)
+#	integer_dialog.prep(script.owner.canonical_name, minimum, maximum)
+#	# We have to wait until the player has finished selecting an option
+#	yield(integer_dialog,"popup_hide")
+#	stored_integer = integer_dialog.number
+#	# Garbage cleanup
+#	integer_dialog.queue_free()
 
 
 # Adds a specified BoardPlacementGrid scene to the board at the specified position

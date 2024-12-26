@@ -5,14 +5,14 @@ extends CardViewer
 
 const _DECK_CARD_OBJECT_SCENE_FILE = CFConst.PATH_CORE\
 		+ "CardViewer/DeckBuilder/DBDeckCardObject.tscn"
-const _DECK_CARD_OBJECT_SCENE = preload(_DECK_CARD_OBJECT_SCENE_FILE)
+#const _DECK_CARD_OBJECT_SCENE = preload(_DECK_CARD_OBJECT_SCENE_FILE) 
 # The path to the CategoryScene scene.
 const _DECK_CATEGORY_SCENE_FILE = CFConst.PATH_CORE\
 		+ "CardViewer/DeckBuilder/CategoryContainer.tscn"
-const _DECK_CATEGORY_SCENE = preload(_DECK_CATEGORY_SCENE_FILE)
+#const _DECK_CATEGORY_SCENE = preload(_DECK_CATEGORY_SCENE_FILE)
 const _DECK_SUMMARIES_SCENE_FILE = CFConst.PATH_CORE\
 		+ "CardViewer/DeckBuilder/DBDeckSummaries.tscn"
-const _DECK_SUMMARIES_SCENE = preload(_DECK_SUMMARIES_SCENE_FILE)
+#const _DECK_SUMMARIES_SCENE = preload(_DECK_SUMMARIES_SCENE_FILE)
 
 # Contains a link to the random deck name generator reference
 export(Script) var deck_name_randomizer
@@ -40,9 +40,9 @@ export var deck_minimum: int = 10
 # The maximum amount cards required in a deck
 export var deck_maximum: int = 50
 # We use this variable, so that the scene can be overriden with a custom one
-export var deck_card_object_scene = _DECK_CARD_OBJECT_SCENE
+#export var deck_card_object_scene = _DECK_CARD_OBJECT_SCENE
 # We use this variable, so that the scene can be overriden with a custom one
-export var deck_summary_scene = _DECK_SUMMARIES_SCENE
+#export var deck_summary_scene = _DECK_SUMMARIES_SCENE
 
 # This var will hold a pointer to the deck summaries scene.
 var deck_summaries
@@ -56,43 +56,43 @@ onready var _reset_button := $VBC/HBC/DeckMC/CurrentDeck/Buttons/Reset
 onready var _delete_button := $VBC/HBC/DeckMC/CurrentDeck/Buttons/Delete
 onready var _randomize_name_button := $VBC/HBC/DeckMC/CurrentDeck/HBoxContainer/RandomizeName
 
-func _ready() -> void:
-	deck_summaries = deck_summary_scene.instance()
-	$VBC/HBC/DeckMC/CurrentDeck/DeckDetails.add_child(deck_summaries)
-	deck_summaries.setup()
-	# warning-ignore:return_value_discarded
-	_load_button.connect("deck_loaded", self,"_on_deck_loaded")
-	_deck_name.text = generate_random_deck_name()
-	# warning-ignore:return_value_discarded
-	_save_button.connect("pressed",self,"_on_Save_pressed")
-	# warning-ignore:return_value_discarded
-	_reset_button.connect("pressed",self,"_on_Reset_pressed")
-	# warning-ignore:return_value_discarded
-	_delete_button.connect("pressed",self,"_on_Delete_pressed")
-	# warning-ignore:return_value_discarded
-	_randomize_name_button.connect("pressed",self,"_on_RandomizeName_pressed")
+#func _ready() -> void:
+#	deck_summaries = deck_summary_scene.instance()
+#	$VBC/HBC/DeckMC/CurrentDeck/DeckDetails.add_child(deck_summaries)
+#	deck_summaries.setup()
+#	# warning-ignore:return_value_discarded
+#	_load_button.connect("deck_loaded", self,"_on_deck_loaded")
+#	_deck_name.text = generate_random_deck_name()
+#	# warning-ignore:return_value_discarded
+#	_save_button.connect("pressed",self,"_on_Save_pressed")
+#	# warning-ignore:return_value_discarded
+#	_reset_button.connect("pressed",self,"_on_Reset_pressed")
+#	# warning-ignore:return_value_discarded
+#	_delete_button.connect("pressed",self,"_on_Delete_pressed")
+#	# warning-ignore:return_value_discarded
+#	_randomize_name_button.connect("pressed",self,"_on_RandomizeName_pressed")
 
 
-func _process(_delta: float) -> void:
-	# We keep updating the card count label with the amount of cards in the deck
-	var card_count = 0
-	for category in _deck_cards.get_children():
-		for card_object in category.get_node("CategoryCards").get_children():
-			card_count += card_object.quantity
-	deck_summaries.deck_min_label.text = str(card_count) + ' Cards'
-	if deck_minimum and deck_maximum:
-		deck_summaries.deck_min_label.text += ' (min ' + str(deck_minimum)\
-				+ ', max ' + str(deck_maximum) + ')'
-	elif deck_minimum:
-		deck_summaries.deck_min_label.text += ' (min ' + str(deck_minimum) + ')'
-	elif deck_maximum:
-		deck_summaries.deck_min_label.text += ' (max ' + str(deck_maximum) + ')'
-	# We paint the font red if the deck is invalid
-	if (deck_minimum and card_count < deck_minimum)\
-			or (deck_maximum and card_count > deck_maximum):
-		deck_summaries.deck_min_label.modulate = Color(1,0,0)
-	else:
-		deck_summaries.deck_min_label.modulate = Color(1,1,1)
+#func _process(_delta: float) -> void:
+#	# We keep updating the card count label with the amount of cards in the deck
+#	var card_count = 0
+#	for category in _deck_cards.get_children():
+#		for card_object in category.get_node("CategoryCards").get_children():
+#			card_count += card_object.quantity
+#	deck_summaries.deck_min_label.text = str(card_count) + ' Cards'
+#	if deck_minimum and deck_maximum:
+#		deck_summaries.deck_min_label.text += ' (min ' + str(deck_minimum)\
+#				+ ', max ' + str(deck_maximum) + ')'
+#	elif deck_minimum:
+#		deck_summaries.deck_min_label.text += ' (min ' + str(deck_minimum) + ')'
+#	elif deck_maximum:
+#		deck_summaries.deck_min_label.text += ' (max ' + str(deck_maximum) + ')'
+#	# We paint the font red if the deck is invalid
+#	if (deck_minimum and card_count < deck_minimum)\
+#			or (deck_maximum and card_count > deck_maximum):
+#		deck_summaries.deck_min_label.modulate = Color(1,0,0)
+#	else:
+#		deck_summaries.deck_min_label.modulate = Color(1,1,1)
 
 # Populates the list of available cards, with all defined cards in the game
 func populate_available_cards() -> void:
@@ -105,22 +105,22 @@ func populate_available_cards() -> void:
 
 # Adds a card to the deck.
 # Ensures that the card is put under its own category for readability
-func add_new_card(card_name, category, value) -> DBDeckCardObject:
-	var category_container
-	# If the category does not exist, we have to instance it.
-	# Categories are using the same card field as the card templates.
-	if not _deck_cards.has_node(category):
-		category_container = _DECK_CATEGORY_SCENE.instance()
-		category_container.name = category
-		_deck_cards.add_child(category_container)
-		category_container.get_node("CategoryLabel").text = category
-	else:
-		category_container = _deck_cards.get_node(category)
-	var category_cards_node = category_container.get_node("CategoryCards")
-	var deck_card_object = deck_card_object_scene.instance()
-	category_cards_node.add_child(deck_card_object)
-	deck_card_object.setup(card_name, value)
-	return(deck_card_object)
+#func add_new_card(card_name, category, value) -> DBDeckCardObject:
+#	var category_container
+#	# If the category does not exist, we have to instance it.
+#	# Categories are using the same card field as the card templates.
+#	if not _deck_cards.has_node(category):
+#		category_container = _DECK_CATEGORY_SCENE.instance()
+#		category_container.name = category
+#		_deck_cards.add_child(category_container)
+#		category_container.get_node("CategoryLabel").text = category
+#	else:
+#		category_container = _deck_cards.get_node(category)
+#	var category_cards_node = category_container.get_node("CategoryCards")
+#	var deck_card_object = deck_card_object_scene.instance()
+#	category_cards_node.add_child(deck_card_object)
+#	deck_card_object.setup(card_name, value)
+#	return(deck_card_object)
 
 # Triggered when a deck has been chosen from the Load menu
 # Populates the Current Deck Details with the contents of the chosen deck

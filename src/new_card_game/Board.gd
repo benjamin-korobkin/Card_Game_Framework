@@ -1,7 +1,7 @@
 # Code for the playspace
 extends Board
 
-var floating_text = preload("res://src/new_card_game/FloatingText.tscn")
+#var floating_text = preload("res://src/new_card_game/FloatingText.tscn")
 
 onready var torah_challenge_panel = get_node("CanvasLayer/TorahChallengePanel")
 

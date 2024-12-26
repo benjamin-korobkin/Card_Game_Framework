@@ -6,7 +6,7 @@ extends Reference
 
 const SET = "Core Set"
 const CARDS := {
-
+	
 	### TANACH CARDS BEGIN ###
 	"Avraham Avinu": {
 		"Type": "Tanach",
@@ -44,7 +44,7 @@ const CARDS := {
 		"Type": "Tanach",
 		"Effect": "Draw the top card from the discard pile"
 	},
-
+	
 	### SAGE CARDS BEGIN ###
 	"Nittai HaArbaily": {
 		"Type": "Sage",
@@ -112,7 +112,7 @@ const CARDS := {
 #		"Era": "Amora",
 #		"Teaching": "One who rejoices while suffering brings salvation to the world"
 #	},
-
+	
 #	"Rav Hai": {
 #		"Type": "Sage",
 #		"Power": 3,
@@ -179,6 +179,7 @@ const CARDS := {
 #		"Era": "Rishon",
 #		"Teaching": "True scholarship is found in humility"
 #	},
+
 	"Rabbi Yaakov Emden": {
 		"Type": "Sage",
 		"Power": 1,
@@ -201,7 +202,7 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
-		"Teaching": "Overcoming negative traits is harder than mastering  Talmud"
+		"Teaching": "Overcoming negative traits is harder than mastering Talmud"
 	},
 	
 	"Chafetz Chaim": {
@@ -274,5 +275,5 @@ const CARDS := {
 ## TODO: Implement David and other cards in the future
 #	"David HaMelech": {
 #		"Type": "Tanach",
-#		"Effect": "Your Sages can't be challenged for 2 turns"
+#		"Effect": "Your Sages can't be replaced for 2 turns"
 #	},

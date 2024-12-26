@@ -18,6 +18,8 @@ onready var _focus_viewport := $VBC/Focus/Viewport
 onready var world_environemt : WorldEnvironment = $WorldEnvironment
 
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	cfc.map_node(self)
@@ -57,15 +59,15 @@ func _process(_delta) -> void:
 #			$VBC.rect_position.y = get_global_mouse_position().y - 500
 #		else:
 #			$VBC.rect_position.x = get_global_mouse_position().x + 60
-
+#
 #	elif _current_focus_source and is_instance_valid(_current_focus_source)\
 #			and get_global_mouse_position().x > get_viewport().size.x - _current_focus_source.canonical_size.x*2.5\
 #			and get_global_mouse_position().y < _current_focus_source.canonical_size.y*2:
 #		$VBC.rect_position.x = 0
 #		$VBC.rect_position.y = 0
 #	elif _current_focus_source:
-#		$VBC.rect_position.x = get_viewport().size.x - $VBC.rect_size.x
-#		$VBC.rect_position.y = 0
+#	$VBC.rect_position.x = get_viewport().size.x - $VBC.rect_size.x
+#	$VBC.rect_position.y = 0
 	# The below performs some garbage collection on previously focused cards.
 	for c in _previously_focused_cards:
 		if not is_instance_valid(_previously_focused_cards[c]):

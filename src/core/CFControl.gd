@@ -69,19 +69,19 @@ var rng_saved_state = game_rng.state
 #
 # If we do, it is parsed by the compiler who then considers it
 # a cyclic reference as the scripting engine refers back to the Card class.
-var scripting_engine = load(CFConst.PATH_SCRIPTING_ENGINE)
+#var scripting_engine = load(CFConst.PATH_SCRIPTING_ENGINE)
 # We cannot preload the per script as a const for the same reason
 # We cannot refer to it via class name.
 #
 # If we do, it is parsed by the compiler who then considers it
 # a cyclic reference as the scripting engine refers back to the Card class.
-var script_per = load(CFConst.PATH_SCRIPT_PER)
+#var script_per = load(CFConst.PATH_SCRIPT_PER)
 # We cannot preload the alterant engine as a const for the same reason
 # We cannot refer to it via class name.
 #
 # If we do, it is parsed by the compiler who then considers it
 # a cyclic reference as the scripting engine refers back to the Card class.
-var alterant_engine = load(CFConst.PATH_ALTERANT_ENGINE)
+#var alterant_engine = load(CFConst.PATH_ALTERANT_ENGINE)
 # Stores the alterations returned for a specific card-script-value combination.
 #
 # As the Alterant Engine is scanning all cards in game for alterant scripts
@@ -468,13 +468,13 @@ class SignalPropagator:
 		# drags the card on the grid itself. If the player drags the card
 		# To an empty spot, it works fine
 		# It also fails to execute if I use any other flag than GROUP_CALL_UNIQUE
-		for card in cfc.get_tree().get_nodes_in_group("cards"):
-			card.execute_scripts(trigger_card,trigger,details)
+#		for card in cfc.get_tree().get_nodes_in_group("cards"):
+#			card.execute_scripts(trigger_card,trigger,details)
 		# If we need other objects than cards to trigger scripts via signals
 		# add them to the 'scriptables' group ang ensure they have
 		# an "execute_scripts" function
-		for card in cfc.get_tree().get_nodes_in_group("scriptables"):
-			card.execute_scripts(trigger_card,trigger,details)
+#		for card in cfc.get_tree().get_nodes_in_group("scriptables"):
+#			card.execute_scripts(trigger_card,trigger,details)
 #		cfc.get_tree().call_group_flags(SceneTree.GROUP_CALL_UNIQUE  ,"cards",
 #				"execute_scripts",trigger_card,trigger,details)
 		emit_signal("signal_received", trigger_card, trigger, details)

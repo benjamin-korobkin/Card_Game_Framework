@@ -12,6 +12,7 @@ func _ready() -> void:
 	field = board.get_node("FieldTimelineContainer/FieldHBox1/FieldGrid1")
 	opponent = get_parent().get_node("Player2")
 	player_name = get_name()
+	
 
 func _on_DeckPanel_gui_input(event: InputEvent) -> void:
 	if event.is_pressed() and not cfc.game_paused:
@@ -36,5 +37,5 @@ func get_is_discarding():
 func set_is_discarding(value):
 	is_discarding = value
 	
-func _on_Player1_action_completed() -> void:
-	pass # To avoid null function call
+func _on_Player1_action_completed():
+	pass  # TODO: Meant to avoid error. We'll come back to this... 

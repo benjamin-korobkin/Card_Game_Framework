@@ -4,8 +4,8 @@ extends Node2D
 
 # Used to add new token instances to cards. We have to add the consts
 # together before passing to the preload, or the parser complains
-const _TOKEN_SCENE_FILE = CFConst.PATH_CORE + "Token.tscn"
-const _TOKEN_SCENE = preload(_TOKEN_SCENE_FILE)
+#const _TOKEN_SCENE_FILE = CFConst.PATH_CORE + "Token.tscn"
+#const _TOKEN_SCENE = preload(_TOKEN_SCENE_FILE)
 
 # A flag on whether the token drawer is currently open
 var is_drawer_open := false setget set_is_drawer_open
@@ -101,75 +101,75 @@ func token_drawer(requested_state := true) -> void:
 #
 # If the amount of existing tokens of that type drops to 0 or lower,
 # the token node is also removed.
-func mod_token(
-			token_name : String,
-			mod := 1,
-			set_to_mod := false,
-			check := false,
-			tags := ["Manual"]) -> int:
-	var retcode : int
-	# If the player requested a token name that has not been defined by the game
-	# we return a failure
-	if not CFConst.TOKENS_MAP.get(token_name, null):
-		retcode = CFConst.ReturnCode.FAILED
-	else:
-		var token : Token = get_all_tokens().get(token_name, null)
-		# If the token does not exist in the card, we add its node
-		# and set it to 1
-		if not token and mod > 0:
-			token = _TOKEN_SCENE.instance()
-			token.setup(token_name, self)
-			$Drawer/VBoxContainer.add_child(token)
-		# If the token node of this name has already been added to the card
-		# We just increment it by 1
-		if not token and mod == 0:
-			retcode = CFConst.ReturnCode.OK
-		elif not token and mod < 0:
-			retcode = CFConst.ReturnCode.FAILED
-		# For cost dry-runs, we don't want to modify the tokens at all.
-		# Just check if we could.
-		elif check:
-			# For a  cost dry run, we can only return FAILED
-			# when removing tokens as it's always possible to add new ones
-			if mod < 0:
-				# If the current tokens are equal or higher, then we can
-				# remove the requested amount and therefore return CHANGED.
-				if token.count + mod >= 0:
-					retcode = CFConst.ReturnCode.CHANGED
-				# If we cannot remove the full amount requested
-				# we return FAILED
-				else:
-					retcode = CFConst.ReturnCode.FAILED
-			else:
-				retcode = CFConst.ReturnCode.CHANGED
-		else:
-			cfc.flush_cache()
-			var prev_value = token.count
-			# The set_to_mod value means that we want to set the tokens to the
-			# exact value specified
-			if set_to_mod:
-				token.count = mod
-			else:
-				token.count += mod
-			# We store the count in a new variable, to be able to use it
-			# in the signal even after the token is deinstanced.
-			var new_value = token.count
-			if token.count == 0:
-				token.queue_free()
-		# if the drawer has already been opened, we need to make sure
-		# the new token name will also appear
-			elif is_drawer_open:
-				token.expand()
-			retcode = CFConst.ReturnCode.CHANGED
-			owner_card.emit_signal(
-					"card_token_modified",
-					owner_card,
-					"card_token_modified",
-					{SP.TRIGGER_TOKEN_NAME: token.get_token_name(),
-					SP.TRIGGER_PREV_COUNT: prev_value,
-					SP.TRIGGER_NEW_COUNT: new_value,
-					"tags": tags})
-	return(retcode)
+#func mod_token(
+#			token_name : String,
+#			mod := 1,
+#			set_to_mod := false,
+#			check := false,
+#			tags := ["Manual"]) -> int:
+#	var retcode : int
+#	# If the player requested a token name that has not been defined by the game
+#	# we return a failure
+#	if not CFConst.TOKENS_MAP.get(token_name, null):
+#		retcode = CFConst.ReturnCode.FAILED
+#	else:
+#		var token : Token = get_all_tokens().get(token_name, null)
+#		# If the token does not exist in the card, we add its node
+#		# and set it to 1
+#		if not token and mod > 0:
+#			token = _TOKEN_SCENE.instance()
+#			token.setup(token_name, self)
+#			$Drawer/VBoxContainer.add_child(token)
+#		# If the token node of this name has already been added to the card
+#		# We just increment it by 1
+#		if not token and mod == 0:
+#			retcode = CFConst.ReturnCode.OK
+#		elif not token and mod < 0:
+#			retcode = CFConst.ReturnCode.FAILED
+#		# For cost dry-runs, we don't want to modify the tokens at all.
+#		# Just check if we could.
+#		elif check:
+#			# For a  cost dry run, we can only return FAILED
+#			# when removing tokens as it's always possible to add new ones
+#			if mod < 0:
+#				# If the current tokens are equal or higher, then we can
+#				# remove the requested amount and therefore return CHANGED.
+#				if token.count + mod >= 0:
+#					retcode = CFConst.ReturnCode.CHANGED
+#				# If we cannot remove the full amount requested
+#				# we return FAILED
+#				else:
+#					retcode = CFConst.ReturnCode.FAILED
+#			else:
+#				retcode = CFConst.ReturnCode.CHANGED
+#		else:
+#			cfc.flush_cache()
+#			var prev_value = token.count
+#			# The set_to_mod value means that we want to set the tokens to the
+#			# exact value specified
+#			if set_to_mod:
+#				token.count = mod
+#			else:
+#				token.count += mod
+#			# We store the count in a new variable, to be able to use it
+#			# in the signal even after the token is deinstanced.
+#			var new_value = token.count
+#			if token.count == 0:
+#				token.queue_free()
+#		# if the drawer has already been opened, we need to make sure
+#		# the new token name will also appear
+#			elif is_drawer_open:
+#				token.expand()
+#			retcode = CFConst.ReturnCode.CHANGED
+#			owner_card.emit_signal(
+#					"card_token_modified",
+#					owner_card,
+#					"card_token_modified",
+#					{SP.TRIGGER_TOKEN_NAME: token.get_token_name(),
+#					SP.TRIGGER_PREV_COUNT: prev_value,
+#					SP.TRIGGER_NEW_COUNT: new_value,
+#					"tags": tags})
+#	return(retcode)
 
 
 # Returns a dictionary of card tokens name on this card.
