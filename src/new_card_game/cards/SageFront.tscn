@@ -12,7 +12,6 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="DynamicFont" id=3]
-size = 20
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
@@ -31,42 +30,43 @@ font_data = ExtResource( 2 )
 custom_styles/panel = SubResource( 1 )
 
 [node name="Margin" parent="." index="0"]
-anchor_right = 1.034
-anchor_bottom = 0.932
-margin_right = -5.10001
-margin_bottom = 11.56
+anchor_right = 1.035
+anchor_bottom = 0.951
+margin_top = 1.0
+margin_right = -5.25002
+margin_bottom = 7.81999
 grow_horizontal = 2
+grow_vertical = 2
 rect_min_size = Vector2( 150, 170 )
 
 [node name="CardText" parent="Margin" index="0"]
-margin_bottom = 179.0
+margin_bottom = 178.0
+grow_vertical = 2
+alignment = 1
 
-[node name="Era" type="Label" parent="Margin/CardText" index="1"]
-margin_top = 26.0
+[node name="Description" parent="Margin/CardText" index="1"]
+margin_top = 78.0
+margin_bottom = 101.0
+
+[node name="Type" parent="Margin/CardText" index="2"]
+visible = false
+uppercase = false
+
+[node name="Era" type="Label" parent="Margin/CardText" index="3"]
+margin_top = 27.0
 margin_right = 146.0
-margin_bottom = 49.0
+margin_bottom = 51.0
 grow_horizontal = 2
+size_flags_vertical = 1
 text = "Era"
 align = 1
 valign = 1
 
-[node name="Description" parent="Margin/CardText" index="2"]
-margin_top = 78.0
-margin_bottom = 101.0
-
-[node name="Type" parent="Margin/CardText" index="3"]
-visible = false
-margin_top = 52.0
-margin_bottom = 75.0
-uppercase = false
-
 [node name="Teaching" type="Label" parent="Margin/CardText" index="4"]
-margin_top = 52.0
+margin_top = 54.0
 margin_right = 146.0
-margin_bottom = 154.0
+margin_bottom = 153.0
 grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 0, 70 )
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 3 )
 text = "The Rabbi's teaching "
@@ -74,16 +74,15 @@ align = 1
 autowrap = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Margin/CardText" index="5"]
-margin_top = 157.0
+margin_top = 156.0
 margin_right = 146.0
-margin_bottom = 157.0
+margin_bottom = 156.0
 
 [node name="HB" type="HBoxContainer" parent="Margin/CardText" index="6"]
-margin_top = 160.0
+margin_top = 159.0
 margin_right = 146.0
-margin_bottom = 179.0
+margin_bottom = 178.0
 mouse_filter = 2
-size_flags_vertical = 4
 custom_constants/separation = -3
 alignment = 1
 

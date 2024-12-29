@@ -14,9 +14,9 @@ onready var is_first_turn = true
 
 func initialize():
 	for i in range(CARDS_DRAWN_AT_START):
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(0.4), "timeout")
 		p1.hand.draw_card()
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(0.4), "timeout")
 		p2.hand.draw_card()
 	set_active_player(p1)
 	active_player.play_turn()

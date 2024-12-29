@@ -13,6 +13,10 @@ signal scripts_loaded
 # Sent when a new Card node is instanced
 signal new_card_instanced(card)
 
+# TODO: Replace the load function in instance_card()
+const TANACH_CARD_SCENE = preload("res://src/new_card_game/cards/Tanach.tscn")
+const SAGE_CARD_SCENE = preload("res://src/new_card_game/cards/Sage.tscn")
+
 var load_start_time := OS.get_ticks_msec()
 
 #-----------------------------------------------------------------------------
@@ -237,8 +241,15 @@ func restore_rng_state() -> void:
 func instance_card(card_name: String) -> Card:
 	# We discover the template from the "Type"  property defined
 	# in each card. Any property can be used
-	var template = load(CFConst.PATH_CARDS
-			+ card_definitions[card_name][CardConfig.SCENE_PROPERTY] + ".tscn")
+	# Example template: "res://src/new_card_game/cards/Tanach.tscn"
+#	var template = load(CFConst.PATH_CARDS
+#			+ card_definitions[card_name][CardConfig.SCENE_PROPERTY] + ".tscn")
+	var template
+	match card_definitions[card_name][CardConfig.SCENE_PROPERTY]:
+		"Tanach":
+			template = TANACH_CARD_SCENE
+		_:
+			template = SAGE_CARD_SCENE
 	var card = template.instance()
 	# We set the card_name variable so that it's able to be used later
 	card.canonical_name = card_name

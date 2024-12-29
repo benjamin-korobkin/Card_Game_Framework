@@ -190,15 +190,15 @@ margin_right = 6.0
 margin_bottom = 6.0
 
 [node name="Position" parent="Deck/Debug" index="0"]
-margin_bottom = 23.0
+margin_bottom = 24.0
 
 [node name="AreaPos" parent="Deck/Debug" index="1"]
-margin_top = 26.0
-margin_bottom = 49.0
+margin_top = 27.0
+margin_bottom = 51.0
 
 [node name="Size" parent="Deck/Debug" index="2"]
-margin_top = 52.0
-margin_bottom = 75.0
+margin_top = 54.0
+margin_bottom = 78.0
 
 [node name="Discard" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1124, 475 )

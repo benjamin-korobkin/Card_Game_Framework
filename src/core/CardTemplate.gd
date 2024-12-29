@@ -381,6 +381,8 @@ func _process(delta) -> void:
 #			_tween_stuck_time = 0
 #	else:
 #		_tween_stuck_time = 0
+	## TODO: Not a huge fan of this being in the _process function. 
+	## Will try to optimize and reorganize.
 	_process_card_state()
 	# Having to do all these checks due to godotengine/godot#16854
 #	if cfc._debug and not get_parent().is_in_group("piles"):

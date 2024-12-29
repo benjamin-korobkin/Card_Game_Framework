@@ -50,7 +50,7 @@ func draw_card():
 	if can_deduct_action():
 		if hand.is_full() and player_name=="Player2":
 			# TODO: Show that P2 is discarding
-			var rand_card = randi() % hand.hand_size - 1  # Bug fix?
+			var rand_card = randi() % (hand.hand_size - 1)  # Bug...?
 			hand.get_card(rand_card).move_to(cfc.NMAP.discard)
 			yield(hand.get_card(rand_card)._tween, "tween_all_completed")
 			draw_card()
@@ -186,7 +186,7 @@ func can_do_effect(name):
 func do_effect(name):
 	match name:
 		"Avraham Avinu":
-			add_bonus_actions(3)
+			add_bonus_actions(2)
 		"Yitzchak Avinu":
 			max_torah_tokens += 5
 			update_counter(tokens_str, torah_tokens)

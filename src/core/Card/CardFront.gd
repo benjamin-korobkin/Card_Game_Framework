@@ -6,6 +6,10 @@
 class_name CardFront
 extends Panel
 
+const STANDARD_FONT_SIZE = 12
+
+var roboto_font = preload("res://fonts/Roboto/Roboto-Regular.ttf")
+
 # Maps the location of the card front labels so that they're findable even when
 # The card front is customized for games of different needs
 # Each card_front scene should have its own script extending this class
@@ -63,7 +67,7 @@ func set_label_text(node: Label, value, scale: float = 1):
 		#dynamic_font.set_outline_color(Color(0,0,0,255))
 		#dynamic_font.outline_size = 1
 		#node.add_font_override("font", dynamic_font)
-		label_font.font_data = load("res://fonts/Roboto/Roboto-Regular.ttf")
+		label_font.font_data = roboto_font#.instance()
 		label_font.set_spacing(DynamicFont.SPACING_CHAR, 1)
 #	print_debug(scaled_fonts.get(node.name, 1))
 	var cached_font_size = get_cached_font_size(node,value,scale)
@@ -407,7 +411,7 @@ func _adjust_font_size(
 				/ line_height \
 				* (line_height + line_spacing) \
 				- line_spacing
-		if adjustment_font.size < 13:
+		if adjustment_font.size <= STANDARD_FONT_SIZE:
 			break
 	return(adjustment)
 
