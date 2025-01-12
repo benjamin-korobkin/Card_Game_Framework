@@ -1,5 +1,6 @@
 Export/*
 export_presets.cfg
-fonts/*
+.DS_STORE
 .import/*
-Export/.DS_Store
+fonts/*
+.vscode/
