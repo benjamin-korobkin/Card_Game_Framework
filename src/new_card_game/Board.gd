@@ -29,6 +29,8 @@ func _ready() -> void:
 		load_cards()
 	# warning-ignore:return_value_discarded
 	$DeckBuilderPopup.connect('popup_hide', self, '_on_DeckBuilder_hide')
+	
+	# Place hands and piles programmatically
 	$TurnQueue.initialize()
 
 func _on_OvalHandToggle_toggled(_button_pressed: bool) -> void:

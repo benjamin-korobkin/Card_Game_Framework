@@ -7,8 +7,6 @@ onready var owner_node = get_parent().get_parent()
 onready var _left_right := $LeftRight
 onready var _top_bottom := $TopBottom
 
-func _ready() -> void:
-	pass
 
 # Changes card highlight colour.
 func set_highlight(requestedFocus: bool,
