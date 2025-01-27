@@ -4,15 +4,12 @@ extends Board
 #var floating_text = preload("res://src/new_card_game/FloatingText.tscn")
 
 onready var torah_challenge_panel = get_node("CanvasLayer/TorahChallengePanel")
+var tanach_deck
 
 func _ready() -> void:
 	counters = $Counters
 	cfc.map_node(self)
-	# We use the below while to wait until all the nodes we need have been mapped
-	# "hand" should be one of them.
-	# We're assigning our positions programmatically,
-	# instead of defining them on the scene.
-	# This way they will work with any size of viewport in a game.
+
 	cfc.game_settings.fancy_movement = false
 	cfc.game_settings.hand_use_oval_shape = false
 	cfc.game_settings.focus_style = CFInt.FocusStyle.VIEWPORT
@@ -31,7 +28,11 @@ func _ready() -> void:
 	$DeckBuilderPopup.connect('popup_hide', self, '_on_DeckBuilder_hide')
 	
 	# Place hands and piles programmatically
+	
+	
 	$TurnQueue.initialize()
+	print("Current size is: " + str(get_size()))
+	print("Position of Discard is: " + str($Discard.position))
 
 func _on_OvalHandToggle_toggled(_button_pressed: bool) -> void:
 	pass

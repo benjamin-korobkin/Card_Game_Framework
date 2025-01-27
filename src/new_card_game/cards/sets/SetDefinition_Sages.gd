@@ -46,6 +46,9 @@ const CARDS := {
 	},
 	
 	### SAGE CARDS BEGIN ###
+	
+## TANNAIM
+
 	"Nittai HaArbaily": {
 		"Type": "Sage",
 		"Power": 5,
@@ -58,61 +61,54 @@ const CARDS := {
 		"Era": "Tanna",
 		"Teaching": "When judging, view all as guilty. View them as innocent after"
 	},
-#	"Shimon ben Shetach": {
-#		"Type": "Sage",
-#		"Power": 5,
-#		"Era": "Tanna",
-#		"Teaching": "Be wise in questioning witnesses, so they don't learn how to lie"
-#	},
 	"Shimon ben Gamliel": {
 		"Type": "Sage",
 		"Power": 5,
 		"Era": "Tanna",
 		"Teaching": "The world stands on 3 things: Justice, Truth, and Peace"
 	},
-	"Rav Nacḥhman bar Yitzchak": {
-		"Type": "Sage",
-		"Power": 4,
-		"Era": "Amora",
-		"Teaching": "Prayer is only heard if it's with an upright body"
-	},
-	"Rabbi Abbahu": {
-		"Type": "Sage",
-		"Power": 4,
-		"Era": "Amora",
-		"Teaching": "Greater is one who says Amen than one who says the bracha"
-	},
-	"Rav Yehudah bar Yechezkel": {
-		"Type": "Sage",
-		"Power": 4,
-		"Era": "Amora",
-		"Teaching": "Bless G-d for the bad just as you bless Him for the good"
-	},
-	"Rabbi Alexandri": {
-		"Type": "Sage",
-		"Power": 4,
-		"Era": "Amora",
-		"Teaching": "One who prays must direct his eyes downward and heart upward"
-	},
-	"Rav Ashi": {
-		"Type": "Sage",
-		"Power": 4,
-		"Era": "Amora",
-		"Teaching": "Be more wary of wrongdoing against a person than against G-d"
-	},
+	
+## AMORAIM
+
 	"Reish Lakish": {
 		"Type": "Sage",
 		"Power": 4,
 		"Era": "Amora",
 		"Teaching": "Great is teshuva, for it transforms intended sins into merits"
 	},
-#	"Rabbi Yochanan bar Nappacha": {
-#		"Type": "Sage",
-#		"Power": 4,
-#		"Era": "Amora",
-#		"Teaching": "One who rejoices while suffering brings salvation to the world"
-#	},
+	"Rav (Abba Aricha)": {
+		"Type": "Sage",
+		"Power": 4,
+		"Era": "Amora",
+		"Teaching": "Better to cast oneself into a furnace than embarrass someone"
+	},
+	"Shmuel (bar Abba)": {
+		"Type": "Sage",
+		"Power": 4,
+		"Era": "Amora",
+		"Teaching": "It is forbidden to deceive anyone, whether Jew or Pagan"
+	},
+	"Rabbi Ami": {
+		"Type": "Sage",
+		"Power": 4,
+		"Era": "Amora",
+		"Teaching": "One who prepares a mitzva, then can't do it, is still credited"
+	},
+	"Bar Kappara": {
+		"Type": "Sage",
+		"Power": 4,
+		"Era": "Amora",
+		"Teaching": "Teach your child a clean and easy profession"
+	},
+	"Rabbi Yehoshua ben Levi": {
+		"Type": "Sage",
+		"Power": 4,
+		"Era": "Amora",
+		"Teaching": "One who rejoices while suffering brings salvation to the world"
+	},
 	
+## GAONIM
+
 #	"Rav Hai": {
 #		"Type": "Sage",
 #		"Power": 3,
