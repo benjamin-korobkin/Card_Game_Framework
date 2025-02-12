@@ -6,47 +6,9 @@ extends Reference
 
 const SET = "Core Set"
 const CARDS := {
-	
-	### TANACH CARDS BEGIN ###
-	"Avraham Avinu": {
-		"Type": "Tanach",
-		"Effect": "Gain extra action"
-	},
-	"Yitzchak Avinu": {
-		"Type": "Tanach",
-		"Effect": "Increase max Torah Tokens by 5"
-	},
-	"Yaakov Avinu": {
-		"Type": "Tanach",
-		"Effect": "Gain 1 token for each Sage in the BM"
-	},
-	"Aharon": {
-		"Type": "Tanach",
-		"Effect": "Your opponent loses 1 Action for 2 turns"
-	},
-	"Yehoshua": {
-		"Type": "Tanach",
-		"Effect": "View opponent's cards in the Beit Midrash"
-	},
-#	"Shimshon": {
-#		"Type": "Tanach",
-#		"Effect": "Drop both player's Torah Tokens to 0"
-#	},
-	"Shlomo HaMelech": {
-		"Type": "Tanach",
-		"Effect": "Take up to 2 tokens from your opponent"
-	},
-	"Eliyahu HaNavi": {
-		"Type": "Tanach",
-		"Effect": "Can fill the final timeline slot with this card"
-	},
-	"Elisha HaNavi": {
-		"Type": "Tanach",
-		"Effect": "Draw the top card from the discard pile"
-	},
-	
+
 	### SAGE CARDS BEGIN ###
-	
+
 ## TANNAIM
 
 	"Nittai HaArbaily": {
@@ -145,12 +107,14 @@ const CARDS := {
 		"Era": "Gaon",
 		"Teaching": "One who learns, but doesn't teach, diminishes the Torah"
 	},
-	"Rav Saadia": { # P2 4th move
+	"Rav Saadia": {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
 		"Teaching": "Our nation is a nation only because of the Torah"
 	},
+	
+	
 	"Ramban (Nachmonides)": {
 		"Type": "Sage",
 		"Power": 2,
@@ -169,12 +133,6 @@ const CARDS := {
 		"Era": "Rishon",
 		"Teaching": "The study of Torah is a path to wisdom and peace"
 	},
-#	"Rabbi Avraham ben David (Ravad)": {
-#		"Type": "Sage",
-#		"Power": 2,
-#		"Era": "Rishon",
-#		"Teaching": "True scholarship is found in humility"
-#	},
 
 	"Rabbi Yaakov Emden": {
 		"Type": "Sage",
@@ -188,12 +146,6 @@ const CARDS := {
 		"Era": "Acharon",
 		"Teaching": "The strength of a person lies in the ability to choose"
 	},
-#	"Rabbi Eliyahu Dessler": {
-#		"Type": "Sage",
-#		"Power": 1,
-#		"Era": "Acharon",
-#		"Teaching": "True wealth is measured by one's contributions to the world"
-#	},
 	"Vilna Gaon": {
 		"Type": "Sage",
 		"Power": 1,
@@ -201,15 +153,58 @@ const CARDS := {
 		"Teaching": "Overcoming negative traits is harder than mastering Talmud"
 	},
 	
+# TANACH CARDS
+	
+	"Avraham Avinu": {
+		"Type": "Tanach",
+		"Effect": "Gain extra action"
+	},
+	"Yitzchak Avinu": {
+		"Type": "Tanach",
+		"Effect": "Increase max Torah Tokens by 5"
+	},
+	"Yaakov Avinu": {
+		"Type": "Tanach",
+		"Effect": "Gain 1 token for each Sage in the BM"
+	},
+	"Aharon": {
+		"Type": "Tanach",
+		"Effect": "Your opponent loses 1 Action for 2 turns"
+	},
+	"Yehoshua": {
+		"Type": "Tanach",
+		"Effect": "View opponent's cards in the Beit Midrash"
+	},
+	"Shlomo HaMelech": {
+		"Type": "Tanach",
+		"Effect": "Take up to 2 tokens from your opponent"
+	},
+	"Eliyahu HaNavi": {
+		"Type": "Tanach",
+		"Effect": "Can fill the final timeline slot with this card"
+	},
+	"Elisha HaNavi": {
+		"Type": "Tanach",
+		"Effect": "Draw the top card from the discard pile"
+	},
+	## TODO: Implement David and other cards in the future
+#	"David HaMelech": {
+#		"Type": "Tanach",
+#		"Effect": "Your Sages can't be replaced for 2 turns"
+#	},
+#	"Shimshon": {
+#		"Type": "Tanach",
+#		"Effect": "Drop opponent's Torah Tokens to 0"
+#	},
+	
+	
+	### TUTORIAL CARDS - Also included in main game ###
 	"Chafetz Chaim": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
 		"Teaching": "One moment of lashon hara can destroy years of work"
 	},
-	
-	
-	### TUTORIAL CARDS - Also included in main game ###
 	"Hillel": {  ## P2 4th move - put in Timeline
 		"Type": "Sage",
 		"Power": 5,
@@ -267,9 +262,3 @@ const CARDS := {
 		"Teaching": "Say little and do much, and greet all with a smile"
 	},
 }
-
-## TODO: Implement David and other cards in the future
-#	"David HaMelech": {
-#		"Type": "Tanach",
-#		"Effect": "Your Sages can't be replaced for 2 turns"
-#	},

@@ -245,14 +245,18 @@ func instance_card(card_name: String) -> Card:
 #	var template = load(CFConst.PATH_CARDS
 #			+ card_definitions[card_name][CardConfig.SCENE_PROPERTY] + ".tscn")
 	var template
+	var card_type
 	match card_definitions[card_name][CardConfig.SCENE_PROPERTY]:
 		"Tanach":
 			template = TANACH_CARD_SCENE
+			card_type = "Tanach"
 		_:
 			template = SAGE_CARD_SCENE
+			card_type = "Sage"
 	var card = template.instance()
 	# We set the card_name variable so that it's able to be used later
 	card.canonical_name = card_name
+	card.card_type = card_type
 	emit_signal("new_card_instanced", card)
 	return(card)
 

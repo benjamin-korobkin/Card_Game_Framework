@@ -27,12 +27,8 @@ func _ready() -> void:
 	# warning-ignore:return_value_discarded
 	$DeckBuilderPopup.connect('popup_hide', self, '_on_DeckBuilder_hide')
 	
-	# Place hands and piles programmatically
-	
-	
 	$TurnQueue.initialize()
-	print("Current size is: " + str(get_size()))
-	print("Position of Discard is: " + str($Discard.position))
+
 
 func _on_OvalHandToggle_toggled(_button_pressed: bool) -> void:
 	pass
@@ -97,8 +93,17 @@ func load_cards() -> void:
 		card_array.append(cfc.instance_card(c))
 	## Randomize card_array
 	card_array.shuffle()
+	# We want only 2 Tanach cards in our deck. Rest to go in separate pile.
+	var tcard_counter = 0
 	for card in card_array:
-		cfc.NMAP.deck.add_child(card)
+		var target_deck = cfc.NMAP.deck
+		if card.card_type == "Tanach":
+			if tcard_counter < 2:
+				tcard_counter += 1
+			else:
+				target_deck = cfc.NMAP.tdeck
+
+		target_deck.add_child(card)
 		card._determine_idle_state()
 
 # Loads a sample set of cards to use for testing
@@ -107,21 +112,6 @@ func load_test_cards(gut := true) -> void:
 	# Hardcoded the card order because for some reason, GUT on low-powered VMs
 	# ends up with a different card order, even when the seed is the same.
 	var gut_cards := [
-		"Multiple Choices Test Card",
-		"Test Card 2",
-		"Test Card 3",
-		"Test Card 2",
-		"Test Card 2",
-		"Test Card 1",
-		"Test Card 2",
-		"Multiple Choices Test Card",
-		"Test Card 3",
-		"Multiple Choices Test Card",
-		"Multiple Choices Test Card",
-		"Rich Text Card",
-		"Shaking Card",
-		"Test Card 1",
-		"Test Card 2",
 		"Test Card 3",
 		"Multiple Choices Test Card",
 	]
@@ -140,7 +130,7 @@ func load_test_cards(gut := true) -> void:
 						test_cards[CFUtils.randi() % len(test_cards)]
 				test_card_array.append(cfc.instance_card(random_card_name))
 		# 11 is the cards GUT expects. It's the testing standard
-		if extras == 11:
+		if extras == 2:
 		# I ensure there's of each test card, for use in GUT
 			for card_name in test_cards:
 				test_card_array.append(cfc.instance_card(card_name))

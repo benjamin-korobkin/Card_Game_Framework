@@ -62,10 +62,6 @@ enum AttachmentOffset{
 	BOTTOM_RIGHT
 }
 
-enum CardType{
-	SAGE
-	TANACH
-}
 
 # Used to spawn CardChoices. We have to add the consts together
 # before passing to the preload, or the parser complains.
@@ -290,6 +286,8 @@ var is_executing_scripts := false
 # If this card is freshly spawned, this variable will hold the CardContainer
 # which is the final constainer to put it in
 var spawn_destination
+
+var card_type
 
 # This variable will point to the scene which controls the targeting arrow
 onready var targeting_arrow
