@@ -34,16 +34,13 @@ func action():  ## Optimize. create method(s) for getting card type
 	var current_hand = hand.get_all_cards()
 	
 	if can_put_in_timeline():
-		# Start by replacing cards if possible (later we will first check
-		# if we will win by putting a new card in timeline)
+		# Start by replacing cards if possible
 		for card in field.get_occupying_cards():
 			if card.can_go_in_timeline(self):
 				board.torah_challenge_panel.set_visible(true)
 				emit_signal("replacing_p1_card", card)
 				while board.torah_challenge_panel.is_visible():
 					yield(get_tree(), "idle_frame")
-				## TODO: Find a way to yield/wait for player1 
-				## to finish with torah challenge panel
 				put_in_timeline(card)
 				return
 		# Don't put in a card if it means you'll likely lose
@@ -58,9 +55,21 @@ func action():  ## Optimize. create method(s) for getting card type
 						return
 			draw_card()
 			return
-		else:  # Challenge using card in BM, this will aid in getting a relevant card in BM later
-			# TODO: Grab P1 cards in timeline and calculate which card to put in BM
-			if _challenge(field):
+		else: # If we reach this point, it means we need to focus on replacing p1 cards.
+			# Grab P1 cards in timeline and calculate which card from hand to put in BM
+			if field.count_available_slots() > 0:
+				# Establish the eras of P1 cards in the timeline
+				var temp_eras = []
+				for card in timeline.get_occupying_cards():
+					if card.get_card_owner() == "p1":
+						temp_eras.append(card.get_property("Era"))
+				for card in hand.get_occupying_cards():
+					if card.get_property("Era") in temp_eras:
+						put_in_field(card)
+						return
+			# Challenge using card in BM, this will aid in getting a relevant card in BM later
+			# If full BD and no card can replace p1, we need to make space for one that can
+			elif _challenge(field):
 				return
 			
 	else:
@@ -89,14 +98,15 @@ func action():  ## Optimize. create method(s) for getting card type
 				return
 	# If no other options can be performed, draw a card
 	draw_card()
-				
+
+# If p1 has cards in BM, challenge them and return true. Otherwise false.
 func _challenge(card_source : Node):
 	var p1_field_cards = opponent.get_field().get_occupying_cards()
 	if not p1_field_cards.empty(): ## Challenge
 		var card_to_chlng = p1_field_cards[randi() % p1_field_cards.size()]
 		## TODO: BUG when p2 challenges from its field ??
 		var cards
-		if card_source is Hand:
+		if card_source is Hand: ## TODO: Is this legal??
 			cards = card_source.get_all_cards()
 		else: # BoardPlacementGrid
 			cards = card_source.get_occupying_cards()
