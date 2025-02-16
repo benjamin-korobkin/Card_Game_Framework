@@ -439,10 +439,15 @@ anchor_right = 0.5
 
 [node name="Counters" parent="." instance=ExtResource( 6 )]
 margin_left = 25.0
-margin_top = 25.0
+margin_top = 40.0
 margin_right = 36.0
-margin_bottom = 36.0
+margin_bottom = 51.0
 script = ExtResource( 19 )
+
+[node name="TanachIntervalLabel" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+text = "Turns till Tanach card: 6"
 
 [node name="FancyMovementToggle" type="CheckButton" parent="."]
 visible = false
@@ -621,6 +626,8 @@ margin_right = 225.0
 margin_bottom = 75.0
 
 [connection signal="game_won" from="TurnQueue" to="CanvasLayer/GameOverPanel" method="_on_game_won"]
+[connection signal="tdeck_empty" from="TurnQueue" to="." method="_on_TurnQueue_tdeck_empty"]
+[connection signal="turn_counter_updated" from="TurnQueue" to="." method="_on_TurnQueue_turn_counter_updated"]
 [connection signal="action_completed" from="TurnQueue/Player1" to="." method="_on_Player1_action_completed"]
 [connection signal="action_completed" from="TurnQueue/Player2" to="TurnQueue/Player2" method="_on_Player2_action_completed"]
 [connection signal="replacing_p1_card" from="TurnQueue/Player2" to="CanvasLayer/TorahChallengePanel" method="_on_Player2_replacing_p1_card"]

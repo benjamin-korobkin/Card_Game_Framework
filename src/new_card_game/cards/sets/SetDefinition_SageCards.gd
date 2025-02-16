@@ -71,12 +71,12 @@ const CARDS := {
 	
 ## GAONIM
 
-#	"Rav Hai": {
-#		"Type": "Sage",
-#		"Power": 3,
-#		"Era": "Gaon",
-#		"Teaching": "The true test of knowledge is action"
-#	},
+	"Rav Hai": {
+		"Type": "Sage",
+		"Power": 3,
+		"Era": "Gaon",
+		"Teaching": "A community bound by a single calendar stands united before God"
+	},
 	"Rav Sherira": {
 		"Type": "Sage",
 		"Power": 3,
@@ -87,33 +87,34 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
-		"Teaching": "It is forbidden to rely on miracles"
+		"Teaching": "Do not rely on miracles; Torah guides through wisdom and action"
 	},
-	"Rav Amram": {
+	"Rav Amram bar Sheshna": {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
-		"Teaching": "The essence of prayer is the heart's intent"
+		"Teaching": "Prayer shapes the day, as Torah shapes the soul."
 	},
 	"Rav Yehudai": {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
-		"Teaching": "One's true wealth is his mitzvot. They join him after death"
-	},
-	"Rav Shimon Kayyara": {
-		"Type": "Sage",
-		"Power": 3,
-		"Era": "Gaon",
-		"Teaching": "One who learns, but doesn't teach, diminishes the Torah"
+		"Teaching": "Study the written and oral Torah together; they are inseparable."
 	},
 	"Rav Saadia": {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
-		"Teaching": "Our nation is a nation only because of the Torah"
+		"Teaching": "The wicked live on for the sake of righteous offspring"
 	},
+#	"Rav Shimon Kayyara": {
+#		"Type": "Sage",
+#		"Power": 3,
+#		"Era": "Gaon",
+#		"Teaching": "One who learns, but doesn't teach, diminishes the Torah"
+#	},
 	
+## RISHONIM
 	
 	"Ramban (Nachmonides)": {
 		"Type": "Sage",
@@ -134,17 +135,19 @@ const CARDS := {
 		"Teaching": "The study of Torah is a path to wisdom and peace"
 	},
 
+## ACHARONIM
+
 	"Rabbi Yaakov Emden": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
-		"Teaching": "One should never be afraid to speak the truth"
+		"Teaching": "We may return to the land of Israel at any time"
 	},
 	"Rabbi Yaakov Kamenetsky": {
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
-		"Teaching": "The strength of a person lies in the ability to choose"
+		"Teaching": "One does not raise children with falsehood"
 	},
 	"Vilna Gaon": {
 		"Type": "Sage",
@@ -225,7 +228,7 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 5,
 		"Era": "Tanna",
-		"Teaching": "Appoint for you a teacher, acquire a friend, and judge favorably"
+		"Teaching": "Appoint a teacher, acquire a friend, and judge all favorably"
 	},
 	"Chazon Ish": {
 		"Type": "Sage",

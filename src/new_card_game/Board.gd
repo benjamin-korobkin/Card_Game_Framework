@@ -152,3 +152,11 @@ func _on_BackToMain_pressed() -> void:
 
 func _on_SageActionsMenu_index_pressed(index: int) -> void:
 	print(index)
+
+
+func _on_TurnQueue_turn_counter_updated(turn_counter) -> void:
+	$TanachIntervalLabel.text = "Turns till Tanach card: " + str(turn_counter)
+
+
+func _on_TurnQueue_tdeck_empty() -> void:
+	$TanachIntervalLabel.set_visible(false)
