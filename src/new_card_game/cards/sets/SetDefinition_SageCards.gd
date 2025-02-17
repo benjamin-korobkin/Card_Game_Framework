@@ -156,51 +156,6 @@ const CARDS := {
 		"Teaching": "Overcoming negative traits is harder than mastering Talmud"
 	},
 	
-# TANACH CARDS
-	
-	"Avraham Avinu": {
-		"Type": "Tanach",
-		"Effect": "Gain extra action"
-	},
-	"Yitzchak Avinu": {
-		"Type": "Tanach",
-		"Effect": "Increase max Torah Tokens by 5"
-	},
-	"Yaakov Avinu": {
-		"Type": "Tanach",
-		"Effect": "Gain 1 token for each Sage in the BM"
-	},
-	"Aharon": {
-		"Type": "Tanach",
-		"Effect": "Your opponent loses 1 Action for 2 turns"
-	},
-	"Yehoshua": {
-		"Type": "Tanach",
-		"Effect": "View opponent's cards in the Beit Midrash"
-	},
-	"Shlomo HaMelech": {
-		"Type": "Tanach",
-		"Effect": "Take up to 2 tokens from your opponent"
-	},
-	"Eliyahu HaNavi": {
-		"Type": "Tanach",
-		"Effect": "Can fill the final timeline slot with this card"
-	},
-	"Elisha HaNavi": {
-		"Type": "Tanach",
-		"Effect": "Draw the top card from the discard pile"
-	},
-	## TODO: Implement David and other cards in the future
-#	"David HaMelech": {
-#		"Type": "Tanach",
-#		"Effect": "Your Sages can't be replaced for 2 turns"
-#	},
-#	"Shimshon": {
-#		"Type": "Tanach",
-#		"Effect": "Drop opponent's Torah Tokens to 0"
-#	},
-	
-	
 	### TUTORIAL CARDS - Also included in main game ###
 	"Chafetz Chaim": {
 		"Type": "Sage",
@@ -264,4 +219,51 @@ const CARDS := {
 		"Era": "Tanna",
 		"Teaching": "Say little and do much, and greet all with a smile"
 	},
+	
+# TANACH CARDS
+# TANACH CARDS
+	
+	"Avraham Avinu": {
+		"Type": "Tanach",
+		"Effect": "Gain extra action"
+	},
+	"Yitzchak Avinu": {
+		"Type": "Tanach",
+		"Effect": "Increase max Torah Tokens by 5"
+	},
+	"Yaakov Avinu": {
+		"Type": "Tanach",
+		"Effect": "Gain 1 token for each Sage in the BM"
+	},
+	"Aharon": {
+		"Type": "Tanach",
+		"Effect": "Your opponent loses 1 Action for 2 turns"
+	},
+	"Yehoshua": {
+		"Type": "Tanach",
+		"Effect": "View opponent's cards in the Beit Midrash"
+	},
+	"Shlomo HaMelech": {
+		"Type": "Tanach",
+		"Effect": "Take up to 2 tokens from your opponent"
+	},
+	"Eliyahu HaNavi": {
+		"Type": "Tanach",
+		"Effect": "Can fill the final timeline slot with this card"
+	},
+	"Elisha HaNavi": {
+		"Type": "Tanach",
+		"Effect": "Draw the top card from the discard pile"
+	},
+	## TODO: Implement David and other cards in the future
+#	"David HaMelech": {
+#		"Type": "Tanach",
+#		"Effect": "Your Sages can't be replaced for 2 turns"
+#	},
+#	"Shimshon": {
+#		"Type": "Tanach",
+#		"Effect": "Drop opponent's Torah Tokens to 0"
+#	},
 }
+
+

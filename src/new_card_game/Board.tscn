@@ -445,9 +445,8 @@ margin_bottom = 51.0
 script = ExtResource( 19 )
 
 [node name="TanachIntervalLabel" type="Label" parent="."]
-margin_left = 10.0
-margin_top = 10.0
-text = "Turns till Tanach card: 6"
+margin_left = 18.0
+margin_top = 18.0
 
 [node name="FancyMovementToggle" type="CheckButton" parent="."]
 visible = false

@@ -18,6 +18,7 @@ onready var turn_counter = TANACH_CARD_INTERVAL
 
 
 func initialize():
+	emit_signal("turn_counter_updated", turn_counter)
 	for i in range(CARDS_DRAWN_AT_START):
 		yield(get_tree().create_timer(0.4), "timeout")
 		p1.hand.draw_card()
@@ -41,20 +42,15 @@ func check_turn_over():
 		active_player.finish_turn() ## Prevent game from continuing
 	elif active_player.get_actions_remaining() <= 0 and not game_over:
 		active_player.finish_turn()
-		increment_turn_counter()
+		update_turn_counter()
 		if get_active_player() == p1:
 			set_active_player(p2)
 		else:
 			set_active_player(p1)
 		active_player.play_turn()
 		
-func set_active_player(player):
-	active_player = player
-	
-func get_active_player():
-	return active_player
 
-func increment_turn_counter():
+func update_turn_counter():
 	if cfc.NMAP.tdeck.get_card_count() > 0:
 		turn_counter -= 1
 		if turn_counter <= 0:
@@ -68,3 +64,8 @@ func increment_turn_counter():
 	else: # No cards left in pile
 		emit_signal("tdeck_empty")
 		
+func set_active_player(player):
+	active_player = player
+	
+func get_active_player():
+	return active_player

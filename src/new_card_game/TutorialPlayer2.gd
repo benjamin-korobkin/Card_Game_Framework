@@ -36,18 +36,6 @@ func action():  ## Optimize. create method(s) for getting card type
 	var current_hand = hand.get_all_cards()
 	
 	if can_put_in_timeline():
-		# Start by replacing cards if possible (later we will first check
-		# if we will win by putting a new card in timeline)
-		# TODO: Test TorahChallengePanel
-#		for card in field.get_occupying_cards():
-#			if card.can_go_in_timeline(self):
-#				board.torah_challenge_panel.set_visible(true)
-#				emit_signal("replacing_p1_card", card)
-#				while board.torah_challenge_panel.is_visible():
-#					yield(get_tree(), "idle_frame")
-#				
-#				put_in_timeline(card)
-#				return
 		# Don't put in a card if it means you'll likely lose
 		if opponent.cards_in_timeline <= 2: 
 			for card in current_hand:
@@ -60,11 +48,6 @@ func action():  ## Optimize. create method(s) for getting card type
 						return
 			draw_card()
 			return
-#		else:  # Challenge using card in BM, this will aid in getting a relevant card in BM later
-#			# TODO: Grab P1 cards in timeline and calculate which card to put in BM
-#			if _challenge(field):
-#				return
-			
 	else:
 		var tanach_card = null
 		if field.count_available_slots() > 0:

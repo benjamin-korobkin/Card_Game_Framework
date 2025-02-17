@@ -102,7 +102,6 @@ func load_cards() -> void:
 				tcard_counter += 1
 			else:
 				target_deck = cfc.NMAP.tdeck
-
 		target_deck.add_child(card)
 		card._determine_idle_state()
 
@@ -156,7 +155,6 @@ func _on_SageActionsMenu_index_pressed(index: int) -> void:
 
 func _on_TurnQueue_turn_counter_updated(turn_counter) -> void:
 	$TanachIntervalLabel.text = "Turns till Tanach card: " + str(turn_counter)
-
 
 func _on_TurnQueue_tdeck_empty() -> void:
 	$TanachIntervalLabel.set_visible(false)

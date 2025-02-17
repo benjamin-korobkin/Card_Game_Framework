@@ -28,13 +28,13 @@ onready var tutorial_steps = [
 		- Drawing a card
 		- Putting a card in the Beit Midrash
 		- Placing a card in the Timeline
-		- and more...
+		- Challenging an opponent's card
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """
 		The panel on the left shows remaining actions 
 		and tokens for you and your opponent.
-		Your actions & tokens are on the top.
-		Your opponent's are on the bottom.
+		Your actions & tokens are on the top (P1).
+		Your opponent's are on the bottom (P2).
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": $Counters, "preset":""},
 	{"text": """The deck on the left is shared between you and 
 		your opponent. Click it to draw a card. 
@@ -62,8 +62,8 @@ onready var tutorial_steps = [
 		Now it's the opponent's turn...
 		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
 	{"text": """Your turn again. 
-		Notice you received 1 Torah Token. 
-		This is because you have 1 Sage 
+		Notice you received 1 Torah Token 
+		because you have 1 Sage 
 		in your Beit Midrash.
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """
@@ -71,16 +71,28 @@ onready var tutorial_steps = [
 		""", "state": "WAITING_FOR_DRAW", "reveal_node": null, "preset":""},
 	{"text": """ 
 		Mazal tov! You got a Tanach card.
-		These can give you an advantage. Click it to use it. 
+		These perform unique actions that can give you
+		an advantage.
+		Note: Tanach cards cost no action to use.
+		Click on it to use it. 
 		""", "state": "WAITING_FOR_TANACH", "reveal_node": $Discard, "preset":""},
+	{"text": """
+		Every 6 turns, you and your opponent receive 
+		a random Tanach card. As you just saw, some are 
+		within the deck as well.
+		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
+	{"text": """
+		The text in the top left corner shows how many
+		turns left until the next Tanach cards are distributed
+		""", "state": "WAITING_FOR_NEXT", "reveal_node": $TanachIntervalLabel, "preset":""},
+	{"text": """
+		Put one of your new Sage into the Beit Midrash.
+		""", "state": "WAITING_FOR_BM", "reveal_node": null, "preset":""},
 	{"text": """
 		Now it's your opponent's turn again...
 		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
 	{"text": """
 		Opponent turn over. Notice your tokens increased.
-		Put one of your new Sages into the Beit Midrash.
-		""", "state": "WAITING_FOR_BM", "reveal_node": null, "preset":""},
-	{"text": """
 		Put another Sage into the Beit Midrash.
 		""", "state": "WAITING_FOR_BM", "reveal_node": null, "preset":""},
 	{"text": """
@@ -204,8 +216,15 @@ func load_cards() -> void:
 		card_options.append(ckey)
 	for c in card_options:
 		card_array.append(cfc.instance_card(c))
+	var tcard_counter = 0
 	for card in card_array:
-		cfc.NMAP.deck.add_child(card)
+		var target_deck = cfc.NMAP.deck
+		if card.card_type == "Tanach":
+			if tcard_counter < 2:
+				tcard_counter += 1
+			else:
+				target_deck = cfc.NMAP.tdeck
+		target_deck.add_child(card)
 		card._determine_idle_state()
 		
 func _adjust_tutorial_panel(anchor : String) -> void:
@@ -238,6 +257,8 @@ func get_tutorial_state() -> String:
 func _on_ScalingFocusOptions_item_selected(index: int) -> void:
 	cfc.set_setting('focus_style', index)
 
+func _on_TurnQueue_turn_counter_updated(turn_counter) -> void:
+	$TanachIntervalLabel.text = "Turns till Tanach card: " + str(turn_counter)
 
 func _on_Exit_Game_pressed() -> void:
 	cfc.quit_game()

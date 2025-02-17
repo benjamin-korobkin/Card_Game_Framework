@@ -91,13 +91,13 @@ func can_put_in_timeline() -> bool:
 func spend_tokens():
 	torah_tokens -= TIMELINE_COST
 	update_counter(tokens_str,torah_tokens)
-	
+
 func check_turn_over():
 	get_parent().check_turn_over()
 
 func set_current_card(card):
 	current_card = card
-	
+
 func challenge(opponent_card):
 	deduct_action()
 	var player_card
@@ -211,7 +211,7 @@ func do_effect(name):
 			add_tokens(torah_tokens * (-1))
 			opponent.add_tokens(opponent.torah_tokens * (-1))
 		"David HaMelech":
-			pass ## TODO: Create flag to prevent cards from being challenged
+			pass # TODO: Create flag to prevent opponent from replacing
 		"Shlomo HaMelech":
 			var tokens_to_take = min(2, opponent.torah_tokens)
 			opponent.add_tokens(-tokens_to_take)
@@ -225,7 +225,7 @@ func do_effect(name):
 
 		_:
 			printerr("NO MATCHING NAME FOR TANACH CARD")
-	deduct_action()
+#	deduct_action()
 	check_turn_over()
 	
 func get_actions_remaining():
