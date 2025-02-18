@@ -175,10 +175,6 @@ func can_do_effect(name):
 		"Shlomo HaMelech":
 			if opponent.torah_tokens == 0:
 				return false
-		## TODO
-		#"Yosef HaTzadik":
-			#if hand.get_card_count() > cards_to_draw and player_name=="Player1":
-		#		pass # TODO: Show discard popup
 		_:
 			return true
 	return true
@@ -186,7 +182,7 @@ func can_do_effect(name):
 func do_effect(name):
 	match name:
 		"Avraham Avinu":
-			add_bonus_actions(2)
+			add_bonus_actions(1)
 		"Yitzchak Avinu":
 			max_torah_tokens += 5
 			update_counter(tokens_str, torah_tokens)
@@ -196,7 +192,7 @@ func do_effect(name):
 			add_tokens(amt)
 		"Yosef HaTzadik":
 			var cards_in_deck_amt = cfc.NMAP.deck.get_all_cards().size()
-			var cards_to_draw = min(3,cards_in_deck_amt)
+			var cards_to_draw = min(2,cards_in_deck_amt)
 			for i in range(cards_to_draw):
 				var drawn_card = hand.draw_card()
 				yield(get_tree().create_timer(0.4), "timeout")

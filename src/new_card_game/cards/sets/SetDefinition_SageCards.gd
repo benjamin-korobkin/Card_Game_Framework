@@ -7,6 +7,11 @@ extends Reference
 const SET = "Core Set"
 const CARDS := {
 
+# For sake of tutorial, leave this card here.
+	"Avraham Avinu": {
+		"Type": "Tanach",
+		"Effect": "Gain extra action"
+	},
 	### SAGE CARDS BEGIN ###
 
 ## TANNAIM
@@ -157,63 +162,61 @@ const CARDS := {
 	},
 	
 	### TUTORIAL CARDS - Also included in main game ###
-	"Chafetz Chaim": {
+	
+	"Chafetz Chaim": { # P2 draw and put in timeline
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
 		"Teaching": "One moment of lashon hara can destroy years of work"
 	},
-	"Hillel": {  ## P2 4th move - put in Timeline
+	"Hillel": {  # P1 - put previous card in timeline and draw
 		"Type": "Sage",
 		"Power": 5,
 		"Era": "Tanna",
 		"Teaching": "Be disciples of Aharon, loving and pursuing peace"
 	},
-	"Moshe Rabbeinu": { # P1 4th move
-		"Type": "Tanach",
-		"Effect": "Put a Sage in the Timeline for no tokens or action"
-	},
-	"Rashi": { # P2 3rd move
+	"Rashi": { # P2 draw and put in BM
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
 		"Teaching": "The Torah begins with creation to show G-d's world authority"
 	},
-	"Yehoshua ben Prachya": { # P2 2nd move
+	"Yehoshua ben Prachya": { # P1 - put other card from below in BM and draw
 		"Type": "Sage",
 		"Power": 5,
 		"Era": "Tanna",
 		"Teaching": "Appoint a teacher, acquire a friend, and judge all favorably"
 	},
-	"Chazon Ish": {
+	
+	"Chazon Ish": { # P2 - draw and put in BM
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
 		"Teaching": "Emunah (faith) is not weakness. It's courage to face reality"
 	},
-	"Rabbi Yehuda HaLevi": {
-		"Type": "Sage",
+	"Rabbi Yehuda HaLevi": { ## see below
+		"Type": "Sage", 
 		"Power": 2,
 		"Era": "Rishon",
 		"Teaching": "The soul's longing for G-d is like a bird yearning to fly"
 	},
-	"Rav Nachman of Breslov": {
+	"Rav Nachman of Breslov": { ## see below
 		"Type": "Sage",
 		"Power": 1,
 		"Era": "Acharon",
 		"Teaching": "If you believe you can destroy, believe you can also create"
 	},
-	"Yosef HaTzadik": {
+	"Yosef HaTzadik": { # P1 - draw, use, get above 2 cards, put 1 in BM.
 		"Type": "Tanach",
-		"Effect": "Draw 3 cards"
+		"Effect": "Draw 2 cards"
 	},
-	"Rambam (Maimonides)": { # P2 first move
+	"Rambam (Maimonides)": { # P2 - draw and put in BM
 		"Type": "Sage",
 		"Power": 2,
 		"Era": "Rishon",
 		"Teaching": "The ultimate purpose of knowledge is to know G-d"
 	},
-	"Shammai": { # P1 first move
+	"Shammai": { # P1 - draw and put in BM
 		"Type": "Sage",
 		"Power": 5,
 		"Era": "Tanna",
@@ -223,10 +226,7 @@ const CARDS := {
 # TANACH CARDS
 # TANACH CARDS
 	
-	"Avraham Avinu": {
-		"Type": "Tanach",
-		"Effect": "Gain extra action"
-	},
+	
 	"Yitzchak Avinu": {
 		"Type": "Tanach",
 		"Effect": "Increase max Torah Tokens by 5"
@@ -254,6 +254,10 @@ const CARDS := {
 	"Elisha HaNavi": {
 		"Type": "Tanach",
 		"Effect": "Draw the top card from the discard pile"
+	},
+	"Moshe Rabbeinu": { # P1 receives, and uses next turn
+		"Type": "Tanach",
+		"Effect": "Put a Sage in the Timeline for no tokens or action"
 	},
 	## TODO: Implement David and other cards in the future
 #	"David HaMelech": {

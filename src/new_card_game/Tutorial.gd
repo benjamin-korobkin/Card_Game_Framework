@@ -86,20 +86,31 @@ onready var tutorial_steps = [
 		turns left until the next Tanach cards are distributed
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": $TanachIntervalLabel, "preset":""},
 	{"text": """
-		Put one of your new Sage into the Beit Midrash.
+		Put one of your new Sages into the Beit Midrash.
 		""", "state": "WAITING_FOR_BM", "reveal_node": null, "preset":""},
 	{"text": """
-		Now it's your opponent's turn again...
+		It's your opponent's turn again...
 		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
 	{"text": """
 		Opponent turn over. Notice your tokens increased.
-		Put another Sage into the Beit Midrash.
+		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
+	# P1 and P2 have 2 cards in BM, P1 has 1 sage in hand. P1 has 3 tokens, P2 1.
+	{"text": """
+		Let's do this again. 
+		Put your remaining Sage in the Beit Midrash.
 		""", "state": "WAITING_FOR_BM", "reveal_node": null, "preset":""},
 	{"text": """
-		Opponent's turn again...
+		Draw a card once more.
+		""", "state": "WAITING_FOR_DRAW", "reveal_node": null, "preset":""},
+	{"text": """
+		Time to wait for your opponent's turn again...
 		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
 	{"text": """
-		You now have 5 tokens! It's enough to put a 
+		It's been 6 turns, so you've each received 
+		a Tanach card!
+		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
+	{"text": """
+		Also, you now have 5 tokens. It's enough to put a 
 		Sage in the Timeline.
 		Click the Sage in your hand and select Timeline.
 		""", "state": "WAITING_FOR_TIMELINE", "reveal_node": null, "preset":""},
@@ -107,9 +118,9 @@ onready var tutorial_steps = [
 		Baruch Hashem! If you have the majority of Sages
 		in the Timeline when it's full, you win the game.
 		Next, we'll talk about replacing opponent cards 
-		in the Timeline. 
+		in the Timeline.
 		
-		First, draw another card.
+		First, draw another card to finish your turn.
 		""", "state": "WAITING_FOR_DRAW", "reveal_node": null, "preset":""},
 	{"text": """
 		It's your opponent's turn again...
@@ -133,29 +144,25 @@ onready var tutorial_steps = [
 		2. A Sage in your Beit Din matches
 		   the era of the Sage you are replacing.
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
-	{"text": """Click the Tanna (Shammai) in your Beit Din 
-		and select Timeline to put your opponent's 
-		card into Olam Haba and replace it.
+	{"text": """Click the Acharon (Rav Nachman of Breslov)
+		in your Beit Din and select Timeline to 
+		put your opponent's card into Olam Haba 
+		and replace it.
 		""", "state": "WAITING_FOR_TIMELINE", "reveal_node": null, "preset":""},
 	{"text": """Well done! Keep in mind your opponent can also 
 		replace your cards. This is where 
 		the Challenge action comes in handy. 
 		
-		Draw another card...
-		""", "state": "WAITING_FOR_DRAW", "reveal_node": null, "preset":""},
+		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """
-		We'll allow our opponent to take their turn...
-		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
-	{"text": """
-		Click the card you drew and select Challenge. 
+		Click the Sage in your hand and select Challenge. 
 		Then select a card in your opponent's Beit Din.
 		""", "state": "WAITING_FOR_CHALLENGE", "reveal_node": null, "preset":""},
-	{"text": """As you just saw, both cards were revealed and then
-		sent to Olam haba. The Sage with the earlier era
+	{"text": """As you just saw, both cards were shown and then
+		sent to Olam haba. The earlier Sage
 		(higher number) gains tokens. The greater the 
-		difference in era, the more tokens earned. 
-		More details on this can be found in the
-		description on the game's page. 
+		era difference, the more tokens earned. 
+		You can find more details on the main game page. 
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """You now have everything you need 
 		to start playing! Come back here whenever you need
@@ -244,7 +251,6 @@ func _adjust_tutorial_panel(anchor : String) -> void:
 	tutorial_next_button.set_visible(true)	
 	if get_tutorial_state() != "WAITING_FOR_NEXT":
 		tutorial_next_button.set_visible(false)
-		 
 	
 	
 func set_tutorial_state(state : String):
