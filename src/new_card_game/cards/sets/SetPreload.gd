@@ -7,7 +7,7 @@ extends Node
 # This constant is optional. If this is left empty
 # The game will load the sets by scanning the directories in runtime
 const CARD_SETS := [
-	preload("res://src/new_card_game/cards/sets/SetDefinition_SageCards.gd")
+	preload("res://src/new_card_game/cards/sets/SetDefinition_Cards.gd")
 ]
 # The preloaded card scripts. Each entry in this list must be a preload() for a set scripts gdscript
 # This constant is optional. If this is left empty

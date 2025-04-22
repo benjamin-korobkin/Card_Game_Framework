@@ -106,7 +106,7 @@ func challenge(opponent_card):
 	else:
 		player_card = opponent_card
 		opponent_card = current_card
-	## Move both cards to field margin containers
+	# Move both cards to field margin containers
 	var challenge_grid1 = board.get_node("FieldTimelineContainer/FieldHBox1/FieldMarginContainer1")
 	var challenge_grid2 = board.get_node("FieldTimelineContainer/FieldHBox2/FieldMarginContainer2")
 	
@@ -119,13 +119,13 @@ func challenge(opponent_card):
 
 	var p1_power = player_card.get_property("Power")
 	var p2_power = opponent_card.get_property("Power")
-	var awarded_tokens = abs(p1_power - p2_power)
+	
+	# Only award tokens to challenger
+	var awarded_tokens = p1_power - p2_power
 	if p1_power > p2_power:
 		add_tokens(awarded_tokens)
-	else:
-		opponent.add_tokens(awarded_tokens)
-	
-	yield(get_tree().create_timer(1.25), "timeout")
+	## TODO: Test
+	yield(get_tree().create_timer(1.5), "timeout")
 	player_card.move_to(cfc.NMAP.discard)
 	opponent_card.move_to(cfc.NMAP.discard)
 	yield(player_card._tween, "tween_all_completed")

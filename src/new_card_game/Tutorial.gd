@@ -152,16 +152,15 @@ onready var tutorial_steps = [
 	{"text": """Well done! Keep in mind your opponent can also 
 		replace your cards. This is where 
 		the Challenge action comes in handy. 
-		
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """
 		Click the Sage in your hand and select Challenge. 
 		Then select a card in your opponent's Beit Din.
 		""", "state": "WAITING_FOR_CHALLENGE", "reveal_node": null, "preset":""},
 	{"text": """As you just saw, both cards were shown and then
-		sent to Olam haba. The earlier Sage
-		(higher number) gains tokens. The greater the 
-		era difference, the more tokens earned. 
+		sent to Olam haba (discard pile). 
+		When challenging, if your Sage is of a higher number 
+		era than your opponent, you earn tokens. 
 		You can find more details on the main game page. 
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """You now have everything you need 

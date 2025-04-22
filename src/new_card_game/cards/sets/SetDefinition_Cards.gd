@@ -198,7 +198,7 @@ const CARDS := {
 		"Type": "Sage", 
 		"Power": 2,
 		"Era": "Rishon",
-		"Teaching": "The soul's longing for G-d is like a bird yearning to fly"
+		"Teaching": "Israel among the nations is like a heart among the organs"
 	},
 	"Rav Nachman of Breslov": { ## see below
 		"Type": "Sage",
@@ -266,7 +266,7 @@ const CARDS := {
 #	},
 #	"Shimshon": {
 #		"Type": "Tanach",
-#		"Effect": "Drop opponent's Torah Tokens to 0"
+#		"Effect": "Remove a random card from opponent's BM"
 #	},
 }
 
