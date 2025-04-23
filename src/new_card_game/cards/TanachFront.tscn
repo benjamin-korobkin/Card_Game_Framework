@@ -13,32 +13,34 @@ font_data = ExtResource( 3 )
 fallback/0 = ExtResource( 4 )
 
 [node name="TanachFront" instance=ExtResource( 1 )]
-margin_top = 10.0
+margin_top = 0.0
+margin_bottom = -540.0
 script = ExtResource( 2 )
 
 [node name="Margin" parent="." index="0"]
 margin_top = 1.0
 
-[node name="Name" parent="Margin/CardText" index="0"]
-size_flags_vertical = 9
-custom_colors/font_color = Color( 0.917647, 0.737255, 0.615686, 1 )
-custom_colors/font_outline_modulate = Color( 0.972549, 0.956863, 0.956863, 1 )
-custom_colors/font_color_shadow = Color( 0.219608, 0.0117647, 0.2, 1 )
+[node name="CardText" parent="Margin" index="0"]
+margin_bottom = 181.0
+
+[node name="Type" parent="Margin/CardText" index="0"]
+text = "TANACH"
 
 [node name="Description" parent="Margin/CardText" index="1"]
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
-[node name="Effect" type="Label" parent="Margin/CardText" index="2"]
-margin_top = 27.0
+[node name="Name" parent="Margin/CardText" index="2"]
+size_flags_vertical = 9
+custom_colors/font_color = Color( 0.960784, 0.941176, 0.960784, 1 )
+custom_colors/font_outline_modulate = Color( 0.972549, 0.956863, 0.956863, 1 )
+custom_colors/font_color_shadow = Color( 0.219608, 0.0117647, 0.2, 1 )
+
+[node name="Effect" type="Label" parent="Margin/CardText" index="3"]
+margin_top = 54.0
 margin_right = 146.0
-margin_bottom = 109.0
+margin_bottom = 136.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Here we write the effect of this card. Hope it's a good one!"
 align = 1
 autowrap = true
-
-[node name="Type" parent="Margin/CardText" index="3"]
-margin_top = 112.0
-margin_bottom = 136.0
-text = "TANACH"
