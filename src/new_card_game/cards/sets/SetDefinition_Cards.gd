@@ -110,7 +110,7 @@ const CARDS := {
 		"Type": "Sage",
 		"Power": 3,
 		"Era": "Gaon",
-		"Teaching": "The wicked live on for the sake of righteous offspring"
+		"Teaching": "The wicked may live on for the sake of righteous offspring"
 	},
 #	"Rav Shimon Kayyara": {
 #		"Type": "Sage",
