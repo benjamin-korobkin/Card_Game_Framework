@@ -1,5 +1,3 @@
-# Originally forked from https://github.com/db0/godot-card-game-framework
-
 # Torah Timeline 🕍📜
 A card game of Torah wisdom. You can play it [here on itch.io](https://korben12.itch.io/torah-timeline)
 
@@ -49,5 +47,8 @@ When all 5 Timeline slots are filled, the game ends.
 
 You win if you control at least 3 Timeline slots.
 
-Inspired by Jewish tradition, history, and a love for smart card games.
 
+# Credits
+This game uses the db0 (card game framework)[https://github.com/db0/godot-card-game-framework]
+
+Inspired by Jewish tradition, history, and a desire to create decent Jewish games.
