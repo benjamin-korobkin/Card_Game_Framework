@@ -439,17 +439,19 @@ anchor_left = 0.5
 anchor_right = 0.5
 
 [node name="Counters" parent="." instance=ExtResource( 6 )]
-margin_left = 25.0
+margin_left = 50.0
 margin_top = 40.0
 margin_right = 36.0
 margin_bottom = 51.0
+rect_min_size = Vector2( 250, 75 )
 script = ExtResource( 19 )
 
 [node name="TanachIntervalLabel" type="Label" parent="."]
-margin_left = 30.0
+margin_left = 50.0
 margin_top = 18.0
-margin_right = 36.0
+margin_right = 265.0
 margin_bottom = 42.0
+text = "Turns till Tanach card: ?"
 
 [node name="FancyMovementToggle" type="CheckButton" parent="."]
 visible = false

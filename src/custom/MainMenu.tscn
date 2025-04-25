@@ -99,9 +99,9 @@ size_flags_horizontal = 3
 custom_fonts/font = SubResource( 3 )
 text = "
 GOAL:  Have the most Sages in the TIMELINE grid once it's full.
-It costs 5 TORAH TOKENS to put in the TIMELINE
+It costs 5 Merits to put in the TIMELINE
 
-To earn Torah Tokens, put Sages in your BEIT MIDRASH (BM).
+To earn Merits, put Sages in your BEIT MIDRASH (BM).
 If your Beit Midrash is full, 
 you can replace a card in the Timeline with a card from your Beit Midrash.
 

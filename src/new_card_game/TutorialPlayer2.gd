@@ -102,7 +102,7 @@ func put_in_timeline(card):
 	if moshe_effect_enabled:
 		moshe_effect_enabled = false
 	else:
-		spend_tokens()
+		spend_merits()
 		deduct_action()
 	if slot.occupying_card:
 		slot.occupying_card.move_to(cfc.NMAP.discard)

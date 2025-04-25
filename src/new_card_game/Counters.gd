@@ -19,8 +19,8 @@ func _ready() -> void:
 		"Player1_actions_remaining":{
 			"CounterTitle": "P1 ACTIONS: ",
 			"Value": "2"},
-		"Player1_torah_tokens": {
-			"CounterTitle": "P1 TORAH TOKENS: ",
+		"Player1_merits": {
+			"CounterTitle": "P1 Merits: ",
 			"Value": "0/5"},
 		"Separator":{
 			"CounterTitle":"",
@@ -28,8 +28,8 @@ func _ready() -> void:
 		"Player2_actions_remaining":{
 			"CounterTitle": "P2 Actions:", #P2 Actions: 
 			"Value": "0"}, #0/2
-		"Player2_torah_tokens": {
-			"CounterTitle": "P2 Torah Tokens: ",
+		"Player2_merits": {
+			"CounterTitle": "P2 Merits: ",
 			"Value": "0/5"},
 	}
 	# warning-ignore:return_value_discarded

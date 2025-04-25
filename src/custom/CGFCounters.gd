@@ -16,8 +16,8 @@ func _ready() -> void:
 	counters_container = $VBC
 	value_node = "Value"
 	needed_counters = {
-		"Player1_torah_tokens": {
-			"CounterTitle": "P1 Torah Tokens: ",
+		"Player1_merits": {
+			"CounterTitle": "P1 Merits: ",
 			"Value": "0"},
 		"Player1_actions_remaining":{
 			"CounterTitle": "P1 Actions: ",
@@ -25,8 +25,8 @@ func _ready() -> void:
 		"Separator":{
 			"CounterTitle":"---------",
 			"Value":"---------"},
-		"Player2_torah_tokens": {
-			"CounterTitle": "P2 Torah Tokens: ",
+		"Player2_merits": {
+			"CounterTitle": "P2 Merits: ",
 			"Value": "0"},
 		"Player2_actions_remaining":{
 			"CounterTitle": "P2 Actions: ",
