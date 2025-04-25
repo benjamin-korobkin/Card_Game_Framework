@@ -34,45 +34,7 @@ func on_button_pressed(_button_name : String) -> void:
 			get_tree().change_scene(CFConst.PATH_CUSTOM + 'Main.tscn')
 		"Exit":
 			get_tree().quit()
-	
-	
-#func switch_to_tab(tab: Control) -> void:
-#	var main_position_x : float
-##	match tab:
-##		settings_menu:
-##			main_position_x = -get_viewport().size.x
-##		deck_builder, card_library:
-##			main_position_x = get_viewport().size.x
-##	$MenuTween.interpolate_property(main_menu,'rect_position:x',
-##			main_menu.rect_position.x, main_position_x, menu_switch_time,
-##			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-##	$MenuTween.interpolate_property(tab,'rect_position:x',
-##			tab.rect_position.x, 0, menu_switch_time,
-##			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-##	$MenuTween.start()
 
-
-#func switch_to_main_menu(tab: Control) -> void:
-#	var tab_position_x : float
-##	match tab:
-###		settings_menu:
-###			tab_position_x = get_viewport().size.x
-##		deck_builder, card_library:
-##			tab_position_x = -get_viewport().size.x
-#	$MenuTween.interpolate_property(tab,'rect_position:x',
-#			tab.rect_position.x, tab_position_x, menu_switch_time,
-#			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-#	$MenuTween.interpolate_property(main_menu,'rect_position:x',
-#			main_menu.rect_position.x, 0, menu_switch_time,
-#			Tween.TRANS_BACK, Tween.EASE_IN_OUT)
-#	$MenuTween.start()
-
-#func _on_DeckBuilder_Back_pressed() -> void:
-#	switch_to_main_menu(deck_builder)
-	
-#func _on_CardLibrary_Back_pressed() -> void:
-#	switch_to_main_menu(card_library)
-	
 func _on_Menu_resized() -> void:
 	for tab in [main_menu]: #, deck_builder, card_library]:
 		if is_instance_valid(tab):

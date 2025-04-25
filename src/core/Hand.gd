@@ -39,7 +39,7 @@ export(ExcessCardsBehaviour) var excess_cards = ExcessCardsBehaviour.DISALLOW
 onready var _counter_cards = $Counters/Cards
 
 func _ready() -> void:
-	._ready()
+#	._ready()
 	add_to_group("hands")
 
 func prepare_excess_discard_pile() -> void:

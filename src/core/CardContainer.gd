@@ -58,6 +58,7 @@ onready var shuffle_button := $Control/ManipulationButtons/Shuffle
 # Container higlight
 onready var highlight := $Control/Highlight
 
+var board : Control
 
 #func _process(_delta: float) -> void:
 	# Debug labels
@@ -81,6 +82,7 @@ func _ready() -> void:
 	_init_ui()
 	_init_signal()
 	manipulation_buttons.visible = show_manipulation_buttons
+	board = get_parent()
 
 
 func _init_control_size() -> void:
@@ -332,27 +334,31 @@ func re_place():
 			# minus the width of the container
 			Anchors.TOP_RIGHT, Anchors.RIGHT_MIDDLE, Anchors.BOTTOM_RIGHT:
 				place.x = get_viewport().size.x - (card_size.x * scale.x)
+#				place.x = board.get_size().x - (card_size.x * scale.x)
 				add_to_group("right")
 			# Middle placement is the middle of the viewport width,
 			# minues half the height of the container
 			Anchors.TOP_MIDDLE, Anchors.BOTTOM_MIDDLE:
 				place.x = get_viewport().size.x / 2 - (card_size.x / 2 * scale.x)
+#				place.x = board.get_size().x / 2 - (card_size.x / 2 * scale.x)
 		# Now we adjust the y position. Same logic for
 		match placement:
 			# Top position always start from y == 0,
 			# which means top of the viewport
 			Anchors.TOP_LEFT, Anchors.TOP_MIDDLE, Anchors.TOP_RIGHT:
-				place.y = -100  ## used to be 0
+				place.y = -100  # 0
 				add_to_group("top")
 			# Bottom position always start from the bottom of the viewport
 			# minus the height of the container
 			Anchors.BOTTOM_LEFT, Anchors.BOTTOM_MIDDLE, Anchors.BOTTOM_RIGHT:
 				place.y = get_viewport().size.y - (card_size.y * scale.y)
+#				place.y = board.get_size().y - (card_size.y * scale.y)
 				add_to_group("bottom")
 			# Middle placement is the middle of the viewport height
 			# minus half the height of the container
 			Anchors.RIGHT_MIDDLE, Anchors.LEFT_MIDDLE:
 				place.y = get_viewport().size.y / 2 - (card_size.y / 2 * scale.y)
+#				place.y = board.get_size().y / 2 - (card_size.y / 2 * scale.y)
 		# Now we try to discover if more than one CardContainer share
 		# the same anchor and the figure out which to displace.
 		var duplicate_anchors := {}

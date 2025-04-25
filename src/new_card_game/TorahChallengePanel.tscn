@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://fonts/Heebo/Heebo-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/new_card_game/TorahChallengePanel.gd" type="Script" id=2]
+[ext_resource path="res://fonts/IBM_Plex_Sans_Hebrew/IBMPlexSansHebrew-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 26
+use_mipmaps = true
+use_filter = true
+extra_spacing_space = 1
+font_data = ExtResource( 1 )
 
 [node name="TorahChallengePanel" type="Panel"]
 modulate = Color( 1, 1, 1, 0.862745 )
@@ -22,9 +37,10 @@ size_flags_vertical = 3
 
 [node name="OpeningLabel" type="Label" parent="VBoxContainer"]
 margin_right = 1000.0
-margin_bottom = 214.0
+margin_bottom = 217.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
+custom_fonts/font = SubResource( 1 )
 text = "Your opponent is about to replace one of your Timeline cards!
 
 Answer correctly to earn a reward:
@@ -38,18 +54,27 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 218.0
+margin_top = 221.0
 margin_right = 1000.0
-margin_bottom = 233.0
+margin_bottom = 231.0
 grow_vertical = 2
-rect_min_size = Vector2( 0, 15 )
+rect_min_size = Vector2( 0, 10 )
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer"]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 1, 1, 1, 0.768627 )
+show_behind_parent = true
+margin_right = 1000.0
+margin_bottom = 5.0
+rect_min_size = Vector2( 0, 5 )
 
 [node name="CenterLabel" type="Label" parent="VBoxContainer"]
-margin_top = 237.0
+margin_top = 235.0
 margin_right = 1000.0
 margin_bottom = 452.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
 text = "Placeholder text for quote"
 align = 1
 valign = 1

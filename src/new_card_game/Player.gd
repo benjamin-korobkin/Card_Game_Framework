@@ -91,13 +91,13 @@ func can_put_in_timeline() -> bool:
 func spend_tokens():
 	torah_tokens -= TIMELINE_COST
 	update_counter(tokens_str,torah_tokens)
-	
+
 func check_turn_over():
 	get_parent().check_turn_over()
 
 func set_current_card(card):
 	current_card = card
-	
+
 func challenge(opponent_card):
 	deduct_action()
 	var player_card
@@ -106,7 +106,7 @@ func challenge(opponent_card):
 	else:
 		player_card = opponent_card
 		opponent_card = current_card
-	## Move both cards to field margin containers
+	# Move both cards to field margin containers
 	var challenge_grid1 = board.get_node("FieldTimelineContainer/FieldHBox1/FieldMarginContainer1")
 	var challenge_grid2 = board.get_node("FieldTimelineContainer/FieldHBox2/FieldMarginContainer2")
 	
@@ -119,13 +119,13 @@ func challenge(opponent_card):
 
 	var p1_power = player_card.get_property("Power")
 	var p2_power = opponent_card.get_property("Power")
-	var awarded_tokens = abs(p1_power - p2_power)
+	
+	# Only award tokens to challenger
+	var awarded_tokens = p1_power - p2_power
 	if p1_power > p2_power:
 		add_tokens(awarded_tokens)
-	else:
-		opponent.add_tokens(awarded_tokens)
-	
-	yield(get_tree().create_timer(1.25), "timeout")
+	## TODO: Test
+	yield(get_tree().create_timer(1.5), "timeout")
 	player_card.move_to(cfc.NMAP.discard)
 	opponent_card.move_to(cfc.NMAP.discard)
 	yield(player_card._tween, "tween_all_completed")
@@ -175,10 +175,6 @@ func can_do_effect(name):
 		"Shlomo HaMelech":
 			if opponent.torah_tokens == 0:
 				return false
-		## TODO
-		#"Yosef HaTzadik":
-			#if hand.get_card_count() > cards_to_draw and player_name=="Player1":
-		#		pass # TODO: Show discard popup
 		_:
 			return true
 	return true
@@ -186,7 +182,7 @@ func can_do_effect(name):
 func do_effect(name):
 	match name:
 		"Avraham Avinu":
-			add_bonus_actions(2)
+			add_bonus_actions(1)
 		"Yitzchak Avinu":
 			max_torah_tokens += 5
 			update_counter(tokens_str, torah_tokens)
@@ -196,7 +192,7 @@ func do_effect(name):
 			add_tokens(amt)
 		"Yosef HaTzadik":
 			var cards_in_deck_amt = cfc.NMAP.deck.get_all_cards().size()
-			var cards_to_draw = min(3,cards_in_deck_amt)
+			var cards_to_draw = min(2,cards_in_deck_amt)
 			for i in range(cards_to_draw):
 				var drawn_card = hand.draw_card()
 				yield(get_tree().create_timer(0.4), "timeout")
@@ -211,7 +207,7 @@ func do_effect(name):
 			add_tokens(torah_tokens * (-1))
 			opponent.add_tokens(opponent.torah_tokens * (-1))
 		"David HaMelech":
-			pass ## TODO: Create flag to prevent cards from being challenged
+			pass # TODO: Create flag to prevent opponent from replacing
 		"Shlomo HaMelech":
 			var tokens_to_take = min(2, opponent.torah_tokens)
 			opponent.add_tokens(-tokens_to_take)
@@ -225,7 +221,7 @@ func do_effect(name):
 
 		_:
 			printerr("NO MATCHING NAME FOR TANACH CARD")
-	deduct_action()
+#	deduct_action()
 	check_turn_over()
 	
 func get_actions_remaining():

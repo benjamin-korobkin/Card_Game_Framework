@@ -46,7 +46,6 @@ bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 1280, 720 )
-rect_scale = Vector2( 0.999618, 1.00264 )
 mouse_filter = 2
 theme = ExtResource( 12 )
 script = ExtResource( 5 )
@@ -149,7 +148,6 @@ script = ExtResource( 17 )
 position = Vector2( 0, 475 )
 script = ExtResource( 4 )
 placement = 5
-show_manipulation_buttons = false
 pile_name = "Deck"
 
 [node name="VBoxContainer" parent="Deck/Control/CenterContainer" index="0"]
@@ -201,11 +199,69 @@ margin_bottom = 51.0
 margin_top = 54.0
 margin_bottom = 78.0
 
+[node name="TDeck" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 0, 475 )
+script = ExtResource( 4 )
+placement = 5
+pile_name = "TanachDeck"
+
+[node name="VBoxContainer" parent="TDeck/Control/CenterContainer" index="0"]
+margin_top = 63.0
+margin_right = 68.0
+margin_bottom = 95.0
+
+[node name="Label" parent="TDeck/Control/CenterContainer/VBoxContainer" index="0"]
+margin_right = 68.0
+
+[node name="PanelContainer" parent="TDeck/Control/CenterContainer/VBoxContainer" index="1"]
+margin_top = 32.0
+margin_right = 68.0
+margin_bottom = 61.0
+
+[node name="CenterContainer" parent="TDeck/Control/CenterContainer/VBoxContainer/PanelContainer" index="0"]
+margin_right = 68.0
+
+[node name="CardCount" parent="TDeck/Control/CenterContainer/VBoxContainer/PanelContainer/CenterContainer" index="0"]
+margin_right = 45.0
+
+[node name="View" parent="TDeck/Control/ManipulationButtons" index="0"]
+margin_right = 26.0
+margin_bottom = 27.0
+
+[node name="ViewSorted" parent="TDeck/Control/ManipulationButtons" index="1"]
+margin_top = 30.0
+margin_right = 26.0
+margin_bottom = 57.0
+
+[node name="Shuffle" parent="TDeck/Control/ManipulationButtons" index="2"]
+margin_top = 60.0
+margin_right = 26.0
+margin_bottom = 87.0
+
+[node name="CardView" parent="TDeck/ViewPopup" index="0"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 6.0
+margin_bottom = 6.0
+
+[node name="Position" parent="TDeck/Debug" index="0"]
+margin_bottom = 24.0
+
+[node name="AreaPos" parent="TDeck/Debug" index="1"]
+margin_top = 27.0
+margin_bottom = 51.0
+
+[node name="Size" parent="TDeck/Debug" index="2"]
+margin_top = 54.0
+margin_bottom = 78.0
+
 [node name="Discard" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1124, 475 )
 script = ExtResource( 11 )
 placement = 4
 pile_name = "Olam Haba"
+faceup_cards = true
 
 [node name="Control" parent="Discard" index="0"]
 anchor_left = 1.0
@@ -277,7 +333,6 @@ z_index = 10
 script = ExtResource( 24 )
 placement = 4
 overlap_shift_direction = 2
-show_manipulation_buttons = false
 pile_name = "TempPile"
 faceup_cards = true
 
@@ -355,8 +410,13 @@ margin_bottom = 75.0
 [node name="Hand1" parent="." instance=ExtResource( 15 )]
 z_index = 100
 script = ExtResource( 20 )
-excess_discard_pile_name = ""
-excess_cards = 0
+overlap_shift_direction = null
+index_shift_priority = null
+card_size = null
+show_manipulation_buttons = null
+excess_discard_pile_name = null
+hand_size = null
+excess_cards = null
 
 [node name="Control" parent="Hand1" index="0"]
 anchor_left = 0.5
@@ -366,8 +426,13 @@ anchor_bottom = 0.0
 
 [node name="Hand2" parent="." instance=ExtResource( 16 )]
 script = ExtResource( 20 )
-excess_discard_pile_name = ""
-excess_cards = 0
+overlap_shift_direction = null
+index_shift_priority = null
+card_size = null
+show_manipulation_buttons = null
+excess_discard_pile_name = null
+hand_size = null
+excess_cards = null
 
 [node name="Control" parent="Hand2" index="0"]
 anchor_left = 0.5
@@ -375,10 +440,16 @@ anchor_right = 0.5
 
 [node name="Counters" parent="." instance=ExtResource( 6 )]
 margin_left = 25.0
-margin_top = 25.0
+margin_top = 40.0
 margin_right = 36.0
-margin_bottom = 36.0
+margin_bottom = 51.0
 script = ExtResource( 19 )
+
+[node name="TanachIntervalLabel" type="Label" parent="."]
+margin_left = 30.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 42.0
 
 [node name="FancyMovementToggle" type="CheckButton" parent="."]
 visible = false
@@ -557,11 +628,14 @@ margin_right = 225.0
 margin_bottom = 75.0
 
 [connection signal="game_won" from="TurnQueue" to="CanvasLayer/GameOverPanel" method="_on_game_won"]
+[connection signal="tdeck_empty" from="TurnQueue" to="." method="_on_TurnQueue_tdeck_empty"]
+[connection signal="turn_counter_updated" from="TurnQueue" to="." method="_on_TurnQueue_turn_counter_updated"]
 [connection signal="action_completed" from="TurnQueue/Player1" to="." method="_on_Player1_action_completed"]
 [connection signal="action_completed" from="TurnQueue/Player2" to="TurnQueue/Player2" method="_on_Player2_action_completed"]
 [connection signal="replacing_p1_card" from="TurnQueue/Player2" to="CanvasLayer/TorahChallengePanel" method="_on_Player2_replacing_p1_card"]
 [connection signal="is_empty" from="Deck" to="." method="_on_Deck_is_empty"]
 [connection signal="gui_input" from="Deck/Control" to="TurnQueue/Player1" method="_on_DeckPanel_gui_input"]
+[connection signal="gui_input" from="TDeck/Control" to="TurnQueue/Player1" method="_on_DeckPanel_gui_input"]
 [connection signal="toggled" from="FancyMovementToggle" to="." method="_on_FancyMovementToggle_toggled"]
 [connection signal="toggled" from="EnableAttach" to="." method="_on_EnableAttach_toggled"]
 [connection signal="item_selected" from="ScalingFocusOptions" to="." method="_on_ScalingFocusOptions_item_selected"]
@@ -573,6 +647,7 @@ margin_bottom = 75.0
 [connection signal="toggled" from="Debug" to="." method="_on_Debug_toggled"]
 
 [editable path="Deck"]
+[editable path="TDeck"]
 [editable path="Discard"]
 [editable path="TempPile"]
 [editable path="Hand1"]
