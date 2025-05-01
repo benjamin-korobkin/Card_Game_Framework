@@ -134,7 +134,7 @@ func put_in_timeline(card):
 	card.move_to(board, -1, slot)
 	card.set_is_faceup(true)
 	yield(card._tween, "tween_all_completed")
-	card.global_position.y += 7  # Temp solution
+	card.global_position.y #+= 7  # Temp solution
 	cards_in_timeline += 1
 	update_counter(actions_str, actions_remaining)
 	check_turn_over()
@@ -145,7 +145,7 @@ func put_in_field(card):
 	card.move_to(board, -1, field.find_available_slot())
 	card.set_is_faceup(false)
 	yield(card._tween, "tween_all_completed")
-	card.global_position.y += 10  # Temp solution
+	card.global_position.y  # += 10  # Temp solution
 	card.set_in_p2_field(true)
 	deduct_action()
 	update_counter(actions_str, actions_remaining)

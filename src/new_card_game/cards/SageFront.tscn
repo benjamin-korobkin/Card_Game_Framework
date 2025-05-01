@@ -17,6 +17,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 
 [sub_resource type="DynamicFont" id=3]
+size = 18
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
@@ -45,13 +46,13 @@ grow_vertical = 2
 rect_min_size = Vector2( 150, 170 )
 
 [node name="CardText" parent="Margin" index="0"]
-margin_bottom = 177.0
+margin_bottom = 186.0
 grow_vertical = 2
 alignment = 1
 
 [node name="Era" type="Label" parent="Margin/CardText" index="0"]
 margin_right = 146.0
-margin_bottom = 24.0
+margin_bottom = 27.0
 grow_horizontal = 2
 rect_min_size = Vector2( 146, 19 )
 rect_pivot_offset = Vector2( 15, 16 )
@@ -72,13 +73,19 @@ margin_top = 78.0
 margin_bottom = 101.0
 
 [node name="Name" parent="Margin/CardText" index="3"]
-custom_colors/font_color = Color( 0.952941, 0.94902, 0.956863, 1 )
+custom_colors/font_color = Color( 0.952941, 0.94902, 0.956863, 0.788235 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 
-[node name="Teaching" type="Label" parent="Margin/CardText" index="4"]
-margin_top = 54.0
+[node name="MarginContainer" type="MarginContainer" parent="Margin/CardText" index="4"]
+margin_top = 65.0
 margin_right = 146.0
-margin_bottom = 152.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 5 )
+
+[node name="Teaching" type="Label" parent="Margin/CardText" index="5"]
+margin_top = 73.0
+margin_right = 146.0
+margin_bottom = 164.0
 grow_horizontal = 2
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 3 )
@@ -86,15 +93,16 @@ text = "The Rabbi's teaching "
 align = 1
 autowrap = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Margin/CardText" index="5"]
-margin_top = 155.0
+[node name="MarginContainer2" type="MarginContainer" parent="Margin/CardText" index="6"]
+visible = false
+margin_top = 164.0
 margin_right = 146.0
-margin_bottom = 155.0
+margin_bottom = 164.0
 
-[node name="HB" type="HBoxContainer" parent="Margin/CardText" index="6"]
-margin_top = 158.0
+[node name="HB" type="HBoxContainer" parent="Margin/CardText" index="7"]
+margin_top = 167.0
 margin_right = 146.0
-margin_bottom = 177.0
+margin_bottom = 186.0
 mouse_filter = 2
 custom_constants/separation = -3
 alignment = 1

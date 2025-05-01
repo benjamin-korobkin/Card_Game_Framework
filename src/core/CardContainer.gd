@@ -346,7 +346,7 @@ func re_place():
 			# Top position always start from y == 0,
 			# which means top of the viewport
 			Anchors.TOP_LEFT, Anchors.TOP_MIDDLE, Anchors.TOP_RIGHT:
-				place.y = -100  # 0
+				place.y = -150  # 0
 				add_to_group("top")
 			# Bottom position always start from the bottom of the viewport
 			# minus the height of the container
