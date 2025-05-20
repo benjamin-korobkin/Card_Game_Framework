@@ -49,6 +49,6 @@ You win if you control at least 3 Timeline slots.
 
 
 # Credits
-This game uses the db0 (card game framework)[https://github.com/db0/godot-card-game-framework]
+This game uses the db0 [card game framework](https://github.com/db0/godot-card-game-framework)
 
 Inspired by Jewish tradition, history, and a desire to create decent Jewish games.
