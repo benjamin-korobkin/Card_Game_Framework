@@ -33,7 +33,7 @@ Control the majority of the 5-card Timeline when the game ends.
 ### Acharon
 
 ## 🪙 Core Mechanics
-Beit Midrash (BM): Place up to 3 sage cards here. Each one earns you 1 Merit per turn (max 3).
+Beit Midrash (BM): Place up to 3 sage cards here. Each one earns you 1 Merit per turn.
 
 Merits: Spend 5 Merits to place a card on the Timeline.
 
