@@ -42,7 +42,7 @@ const GAME_VERSION := "1.1.0"
 # This will also adjust all CardContainers to match
 # If you modify this property, you **must** adjust
 # the min_rect of the various control nodes inside the card front and back scenes.
-const CARD_SIZE := Vector2(150,170)
+const CARD_SIZE := Vector2(150,180) # 150, 170
 # This is the resolution the game was developed in. It is used to adjust the card sizes
 # for smaller resolutions. Any lower resoluton will adjust its card sizes for previews/thumbnails
 # based on the percentage of difference between the two resolutions in absolute pixel number.
@@ -131,7 +131,7 @@ const PATH_MOUSE_POINTER := PATH_CORE + "MousePointer.tscn"
 const NEIGHBOUR_PUSH := 0.7
 # The scale of a card while on the play area
 # You can adjust this for each different card type
-const PLAY_AREA_SCALE := 0.8
+const PLAY_AREA_SCALE := 0.85
 # The default scale of a card while on a thumbnail area such as the deckbuilder
 # You can adjust this for each different card type
 const THUMBNAIL_SCALE := 0.85
@@ -146,7 +146,7 @@ const FOCUSED_SCALE := 1.5
 # More than 0 and the card will appear hidden under the display area.
 #
 # Less than 0 and it will float higher than the bottom of the viewport
-const BOTTOM_MARGIN_MULTIPLIER := 0.33 # 0.5
+const BOTTOM_MARGIN_MULTIPLIER := 0.25 # 0.33
 # Here you can adjust the amount of offset towards a side of their host card
 # that attachments are placed.
 #

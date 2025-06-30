@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://themes/darktheme/darktheme.theme" type="Theme" id=1]
 [ext_resource path="res://fonts/Heebo/static/Heebo-Bold.ttf" type="DynamicFontData" id=2]
@@ -6,8 +6,10 @@
 [ext_resource path="res://src/custom/CGFDeckbuilder/CGFDeckBuilder.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/custom/CGFDeckbuilder/CGFCardLibrary.tscn" type="PackedScene" id=5]
 [ext_resource path="res://themes/darktheme/fonts/UbuntuFont.res" type="DynamicFont" id=6]
+[ext_resource path="res://themes/darktheme/StyleBox/Normal.tres" type="StyleBox" id=7]
 [ext_resource path="res://fonts/comfortaa/Comfortaa-Bold.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://src/custom/DetailsFont.tres" type="DynamicFont" id=9]
+[ext_resource path="res://themes/darktheme/StyleBox/Hover.tres" type="StyleBox" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
@@ -20,6 +22,8 @@ font_data = ExtResource( 2 )
 size = 18
 use_filter = true
 font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [node name="Menu" type="Panel"]
 anchor_left = 0.5
@@ -60,7 +64,7 @@ property_width_exceptions = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 1280, 720 )
-color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
+color = Color( 0.0705882, 0.203922, 0.254902, 1 )
 
 [node name="MainMenu" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -99,9 +103,9 @@ size_flags_horizontal = 3
 custom_fonts/font = SubResource( 3 )
 text = "
 GOAL:  Have the most Sages in the TIMELINE grid once it's full.
-It costs 5 TORAH TOKENS to put in the TIMELINE
+It costs 5 Merits to put in the TIMELINE
 
-To earn Torah Tokens, put Sages in your BEIT MIDRASH (BM).
+To earn Merits, put Sages in your BEIT MIDRASH (BM).
 If your Beit Midrash is full, 
 you can replace a card in the Timeline with a card from your Beit Midrash.
 
@@ -146,7 +150,11 @@ margin_right = 385.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 50 )
 size_flags_horizontal = 3
+custom_colors/font_color_hover = Color( 0.988235, 0.984314, 0.984314, 1 )
 custom_fonts/font = ExtResource( 9 )
+custom_styles/hover = ExtResource( 10 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = ExtResource( 7 )
 text = "Tutorial"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -158,6 +166,7 @@ margin_right = 800.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
+custom_colors/font_color_hover = Color( 0.988235, 0.980392, 0.980392, 1 )
 custom_fonts/font = ExtResource( 9 )
 text = "Start"
 __meta__ = {

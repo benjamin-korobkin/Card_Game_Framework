@@ -36,7 +36,7 @@ extents = Vector2( 60, 75.4995 )
 [node name="BoardPlacementSlot" type="Control" groups=["placement_slot"]]
 margin_right = 120.0
 margin_bottom = 150.0
-rect_min_size = Vector2( 120, 120 )
+rect_min_size = Vector2( 0, 120 )
 script = ExtResource( 2 )
 
 [node name="Highlight" type="MarginContainer" parent="."]

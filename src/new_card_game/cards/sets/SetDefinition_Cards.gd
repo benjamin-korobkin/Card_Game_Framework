@@ -229,11 +229,11 @@ const CARDS := {
 	
 	"Yitzchak Avinu": {
 		"Type": "Tanach",
-		"Effect": "Increase max Torah Tokens by 5"
+		"Effect": "Increase max Merits by 5"
 	},
 	"Yaakov Avinu": {
 		"Type": "Tanach",
-		"Effect": "Gain 1 token for each Sage in the BM"
+		"Effect": "Gain 1 Merit for each Sage in the BM"
 	},
 	"Aharon": {
 		"Type": "Tanach",
@@ -245,7 +245,7 @@ const CARDS := {
 	},
 	"Shlomo HaMelech": {
 		"Type": "Tanach",
-		"Effect": "Take up to 2 tokens from your opponent"
+		"Effect": "Take up to 2 merits from your opponent"
 	},
 	"Eliyahu HaNavi": {
 		"Type": "Tanach",
@@ -257,7 +257,7 @@ const CARDS := {
 	},
 	"Moshe Rabbeinu": { # P1 receives, and uses next turn
 		"Type": "Tanach",
-		"Effect": "Put a Sage in the Timeline for no tokens or action"
+		"Effect": "Put a Sage in the Timeline for no merits or action"
 	},
 	## TODO: Implement David and other cards in the future
 #	"David HaMelech": {

@@ -19,8 +19,8 @@ onready var tutorial_steps = [
 		"preset":"center_top"},
 	{"text": """
 		 To put cards in the Timeline,
-		 you need Torah Tokens. 
-		 You can earn tokens by putting cards in your 
+		 you need Merits. 
+		 You can earn Merits by putting cards in your 
 		 Beit Midrash. More on that shortly. 
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """
@@ -32,8 +32,8 @@ onready var tutorial_steps = [
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """
 		The panel on the left shows remaining actions 
-		and tokens for you and your opponent.
-		Your actions & tokens are on the top (P1).
+		and Merits for you and your opponent.
+		Your actions & Merits are on the top (P1).
 		Your opponent's are on the bottom (P2).
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": $Counters, "preset":""},
 	{"text": """The deck on the left is shared between you and 
@@ -45,7 +45,7 @@ onready var tutorial_steps = [
 	{"text": """
 		The grid below the Timeline is your BEIT MIDRASH. 
 		At the start of each of your turns, you earn
-		1 token for each Sage here, up to 3 tokens. 
+		1 merits for each Sage here, up to 3 Merits. 
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": $FieldTimelineContainer/FieldHBox1, 
 		"preset":""},
 	{"text": """Your opponent has a Beit Midrash as well
@@ -62,7 +62,7 @@ onready var tutorial_steps = [
 		Now it's the opponent's turn...
 		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
 	{"text": """Your turn again. 
-		Notice you received 1 Torah Token 
+		Notice you received 1 Torah Merit 
 		because you have 1 Sage 
 		in your Beit Midrash.
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
@@ -92,9 +92,9 @@ onready var tutorial_steps = [
 		It's your opponent's turn again...
 		""", "state": "WAITING_FOR_AI", "reveal_node": null, "preset":""},
 	{"text": """
-		Opponent turn over. Notice your tokens increased.
+		Opponent turn over. Notice your Merits increased.
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
-	# P1 and P2 have 2 cards in BM, P1 has 1 sage in hand. P1 has 3 tokens, P2 1.
+	# P1 and P2 have 2 cards in BM, P1 has 1 sage in hand. P1 has 3 Merits, P2 1.
 	{"text": """
 		Let's do this again. 
 		Put your remaining Sage in the Beit Midrash.
@@ -110,7 +110,7 @@ onready var tutorial_steps = [
 		a Tanach card!
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """
-		Also, you now have 5 tokens. It's enough to put a 
+		Also, you now have 5 Merits. It's enough to put a 
 		Sage in the Timeline.
 		Click the Sage in your hand and select Timeline.
 		""", "state": "WAITING_FOR_TIMELINE", "reveal_node": null, "preset":""},
@@ -139,7 +139,7 @@ onready var tutorial_steps = [
 		following conditions...
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """	
-		1. You have (at least) 5 tokens to spend. OR, 
+		1. You have (at least) 5 Merits to spend. OR, 
 		   used the Moshe Rabbeinu card (lucky you).
 		2. A Sage in your Beit Din matches
 		   the era of the Sage you are replacing.
@@ -160,7 +160,7 @@ onready var tutorial_steps = [
 	{"text": """As you just saw, both cards were shown and then
 		sent to Olam haba (discard pile). 
 		When challenging, if your Sage is of a higher number 
-		era than your opponent, you earn tokens. 
+		era than your opponent, you earn Merits. 
 		You can find more details on the main game page. 
 		""", "state": "WAITING_FOR_NEXT", "reveal_node": null, "preset":""},
 	{"text": """You now have everything you need 

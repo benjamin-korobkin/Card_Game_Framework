@@ -13,8 +13,8 @@ func _ready() -> void:
 	opponent = get_parent().get_node("Player2")
 	player_name = get_name()
 
-func add_tokens(amt):
-	.add_tokens(amt)
+func add_merits(amt):
+	.add_merits(amt)
 	
 func get_is_challenging():
 	return is_challenging

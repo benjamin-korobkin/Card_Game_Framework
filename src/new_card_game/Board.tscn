@@ -50,6 +50,11 @@ mouse_filter = 2
 theme = ExtResource( 12 )
 script = ExtResource( 5 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0705882, 0.203922, 0.254902, 0.156863 )
+
 [node name="FieldTimelineContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -64,14 +69,12 @@ grow_vertical = 2
 alignment = 1
 
 [node name="MarginContainer3" type="MarginContainer" parent="FieldTimelineContainer"]
-margin_top = 2.0
 margin_right = 624.0
-margin_bottom = 2.0
 
 [node name="FieldHBox2" type="HBoxContainer" parent="FieldTimelineContainer"]
-margin_top = 5.0
+margin_top = 3.0
 margin_right = 624.0
-margin_bottom = 159.0
+margin_bottom = 157.0
 grow_vertical = 2
 
 [node name="FieldMarginContainer2" type="MarginContainer" parent="FieldTimelineContainer/FieldHBox2"]
@@ -86,20 +89,20 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 125.0
 margin_top = 0.0
-margin_right = 499.0
+margin_right = 379.0
 margin_bottom = 154.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer2" type="MarginContainer" parent="FieldTimelineContainer"]
-margin_top = 162.0
+margin_top = 160.0
 margin_right = 624.0
-margin_bottom = 162.0
+margin_bottom = 160.0
 
 [node name="TimelineGrid" parent="FieldTimelineContainer" groups=["timeline"] instance=ExtResource( 7 )]
-margin_top = 165.0
-margin_bottom = 315.0
+margin_top = 163.0
+margin_bottom = 317.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -107,9 +110,9 @@ __meta__ = {
 card_size = Vector2( 150, 170 )
 
 [node name="FieldHBox1" type="HBoxContainer" parent="FieldTimelineContainer"]
-margin_top = 318.0
+margin_top = 320.0
 margin_right = 624.0
-margin_bottom = 472.0
+margin_bottom = 474.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -125,7 +128,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 125.0
 margin_top = 0.0
-margin_right = 499.0
+margin_right = 379.0
 margin_bottom = 154.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -133,9 +136,9 @@ __meta__ = {
 card_size = Vector2( 150, 170 )
 
 [node name="MarginContainer" type="MarginContainer" parent="FieldTimelineContainer"]
-margin_top = 475.0
+margin_top = 477.0
 margin_right = 624.0
-margin_bottom = 475.0
+margin_bottom = 477.0
 
 [node name="TurnQueue" type="Node2D" parent="."]
 script = ExtResource( 17 )
@@ -189,15 +192,15 @@ margin_right = 6.0
 margin_bottom = 6.0
 
 [node name="Position" parent="Deck/Debug" index="0"]
-margin_bottom = 24.0
+margin_bottom = 27.0
 
 [node name="AreaPos" parent="Deck/Debug" index="1"]
-margin_top = 27.0
-margin_bottom = 51.0
+margin_top = 30.0
+margin_bottom = 57.0
 
 [node name="Size" parent="Deck/Debug" index="2"]
-margin_top = 54.0
-margin_bottom = 78.0
+margin_top = 60.0
+margin_bottom = 87.0
 
 [node name="TDeck" parent="." instance=ExtResource( 2 )]
 visible = false
@@ -439,17 +442,19 @@ anchor_left = 0.5
 anchor_right = 0.5
 
 [node name="Counters" parent="." instance=ExtResource( 6 )]
-margin_left = 25.0
+margin_left = 50.0
 margin_top = 40.0
 margin_right = 36.0
 margin_bottom = 51.0
+rect_min_size = Vector2( 250, 75 )
 script = ExtResource( 19 )
 
 [node name="TanachIntervalLabel" type="Label" parent="."]
-margin_left = 30.0
+margin_left = 50.0
 margin_top = 18.0
-margin_right = 36.0
+margin_right = 265.0
 margin_bottom = 42.0
+text = "Turns till Tanach card: ?"
 
 [node name="FancyMovementToggle" type="CheckButton" parent="."]
 visible = false

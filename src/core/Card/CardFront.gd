@@ -8,7 +8,7 @@ extends Panel
 
 const STANDARD_FONT_SIZE = 12
 
-var roboto_font = preload("res://fonts/Roboto/Roboto-Regular.ttf")
+# var roboto_font = preload("res://fonts/Roboto/Roboto-Regular.ttf")
 
 # Maps the location of the card front labels so that they're findable even when
 # The card front is customized for games of different needs
@@ -62,13 +62,13 @@ func set_label_text(node: Label, value, scale: float = 1):
 	resizing_labels.append(node)
 	##value = _check_for_replacements(node, value)
 	var label_font :Font = get_card_label_font(node)
-	if node.get_name() == "Effect" or node.get_name() == "Teaching":
-		#var dynamic_font = DynamicFont.new()
-		#dynamic_font.set_outline_color(Color(0,0,0,255))
-		#dynamic_font.outline_size = 1
-		#node.add_font_override("font", dynamic_font)
-		label_font.font_data = roboto_font#.instance()
-		label_font.set_spacing(DynamicFont.SPACING_CHAR, 1)
+#	if node.get_name() == "Effect" or node.get_name() == "Teaching":
+#		#var dynamic_font = DynamicFont.new()
+#		#dynamic_font.set_outline_color(Color(0,0,0,255))
+#		#dynamic_font.outline_size = 1
+#		#node.add_font_override("font", dynamic_font)
+#		label_font.font_data = roboto_font#.instance()
+#		label_font.set_spacing(DynamicFont.SPACING_CHAR, 1)
 #	print_debug(scaled_fonts.get(node.name, 1))
 	var cached_font_size = get_cached_font_size(node,value,scale)
 	if cached_font_size:

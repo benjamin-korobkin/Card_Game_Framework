@@ -45,7 +45,7 @@ func _on_TimelineButton_pressed() -> void:
 			p1.moshe_effect_enabled = false
 		else:
 			p1.deduct_action()
-			p1.spend_tokens()
+			p1.spend_merits()
 		if slot.occupying_card:
 			slot.occupying_card.move_to(cfc.NMAP.discard)
 			p2.cards_in_timeline -= 1

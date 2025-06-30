@@ -22,8 +22,8 @@ func _on_DeckPanel_gui_input(event: InputEvent) -> void:
 		else:
 			draw_card()
 
-func add_tokens(amt):
-	.add_tokens(amt)
+func add_merits(amt):
+	.add_merits(amt)
 	
 func get_is_challenging():
 	return is_challenging

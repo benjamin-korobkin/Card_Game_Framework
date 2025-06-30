@@ -174,14 +174,14 @@ margin_right = 512.0
 margin_bottom = 125.0
 rect_min_size = Vector2( 25, 0 )
 
-[node name="EarnTokensOption" type="Button" parent="VBoxContainer/RewardOptionsContainer"]
+[node name="EarnMeritsOption" type="Button" parent="VBoxContainer/RewardOptionsContainer"]
 margin_left = 516.0
 margin_right = 971.0
 margin_bottom = 125.0
 rect_min_size = Vector2( 0, 125 )
 size_flags_horizontal = 3
 size_flags_vertical = 0
-text = "EARN 5 TOKENS (UP TO MAXIMUM)"
+text = "EARN 5 Merits (UP TO MAXIMUM)"
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/RewardOptionsContainer"]
 margin_left = 975.0
@@ -223,5 +223,5 @@ margin_bottom = 500.0
 rect_min_size = Vector2( 0, 25 )
 
 [connection signal="pressed" from="VBoxContainer/RewardOptionsContainer/EarnCardOption" to="." method="_on_EarnCardOption_pressed"]
-[connection signal="pressed" from="VBoxContainer/RewardOptionsContainer/EarnTokensOption" to="." method="_on_EarnTokensOption_pressed"]
+[connection signal="pressed" from="VBoxContainer/RewardOptionsContainer/EarnMeritsOption" to="." method="_on_EarnMeritsOption_pressed"]
 [connection signal="pressed" from="VBoxContainer/FailureOptionsContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]

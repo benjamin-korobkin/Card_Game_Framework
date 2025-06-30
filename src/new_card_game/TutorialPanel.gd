@@ -14,7 +14,7 @@ onready var tutorial_steps = [
 		You start the game with 3 cards. You get 2 actions per turn. Actions include:
 		1. Drawing a card
 		2. Putting a card in the Beit Midrash (BM)
-		3. Placing a card in the Timeline (costs 5 tokens)
+		3. Placing a card in the Timeline (costs 5 Merits)
 		""", "state": "WAITING_FOR_NEXT"},
 	{"text": """This deck <show deck> is shared between you and your opponent. 
 		Click it to draw a card. 
@@ -26,8 +26,8 @@ onready var tutorial_steps = [
 	{"text": """You've used 2 actions, so now it's your opponent's turn. <Opponent plays a turn> 
 		""", "state": "WAITING_FOR_AI"},
 	{"text": """This grid <show BM> is your Beit Midrash (BM). At the start of your turns, 
-		you earn 1 token for each Sage card in your BM (up to 3 tokens). 
-		You have 1 card in your BM, so you've earned 1 token.
+		you earn 1 Merit for each Sage card in your BM (up to 3 Merits). 
+		You have 1 card in your BM, so you've earned 1 Merit.
 		""", "state": "WAITING_FOR_NEXT"},
 	{"text": """For this tutorial, we'll allow you to place a card in the Timeline for free. 
 		Select a Sage in your hand and click Timeline. <Put Sage in Timeline>
@@ -38,7 +38,7 @@ onready var tutorial_steps = [
 	{"text": """	Your Beit Midrash is now full, giving it the status of a BEIT DIN. 
 		With a Beit Din, you can REPLACE a Sage in the Timeline, 
 		if you fulfill the following criteria:
-		a. You have 5 tokens to spend
+		a. You have 5 Merits to spend
 		b. A Sage in your Beit Din matches the era of the Sage you are replacing
 		""", "state": "WAITING_FOR_NEXT"},
 	{"text": """Select the Tanna in your Beit Din and click Timeline 
@@ -50,8 +50,8 @@ onready var tutorial_steps = [
 		opponent's Beit Midrash. <Do the Challenge>
 		""", "state": "WAITING_FOR_CHALLENGE"},
 	{"text": """In a challenge, both cards end up in the Olam haba (discard) pile. 
-		However, the card with the higher era/number gains tokens. 
-		The bigger the difference in era, the more tokens you earn. 
+		However, the card with the higher era/number gains Merits. 
+		The bigger the difference in era, the more Merits you earn. 
 		""", "state": "WAITING_FOR_NEXT"},
 	{"text": """One last thing before we go: Tanach cards! 
 		These are non-Sage cards that can give you an advantage. 

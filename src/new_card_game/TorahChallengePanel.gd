@@ -70,8 +70,8 @@ func _on_EarnCardOption_pressed() -> void:
 	p1.get_hand().draw_card()
 	_close(reward_options_container)
 
-func _on_EarnTokensOption_pressed() -> void:
-	p1.add_tokens(5)
+func _on_EarnMeritsOption_pressed() -> void:
+	p1.add_merits(5)
 	_close(reward_options_container)
 	
 func _on_ContinueButton_pressed() -> void:
